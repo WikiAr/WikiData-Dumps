@@ -48,7 +48,6 @@ if True:
     db_connection.commit()
 # ---
 # فتح الملفات
-# ---
 
 
 def read_dp(file):
