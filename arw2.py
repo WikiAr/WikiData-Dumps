@@ -130,7 +130,6 @@ tables_head = """
 ! نعم !! لا !! عربي !! دون عربي !! نعم !! لا !! عربي !! دون عربي !! نعم !! لا !! عربي !! دون عربي
 |-
 """
-# ---
 
 
 def ns_stats():
@@ -373,7 +372,6 @@ def read_data():
                             if p31d not in stats_tab['Table_no_ar_lab']:
                                 stats_tab['Table_no_ar_lab'][p31d] = 0
                             stats_tab['Table_no_ar_lab'][p31d] += 1
-    # ---
 
 
 def make_P31_table_no():

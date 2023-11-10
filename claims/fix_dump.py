@@ -27,7 +27,6 @@ for _f in files:
     if os.path.exists(f'{Dump_Dir}/{_f}'):
         with open(f'{Dump_Dir}/{_f}', 'w', encoding='utf-8') as f:
             json.dump({}, f)
-# ---
 
 
 def fix_props(props):
