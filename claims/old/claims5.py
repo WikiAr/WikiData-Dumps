@@ -60,7 +60,6 @@ tab = {
 }
 # ---
 tab2 = tab.copy()
-# ---
 
 
 def load_tab(ty):
