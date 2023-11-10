@@ -25,22 +25,22 @@ if os.path.exists(r'I:\core\dumps'):
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
 if True:
-    Offset = {1: 0}
-    Limit = {1: 900000000}
+    offset = {1: 0}
+    limit = {1: 900000000}
     # ---
     if "test" in sys.argv:
-        Limit[1] = 15000
+        limit[1] = 15000
     # ---
     for arg in sys.argv:
         arg, _, value = arg.partition(':')
         if arg.startswith('-'):
             arg = arg[1:]
         if arg == "offset" or arg == "off":
-            Offset[1] = int(value)
+            offset[1] = int(value)
         if arg == "limit":
-            Limit[1] = int(value)
+            limit[1] = int(value)
 # ---
-priffixeso = [
+prefixes = [
     "مقالة",
     "نقاش:",
     "مستخدم:",
@@ -70,7 +70,7 @@ priffixeso = [
 # ---
 priffixes = {}
 # ---
-for x in priffixeso:
+for x in prefixes:
     priffixes[x] = {
         "count": 0,
         "labels": {
@@ -105,7 +105,7 @@ stats_tab = {
     'delta': 0,
 }
 # ---
-Chart_head = """
+chart_head = """
 {| class="floatleft sortable" style="text-align:right"
 |-
 |
@@ -132,7 +132,7 @@ tables_head = """
 """
 
 
-def ns_stats():
+def namespace_stats():
     texts = """\n== حسب النطاق  ==\n"""
     xline = ''  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
     yline = ''  # |y1=718532,564152,46493,4292,1906,850,137,7
@@ -141,9 +141,15 @@ def ns_stats():
     fafa = "\n| %d || %d || %d || %d"
     # ---
     for ns, nstab in priffixes.items():
-        count = nstab["count"]
+        texts = """\n== Namespace Statistics  ==\n"""
+        xline = ''  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
+        yline = ''  # |y1=718532,564152,46493,4292,1906,850,137,7
+        tables = tables_head
         # ---
-        nstab_labls = nstab["labels"]
+        fafa = "\n| %d || %d || %d || %d"
+        # ---
+        for ns, nstab in prefixes.items():
+        count = nstab["count"]
         nstab_descs = nstab["descriptions"]
         nstab_alies = nstab["aliases"]
         # ---
@@ -172,7 +178,7 @@ def ns_stats():
     return texts
 
 
-def make_textP31():
+def generate_textP31():
     textP31 = ''
     for x, tab in stats_tab['p31_main_tab'].items():
         # ---
@@ -196,7 +202,7 @@ def make_textP31():
         # ---
         section_others = 0
         # ---
-        for xx, yy in p31list:
+        for count, p31_id in p31list:
             if yy != "no":
                 if xx > li and len(rows) < 150:
                     yf = "{{Q|%s}}" % yy
@@ -244,7 +250,7 @@ def save_to_wp(text):
     del arAPI
 
 
-def read_data():
+def process_data():
     filename = '/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2'
     # ---
     if not os.path.isfile(filename):
@@ -278,10 +284,23 @@ def read_data():
                     print_memory()
                 # ---
                 if "printline" in sys.argv and (c % 1000 == 0 or c == 1):
-                    print(line)
-                # ---
-                # جميع عناصر ويكي بيانات المفحوصة
-                stats_tab['all_items'] += 1
+                    def read_data():
+                        filename = '/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2'
+                        # ---
+                        if not os.path.isfile(filename):
+                            print(f'file {filename} <<lightred>> not found')
+                            return
+                        # ---
+                        t1 = time.time()
+                        # ---
+                        c = 0
+                        # ---
+                        with bz2.open(filename, "r") as f:
+                            for line in f:
+                                line = line.decode("utf-8").strip("\n").strip(",")
+                                if line.startswith('{') and line.endswith('}'):
+                    if __name__ == '__main__':
+                        main()
                 # ---
                 p31_no_ar_lab = []
                 json1 = json.loads(line)
