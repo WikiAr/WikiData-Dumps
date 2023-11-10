@@ -1,4 +1,3 @@
-"""python3 wd_core/dump/fix_dumps.py"""
 import json
 import os
 import sys
@@ -8,22 +7,22 @@ import tqdm
 # ---
 try:
     _ = __file__
-    Dump_Dir = "/data/project/himo/dumps"
+    DUMP_DIR = "/data/project/himo/dumps"
 except Exception:
-    Dump_Dir = "/content/dumps"
+    DUMP_DIR = "/content/dumps"
 # ---
 if os.path.exists(r"I:\core\dumps"):
-    Dump_Dir = r"I:\core\dumps"
+    DUMP_DIR = r"I:\core\dumps"
 # ---
-print(f"Dump_Dir:{Dump_Dir}")
+print(f"Dump_Dir:{DUMP_DIR}")
 # ---
-filename = f"{Dump_Dir}/claims.json"
+filename = f"{DUMP_DIR}/claims.json"
 # ---
 files = ["claims_test_fixed.json", "claims_fixed.json"]
 # ---
 for _f in files:
-    if os.path.exists(f"{Dump_Dir}/{_f}"):
-        with open(f"{Dump_Dir}/{_f}", "w", encoding="utf-8") as f:
+    if os.path.exists(f"{DUMP_DIR}/{_f}"):
+        with open(f"{DUMP_DIR}/{_f}", "w", encoding="utf-8") as f:
             json.dump({}, f)
 
 
@@ -82,10 +81,36 @@ def start():
     # ---
     filename = f"{Dump_Dir}/{faf}.json"
     # ---
-    print(f"log_dump {filename} start..")
+    """python3 wd_core/dump/fix_dumps.py"""
+    import json
+    import os
+    import sys
+    
+    import tqdm
+    
     # ---
-    # print filesize in MegaBytes
-    print(f"filesize: {os.path.getsize(filename) / 1024 / 1024} MegaBytes")
+    try:
+        _ = __file__
+        DUMP_DIR = "/data/project/himo/dumps"
+    except Exception:
+        DUMP_DIR = "/content/dumps"
+    # ---
+    if os.path.exists(r"I:\core\dumps"):
+        DUMP_DIR = r"I:\core\dumps"
+    # ---
+    print(f"Dump_Dir:{DUMP_DIR}")
+    # ---
+    filename = f"{DUMP_DIR}/claims.json"
+    # ---
+    files = ["claims_test_fixed.json", "claims_fixed.json"]
+    # ---
+    for _f in files:
+        if os.path.exists(f"{DUMP_DIR}/{_f}"):
+            with open(f"{DUMP_DIR}/{_f}", "w", encoding="utf-8") as f:
+                json.dump({}, f)
+    
+    
+    def fix_props(props):
     # ---
     with open(filename, encoding="utf-8") as f:
         data = json.load(f)
