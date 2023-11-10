@@ -143,7 +143,6 @@ def work_for_each_lang(old_tab):
         if 'test1' in sys.argv:
             print(tab)
             break
-        # ---
 
 
 def work_for_multiple_langs(old_tab):
