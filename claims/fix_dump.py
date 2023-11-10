@@ -1,8 +1,4 @@
-"""
-
-python3 wd_core/dump/fix_dumps.py
-
-"""
+"""python3 wd_core/dump/fix_dumps.py"""
 import os
 import sys
 import json
