@@ -76,7 +76,8 @@ def read_file(chunk_size=1024 * 100):
     langs_Table = {}
     # ---
     print('read done..')
-    # ---
+
+
     def r_line(line):
         json1 = json.loads(line)
         # ---
