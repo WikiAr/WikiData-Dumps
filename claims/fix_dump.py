@@ -123,6 +123,4 @@ def start():
     with open(jsonname, "w", encoding="utf-8") as outfile:
         json.dump(data, outfile)
     # ---
-    if __name__ == "__main__":
-        start()
     start()
