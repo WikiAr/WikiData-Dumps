@@ -23,6 +23,7 @@ import gzip
 import os
 import tqdm
 from pathlib import Path
+
 # ---
 try:
     Dir = Path(__file__).parent

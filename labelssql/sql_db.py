@@ -15,19 +15,15 @@ import time
 import traceback
 import pymysql
 import pymysql.cursors
+
 # ---
 db_username = config.db_username
 db_password = config.db_password
 # ---
 if config.db_connect_file is None:
-    credentials = {
-        'user': db_username,
-        'password': db_password
-    }
+    credentials = {'user': db_username, 'password': db_password}
 else:
-    credentials = {
-        'read_default_file': config.db_connect_file
-    }
+    credentials = {'read_default_file': config.db_connect_file}
 
 
 def resolve_bytes(rows):

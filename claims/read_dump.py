@@ -13,6 +13,7 @@ import json
 import time
 from datetime import datetime
 from pathlib import Path
+
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
@@ -26,6 +27,7 @@ sys.path.append(core_dir)
 print(f'sys.path.append:core_dir: {core_dir}')
 # ---
 from dump.memory import print_memory
+
 # from dump.claims.fix_dump import fix_props
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
@@ -37,9 +39,7 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
-test_limit = {
-    1: 15000
-}
+test_limit = {1: 15000}
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
@@ -147,29 +147,7 @@ def read_file():
                     if "P31" not in claims:
                         tab['items_no_P31'] += 1
                     # ---
-                    claims_example = {
-                        "claims": {
-                            "P31": [{
-                                "mainsnak": {
-                                    "snaktype": "value",
-                                    "property": "P31",
-                                    "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a",
-                                    "datavalue": {
-                                        "value": {
-                                            "entity-type": "item",
-                                            "numeric-id": 6256,
-                                            "id": "Q6256"
-                                        },
-                                        "type": "wikibase-entityid"
-                                    },
-                                    "datatype": "wikibase-item"
-                                },
-                                "type": "statement",
-                                "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44",
-                                "rank": "normal"
-                            }]
-                        }
-                    }
+                    claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
                     # ---
                     for p in claims.keys():
                         Type = claims[p][0].get("mainsnak", {}).get("datatype", '')
@@ -177,9 +155,7 @@ def read_file():
                         if Type == "wikibase-item":
                             if p not in tab['properties']:
                                 tab['properties'][p] = {
-                                    "qids": {
-                                        "others": 0
-                                    },
+                                    "qids": {"others": 0},
                                     "lenth_of_usage": 0,
                                     "len_prop_claims": 0,
                                 }

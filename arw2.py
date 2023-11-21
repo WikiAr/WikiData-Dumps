@@ -14,8 +14,10 @@ import os
 import bz2
 import json
 import time
+
 # ---
 from dump.memory import print_memory
+
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
@@ -73,24 +75,9 @@ priffixes = {}
 for x in priffixeso:
     priffixes[x] = {
         "count": 0,
-        "labels": {
-            "yes": 0,
-            "no": 0,
-            "yesar": 0,
-            "noar": 0
-        },
-        "descriptions": {
-            "yes": 0,
-            "no": 0,
-            "yesar": 0,
-            "noar": 0
-        },
-        "aliases": {
-            "yes": 0,
-            "no": 0,
-            "yesar": 0,
-            "noar": 0
-        },
+        "labels": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
+        "descriptions": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
+        "aliases": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
     }
 # ---
 stats_tab = {
@@ -238,6 +225,7 @@ def save_to_wp(text):
     title = 'ويكيبيديا:مشروع_ويكي_بيانات/تقرير_P31'
     # ---
     from API import arAPI
+
     arAPI.page_put(oldtext="", newtext=text, summary='Bot - Updating stats', title=title)
     # ---
     del text

@@ -6,6 +6,7 @@ from pathlib import Path
 import sqlite3
 import os
 import gzip
+
 # make memory to 20GB
 gzip._OUTPUT_BUFSIZ = 20 * 1024 * 1024
 # ---
@@ -26,7 +27,8 @@ if True:
     # Create tables and insert data
     cursor = db_connection.cursor()
     # ---
-    cursor.execute('''
+    cursor.execute(
+        '''
         CREATE TABLE wbt_term_in_lang (
             wbtl_id INTEGER PRIMARY KEY AUTOINCREMENT,
             wbtl_type_id INTEGER NOT NULL,
@@ -34,16 +36,19 @@ if True:
             FOREIGN KEY (wbtl_type_id) REFERENCES wbt_text_in_lang(wbxl_id),
             UNIQUE(wbtl_text_in_lang_id, wbtl_type_id)
             );
-        ''')
+        '''
+    )
     # ---
-    cursor.execute('''
+    cursor.execute(
+        '''
         CREATE TABLE wbt_text_in_lang (
             wbxl_id INTEGER PRIMARY KEY AUTOINCREMENT,
             wbxl_language TEXT NOT NULL,
             wbxl_text_id INTEGER NOT NULL,
             UNIQUE(wbxl_text_id, wbxl_language)
         );
-        ''')
+        '''
+    )
     # ---
     db_connection.commit()
 # ---
