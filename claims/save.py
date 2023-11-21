@@ -12,7 +12,7 @@ import os
 from wd_api import himoAPI
 
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+dump_directory = "/data/project/himo/dumps"
 # ---
 if os.path.exists(r'I:\core\dumps'):
     Dump_Dir = r'I:\core\dumps'
