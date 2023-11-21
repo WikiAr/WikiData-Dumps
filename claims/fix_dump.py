@@ -39,7 +39,12 @@ def fix_props(props):
         tab = pap.copy()
         # ---
         # sort by usage
-        qids = {k: v for k, v in sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True)}
+        qids = {
+            k: v
+            for k, v in sorted(
+                tab["qids"].items(), key=lambda item: item[1], reverse=True
+            )
+        }
         # ---
         if not tab.get("len_of_qids"):
             tab["len_of_qids"] = len(tab["qids"])
