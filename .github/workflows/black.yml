@@ -24,7 +24,7 @@ jobs:
         pip install black
 
     - name: Run Black
-      run:  |
+      run: |
         black -t py38 -t py39 -t py310 -t py311 --line-length 450 --skip-string-normalization .
         
     - name: Commit and push changes
