@@ -24,7 +24,7 @@ if os.path.exists(r'I:\core\dumps'):
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
 sections_done = {1: 0, 'max': 100}
-sections_false = {1: 0}
+sections_failed = {1: 0}
 
 
 def make_section(P, table, max_n=51):
@@ -117,7 +117,7 @@ def make_section(P, table, max_n=51):
     return texts
 
 
-def make_numbers_section(p31list):
+def create_numbers_section(p31list):
     xline = ""
     yline = ""
     # ---
