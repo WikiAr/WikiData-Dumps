@@ -11,6 +11,7 @@ import bz2
 import json
 import time
 from datetime import datetime
+
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
@@ -22,6 +23,7 @@ sys.path.append(core_dir)
 print(f'sys.path.append:core_dir: {core_dir}')
 # ---
 from dump.memory import print_memory
+
 # ---
 labels_dir = Path(__file__).parent
 # ---
@@ -34,9 +36,7 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
-test_limit = {
-    1: 15000
-}
+test_limit = {1: 15000}
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
@@ -131,11 +131,7 @@ def read_file():
                 for x in tats:
                     for code in json1.get(x, {}):
                         if code not in tab['langs']:
-                            tab['langs'][code] = {
-                                'labels': 0,
-                                'descriptions': 0,
-                                'aliases': 0
-                            }
+                            tab['langs'][code] = {'labels': 0, 'descriptions': 0, 'aliases': 0}
                         tab['langs'][code][x] += 1
                 # ---
                 del json1

@@ -22,6 +22,7 @@ wbt_text_in_lang
 import sys
 import os
 import json
+
 # ---
 try:
     from dump.labels.labels_old_values import make_old_values  # make_old_values()
@@ -100,11 +101,7 @@ def work_one_lang(lang):
         lal = x['lang']
         # ---
         if lal not in tab_o['langs']:
-            tab_o['langs'][lal] = {
-                'labels': 0,
-                'descriptions': 0,
-                'aliases': 0
-            }
+            tab_o['langs'][lal] = {'labels': 0, 'descriptions': 0, 'aliases': 0}
         # ---
         count = x['count'] if isinstance(x['count'], int) else int(x['count'])
         # ---
@@ -152,7 +149,7 @@ def work_for_multiple_langs(old_tab):
     lenn = 10
     done = 0
     for i in range(0, len(list(old_tab.keys())), lenn):
-        keys = list(old_tab.keys())[i:i + lenn]
+        keys = list(old_tab.keys())[i : i + lenn]
         # ---
         print(f'i:{i}', f'all:{len(old_tab.keys())}', f'done:{done}')
         # ---
@@ -175,10 +172,7 @@ def get_data():
         return y['all'] if 'all' in y else sum(y.values())
 
     # ---
-    old_tab = {
-        x: dod(y)
-        for x, y in old.items()
-    }
+    old_tab = {x: dod(y) for x, y in old.items()}
     # ---
     langs = get_languages()
     # ---
@@ -189,11 +183,7 @@ def get_data():
     print(f'len old_tab:{len(old_tab)}')
     # ---
     for ddde in old_tab:
-        tab_o['langs'][ddde] = {
-            'labels': 0,
-            'descriptions': 0,
-            'aliases': 0
-        }
+        tab_o['langs'][ddde] = {'labels': 0, 'descriptions': 0, 'aliases': 0}
     # ---
     # split old_tab to 2 parts
     lent = len(old_tab) // 2
@@ -210,10 +200,7 @@ def get_data():
     # ---
     # من الاقل للأكثر
     # sort old_tab by values
-    old_tab = {
-        k: v
-        for k, v in sorted(old_tab.items(), key=lambda item: item[1], reverse=False)
-    }
+    old_tab = {k: v for k, v in sorted(old_tab.items(), key=lambda item: item[1], reverse=False)}
     # ---
     part2 = dict(list(old_tab.items())[:lent])
     part1 = dict(list(old_tab.items())[lent:])
