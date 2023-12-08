@@ -12,6 +12,8 @@ import json
 import time
 from datetime import datetime
 
+ENCODING = "utf-8"
+
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
@@ -102,7 +104,7 @@ def read_file():
     # ---
     check_file_date(tab['file_date'])
     # ---
-    with bz2.open(filename, "r", encoding="utf-8") as f:
+    with bz2.open(filename, "r", encoding=ENCODING) as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
             tab['done'] += 1
