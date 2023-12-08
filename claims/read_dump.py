@@ -11,6 +11,7 @@ import codecs
 import bz2
 import json
 import time
+ENCODING = "utf-8"
 from datetime import datetime
 from pathlib import Path
 
@@ -110,7 +111,7 @@ def read_file():
     # ---
     check_file_date(tab['file_date'])
     # ---
-    with bz2.open(filename, "r", encoding="utf-8") as f:
+    with bz2.open(filename, "r", encoding=ENCODING) as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
             tab['done'] += 1
