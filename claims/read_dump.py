@@ -43,8 +43,8 @@ print(f'dump_dir: {dump_dir}')
 # ---
 test_limit_dict = {1: 15000}
 # ---
-for arg in sys.argv:
-    arg, _, value = arg.partition(':')
+for argument in sys.argv:
+    argument, _, value = argument.partition(':')
     if arg == "-limit":
         test_limit_dict[1] = int(value)
 # ---
@@ -63,7 +63,7 @@ tab = {
 }
 
 
-def log_dump(tab, _claims="claims"):
+def log_dump(statistics_table, _claims="claims"):
     jsonname = f"{dump_dir}/{_claims}.json"
     # ---
     if 'test' in sys.argv:
@@ -94,8 +94,6 @@ def check_file_date(file_date):
     if old_date == file_date and 'test' not in sys.argv:
         print(f"file_date: {file_date} <<lightred>> unchanged")
         sys.exit(0)
-
-
 def read_file(mode="rt"):
     print(f"read file: {filename}")
 
@@ -104,25 +102,25 @@ def read_file(mode="rt"):
         return {}
 
     start_time = time.time()
-    tab['file_date'] = get_file_info(filename)
-    print(f"file date: {tab['file_date']}")
+    statistics_table['file_date'] = get_file_info(filename)
+    print(f"file date: {statistics_table['file_date']}")
 
     print(f"file {filename} found, read it:")
     count = 0
     # ---
-    check_file_date(tab['file_date'])
+    check_file_date(statistics_table['file_date'])
     # ---
 
     with bz2.open(filename, mode, encoding="utf-8") as file:
         for line in file:
             line = line.decode("utf-8").strip("\n").strip(",")
-            tab['done'] += 1  # Counts the number of lines processed
+            statistics_table['done'] += 1  # Counts the number of lines processed
             # ---
             if 'pp' in sys.argv:
                 print(line)
             # ---
             if line.startswith("{") and line.endswith("}"):
-                tab['All_items'] += 1  # Increment the count of all processed items
+                statistics_table['All_items'] += 1  # Increment the count of all processed items
                 count += 1
                 if 'test' in sys.argv:
                     if count % 100 == 0:
