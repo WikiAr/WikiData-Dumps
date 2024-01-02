@@ -113,15 +113,15 @@ def read_file(mode="rt"):
     check_file_date(tab['file_date'])
     # ---
 
-    with bz2.open(filename, mode, encoding="utf-8") as file:
-        for line in file:
-            line = line.decode("utf-8").strip("\n").strip(",")
+    with bz2.open(filename, mode, encoding="utf-8") as file_path:
+        for file_line in file_path:
+            file_line = file_line.decode("utf-8").strip("\n").strip(",")
             tab['done'] += 1  # Counts the number of lines processed
             # ---
             if 'pp' in sys.argv:
-                print(line)
+                print(file_line)
             # ---
-            if line.startswith("{") and line.endswith("}"):
+            if file_line.startswith("{") and file_line.endsWith("}"):
                 tab['All_items'] += 1  # Increment the count of all processed items
                 count += 1
                 if 'test' in sys.argv:
@@ -136,24 +136,24 @@ def read_file(mode="rt"):
                         print('count>test_limit[1]')
                         break
 
-                json1 = json.loads(line)
+                json_data = json.loads(file_line)
                 # ---
-                claims = json1.get("claims", {})
+                claim_data = json_data.get("claims", {})
                 # ---
-                if len(claims) == 0:
+                if len(claim_data) == 0:
                     tab['items_0_claims'] += 1
                 else:
                     # ---
-                    if len(claims) == 1:
+                    if len(claim_data) == 1:
                         tab['items_1_claims'] += 1
                     # ---
-                    if "P31" not in claims:
+                    if "P31" not in claim_data:
                         tab['items_no_P31'] += 1
                     # ---
-                    claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+                    claims_example = {"claim_data": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
                     # ---
-                    for property in claims.keys():
-                        Type = claims[property][0].get("mainsnak", {}).get("datatype", '')
+                    for property in claim_data.keys():
+                        Type = claim_data[property][0].get("mainsnak", {}).get("datatype", '')
                         # ---
                         if Type == "wikibase-item":
                             if property not in tab['properties']:
@@ -163,28 +163,28 @@ def read_file(mode="rt"):
                                     "len_prop_claims": 0,
                                 }
                             tab['properties'][property]["lenth_of_usage"] += 1
-                            tab['all_claims_2020'] += len(claims[property])
+                            tab['all_claims_2020'] += len(claim_data[property])
                             # ---
-                            for claim in claims[property]:
+                            for claim in claim_data[property]:
                                 tab['properties'][property]["len_prop_claims"] += 1
                                 # ---
                                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
 
-                                idd = datavalue.get("value", {}).get("id")
+                                data_value_id = datavalue.get("value", {}).get("id")
                                 # ---
-                                if idd:
-                                    if idd not in tab['properties'][property]["qids"]:
-                                        tab['properties'][property]["qids"][idd] = 1
+                                if data_value_id:
+                                    if data_value_id not in tab['properties'][property]["qids"]:
+                                        tab['properties'][property]["qids"][data_value_id] = 1
                                     else:
-                                        tab['properties'][property]["qids"][idd] += 1
+                                        tab['properties'][property]["qids"][data_value_id] += 1
                                 # ---
-                                del idd
+                                del data_value_id
                                 # ---
                                 del datavalue
 
                 # ---
-                del json1
-                del claims
+                del json_data
+                del claim_data
             # ---
             if (count % 1000 == 0 and count < 100000) or count % 100000 == 0:
                 print(count, time.time() - start_time)
