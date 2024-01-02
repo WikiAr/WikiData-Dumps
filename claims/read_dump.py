@@ -116,7 +116,7 @@ def read_file(mode="rt"):
     with bz2.open(filename, mode, encoding="utf-8") as file:
         for line in file:
             line = line.decode("utf-8").strip("\n").strip(",")
-            tab['done'] += 1    # Counts the number of lines processed
+            tab['done'] += 1  # Counts the number of lines processed
             # ---
             if 'pp' in sys.argv:
                 print(line)
