@@ -20,7 +20,7 @@ from dump.memory import print_memory
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-claims_dir = Path(__file__).parent
+claims_directory = Path(__file__).parent
 # ---
 # split after /dump
 core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
@@ -41,12 +41,12 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'dump_dir: {dump_dir}')
 # ---
-test_limit = {1: 15000}
+test_limit_dict = {1: 15000}
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
     if arg == "-limit":
-        test_limit[1] = int(value)
+        test_limit_dict[1] = int(value)
 # ---
 tab = {
     "delta": 0,
@@ -86,7 +86,7 @@ def get_file_info(file_path):
 
 
 def check_file_date(file_date):
-    with codecs.open(f"{claims_dir}/file_date.txt", "r", encoding='utf-8') as outfile:
+    with codecs.open(f"{claims_directory}/file_date.txt", "r", encoding='utf-8') as outfile:
         old_date = outfile.read()
     # ---
     print(f"file_date: {file_date}, old_date: {old_date}")
@@ -132,7 +132,7 @@ def read_file(mode="rt"):
                         print(count, time.time() - start_time)
                         start_time = time.time()
 
-                    if count > test_limit[1]:
+                    if count > test_limit_dict[1]:
                         print('count>test_limit[1]')
                         break
 
@@ -153,9 +153,9 @@ def read_file(mode="rt"):
                     claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
                     # ---
                     for property in claims.keys():
-                        Type = claims[property][0].get("mainsnak", {}).get("datatype", '')
+                        datatype = claims[property][0].get("mainsnak", {}).get("datatype", '')
                         # ---
-                        if Type == "wikibase-item":
+                        if datatype == "wikibase-item":
                             if property not in tab['properties']:
                                 tab['properties'][property] = {
                                     "qids": {"others": 0},
@@ -212,7 +212,7 @@ def read_file(mode="rt"):
     # ---
     log_dump(tab)
     # ---
-    with codecs.open(f"{claims_dir}/file_date.txt", "w", encoding='utf-8') as outfile:
+    with codecs.open(f"{claims_directory}/file_date.txt", "w", encoding='utf-8') as outfile:
         outfile.write(tab['file_date'])
     # ---
 
