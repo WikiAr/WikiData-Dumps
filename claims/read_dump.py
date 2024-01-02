@@ -5,14 +5,16 @@ python3 wd_core/dump/claims/read_dump.py test
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+import bz2
+import codecs
+import json
 import os
 import sys
-import codecs
-import bz2
-import json
 import time
 from datetime import datetime
 from pathlib import Path
+
+from dump.memory import print_memory
 
 # ---
 time_start = time.time()
@@ -28,16 +30,16 @@ print(f'sys.path.append:core_dir: {core_dir}')
 # ---
 from dump.memory import print_memory
 
-# from dump.claims.fix_dump import fix_props
+
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+dump_dir = "/data/project/himo/dumps"
 # ---
 if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+    dump_dir = r'I:\core\dumps'
 # ---
-print(f'Dump_Dir:{Dump_Dir}')
+print(f'dump_dir: {dump_dir}')
 # ---
 test_limit = {1: 15000}
 # ---
@@ -62,10 +64,10 @@ tab = {
 
 
 def log_dump(tab, _claims="claims"):
-    jsonname = f"{Dump_Dir}/{_claims}.json"
+    jsonname = f"{dump_dir}/{_claims}.json"
     # ---
     if 'test' in sys.argv:
-        jsonname = f"{Dump_Dir}/{_claims}_test.json"
+        jsonname = f"{dump_dir}/{_claims}_test.json"
     # ---
     with open(jsonname, "w", encoding='utf-8') as outfile:
         json.dump(tab, outfile)
@@ -110,17 +112,17 @@ def read_file(mode="rt"):
     # ---
     check_file_date(tab['file_date'])
     # ---
-    # with bz2.open(filename, mode, encoding="utf-8") as f:
+
     with bz2.open(filename, mode, encoding="utf-8") as file:
         for line in file:
             line = line.decode("utf-8").strip("\n").strip(",")
-            tab['done'] += 1
+            tab['done'] += 1    # Counts the number of lines processed
             # ---
             if 'pp' in sys.argv:
                 print(line)
             # ---
             if line.startswith("{") and line.endswith("}"):
-                tab['All_items'] += 1
+                tab['All_items'] += 1  # Increment the count of all processed items
                 count += 1
                 if 'test' in sys.argv:
                     if count % 100 == 0:
@@ -167,11 +169,7 @@ def read_file(mode="rt"):
                                 tab['properties'][property]["len_prop_claims"] += 1
                                 # ---
                                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
-                                # ttype = datavalue.get("type")
-                                # ---
-                                # print(f"ttype:{ttype}")
-                                # ---
-                                # if ttype == "wikibase-entityid":
+
                                 idd = datavalue.get("value", {}).get("id")
                                 # ---
                                 if idd:
@@ -183,7 +181,7 @@ def read_file(mode="rt"):
                                 del idd
                                 # ---
                                 del datavalue
-                                # del ttype
+
                 # ---
                 del json1
                 del claims
@@ -201,9 +199,11 @@ def read_file(mode="rt"):
     # ---
     for property_key, property_value in tab['properties'].copy().items():
         tab['properties'][property_key]["len_of_qids"] = len(property_value["qids"])
-        # tab['properties'][property_key]["qids"] = {k: v for k, v in sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)}
+        # Sort QIDs by their count in descending order and update in the 'tab' dictionary
+        sorted_qids = sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)
+        tab['properties'][property_key]["qids"] = dict(sorted_qids)
     # ---
-    tab['len_all_props'] = len(tab['properties'])
+    tab['len_all_props'] = len(tab['properties'])  # Calculate the total number of unique properties processed
     # ---
     end = time.time()
     # ---
