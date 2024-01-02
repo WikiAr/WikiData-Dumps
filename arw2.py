@@ -16,6 +16,7 @@ import json
 import time
 
 # ---
+DEFAULT_MODE = "rt"
 from dump.memory import print_memory
 
 # ---
@@ -232,7 +233,7 @@ def save_to_wp(text):
     del arAPI
 
 
-def read_data(mode="rt"):
+def read_data(mode=DEFAULT_MODE):
     filename = '/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2'
     # ---
     if not os.path.isfile(filename):
