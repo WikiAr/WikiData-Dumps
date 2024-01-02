@@ -101,18 +101,18 @@ def read_file(mode="rt"):
         print(f"file {filename} not found")
         return {}
 
-    t1 = time.time()
+    start_time = time.time()
     tab['file_date'] = get_file_info(filename)
     print(f"file date: {tab['file_date']}")
 
     print(f"file {filename} found, read it:")
-    c = 0
+    count = 0
     # ---
     check_file_date(tab['file_date'])
     # ---
     # with bz2.open(filename, mode, encoding="utf-8") as f:
-    with bz2.open(filename, mode, encoding="utf-8") as f:
-        for line in f:
+    with bz2.open(filename, mode, encoding="utf-8") as file:
+        for line in file:
             line = line.decode("utf-8").strip("\n").strip(",")
             tab['done'] += 1
             # ---
@@ -121,17 +121,17 @@ def read_file(mode="rt"):
             # ---
             if line.startswith("{") and line.endswith("}"):
                 tab['All_items'] += 1
-                c += 1
+                count += 1
                 if 'test' in sys.argv:
-                    if c % 100 == 0:
-                        print(f'c:{c}')
+                    if count % 100 == 0:
+                        print(f'count:{count}')
                         print(f"done:{tab['done']}")
                         # ---
-                        print(c, time.time() - t1)
-                        t1 = time.time()
+                        print(count, time.time() - start_time)
+                        start_time = time.time()
 
-                    if c > test_limit[1]:
-                        print('c>test_limit[1]')
+                    if count > test_limit[1]:
+                        print('count>test_limit[1]')
                         break
 
                 json1 = json.loads(line)
@@ -150,21 +150,21 @@ def read_file(mode="rt"):
                     # ---
                     claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
                     # ---
-                    for p in claims.keys():
-                        Type = claims[p][0].get("mainsnak", {}).get("datatype", '')
+                    for property in claims.keys():
+                        Type = claims[property][0].get("mainsnak", {}).get("datatype", '')
                         # ---
                         if Type == "wikibase-item":
-                            if p not in tab['properties']:
-                                tab['properties'][p] = {
+                            if property not in tab['properties']:
+                                tab['properties'][property] = {
                                     "qids": {"others": 0},
                                     "lenth_of_usage": 0,
                                     "len_prop_claims": 0,
                                 }
-                            tab['properties'][p]["lenth_of_usage"] += 1
-                            tab['all_claims_2020'] += len(claims[p])
+                            tab['properties'][property]["lenth_of_usage"] += 1
+                            tab['all_claims_2020'] += len(claims[property])
                             # ---
-                            for claim in claims[p]:
-                                tab['properties'][p]["len_prop_claims"] += 1
+                            for claim in claims[property]:
+                                tab['properties'][property]["len_prop_claims"] += 1
                                 # ---
                                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
                                 # ttype = datavalue.get("type")
@@ -175,10 +175,10 @@ def read_file(mode="rt"):
                                 idd = datavalue.get("value", {}).get("id")
                                 # ---
                                 if idd:
-                                    if idd not in tab['properties'][p]["qids"]:
-                                        tab['properties'][p]["qids"][idd] = 1
+                                    if idd not in tab['properties'][property]["qids"]:
+                                        tab['properties'][property]["qids"][idd] = 1
                                     else:
-                                        tab['properties'][p]["qids"][idd] += 1
+                                        tab['properties'][property]["qids"][idd] += 1
                                 # ---
                                 del idd
                                 # ---
@@ -188,20 +188,20 @@ def read_file(mode="rt"):
                 del json1
                 del claims
             # ---
-            if (c % 1000 == 0 and c < 100000) or c % 100000 == 0:
-                print(c, time.time() - t1)
-                t1 = time.time()
+            if (count % 1000 == 0 and count < 100000) or count % 100000 == 0:
+                print(count, time.time() - start_time)
+                start_time = time.time()
                 # print memory usage
                 print_memory()
-                if c % 1000000 == 0:
+                if count % 1000000 == 0:
                     log_dump(tab)
             # ---
     # ---
     print(f"read all lines: {tab['done']}")
     # ---
-    for x, xx in tab['properties'].copy().items():
-        tab['properties'][x]["len_of_qids"] = len(xx["qids"])
-        # tab['properties'][x]["qids"] = {k: v for k, v in sorted(xx['qids'].items(), key=lambda item: item[1], reverse=True)}
+    for property_key, property_value in tab['properties'].copy().items():
+        tab['properties'][property_key]["len_of_qids"] = len(property_value["qids"])
+        # tab['properties'][property_key]["qids"] = {k: v for k, v in sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)}
     # ---
     tab['len_all_props'] = len(tab['properties'])
     # ---
