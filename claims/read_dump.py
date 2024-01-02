@@ -200,8 +200,8 @@ def read_file(mode="rt"):
     for property_key, property_value in tab['properties'].copy().items():
         tab['properties'][property_key]["len_of_qids"] = len(property_value["qids"])
         # Sort QIDs by their count in descending order and update in the 'tab' dictionary
-        #sorted_qids = sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)
-        #tab['properties'][property_key]["qids"] = dict(sorted_qids)
+        # sorted_qids = sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)
+        # tab['properties'][property_key]["qids"] = dict(sorted_qids)
     # ---
     tab['len_all_props'] = len(tab['properties'])  # Calculate the total number of unique properties processed
     # ---
