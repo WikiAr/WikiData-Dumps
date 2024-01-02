@@ -232,7 +232,7 @@ def save_to_wp(text):
     del arAPI
 
 
-def read_data():
+def read_data(mode="rt"):
     filename = '/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2'
     # ---
     if not os.path.isfile(filename):
@@ -244,7 +244,7 @@ def read_data():
     c = 0
     # ---
     # with bz2.open(filename, "r", encoding="utf-8") as f:
-    with bz2.open(filename, "rt", encoding="utf-8") as f:
+    with bz2.open(filename, mode, encoding="utf-8") as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
             if line.startswith('{') and line.endswith('}'):
