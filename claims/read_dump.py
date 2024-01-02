@@ -193,8 +193,8 @@ def read_file(mode="rt"):
                 print_memory()
                 if count % 1000000 == 0:
                     log_dump(tab)
-            # ---
-    # ---
+            #---
+    #---
     print(f"read all lines: {tab['done']}")
     # ---
     for property_key, property_value in tab['properties'].copy().items():
