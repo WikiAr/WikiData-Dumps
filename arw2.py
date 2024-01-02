@@ -243,7 +243,8 @@ def read_data():
     # ---
     c = 0
     # ---
-    with bz2.open(filename, "r", encoding="utf-8") as f:
+    # with bz2.open(filename, "r", encoding="utf-8") as f:
+    with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
             if line.startswith('{') and line.endswith('}'):
