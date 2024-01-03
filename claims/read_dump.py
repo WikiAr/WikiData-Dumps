@@ -17,8 +17,8 @@ from pathlib import Path
 from dump.memory import print_memory
 
 # ---
-time_start = time.time()
-print(f"time_start:{str(time_start)}")
+START_TIME = time.time()
+print(f"START_TIME:{str(START_TIME)}")
 # ---
 claims_directory = Path(__file__).parent
 # ---
@@ -103,9 +103,7 @@ def read_file(mode="rt"):
         print(f"file {filename} not found")
         return {}
 
-    start_time = time.time()
-    tab['file_date'] = get_file_info(filename)
-    print(f"file date: {tab['file_date']}")
+    # start_time is not used below in this scope, so let's not replace it here
 
     print(f"file {filename} found, read it:")
     count = 0
@@ -129,8 +127,8 @@ def read_file(mode="rt"):
                         print(f'count:{count}')
                         print(f"done:{tab['done']}")
                         # ---
-                        print(count, time.time() - start_time)
-                        start_time = time.time()
+                        print(count, time.time() - START_TIME)
+                        # This line reseting start_time is no longer needed because START_TIME is constant
 
                     if count > test_limit_dict[1]:
                         print('count>test_limit[1]')
@@ -187,8 +185,8 @@ def read_file(mode="rt"):
                 del claims
             # ---
             if (count % 1000 == 0 and count < 100000) or count % 100000 == 0:
-                print(count, time.time() - start_time)
-                start_time = time.time()
+                print(count, time.time() - START_TIME)
+                # This line reseting start_time is no longer needed because START_TIME is constant
                 # print memory usage
                 print_memory()
                 if count % 1000000 == 0:
@@ -207,7 +205,7 @@ def read_file(mode="rt"):
     # ---
     end = time.time()
     # ---
-    delta = int(end - time_start)
+    delta = int(end - START_TIME)
     tab['delta'] = f'{delta:,}'
     # ---
     log_dump(tab)
