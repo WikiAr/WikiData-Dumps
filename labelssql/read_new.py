@@ -118,14 +118,14 @@ def work_for_each_lang(old_tab):
     # ---
     # old_tab = {k: v for k, v in sorted(old_tab.items(), key=lambda item: item[1], reverse=False)}
     # ---
-    n = 0
+    counter = 0
     # ---
     for lang, old_co in old_tab.items():
         # ---
-        n += 1
+        counter += 1
         # ---
         print('_________')
-        print(n, len(old_tab), f'lang:{lang}.')
+        print(counter, len(old_tab), f'lang:{lang}.')
         # ---
         print(f'old_co:{old_co:,}')
         # ---
@@ -170,9 +170,9 @@ def get_data():
     # ---
     langs = get_languages()
     # ---
-    for a in langs:
-        if a['wbxl_language'] not in old_tab:
-            old_tab[a['wbxl_language']] = 0
+    for language in langs:
+        if language['wbxl_language'] not in old_tab:
+            old_tab[language['wbxl_language']] = 0
     # ---
     print(f'len old_tab:{len(old_tab)}')
     # ---
