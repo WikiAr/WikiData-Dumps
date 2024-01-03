@@ -14,10 +14,10 @@ def execute_sql_file(filename, db_name):
     lenth = len(sql_commands)
     print(f"lenth:{lenth}")
     limit = 100
-    n = 0
+    command_counter = 0
     for command in sql_commands:
-        n += 1
-        if n > limit:
+        command_counter += 1
+        if command_counter > limit:
             break
         try:
             if command.strip() != '':
