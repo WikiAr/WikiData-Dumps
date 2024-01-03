@@ -57,19 +57,19 @@ db_connection.commit()
 def read_dp(file):
     # Extract the gzipped SQL files
     print(f"read file:{file}")
-    n = 0
+    insert_counter = 0
     with gzip.open(file, 'rb') as hhh:
         term_sql_content = hhh.read()
         for line in term_sql_content.splitlines():
             line = line.decode('utf-8')
             if line.startswith('insert') or line.startswith('INSERT'):
-                n += 1
+                insert_counter += 1
                 # add line to db
                 cursor.execute(line)
                 db_connection.commit()
-                if n % 10000 == 0:
+                if insert_counter % 10000 == 0:
                     print(line)
-                    print(f"n:{n}")
+                    print(f"insert_counter:{insert_counter}")
 
 
 # ---
