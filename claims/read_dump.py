@@ -80,10 +80,7 @@ def get_file_info(file_path):
     # Get the time of last modification
     last_modified_time = os.path.getmtime(file_path)
 
-    # Convert the timestamp to a readable format
-    readable_time = datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
-
-    return readable_time
+    return datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
 
 
 def check_file_date(file_date):

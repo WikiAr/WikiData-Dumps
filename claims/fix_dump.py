@@ -39,7 +39,9 @@ def fix_props(props):
         tab = pap.copy()
         # ---
         # sort by usage
-        qids = {k: v for k, v in sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True)}
+        qids = dict(
+            sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True)
+        )
         # ---
         if not tab.get("len_of_qids"):
             tab["len_of_qids"] = len(tab["qids"])
@@ -70,10 +72,7 @@ def fix_props(props):
 
 
 def start():
-    faf = "claims"
-    # ---
-    if "test" in sys.argv:
-        faf = "claims_test"
+    faf = "claims_test" if "test" in sys.argv else "claims"
     # ---
     filename = f"{Dump_Dir}/{faf}.json"
     # ---
@@ -91,14 +90,13 @@ def start():
     # ---
     P31_tab = data["properties"].get("P31", {})
     # ---
-    data["properties"] = {
-        k: v
-        for k, v in sorted(
+    data["properties"] = dict(
+        sorted(
             data["properties"].items(),
             key=lambda item: item[1]["lenth_of_usage"],
             reverse=True,
         )
-    }
+    )
     # ---
     if "100" in sys.argv:
         # get only first 100 properties
