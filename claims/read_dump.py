@@ -107,6 +107,7 @@ def read_file(mode="rt"):
 
     print(f"file {filename} found, read it:")
     count = 0
+    count = 0
     # ---
     check_file_date(tab['file_date'])
     # ---
