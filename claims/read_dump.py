@@ -15,6 +15,8 @@ from datetime import datetime
 from pathlib import Path
 
 import config
+
+import config
 from dump.memory import print_memory
 
 # ---
