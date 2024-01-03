@@ -48,7 +48,7 @@ for arg in sys.argv:
     if arg == "-limit":
         test_limit[1] = int(value)
 # ---
-tab = {
+data_table = {
     "delta": 0,
     "done": 0,
     "file_date": '',
@@ -134,14 +134,12 @@ def read_file(mode="rt"):
 
                     if count > test_limit[1]:
                         print('count>test_limit[1]')
-                        break
-
                 json1 = json.loads(line)
                 # ---
                 claims = json1.get("claims", {})
                 # ---
                 if len(claims) == 0:
-                    tab['items_0_claims'] += 1
+                                    data_table['items_0_claims'] += 1
                 else:
                     # ---
                     if len(claims) == 1:
@@ -168,9 +166,8 @@ def read_file(mode="rt"):
                             for claim in claims[property]:
                                 tab['properties'][property]["len_prop_claims"] += 1
                                 # ---
-                                datavalue = claim.get("mainsnak", {}).get("datavalue", {})
-
-                                idd = datavalue.get("value", {}).get("id")
+                                data_value = claim.get("mainsnak", {}).get("datavalue", {})
+                                data_value_id = data_value.get("value", {}).get("id")
                                 # ---
                                 if idd:
                                     if idd not in tab['properties'][property]["qids"]:
@@ -192,7 +189,7 @@ def read_file(mode="rt"):
                 # print memory usage
                 print_memory()
                 if count % 1000000 == 0:
-                    log_dump(tab)
+                    log_dump_data(data_table)
             # ---
     # ---
     print(f"read all lines: {tab['done']}")
@@ -210,8 +207,8 @@ def read_file(mode="rt"):
     delta = int(end - time_start)
     tab['delta'] = f'{delta:,}'
     # ---
-    log_dump(tab)
-    # ---
+    log_dump_data(data_table)
+    read_and_process_file()
     with codecs.open(f"{claims_dir}/file_date.txt", "w", encoding='utf-8') as outfile:
         outfile.write(tab['file_date'])
     # ---
