@@ -14,6 +14,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+import config
 from dump.memory import print_memory
 
 # ---
@@ -41,7 +42,7 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'dump_dir: {dump_dir}')
 # ---
-test_limit_dict = {1: 15000}
+test_limit_dict = config.TEST_LIMIT_DICT
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
