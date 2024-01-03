@@ -6,6 +6,7 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
 import bz2
+from . import config
 import codecs
 import json
 import os
@@ -20,7 +21,7 @@ from dump.memory import print_memory
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-claims_directory = Path(__file__).parent
+claims_directory = config.CLAIMS_DIRECTORY
 # ---
 # split after /dump
 core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
@@ -86,7 +87,7 @@ def get_file_info(file_path):
 
 
 def check_file_date(file_date):
-    with codecs.open(f"{claims_directory}/file_date.txt", "r", encoding='utf-8') as outfile:
+    with codecs.open(str(config.CLAIMS_DIRECTORY / "file_date.txt"), "r", encoding='utf-8') as outfile:
         old_date = outfile.read()
     # ---
     print(f"file_date: {file_date}, old_date: {old_date}")
@@ -212,7 +213,7 @@ def read_file(mode="rt"):
     # ---
     log_dump(tab)
     # ---
-    with codecs.open(f"{claims_directory}/file_date.txt", "w", encoding='utf-8') as outfile:
+    with codecs.open(str(config.CLAIMS_DIRECTORY / "file_date.txt"), "w", encoding='utf-8') as outfile:
         outfile.write(tab['file_date'])
     # ---
 
