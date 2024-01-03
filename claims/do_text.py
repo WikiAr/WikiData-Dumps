@@ -48,13 +48,9 @@ def make_section(P, table, max_n=51):
     # ---
     print(f"make_section for property:{P}")
     texts += f"\n* Total items use these property:{Len:,}"
-    # ---
-    lnnn = table.get("len_prop_claims")
-    if lnnn:
+    if lnnn := table.get("len_prop_claims"):
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
-    # ---
-    len_of_qids = table.get("len_of_qids")
-    if len_of_qids:
+    if len_of_qids := table.get("len_of_qids"):
         texts += f"\n* Number of unique qids:{len_of_qids:,}"
     # ---
     texts += "\n"
@@ -66,14 +62,17 @@ def make_section(P, table, max_n=51):
     if len(table["qids"]) == 1 and table["qids"].get("others"):
         print(f'{P} table["qids"] == empty.')
         return ""
-    # ---
-    Chart = '{| class="floatright sortable"\n|-\n|\n'
-    Chart += "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    Chart = (
+        '{| class="floatright sortable"\n|-\n|\n'
+        + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    )
     Chart += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
     # ---
     tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
     # ---
-    lists = {k: v for k, v in sorted(table["qids"].items(), key=lambda item: item[1], reverse=True)}
+    lists = dict(
+        sorted(table["qids"].items(), key=lambda item: item[1], reverse=True)
+    )
     # ---
     xline = ""
     yline = ""
@@ -102,7 +101,7 @@ def make_section(P, table, max_n=51):
     # ---
     num += 1
     # ---
-    Chart = Chart % (xline, yline)
+    Chart %= (xline, yline)
     # ---
     tables += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
@@ -140,9 +139,10 @@ def make_numbers_section(p31list):
             rows.append(lune)
         else:
             property_other += int(Len)
-    # ---
-    Chart2 = "{| class='floatright sortable' \n|-\n|"
-    Chart2 += "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
+    Chart2 = (
+        "{| class='floatright sortable' \n|-\n|"
+        + "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
+    )
     Chart2 += f"|x={xline}\n|y1={yline}"
     Chart2 += "\n}}"
     Chart2 += "\n|-\n|}"
@@ -152,10 +152,7 @@ def make_numbers_section(p31list):
     rows.append(f"! {n} \n! others \n! {property_other:,}")
     rows = "\n|-\n".join(rows)
     table = "\n{| " + f'class="wikitable sortable"\n|-\n! #\n! property\n! usage\n|-\n{rows}\n' + "|}"
-    # ---
-    text = "== Numbers ==\n" f"\n{Chart2}\n{table}"
-    # ---
-    return text
+    return f"== Numbers ==\n\n{Chart2}\n{table}"
 
 
 def make_text(tab, ty=''):
@@ -242,10 +239,10 @@ if __name__ == "__main__":
     # ---
     with codecs.open(claims_new, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
-    # ----
+    # ---
     with codecs.open(claims_p31, 'w', encoding='utf-8') as outfile:
         outfile.write(text_p31)
-    # ----
+    # ---
     # print(text_p31)
     # ---
     print("log_dump done")

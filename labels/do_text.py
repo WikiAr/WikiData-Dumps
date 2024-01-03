@@ -45,7 +45,7 @@ def make_cou(num, _all):
     if num == 0 or _all == 0:
         return "0%"
     fef = (num / _all) * 100
-    return str(fef)[:4] + "%"
+    return f"{str(fef)[:4]}%"
 
 
 def mainar(n_tab):
@@ -95,22 +95,22 @@ def mainar(n_tab):
         rows.append(line)
     # ---
     rows = '\n|-\n'.join(rows)
-    # ----
+    # ---
     table = main_table_head
-    # ----
+    # ---
     table += rows
-    # ----
+    # ---
     table += "\n|}\n[[Category:Wikidata statistics|Language statistics]]"
-    # ----
+    # ---
     if test_new_descs == 0 and 'test1' not in sys.argv:
         print('nothing new.. ')
         return ''
-    # ----
+    # ---
     final = time.time()
     delta = n_tab.get('delta') or int(final - start)
-    # ----
+    # ---
     diff = n_tab['All_items'] - last_total
-    # ----
+    # ---
     text = f"Update: <onlyinclude>{dumpdate}</onlyinclude>.\n"
     text += f"* Total items last update:{last_total:,}.\n"
     text += f"* Total items:{n_tab['All_items']:,}. (+{diff})\n"
@@ -120,7 +120,7 @@ def mainar(n_tab):
     text = text.replace("0 (0000)", "0")
     text = text.replace("0 (0)", "0")
 
-    if text == "":
+    if not text:
         return
 
     return text
@@ -149,32 +149,29 @@ def main_labels(tabb):
     text = mainar(tabb)
     # ---
     tmp_text = make_temp_text(tabb)
-    # ----
+    # ---
     if "nosave" in sys.argv:
         return
-    # ----
+    # ---
     text = text.replace('[[Category:Wikidata statistics|Language statistics]]', '')
-    # ----
+    # ---
     labels_file = f'{Dump_Dir}/texts/labels.txt'
     template_file = f'{Dump_Dir}/texts/template.txt'
-    # ----
+    # ---
     if 'test' in sys.argv:
         labels_file = f'{Dump_Dir}/texts/labels_test.txt'
         template_file = f'{Dump_Dir}/texts/template_test.txt'
-    # ----
+    # ---
     with codecs.open(labels_file, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
-    # ----
+    # ---
     with codecs.open(template_file, 'w', encoding='utf-8') as outfile:
         outfile.write(tmp_text)
-    # ----
+    # ---
 
 
 if __name__ == '__main__':
-    faf = 'labels'
-    # ---
-    if 'test' in sys.argv:
-        faf = 'labels_test'
+    faf = 'labels_test' if 'test' in sys.argv else 'labels'
     # ---
     file = f'{Dump_Dir}/{faf}.json'
     # ---
