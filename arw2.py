@@ -7,6 +7,7 @@ python3 core8/pwb.py dump/arw2 test nosave p31
 python3 core8/pwb.py dump/arw2 test nosave printline
 python3 core8/pwb.py dump/arw2 test nosave limit:5000
 """
+
 #
 # (C) Ibrahem Qasim, 2017
 import sys
@@ -25,22 +26,20 @@ if os.path.exists(r'I:\core\dumps'):
     Dump_Dir = r'I:\core\dumps'
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
+Offset = {1: 0}
+Limit = {1: 900000000}
 # ---
-if True:
-    Offset = {1: 0}
-    Limit = {1: 900000000}
-    # ---
-    if "test" in sys.argv:
-        Limit[1] = 15000
-    # ---
-    for arg in sys.argv:
-        arg, _, value = arg.partition(':')
-        if arg.startswith('-'):
-            arg = arg[1:]
-        if arg == "offset" or arg == "off":
-            Offset[1] = int(value)
-        if arg == "limit":
-            Limit[1] = int(value)
+if "test" in sys.argv:
+    Limit[1] = 15000
+# ---
+for arg in sys.argv:
+    arg, _, value = arg.partition(':')
+    if arg.startswith('-'):
+        arg = arg[1:]
+    if arg in ["offset", "off"]:
+        Offset[1] = int(value)
+    if arg == "limit":
+        Limit[1] = int(value)
 # ---
 priffixeso = [
     "مقالة",
@@ -69,16 +68,15 @@ priffixeso = [
     "نقاش تعريف الإضافة:",
     "موضوع:",
 ]
-# ---
-priffixes = {}
-# ---
-for x in priffixeso:
-    priffixes[x] = {
+priffixes = {
+    x: {
         "count": 0,
         "labels": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
         "descriptions": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
         "aliases": {"yes": 0, "no": 0, "yesar": 0, "noar": 0},
     }
+    for x in priffixeso
+}
 # ---
 stats_tab = {
     'all_items': 0,
@@ -130,10 +128,6 @@ def ns_stats():
     for ns, nstab in priffixes.items():
         count = nstab["count"]
         # ---
-        nstab_labls = nstab["labels"]
-        nstab_descs = nstab["descriptions"]
-        nstab_alies = nstab["aliases"]
-        # ---
         if count != 0:
             ns2 = ns.replace(":", "")
             row = f"| {ns2} || {count:,}"
@@ -141,8 +135,12 @@ def ns_stats():
             xline += f",{ns2}"
             yline += f",{count}"
             # ---
+            nstab_labls = nstab["labels"]
+            # ---
             row += fafa % (nstab_labls["yes"], nstab_labls["no"], nstab_labls["yesar"], nstab_labls["noar"])
+            nstab_descs = nstab["descriptions"]
             row += fafa % (nstab_descs["yes"], nstab_descs["no"], nstab_descs["yesar"], nstab_descs["noar"])
+            nstab_alies = nstab["aliases"]
             row += fafa % (nstab_alies["yes"], nstab_alies["no"], nstab_alies["yesar"], nstab_alies["noar"])
             # ---
             tables += f'\n{row}\n|-'
@@ -192,12 +190,10 @@ def make_textP31():
                 else:
                     section_others += xx
         # ---
-        if rows == []:
+        if not rows:
             del p31list
             continue
-        # ---
-        tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n'
-        tatone += '\n|-\n'.join(rows)
+        tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
         # ---
         tatone += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
         # ---
@@ -356,8 +352,7 @@ def read_data(mode="rt"):
                 if not ar_desc:
                     # استخدام خاصية 31 بدون وصف عربي
                     for x in json1.get('claims', {}).get('P31', []):
-                        p31d = x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id')
-                        if p31d:
+                        if p31d := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
                             if p31d not in stats_tab['Table_no_ar_lab']:
                                 stats_tab['Table_no_ar_lab'][p31d] = 0
                             stats_tab['Table_no_ar_lab'][p31d] += 1
@@ -381,9 +376,7 @@ def make_P31_table_no():
             Table_no_ar_lab_rows.append(f'| {cd} || {yf} || {xf} ')
         else:
             other += 1
-    # ---
-    P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n"""
-    P31_table_no += """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
+    P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n""" + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
     P31_table_no += '\n|-\n'.join(Table_no_ar_lab_rows)
     # ---
     P31_table_no += f'\n|-\n! - !! أخرى !! {other}\n|-\n'
@@ -401,9 +394,7 @@ def mainar():
     final = time.time()
     # ---
     stats_tab['delta'] = int(final - start)
-    # ---
-    text = "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n"
-    text += "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
+    text = "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n" + "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
     text += "* عناصر ويكي بيانات بها وصلة عربية: {all_ar_sitelinks:,} \n"
     text += "* عناصر بوصلات لغات بدون وصلة عربية: {sitelinks_no_ar:,} \n"
     text += "<!-- bots work done in {delta} secounds --> \n"
@@ -412,9 +403,7 @@ def mainar():
     text = text.format_map(stats_tab)
     # ---
     NS_table = ns_stats()
-    # ---
-    P31_secs = '== استخدام خاصية P31 ==\n'
-    P31_secs += '* {no_claims:,} صفحة دون أية خواص.\n'
+    P31_secs = '== استخدام خاصية P31 ==\n' + '* {no_claims:,} صفحة دون أية خواص.\n'
     P31_secs += '* {no_p31:,} صفحة بدون خاصية P31.\n'
     P31_secs += '* {other_claims_no_p31:,} صفحة بها خواص أخرى دون خاصية P31.\n'
     # ---
