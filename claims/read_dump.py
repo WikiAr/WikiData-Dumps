@@ -42,7 +42,7 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'dump_dir: {dump_dir}')
 # ---
-test_limit_dict = {1: 15000}
+test_limit_dict = config.TEST_LIMIT_DICT
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
@@ -133,7 +133,7 @@ def read_file(mode="rt"):
                         print(count, time.time() - start_time)
                         start_time = time.time()
 
-                    if count > test_limit_dict[1]:
+                    if count > config.TEST_LIMIT_DICT[1]:
                         print('count>test_limit[1]')
                         break
 
