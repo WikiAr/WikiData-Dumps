@@ -60,10 +60,7 @@ def sql_wikidata(query):
     host = "wikidatawiki.analytics.db.svc.wikimedia.cloud"
     # ---
     dbs_p = 'wikidatawiki_p'
-    # ---
-    rows = new_pymysql_connect(query, db=dbs_p, host=host)
-    # ---
-    return rows
+    return new_pymysql_connect(query, db=dbs_p, host=host)
 
 
 def work_one_lang(lang):
@@ -114,10 +111,7 @@ def work_one_lang(lang):
 
 def get_languages():
     qua = '''SELECT distinct wbxl_language FROM wbt_text_in_lang'''
-    # ---
-    result = sql_wikidata(qua)
-    # ---
-    return result
+    return sql_wikidata(qua)
 
 
 def work_for_each_lang(old_tab):
@@ -200,7 +194,9 @@ def get_data():
     # ---
     # من الاقل للأكثر
     # sort old_tab by values
-    old_tab = {k: v for k, v in sorted(old_tab.items(), key=lambda item: item[1], reverse=False)}
+    old_tab = dict(
+        sorted(old_tab.items(), key=lambda item: item[1], reverse=False)
+    )
     # ---
     part2 = dict(list(old_tab.items())[:lent])
     part1 = dict(list(old_tab.items())[lent:])

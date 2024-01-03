@@ -2,6 +2,7 @@
 python3 wd_core/dump/labels/o.py
 
 """
+
 from pathlib import Path
 import sqlite3
 import os
@@ -20,15 +21,13 @@ database_file = 'wikidata_database.db'
 # ---
 if os.path.isfile(database_file):
     os.remove(database_file)
+db_connection = sqlite3.connect(database_file)
+print("start SQLite:")
+# Create tables and insert data
+cursor = db_connection.cursor()
 # ---
-if True:
-    db_connection = sqlite3.connect(database_file)
-    print("start SQLite:")
-    # Create tables and insert data
-    cursor = db_connection.cursor()
-    # ---
-    cursor.execute(
-        '''
+cursor.execute(
+    '''
         CREATE TABLE wbt_term_in_lang (
             wbtl_id INTEGER PRIMARY KEY AUTOINCREMENT,
             wbtl_type_id INTEGER NOT NULL,
@@ -37,10 +36,10 @@ if True:
             UNIQUE(wbtl_text_in_lang_id, wbtl_type_id)
             );
         '''
-    )
-    # ---
-    cursor.execute(
-        '''
+)
+# ---
+cursor.execute(
+    '''
         CREATE TABLE wbt_text_in_lang (
             wbxl_id INTEGER PRIMARY KEY AUTOINCREMENT,
             wbxl_language TEXT NOT NULL,
@@ -48,9 +47,9 @@ if True:
             UNIQUE(wbxl_text_id, wbxl_language)
         );
         '''
-    )
-    # ---
-    db_connection.commit()
+)
+# ---
+db_connection.commit()
 # ---
 # فتح الملفات
 
