@@ -21,9 +21,9 @@ filename = f"{Dump_Dir}/claims.json"
 # ---
 files = ["claims_test_fixed.json", "claims_fixed.json"]
 # ---
-for _f in files:
-    if os.path.exists(f"{Dump_Dir}/{_f}"):
-        with open(f"{Dump_Dir}/{_f}", "w", encoding="utf-8") as f:
+for file_name in files:
+    if os.path.exists(f"{Dump_Dir}/{file_name}"):
+        with open(f"{Dump_Dir}/{file_name}", "w", encoding="utf-8") as f:
             json.dump({}, f)
 
 
