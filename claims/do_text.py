@@ -27,13 +27,13 @@ sections_done = {1: 0, 'max': 100}
 sections_false = {1: 0}
 
 
-def make_section(P, table, max_n=51):
+def make_section(property, table_data, max_entries=51):
     """
     Creates a section for a given property in a table.
 
     Args:
-        P (str): The property value.
-        table (dict): The table data.
+        property (str): The property value.
+        table_data (dict): The table data.
 
     Returns:
         str: The section text.
@@ -42,11 +42,11 @@ def make_section(P, table, max_n=51):
     # ---
     # if sections_done[1] >= sections_done['max']:    return ""
     # ---
-    Len = table['lenth_of_usage']
+    Len = table_data['lenth_of_usage']
     # ---
-    texts = "== {{P|%s}} ==" % P
+    texts = "== {{P|%s}} ==" % property
     # ---
-    print(f"make_section for property:{P}")
+    print(f"make_section for property:{property}")
     texts += f"\n* Total items use these property:{Len:,}"
     if lnnn := table.get("len_prop_claims"):
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
@@ -55,55 +55,50 @@ def make_section(P, table, max_n=51):
     # ---
     texts += "\n"
     print(texts)
-    if table["qids"] == {}:
-        print(f'{P} table["qids"] == empty.')
+    if table_data["qids"] == {}:
+        print(f'{property} table_data["qids"] == empty.')
         return ""
     # ---
-    if len(table["qids"]) == 1 and table["qids"].get("others"):
-        print(f'{P} table["qids"] == empty.')
+    if len(table_data["qids"]) == 1 and table_data["qids"].get("others"):
+        print(f'{property} table_data["qids"] == empty.')
         return ""
-    Chart = (
-        '{| class="floatright sortable"\n|-\n|\n'
-        + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
-    )
-    Chart += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
+    chart_content = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    chart_content += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
     # ---
-    tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
+    table_content = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
     # ---
-    lists = dict(
-        sorted(table["qids"].items(), key=lambda item: item[1], reverse=True)
-    )
+    sorted_list = dict(sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True))
     # ---
-    xline = ""
-    yline = ""
+    x_axis_data = ""
+    y_axis_data = ""
     # ---
     num = 0
     other = 0
     # ---
-    for x, ye in lists.items():
+    for x, ye in sorted_list.items():
         # ---
         if x == "others":
             other += ye
             continue
         # ---
         num += 1
-        if num < max_n:
+        if num < max_entries:
             Q = x
             if x.startswith("Q"):
                 Q = "{{Q|%s}}" % x
             # ---
-            tables += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
+            table_content += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
             # ---
-            xline += f",{x}"
-            yline += f",{ye:,}"
+            x_axis_data += f",{x}"
+            y_axis_data += f",{ye:,}"
         else:
             other += ye
     # ---
     num += 1
     # ---
-    Chart %= (xline, yline)
+    chart_content %= (x_axis_data, y_axis_data)
     # ---
-    tables += f"\n! {num} \n! others \n! {other:,} \n|-"
+    table_content += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
     tables += "\n|}\n{{clear}}\n"
     # ---
@@ -139,10 +134,7 @@ def make_numbers_section(p31list):
             rows.append(lune)
         else:
             property_other += int(Len)
-    Chart2 = (
-        "{| class='floatright sortable' \n|-\n|"
-        + "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
-    )
+    Chart2 = "{| class='floatright sortable' \n|-\n|" + "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
     Chart2 += f"|x={xline}\n|y1={yline}"
     Chart2 += "\n}}"
     Chart2 += "\n|-\n|}"
