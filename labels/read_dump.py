@@ -68,7 +68,10 @@ def get_file_info(file_path):
     # Get the time of last modification
     last_modified_time = os.path.getmtime(file_path)
 
-    return datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
+    # Convert the timestamp to a readable format
+    readable_time = datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
+
+    return readable_time
 
 
 def check_file_date(file_date):
@@ -82,7 +85,7 @@ def check_file_date(file_date):
         sys.exit(0)
 
 
-def read_file(mode="rt"):
+def read_file():
     # ---
     print(f"read_file: read file: {filename}")
 
@@ -100,7 +103,7 @@ def read_file(mode="rt"):
     check_file_date(tab['file_date'])
     # ---
     # with bz2.open(filename, "r", encoding="utf-8") as f:
-    with bz2.open(filename, mode, encoding="utf-8") as f:
+    with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
             tab['done'] += 1
