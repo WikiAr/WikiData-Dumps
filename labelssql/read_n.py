@@ -9,7 +9,7 @@ python3 core8/pwb.py dump/labels/read_n
 /mnt/nfs/dumps-clouddumps1002.wikimedia.org/wikidatawiki/latest/wikidatawiki-latest-wbt_term_in_lang.sql.gz
 /mnt/nfs/dumps-clouddumps1002.wikimedia.org/wikidatawiki/latest/wikidatawiki-latest-wbt_text_in_lang.sql.gz
 
-ثم إنشاء قاعدة بيانات محلية تحتوي الجدولين
+ثم إنشاء قاعدة بيانات محلية تحتوي الجدولين 
 wbt_term_in_lang
 wbt_text_in_lang
 """
@@ -23,15 +23,17 @@ import gzip
 import os
 import tqdm
 from pathlib import Path
-
 # ---
 try:
     Dir = Path(__file__).parent
-except BaseException:
+except:
     Dir = '/content'
 # ---
 # قاموس يحتوي على الروابط وأسماء الملفات
-file_links = ["wikidatawiki-latest-wbt_term_in_lang.sql.gz", "wikidatawiki-latest-wbt_text_in_lang.sql.gz"]
+file_links = [
+    "wikidatawiki-latest-wbt_term_in_lang.sql.gz",
+    "wikidatawiki-latest-wbt_text_in_lang.sql.gz"
+]
 
 
 def open_file2(filename):
@@ -40,7 +42,7 @@ def open_file2(filename):
     # ---
     # افتح الملف باستخدام gzip
     # with gzip.open(filename, 'rt', encoding='utf-8') as file:
-    # sql_content = file.read()
+        # sql_content = file.read()
     # ---
     with gzip.open(filename, 'rt', encoding='utf-8') as file:
         # استخدم tqdm لإضافة شريط التقدم أثناء قراءة الملف
@@ -51,7 +53,6 @@ def open_file2(filename):
                 pbar.update(len(line))
     # ---
     return sql_content
-
 
 def open_file(filename):
     print(f'open file:{filename}')

@@ -9,7 +9,7 @@ python3 core8/pwb.py dump/labels/down
 https://dumps.wikimedia.org/wikidatawiki/latest/wikidatawiki-latest-wbt_term_in_lang.sql.gz
 https://dumps.wikimedia.org/wikidatawiki/latest/wikidatawiki-latest-wbt_text_in_lang.sql.gz
 
-ثم إنشاء قاعدة بيانات محلية تحتوي الجدولين
+ثم إنشاء قاعدة بيانات محلية تحتوي الجدولين 
 wbt_term_in_lang
 wbt_text_in_lang
 """
@@ -23,16 +23,19 @@ import sqlite3
 import gzip
 import os
 import tqdm
+import shutil
 from pathlib import Path
-
 # ---
 try:
     Dir = Path(__file__).parent
-except BaseException:
+except:
     Dir = '/content'
 # ---
 # قاموس يحتوي على الروابط وأسماء الملفات
-file_links = ["wikidatawiki-latest-wbt_term_in_lang.sql.gz", "wikidatawiki-latest-wbt_text_in_lang.sql.gz"]
+file_links = [
+    "wikidatawiki-latest-wbt_term_in_lang.sql.gz",
+    "wikidatawiki-latest-wbt_text_in_lang.sql.gz"
+]
 # ---
 # تنفيذ عملية التحميل وإنشاء قاعدة البيانات باستخدام القاموس
 for local_filename in file_links:
@@ -57,7 +60,9 @@ for local_filename in file_links:
         '''
         # ---
         # استخدام tqdm لعرض شريط التقدم
-        with tqdm.wrapattr(open(filename, "wb"), "write", miniters=1, total=int(response.headers.get('content-length', 0)), desc=filename) as local_file:
+        with tqdm.wrapattr(open(filename, "wb"), "write", miniters=1,
+                            total=int(response.headers.get('content-length', 0)),
+                            desc=filename) as local_file:
             for data in response.iter_content(chunk_size=1024):
                 local_file.write(data)
         # ---

@@ -242,10 +242,10 @@ if __name__ == "__main__":
     # ---
     with codecs.open(claims_new, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
-    # ----
+    # ---
     with codecs.open(claims_p31, 'w', encoding='utf-8') as outfile:
         outfile.write(text_p31)
-    # ----
+    # ---
     # print(text_p31)
     # ---
     print("log_dump done")
