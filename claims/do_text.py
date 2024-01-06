@@ -27,13 +27,13 @@ sections_done = {1: 0, 'max': 100}
 sections_false = {1: 0}
 
 
-def make_section(P, table, max_n=51):
+def make_section(property, table_data, max_entries=51):
     """
     Creates a section for a given property in a table.
 
     Args:
-        P (str): The property value.
-        table (dict): The table data.
+        property (str): The property value.
+        table_data (dict): The table data.
 
     Returns:
         str: The section text.
@@ -42,32 +42,53 @@ def make_section(P, table, max_n=51):
     # ---
     # if sections_done[1] >= sections_done['max']:    return ""
     # ---
-    Len = table['lenth_of_usage']
+    Len = table_data['lenth_of_usage']
     # ---
-    texts = "== {{P|%s}} ==" % P
+    texts = "== {{P|%s}} ==" % property
     # ---
-    print(f"make_section for property:{P}")
+    print(f"make_section for property:{property}")
     texts += f"\n* Total items use these property:{Len:,}"
+<<<<<<< Updated upstream
     if lnnn := table.get("len_prop_claims"):
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
     if len_of_qids := table.get("len_of_qids"):
+=======
+    # ---
+    lnnn = table_data.get("len_prop_claims")
+    if lnnn:
+        texts += f"\n* Total number of claims with these property:{lnnn:,}"
+    # ---
+    len_of_qids = table_data.get("len_of_qids")
+    if len_of_qids:
+>>>>>>> Stashed changes
         texts += f"\n* Number of unique qids:{len_of_qids:,}"
     # ---
     texts += "\n"
     print(texts)
-    if table["qids"] == {}:
-        print(f'{P} table["qids"] == empty.')
+    if table_data["qids"] == {}:
+        print(f'{property} table_data["qids"] == empty.')
         return ""
     # ---
-    if len(table["qids"]) == 1 and table["qids"].get("others"):
-        print(f'{P} table["qids"] == empty.')
+    if len(table_data["qids"]) == 1 and table_data["qids"].get("others"):
+        print(f'{property} table_data["qids"] == empty.')
         return ""
+<<<<<<< Updated upstream
     Chart = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
     Chart += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
     # ---
     tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
     # ---
     lists = dict(sorted(table["qids"].items(), key=lambda item: item[1], reverse=True))
+=======
+    # ---
+    chart_content = '{| class="floatright sortable"\n|-\n|\n'
+    chart_content += "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    chart_content += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
+    # ---
+    tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
+    # ---
+    lists = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
+>>>>>>> Stashed changes
     # ---
     xline = ""
     yline = ""
@@ -82,7 +103,7 @@ def make_section(P, table, max_n=51):
             continue
         # ---
         num += 1
-        if num < max_n:
+        if num < max_entries:
             Q = x
             if x.startswith("Q"):
                 Q = "{{Q|%s}}" % x
@@ -96,13 +117,17 @@ def make_section(P, table, max_n=51):
     # ---
     num += 1
     # ---
+<<<<<<< Updated upstream
     Chart %= (xline, yline)
+=======
+    chart_content = chart_content % (xline, yline)
+>>>>>>> Stashed changes
     # ---
     tables += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
     tables += "\n|}\n{{clear}}\n"
     # ---
-    # texts += Chart.replace("=,", "=") + "\n\n"
+    # texts += chart_content.replace("=,", "=") + "\n\n"
     # ---
     texts += tables
     # ---
@@ -121,16 +146,16 @@ def make_numbers_section(p31list):
     # ---
     n = 0
     # ---
-    for Len, P in p31list:
+    for Len, property in p31list:
         n += 1
         if n < 27:
-            xline += f",{P}"
+            xline += f",{property}"
             yline += f",{Len}"
         # ---
         if len(rows) < 101:
             Len = f"{Len:,}"
-            P = "{{P|%s}}" % P
-            lune = f"| {n} || {P} || {Len} "
+            property = "{{P|%s}}" % property
+            lune = f"| {n} || {property} || {Len} "
             rows.append(lune)
         else:
             property_other += int(Len)
@@ -143,8 +168,16 @@ def make_numbers_section(p31list):
     # ---
     rows.append(f"! {n} \n! others \n! {property_other:,}")
     rows = "\n|-\n".join(rows)
+<<<<<<< Updated upstream
     table = "\n{| " + f'class="wikitable sortable"\n|-\n! #\n! property\n! usage\n|-\n{rows}\n' + "|}"
     return f"== Numbers ==\n\n{Chart2}\n{table}"
+=======
+    table_data = "\n{| " + f'class="wikitable sortable"\n|-\n! #\n! property\n! usage\n|-\n{rows}\n' + "|}"
+    # ---
+    text = "== Numbers ==\n" f"\n{Chart2}\n{table_data}"
+    # ---
+    return text
+>>>>>>> Stashed changes
 
 
 def make_text(tab, ty=''):
@@ -165,18 +198,18 @@ def make_text(tab, ty=''):
     text_p31 = ''
     # ---
     if tab["properties"].get('P31'):
-        text_p31 = text + make_section('P31', tab["properties"]['P31'], max_n=501)
+        text_p31 = text + make_section('P31', tab["properties"]['P31'], max_entries=501)
         # ---
     # ---
     if 'onlyp31' in sys.argv or ty == "onlyp31":
         return text, text_p31
     # ---
     sections = ""
-    for _, P in p31list:
+    for _, property in p31list:
         if sections_done[1] >= sections_done['max']:
             break
         # ---
-        sections += make_section(P, tab["properties"][P], max_n=51)
+        sections += make_section(property, tab["properties"][property], max_entries=51)
     # ---
     text += f"{chart}\n{sections}"
     # ---

@@ -34,32 +34,36 @@ def fix_props(props):
     propsn = {}
     # ---
     for p, pap in tqdm.tqdm(props.items()):
-        # "qids": {},"lenth_of_usage": 0,"len_prop_claims": 0,
+        # "qid_values": {},"lenth_of_usage": 0,"len_prop_claims": 0,
         # ---
-        tab = pap.copy()
+        table_data = pap.copy()
         # ---
         # sort by usage
+<<<<<<< Updated upstream
         qids = dict(sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True))
+=======
+        qid_values = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
+>>>>>>> Stashed changes
         # ---
-        if not tab.get("len_of_qids"):
-            tab["len_of_qids"] = len(tab["qids"])
+        if not table_data.get("len_of_qids"):
+            table_data["len_of_qids"] = len(table_data["qids"])
         # ---
         maxx = 500 if p == "P31" else 100
         # ---
         # add first 500 properties to dict and other to others
-        tab["qids"] = dict(list(qids.items())[:maxx])
+        table_data["qids"] = dict(list(qid_values.items())[:maxx])
         # ---
-        others_qids = dict(list(qids.items())[maxx:])
+        others_qids = dict(list(qid_values.items())[maxx:])
         # ---
         # count others_qids values and add them to others use map lambda
         # others = sum(list(map(lambda x: x[1], others_qids)))
-        tab["qids"]["others"] = sum(others_qids.values())
+        table_data["qids"]["others"] = sum(others_qids.values())
         # ---
-        if len(tab["qids"]) > 0:
-            propsn[p] = tab
+        if len(table_data["qids"]) > 0:
+            propsn[p] = table_data
         # ---
-        del tab
-        del qids
+        del table_data
+        del qid_values
         del others_qids
     # ---
     n_size = sys.getsizeof(propsn)

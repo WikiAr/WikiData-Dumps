@@ -184,8 +184,8 @@ def make_textP31():
         for xx, yy in p31list:
             if yy != "no":
                 if xx > li and len(rows) < 150:
-                    yf = "{{Q|%s}}" % yy
-                    rows.append(f'| {c} || {yf} || {xx} ')
+                    formatted_property = "{{Q|%s}}" % yy
+                    rows.append(f'| {c} || {formatted_property} || {xx} ')
                     c += 1
                 else:
                     section_others += xx
@@ -193,27 +193,33 @@ def make_textP31():
         if not rows:
             del p31list
             continue
+<<<<<<< Updated upstream
         tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
+=======
         # ---
-        tatone += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
+        table_content = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n'
+        table_content += '\n|-\n'.join(rows)
+>>>>>>> Stashed changes
         # ---
-        tatone += '\n|}\n'
+        table_content += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
+        # ---
+        table_content += '\n|}\n'
         # ---
         x2 = x.replace(":", "")
         # ---
         del rows, p31list, section_others
         # ---
-        textP31 += f"\n=== {x2} ===\n{tatone}"
+        textP31 += f"\n=== {x2} ===\n{table_content}"
     # ---
     return textP31
 
 
-def save_to_wp(text):
-    if text == "":
-        print('text is empty')
+def save_to_wp(output_text):
+    if output_text == "":
+        print('output_text is empty')
         return
     # ---
-    print(text)
+    print(output_text)
     # ---
     if "nosave" in sys.argv or "test" in sys.argv:
         return
@@ -222,9 +228,9 @@ def save_to_wp(text):
     # ---
     from API import arAPI
 
-    arAPI.page_put(oldtext="", newtext=text, summary='Bot - Updating stats', title=title)
+    arAPI.page_put(oldtext="", newtext=output_text, summary='Bot - Updating stats', title=title)
     # ---
-    del text
+    del output_text
     del arAPI
 
 
@@ -352,10 +358,18 @@ def read_data(mode="rt"):
                 if not ar_desc:
                     # استخدام خاصية 31 بدون وصف عربي
                     for x in json1.get('claims', {}).get('P31', []):
+<<<<<<< Updated upstream
                         if p31d := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
                             if p31d not in stats_tab['Table_no_ar_lab']:
                                 stats_tab['Table_no_ar_lab'][p31d] = 0
                             stats_tab['Table_no_ar_lab'][p31d] += 1
+=======
+                        property_id = x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id')
+                        if property_id:
+                            if property_id not in stats_tab['Table_no_ar_lab']:
+                                stats_tab['Table_no_ar_lab'][property_id] = 0
+                            stats_tab['Table_no_ar_lab'][property_id] += 1
+>>>>>>> Stashed changes
 
 
 def make_P31_table_no():
@@ -372,8 +386,8 @@ def make_P31_table_no():
     for xf, gh in po_list:
         if len(Table_no_ar_lab_rows) < 100:
             cd += 1
-            yf = "{{Q|%s}}" % gh
-            Table_no_ar_lab_rows.append(f'| {cd} || {yf} || {xf} ')
+            formatted_property = "{{Q|%s}}" % gh
+            Table_no_ar_lab_rows.append(f'| {cd} || {formatted_property} || {xf} ')
         else:
             other += 1
     P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n""" + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
