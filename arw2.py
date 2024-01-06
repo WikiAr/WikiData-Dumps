@@ -221,6 +221,7 @@ def save_to_wp(text):
     title = 'ويكيبيديا:مشروع_ويكي_بيانات/تقرير_P31'
     # ---
     from API import arAPI
+
     arAPI.page_put(oldtext="", newtext=output_text, summary='Bot - Updating stats', title=title)
     # ---
     del output_text
