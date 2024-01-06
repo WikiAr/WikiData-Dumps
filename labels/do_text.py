@@ -45,7 +45,7 @@ def make_cou(num, _all):
     if num == 0 or _all == 0:
         return "0%"
     fef = (num / _all) * 100
-    return f"{str(fef)[:4]}%"
+    return str(fef)[:4] + "%"
 
 
 def mainar(n_tab):
@@ -120,7 +120,7 @@ def mainar(n_tab):
     text = text.replace("0 (0000)", "0")
     text = text.replace("0 (0)", "0")
 
-    if not text:
+    if text == "":
         return
 
     return text
@@ -171,7 +171,10 @@ def main_labels(tabb):
 
 
 if __name__ == '__main__':
-    faf = 'labels_test' if 'test' in sys.argv else 'labels'
+    faf = 'labels'
+    # ---
+    if 'test' in sys.argv:
+        faf = 'labels_test'
     # ---
     file = f'{Dump_Dir}/{faf}.json'
     # ---

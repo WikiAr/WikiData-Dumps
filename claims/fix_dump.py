@@ -34,53 +34,33 @@ def fix_props(props):
     propsn = {}
     # ---
     for p, pap in tqdm.tqdm(props.items()):
-        # "qid_values": {},"lenth_of_usage": 0,"len_prop_claims": 0,
+        # "qids": {},"lenth_of_usage": 0,"len_prop_claims": 0,
         # ---
-        table_data = pap.copy()
+        tab = pap.copy()
         # ---
         # sort by usage
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        qids = dict(sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True))
-=======
-        qid_values = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
->>>>>>> Stashed changes
-=======
-        qid_values = dict(sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True))
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
+        qids = {k: v for k, v in sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True)}
         # ---
-        if not table_data.get("len_of_qids"):
-            table_data["len_of_qids"] = len(table_data["qids"])
+        if not tab.get("len_of_qids"):
+            tab["len_of_qids"] = len(tab["qids"])
         # ---
         maxx = 500 if p == "P31" else 100
         # ---
         # add first 500 properties to dict and other to others
-        table_data["qids"] = dict(list(qid_values.items())[:maxx])
+        tab["qids"] = dict(list(qids.items())[:maxx])
         # ---
-<<<<<<< HEAD
-        others_qids = dict(list(qid_values.items())[maxx:])
+        others_qids = dict(list(qids.items())[maxx:])
         # ---
         # count others_qids values and add them to others use map lambda
         # others = sum(list(map(lambda x: x[1], others_qids)))
-        table_data["qids"]["others"] = sum(others_qids.values())
-=======
-        others_qid_values = dict(list(qid_values.items())[maxx:])
+        tab["qids"]["others"] = sum(others_qids.values())
         # ---
-        # count others_qid_values values and add them to others use map lambda
-        # others = sum(list(map(lambda x: x[1], others_qid_values)))
-        table_data["qids"]["others"] = sum(others_qid_values.values())
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
+        if len(tab["qids"]) > 0:
+            propsn[p] = tab
         # ---
-        if len(table_data["qids"]) > 0:
-            propsn[p] = table_data
-        # ---
-        del table_data
-        del qid_values
-<<<<<<< HEAD
+        del tab
+        del qids
         del others_qids
-=======
-        del others_qid_values
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
     # ---
     n_size = sys.getsizeof(propsn)
     # ---
@@ -90,7 +70,10 @@ def fix_props(props):
 
 
 def start():
-    faf = "claims_test" if "test" in sys.argv else "claims"
+    faf = "claims"
+    # ---
+    if "test" in sys.argv:
+        faf = "claims_test"
     # ---
     filename = f"{Dump_Dir}/{faf}.json"
     # ---
@@ -108,13 +91,14 @@ def start():
     # ---
     P31_tab = data["properties"].get("P31", {})
     # ---
-    data["properties"] = dict(
-        sorted(
+    data["properties"] = {
+        k: v
+        for k, v in sorted(
             data["properties"].items(),
             key=lambda item: item[1]["lenth_of_usage"],
             reverse=True,
         )
-    )
+    }
     # ---
     if "100" in sys.argv:
         # get only first 100 properties

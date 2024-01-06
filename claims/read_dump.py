@@ -5,22 +5,20 @@ python3 wd_core/dump/claims/read_dump.py test
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
-import bz2
-import codecs
-import json
 import os
 import sys
+import codecs
+import bz2
+import json
 import time
 from datetime import datetime
 from pathlib import Path
-
-from dump.memory import print_memory
 
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-claims_directory = Path(__file__).parent
+claims_dir = Path(__file__).parent
 # ---
 # split after /dump
 core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
@@ -30,23 +28,23 @@ print(f'sys.path.append:core_dir: {core_dir}')
 # ---
 from dump.memory import print_memory
 
-
+# from dump.claims.fix_dump import fix_props
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
-dump_dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/dumps"
 # ---
 if os.path.exists(r'I:\core\dumps'):
-    dump_dir = r'I:\core\dumps'
+    Dump_Dir = r'I:\core\dumps'
 # ---
-print(f'dump_dir: {dump_dir}')
+print(f'Dump_Dir:{Dump_Dir}')
 # ---
-test_limit_dict = {1: 15000}
+test_limit = {1: 15000}
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
     if arg == "-limit":
-        test_limit_dict[1] = int(value)
+        test_limit[1] = int(value)
 # ---
 tab = {
     "delta": 0,
@@ -64,10 +62,10 @@ tab = {
 
 
 def log_dump(tab, _claims="claims"):
-    jsonname = f"{dump_dir}/{_claims}.json"
+    jsonname = f"{Dump_Dir}/{_claims}.json"
     # ---
     if 'test' in sys.argv:
-        jsonname = f"{dump_dir}/{_claims}_test.json"
+        jsonname = f"{Dump_Dir}/{_claims}_test.json"
     # ---
     with open(jsonname, "w", encoding='utf-8') as outfile:
         json.dump(tab, outfile)
@@ -79,11 +77,14 @@ def get_file_info(file_path):
     # Get the time of last modification
     last_modified_time = os.path.getmtime(file_path)
 
-    return datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
+    # Convert the timestamp to a readable format
+    readable_time = datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
+
+    return readable_time
 
 
 def check_file_date(file_date):
-    with codecs.open(f"{claims_directory}/file_date.txt", "r", encoding='utf-8') as outfile:
+    with codecs.open(f"{claims_dir}/file_date.txt", "r", encoding='utf-8') as outfile:
         old_date = outfile.read()
     # ---
     print(f"file_date: {file_date}, old_date: {old_date}")
@@ -93,44 +94,44 @@ def check_file_date(file_date):
         sys.exit(0)
 
 
-def read_file(mode="rt"):
+def read_file():
     print(f"read file: {filename}")
 
     if not os.path.isfile(filename):
         print(f"file {filename} not found")
         return {}
 
-    start_time = time.time()
+    t1 = time.time()
     tab['file_date'] = get_file_info(filename)
     print(f"file date: {tab['file_date']}")
 
     print(f"file {filename} found, read it:")
-    count = 0
+    c = 0
     # ---
     check_file_date(tab['file_date'])
     # ---
-
-    with bz2.open(filename, mode, encoding="utf-8") as file:
-        for line in file:
+    # with bz2.open(filename, "r", encoding="utf-8") as f:
+    with bz2.open(filename, "rt", encoding="utf-8") as f:
+        for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
-            tab['done'] += 1  # Counts the number of lines processed
+            tab['done'] += 1
             # ---
             if 'pp' in sys.argv:
                 print(line)
             # ---
             if line.startswith("{") and line.endswith("}"):
-                tab['All_items'] += 1  # Increment the count of all processed items
-                count += 1
+                tab['All_items'] += 1
+                c += 1
                 if 'test' in sys.argv:
-                    if count % 100 == 0:
-                        print(f'count:{count}')
+                    if c % 100 == 0:
+                        print(f'c:{c}')
                         print(f"done:{tab['done']}")
                         # ---
-                        print(count, time.time() - start_time)
-                        start_time = time.time()
+                        print(c, time.time() - t1)
+                        t1 = time.time()
 
-                    if count > test_limit_dict[1]:
-                        print('count>test_limit[1]')
+                    if c > test_limit[1]:
+                        print('c>test_limit[1]')
                         break
 
                 json1 = json.loads(line)
@@ -149,58 +150,60 @@ def read_file(mode="rt"):
                     # ---
                     claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
                     # ---
-                    for property in claims.keys():
-                        datatype = claims[property][0].get("mainsnak", {}).get("datatype", '')
+                    for p in claims.keys():
+                        Type = claims[p][0].get("mainsnak", {}).get("datatype", '')
                         # ---
-                        if datatype == "wikibase-item":
-                            if property not in tab['properties']:
-                                tab['properties'][property] = {
+                        if Type == "wikibase-item":
+                            if p not in tab['properties']:
+                                tab['properties'][p] = {
                                     "qids": {"others": 0},
                                     "lenth_of_usage": 0,
                                     "len_prop_claims": 0,
                                 }
-                            tab['properties'][property]["lenth_of_usage"] += 1
-                            tab['all_claims_2020'] += len(claims[property])
+                            tab['properties'][p]["lenth_of_usage"] += 1
+                            tab['all_claims_2020'] += len(claims[p])
                             # ---
-                            for claim in claims[property]:
-                                tab['properties'][property]["len_prop_claims"] += 1
+                            for claim in claims[p]:
+                                tab['properties'][p]["len_prop_claims"] += 1
                                 # ---
                                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
-
+                                # ttype = datavalue.get("type")
+                                # ---
+                                # print(f"ttype:{ttype}")
+                                # ---
+                                # if ttype == "wikibase-entityid":
                                 idd = datavalue.get("value", {}).get("id")
                                 # ---
                                 if idd:
-                                    if idd not in tab['properties'][property]["qids"]:
-                                        tab['properties'][property]["qids"][idd] = 1
+                                    if idd not in tab['properties'][p]["qids"]:
+                                        tab['properties'][p]["qids"][idd] = 1
                                     else:
-                                        tab['properties'][property]["qids"][idd] += 1
+                                        tab['properties'][p]["qids"][idd] += 1
                                 # ---
                                 del idd
                                 # ---
                                 del datavalue
-
+                                # del ttype
                 # ---
                 del json1
                 del claims
             # ---
-            if (count % 1000 == 0 and count < 100000) or count % 100000 == 0:
-                print(count, time.time() - start_time)
-                start_time = time.time()
+            if (c % 1000 == 0 and c < 100000) or c % 100000 == 0:
+                print(c, time.time() - t1)
+                t1 = time.time()
                 # print memory usage
                 print_memory()
-                if count % 1000000 == 0:
+                if c % 1000000 == 0:
                     log_dump(tab)
             #---
     #---
     print(f"read all lines: {tab['done']}")
     # ---
-    for property_key, property_value in tab['properties'].copy().items():
-        tab['properties'][property_key]["len_of_qids"] = len(property_value["qids"])
-        # Sort QIDs by their count in descending order and update in the 'tab' dictionary
-        # sorted_qids = sorted(property_value['qids'].items(), key=lambda item: item[1], reverse=True)
-        # tab['properties'][property_key]["qids"] = dict(sorted_qids)
+    for x, xx in tab['properties'].copy().items():
+        tab['properties'][x]["len_of_qids"] = len(xx["qids"])
+        # tab['properties'][x]["qids"] = {k: v for k, v in sorted(xx['qids'].items(), key=lambda item: item[1], reverse=True)}
     # ---
-    tab['len_all_props'] = len(tab['properties'])  # Calculate the total number of unique properties processed
+    tab['len_all_props'] = len(tab['properties'])
     # ---
     end = time.time()
     # ---
@@ -209,7 +212,7 @@ def read_file(mode="rt"):
     # ---
     log_dump(tab)
     # ---
-    with codecs.open(f"{claims_directory}/file_date.txt", "w", encoding='utf-8') as outfile:
+    with codecs.open(f"{claims_dir}/file_date.txt", "w", encoding='utf-8') as outfile:
         outfile.write(tab['file_date'])
     # ---
 

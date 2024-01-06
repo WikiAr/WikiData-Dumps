@@ -27,13 +27,13 @@ sections_done = {1: 0, 'max': 100}
 sections_false = {1: 0}
 
 
-def make_section(property, table_data, max_entries=51):
+def make_section(P, table, max_n=51):
     """
     Creates a section for a given property in a table.
 
     Args:
-        property (str): The property value.
-        table_data (dict): The table data.
+        P (str): The property value.
+        table (dict): The table data.
 
     Returns:
         str: The section text.
@@ -42,105 +42,73 @@ def make_section(property, table_data, max_entries=51):
     # ---
     # if sections_done[1] >= sections_done['max']:    return ""
     # ---
-    Len = table_data['lenth_of_usage']
+    Len = table['lenth_of_usage']
     # ---
-    texts = "== {{P|%s}} ==" % property
+    texts = "== {{P|%s}} ==" % P
     # ---
-    print(f"make_section for property:{property}")
+    print(f"make_section for property:{P}")
     texts += f"\n* Total items use these property:{Len:,}"
-<<<<<<< Updated upstream
-    if lnnn := table.get("len_prop_claims"):
-        texts += f"\n* Total number of claims with these property:{lnnn:,}"
-    if len_of_qids := table.get("len_of_qids"):
-=======
     # ---
-    lnnn = table_data.get("len_prop_claims")
+    lnnn = table.get("len_prop_claims")
     if lnnn:
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
     # ---
-    len_of_qids = table_data.get("len_of_qids")
+    len_of_qids = table.get("len_of_qids")
     if len_of_qids:
->>>>>>> Stashed changes
         texts += f"\n* Number of unique qids:{len_of_qids:,}"
     # ---
     texts += "\n"
     print(texts)
-    if table_data["qids"] == {}:
-        print(f'{property} table_data["qids"] == empty.')
+    if table["qids"] == {}:
+        print(f'{P} table["qids"] == empty.')
         return ""
     # ---
-    if len(table_data["qids"]) == 1 and table_data["qids"].get("others"):
-        print(f'{property} table_data["qids"] == empty.')
+    if len(table["qids"]) == 1 and table["qids"].get("others"):
+        print(f'{P} table["qids"] == empty.')
         return ""
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    Chart = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    # ---
+    Chart = '{| class="floatright sortable"\n|-\n|\n'
+    Chart += "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
     Chart += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
-=======
-    chart_content = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
-    chart_content += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
-    # ---
-    table_content = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
-    # ---
-<<<<<<< HEAD
-    lists = dict(sorted(table["qids"].items(), key=lambda item: item[1], reverse=True))
-=======
-    # ---
-    chart_content = '{| class="floatright sortable"\n|-\n|\n'
-    chart_content += "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
-    chart_content += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
     # ---
     tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
     # ---
-    lists = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
->>>>>>> Stashed changes
-=======
-    sorted_list = dict(sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True))
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
+    lists = {k: v for k, v in sorted(table["qids"].items(), key=lambda item: item[1], reverse=True)}
     # ---
-    x_axis_data = ""
-    y_axis_data = ""
+    xline = ""
+    yline = ""
     # ---
     num = 0
     other = 0
     # ---
-    for x, ye in sorted_list.items():
+    for x, ye in lists.items():
         # ---
         if x == "others":
             other += ye
             continue
         # ---
         num += 1
-        if num < max_entries:
+        if num < max_n:
             Q = x
             if x.startswith("Q"):
                 Q = "{{Q|%s}}" % x
             # ---
-            table_content += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
+            tables += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
             # ---
-            x_axis_data += f",{x}"
-            y_axis_data += f",{ye:,}"
+            xline += f",{x}"
+            yline += f",{ye:,}"
         else:
             other += ye
     # ---
     num += 1
     # ---
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    Chart %= (xline, yline)
-=======
-    chart_content = chart_content % (xline, yline)
->>>>>>> Stashed changes
-=======
-    chart_content %= (x_axis_data, y_axis_data)
->>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
+    Chart = Chart % (xline, yline)
     # ---
-    table_content += f"\n! {num} \n! others \n! {other:,} \n|-"
+    tables += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
     tables += "\n|}\n{{clear}}\n"
     # ---
-    # texts += chart_content.replace("=,", "=") + "\n\n"
+    # texts += Chart.replace("=,", "=") + "\n\n"
     # ---
     texts += tables
     # ---
@@ -159,20 +127,22 @@ def make_numbers_section(p31list):
     # ---
     n = 0
     # ---
-    for Len, property in p31list:
+    for Len, P in p31list:
         n += 1
         if n < 27:
-            xline += f",{property}"
+            xline += f",{P}"
             yline += f",{Len}"
         # ---
         if len(rows) < 101:
             Len = f"{Len:,}"
-            property = "{{P|%s}}" % property
-            lune = f"| {n} || {property} || {Len} "
+            P = "{{P|%s}}" % P
+            lune = f"| {n} || {P} || {Len} "
             rows.append(lune)
         else:
             property_other += int(Len)
-    Chart2 = "{| class='floatright sortable' \n|-\n|" + "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
+    # ---
+    Chart2 = "{| class='floatright sortable' \n|-\n|"
+    Chart2 += "{{Graph:Chart|width=900|height=100|xAxisTitle=property|yAxisTitle=usage|type=rect\n"
     Chart2 += f"|x={xline}\n|y1={yline}"
     Chart2 += "\n}}"
     Chart2 += "\n|-\n|}"
@@ -181,16 +151,11 @@ def make_numbers_section(p31list):
     # ---
     rows.append(f"! {n} \n! others \n! {property_other:,}")
     rows = "\n|-\n".join(rows)
-<<<<<<< Updated upstream
     table = "\n{| " + f'class="wikitable sortable"\n|-\n! #\n! property\n! usage\n|-\n{rows}\n' + "|}"
-    return f"== Numbers ==\n\n{Chart2}\n{table}"
-=======
-    table_data = "\n{| " + f'class="wikitable sortable"\n|-\n! #\n! property\n! usage\n|-\n{rows}\n' + "|}"
     # ---
-    text = "== Numbers ==\n" f"\n{Chart2}\n{table_data}"
+    text = "== Numbers ==\n" f"\n{Chart2}\n{table}"
     # ---
     return text
->>>>>>> Stashed changes
 
 
 def make_text(tab, ty=''):
@@ -211,18 +176,18 @@ def make_text(tab, ty=''):
     text_p31 = ''
     # ---
     if tab["properties"].get('P31'):
-        text_p31 = text + make_section('P31', tab["properties"]['P31'], max_entries=501)
+        text_p31 = text + make_section('P31', tab["properties"]['P31'], max_n=501)
         # ---
     # ---
     if 'onlyp31' in sys.argv or ty == "onlyp31":
         return text, text_p31
     # ---
     sections = ""
-    for _, property in p31list:
+    for _, P in p31list:
         if sections_done[1] >= sections_done['max']:
             break
         # ---
-        sections += make_section(property, tab["properties"][property], max_entries=51)
+        sections += make_section(P, tab["properties"][P], max_n=51)
     # ---
     text += f"{chart}\n{sections}"
     # ---
