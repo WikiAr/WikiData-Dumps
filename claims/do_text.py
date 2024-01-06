@@ -72,12 +72,18 @@ def make_section(property, table_data, max_entries=51):
     if len(table_data["qids"]) == 1 and table_data["qids"].get("others"):
         print(f'{property} table_data["qids"] == empty.')
         return ""
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     Chart = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
     Chart += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
+=======
+    chart_content = '{| class="floatright sortable"\n|-\n|\n' + "{{Graph:Chart|width=140|height=140|xAxisTitle=value|yAxisTitle=Number\n"
+    chart_content += "|type=pie|showValues1=offset:8,angle:45\n|x=%s\n|y1=%s\n|legend=value\n}}\n|-\n|}"
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
     # ---
-    tables = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
+    table_content = """{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n"""
     # ---
+<<<<<<< HEAD
     lists = dict(sorted(table["qids"].items(), key=lambda item: item[1], reverse=True))
 =======
     # ---
@@ -89,14 +95,17 @@ def make_section(property, table_data, max_entries=51):
     # ---
     lists = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
 >>>>>>> Stashed changes
+=======
+    sorted_list = dict(sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True))
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
     # ---
-    xline = ""
-    yline = ""
+    x_axis_data = ""
+    y_axis_data = ""
     # ---
     num = 0
     other = 0
     # ---
-    for x, ye in lists.items():
+    for x, ye in sorted_list.items():
         # ---
         if x == "others":
             other += ye
@@ -108,22 +117,26 @@ def make_section(property, table_data, max_entries=51):
             if x.startswith("Q"):
                 Q = "{{Q|%s}}" % x
             # ---
-            tables += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
+            table_content += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
             # ---
-            xline += f",{x}"
-            yline += f",{ye:,}"
+            x_axis_data += f",{x}"
+            y_axis_data += f",{ye:,}"
         else:
             other += ye
     # ---
     num += 1
     # ---
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     Chart %= (xline, yline)
 =======
     chart_content = chart_content % (xline, yline)
 >>>>>>> Stashed changes
+=======
+    chart_content %= (x_axis_data, y_axis_data)
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
     # ---
-    tables += f"\n! {num} \n! others \n! {other:,} \n|-"
+    table_content += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
     tables += "\n|}\n{{clear}}\n"
     # ---

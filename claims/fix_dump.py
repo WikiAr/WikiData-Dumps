@@ -39,11 +39,15 @@ def fix_props(props):
         table_data = pap.copy()
         # ---
         # sort by usage
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         qids = dict(sorted(tab["qids"].items(), key=lambda item: item[1], reverse=True))
 =======
         qid_values = {k: v for k, v in sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True)}
 >>>>>>> Stashed changes
+=======
+        qid_values = dict(sorted(table_data["qids"].items(), key=lambda item: item[1], reverse=True))
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
         # ---
         if not table_data.get("len_of_qids"):
             table_data["len_of_qids"] = len(table_data["qids"])
@@ -53,18 +57,30 @@ def fix_props(props):
         # add first 500 properties to dict and other to others
         table_data["qids"] = dict(list(qid_values.items())[:maxx])
         # ---
+<<<<<<< HEAD
         others_qids = dict(list(qid_values.items())[maxx:])
         # ---
         # count others_qids values and add them to others use map lambda
         # others = sum(list(map(lambda x: x[1], others_qids)))
         table_data["qids"]["others"] = sum(others_qids.values())
+=======
+        others_qid_values = dict(list(qid_values.items())[maxx:])
+        # ---
+        # count others_qid_values values and add them to others use map lambda
+        # others = sum(list(map(lambda x: x[1], others_qid_values)))
+        table_data["qids"]["others"] = sum(others_qid_values.values())
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
         # ---
         if len(table_data["qids"]) > 0:
             propsn[p] = table_data
         # ---
         del table_data
         del qid_values
+<<<<<<< HEAD
         del others_qids
+=======
+        del others_qid_values
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
     # ---
     n_size = sys.getsizeof(propsn)
     # ---

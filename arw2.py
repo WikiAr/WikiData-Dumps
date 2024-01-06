@@ -193,6 +193,7 @@ def make_textP31():
         if not rows:
             del p31list
             continue
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
 =======
@@ -203,6 +204,12 @@ def make_textP31():
         # ---
         table_content += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
         # ---
+=======
+        table_content = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
+        # ---
+        table_content += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
+        # ---
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
         table_content += '\n|}\n'
         # ---
         x2 = x.replace(":", "")
@@ -358,6 +365,7 @@ def read_data(mode="rt"):
                 if not ar_desc:
                     # استخدام خاصية 31 بدون وصف عربي
                     for x in json1.get('claims', {}).get('P31', []):
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                         if p31d := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
                             if p31d not in stats_tab['Table_no_ar_lab']:
@@ -370,6 +378,12 @@ def read_data(mode="rt"):
                                 stats_tab['Table_no_ar_lab'][property_id] = 0
                             stats_tab['Table_no_ar_lab'][property_id] += 1
 >>>>>>> Stashed changes
+=======
+                        if property_id := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
+                            if property_id not in stats_tab['Table_no_ar_lab']:
+                                stats_tab['Table_no_ar_lab'][property_id] = 0
+                            stats_tab['Table_no_ar_lab'][property_id] += 1
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
 
 
 def make_P31_table_no():
@@ -387,7 +401,11 @@ def make_P31_table_no():
         if len(Table_no_ar_lab_rows) < 100:
             cd += 1
             formatted_property = "{{Q|%s}}" % gh
+<<<<<<< HEAD
             Table_no_ar_lab_rows.append(f'| {cd} || {formatted_property} || {xf} ')
+=======
+            Table_no_ar_lab_rows.append(f'| {cd} || {formatted_property} || {property_value} ')
+>>>>>>> 52bdd05193444da9eabdaf46d3cc54b69ac677e6
         else:
             other += 1
     P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n""" + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
