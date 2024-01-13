@@ -188,9 +188,7 @@ def get_data():
     # ---
     # من الاقل للأكثر
     # sort old_tab by values
-    old_tab = dict(
-        sorted(old_tab.items(), key=lambda item: item[1], reverse=False)
-    )
+    old_tab = dict(sorted(old_tab.items(), key=lambda item: item[1], reverse=False))
     # ---
     part2 = dict(list(old_tab.items())[:lent])
     part1 = dict(list(old_tab.items())[lent:])
