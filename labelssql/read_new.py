@@ -56,10 +56,7 @@ def sql_wikidata(query):
     host = "wikidatawiki.analytics.db.svc.wikimedia.cloud"
     # ---
     dbs_p = 'wikidatawiki_p'
-    # ---
-    rows = new_pymysql_connect(query, db=dbs_p, host=host)
-    # ---
-    return rows
+    return new_pymysql_connect(query, db=dbs_p, host=host)
 
 
 def work_one_lang(lang):
@@ -96,7 +93,7 @@ def work_one_lang(lang):
         # ---
         lal = x['lang']
         # ---
-        if not lal in tab_o['langs']:
+        if lal not in tab_o['langs']:
             tab_o['langs'][lal] = {'labels': 0, 'descriptions': 0, 'aliases': 0}
         # ---
         count = x['count'] if type(x['count']) == int else int(x['count'])
@@ -110,10 +107,7 @@ def work_one_lang(lang):
 
 def get_languages():
     qua = '''SELECT distinct wbxl_language FROM wbt_text_in_lang'''
-    # ---
-    result = sql_wikidata(qua)
-    # ---
-    return result
+    return sql_wikidata(qua)
 
 
 def work_for_each_lang(old_tab):
@@ -155,7 +149,7 @@ def work_for_multiple_langs(old_tab):
         # ---
         log_dump(tab_o)
         # ---
-        if 'test1' in sys.argv and not 'test2' in sys.argv:
+        if 'test1' in sys.argv and 'test2' not in sys.argv:
             break
 
 
@@ -171,7 +165,7 @@ def get_data():
     langs = get_languages()
     # ---
     for a in langs:
-        if not a['wbxl_language'] in old_tab:
+        if a['wbxl_language'] not in old_tab:
             old_tab[a['wbxl_language']] = 0
     # ---
     print(f'len old_tab:{len(old_tab)}')
@@ -194,7 +188,9 @@ def get_data():
     # ---
     # من الاقل للأكثر
     # sort old_tab by values
-    old_tab = {k: v for k, v in sorted(old_tab.items(), key=lambda item: item[1], reverse=False)}
+    old_tab = dict(
+        sorted(old_tab.items(), key=lambda item: item[1], reverse=False)
+    )
     # ---
     part2 = dict(list(old_tab.items())[:lent])
     part1 = dict(list(old_tab.items())[lent:])
@@ -203,7 +199,7 @@ def get_data():
     # العمل على اللغات التي قيمتها قليلة
     work_for_multiple_langs(part2)
     # ---
-    if not 'test1' in sys.argv:
+    if 'test1' not in sys.argv:
         # العمل على اللغات التي قيمتها كبيرة
         work_for_each_lang(part1)
     # ---
