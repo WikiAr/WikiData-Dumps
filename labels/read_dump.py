@@ -68,10 +68,7 @@ def get_file_info(file_path):
     # Get the time of last modification
     last_modified_time = os.path.getmtime(file_path)
 
-    # Convert the timestamp to a readable format
-    readable_time = datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
-
-    return readable_time
+    return datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
 
 
 def check_file_date(file_date):
@@ -106,7 +103,7 @@ def read_file():
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
-            tab['done'] += 1 # Counts the number of lines processed
+            tab['done'] += 1
             # ---
             if 'pp' in sys.argv:
                 print(line)

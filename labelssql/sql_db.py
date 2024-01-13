@@ -15,15 +15,13 @@ import time
 import traceback
 import pymysql
 import pymysql.cursors
+
 # ---
 db_username = config.db_username
 db_password = config.db_password
 # ---
 if config.db_connect_file is None:
-    credentials = {
-        'user': db_username,
-        'password': db_password
-    }
+    credentials = {'user': db_username, 'password': db_password}
 else:
     credentials = {'read_default_file': config.db_connect_file}
 
@@ -118,4 +116,3 @@ def new_pymysql_connect(query, db='', host=''):
     print(f'sql_db.py sql_new len(rows) = "{len(rows)}", in {delta} seconds')
     # ---
     return rows
-# ---
