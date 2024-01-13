@@ -193,10 +193,7 @@ def make_textP31():
         if not rows:
             del p31list
             continue
-        tatone = (
-            '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n'
-            + '\n|-\n'.join(rows)
-        )
+        tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
         # ---
         tatone += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
         # ---
@@ -355,12 +352,7 @@ def read_data():
                 if not ar_desc:
                     # استخدام خاصية 31 بدون وصف عربي
                     for x in json1.get('claims', {}).get('P31', []):
-                        if (
-                            p31d := x.get('mainsnak', {})
-                            .get('datavalue', {})
-                            .get('value', {})
-                            .get('id')
-                        ):
+                        if p31d := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
                             if p31d not in stats_tab['Table_no_ar_lab']:
                                 stats_tab['Table_no_ar_lab'][p31d] = 0
                             stats_tab['Table_no_ar_lab'][p31d] += 1
@@ -384,10 +376,7 @@ def make_P31_table_no():
             Table_no_ar_lab_rows.append(f'| {cd} || {yf} || {xf} ')
         else:
             other += 1
-    P31_table_no = (
-        """\n== استخدام خاصية P31 بدون وصف عربي ==\n"""
-        + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
-    )
+    P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n""" + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
     P31_table_no += '\n|-\n'.join(Table_no_ar_lab_rows)
     # ---
     P31_table_no += f'\n|-\n! - !! أخرى !! {other}\n|-\n'
@@ -405,10 +394,7 @@ def mainar():
     final = time.time()
     # ---
     stats_tab['delta'] = int(final - start)
-    text = (
-        "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n"
-        + "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
-    )
+    text = "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n" + "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
     text += "* عناصر ويكي بيانات بها وصلة عربية: {all_ar_sitelinks:,} \n"
     text += "* عناصر بوصلات لغات بدون وصلة عربية: {sitelinks_no_ar:,} \n"
     text += "<!-- bots work done in {delta} secounds --> \n"
