@@ -24,11 +24,11 @@ import json
 
 # ---
 try:
-    from dump.labels.labels_old_values import make_old_values  # make_old_values()
-    from dump.labels.sql_db import new_pymysql_connect  # new_pymysql_connect(query, db='', host='')
+    from dump.labels.labels_old_values import make_old_values # make_old_values()
+    from dump.labels.sql_db import new_pymysql_connect # new_pymysql_connect(query, db='', host='')
 except ImportError:
-    from labels_old_values import make_old_values  # make_old_values()
-    from sql_db import new_pymysql_connect  # new_pymysql_connect(query, db='', host='')
+    from labels_old_values import make_old_values # make_old_values()
+    from sql_db import new_pymysql_connect # new_pymysql_connect(query, db='', host='')
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
@@ -188,7 +188,9 @@ def get_data():
     # ---
     # من الاقل للأكثر
     # sort old_tab by values
-    old_tab = dict(sorted(old_tab.items(), key=lambda item: item[1], reverse=False))
+    old_tab = dict(
+        sorted(old_tab.items(), key=lambda item: item[1], reverse=False)
+    )
     # ---
     part2 = dict(list(old_tab.items())[:lent])
     part1 = dict(list(old_tab.items())[lent:])

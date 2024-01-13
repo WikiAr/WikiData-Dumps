@@ -116,6 +116,3 @@ def new_pymysql_connect(query, db='', host=''):
     print(f'sql_db.py sql_new len(rows) = "{len(rows)}", in {delta} seconds')
     # ---
     return rows
-
-
-# ---
