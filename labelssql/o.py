@@ -27,7 +27,7 @@ print("start SQLite:")
 cursor = db_connection.cursor()
 # ---
 cursor.execute(
-'''
+    '''
     CREATE TABLE wbt_term_in_lang (
         wbtl_id INTEGER PRIMARY KEY AUTOINCREMENT,
         wbtl_type_id INTEGER NOT NULL,
@@ -39,7 +39,7 @@ cursor.execute(
 )
 # ---
 cursor.execute(
-'''
+    '''
     CREATE TABLE wbt_text_in_lang (
         wbxl_id INTEGER PRIMARY KEY AUTOINCREMENT,
         wbxl_language TEXT NOT NULL,
@@ -50,6 +50,8 @@ cursor.execute(
 )
 # ---
 db_connection.commit()
+
+
 # ---
 # فتح الملفات
 # ---
