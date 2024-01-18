@@ -107,10 +107,9 @@ def read_file():
     # ---
     check_file_date(tab['file_date'])
     # ---
-    # with bz2.open(filename, "r", encoding="utf-8") as f:
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
-            line = line.decode("utf-8").strip("\n").strip(",")
+            line = line.strip("\n").strip(",")
             tab['done'] += 1
             # ---
             if 'pp' in sys.argv:
@@ -168,6 +167,8 @@ def read_file():
                                 # ---
                                 # print(f"ttype:{ttype}")
                                 # ---
+                                del datavalue
+                                # ---
                                 # if ttype == "wikibase-entityid":
                                 idd = datavalue.get("value", {}).get("id")
                                 # ---
@@ -178,9 +179,6 @@ def read_file():
                                         tab['properties'][p]["qids"][idd] += 1
                                 # ---
                                 del idd
-                                # ---
-                                del datavalue
-                                # del ttype
                 # ---
                 del json1
                 del claims

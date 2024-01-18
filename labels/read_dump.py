@@ -102,7 +102,8 @@ def read_file():
     # with bz2.open(filename, "r", encoding="utf-8") as f:
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
-            line = line.decode("utf-8").strip("\n").strip(",")
+            # line = line.decode("utf-8").strip("\n").strip(",")
+            line = line.strip("\n").strip(",")
             tab['done'] += 1
             # ---
             if 'pp' in sys.argv:
