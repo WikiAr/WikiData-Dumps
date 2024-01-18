@@ -84,24 +84,29 @@ def mainar(n_tab):
 
         langs_tag_line = "{{#language:%s|en}}" % code
         langs_tag_line_2 = "{{#language:%s}}" % code
-
+        # ---
+        line  = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
+        # ---
         labels_co = make_cou(_labels_, n_tab['All_items'])
-        descs_co = make_cou(_descriptions_, n_tab['All_items'])
+        # ---
+        plus = '+' if new_labels > 0 else ''
+        # ---
+        line += f'''| {_labels_:,} || {labels_co} || {plus}{new_labels:,} '''
         # ---
         color = "#c79d9d" if new_descs < 0 else "#9dc79d" if new_descs > 0 else ""
         # ---
-        if new_descs == 0:
-            color = ""
+        color_tag = '||' if not color else f'| style="background-color:{color}" |'
         # ---
-        line  = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
-        line += f'''| {_labels_:,} || {labels_co} || +{new_labels:,} '''
+        d_plus = '+' if new_descs > 0 else ''
         # ---
-        # line += f'''|| {_descriptions_:,} || {descs_co} | style="background-color:{color}" | +{new_descs:,} '''
-        line += f'''|| {_descriptions_:,} || {descs_co} || +{new_descs:,} '''
+        descs_co = make_cou(_descriptions_, n_tab['All_items'])
+        line += f'''|| {_descriptions_:,} || {descs_co} {color_tag} {d_plus}{new_descs:,} '''
+        # line += f'''|| {_descriptions_:,} || {descs_co} || {d_plus}{new_descs:,} '''
         # ---
-        line += f'''|| {_aliases_:,} || +{new_aliases:,}'''
+        a_plus = '+' if new_aliases > 0 else ''
         # ---
-        line = line.replace("+-", "-")
+        line += f'''|| {_aliases_:,} || {a_plus}{new_aliases:,}'''
+        # ---
 
         rows.append(line)
     # ---

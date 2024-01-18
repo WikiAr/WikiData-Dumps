@@ -53,6 +53,9 @@ def from_wiki():
     # ---
     texts = texts.replace(',', '')
     # ---
+    texts = texts.replace('| style="background-color:#c79d9d" |', '||')
+    texts = texts.replace('| style="background-color:#9dc79d" |', '||')
+    # ---
     last_total = 0
     if io := re.search(r"\* Total items:(\d+)\.", texts):
         last_total = int(io.group(1))
@@ -63,6 +66,7 @@ def from_wiki():
     for L in texts.split('|-'):
         L = L.strip()
         L = L.replace('\n', '|')
+        # ---
         if L.find('{{#language:') != -1:
             L = re.sub(r'\d+\.\d+\%', '', L)
             L = re.sub(r'\|\|\s*\+\d+\s*', '', L)
