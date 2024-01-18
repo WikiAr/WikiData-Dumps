@@ -87,25 +87,28 @@ def mainar(n_tab):
         # ---
         line  = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
         # ---
+
+        plus = '' if new_labels < 0 else '+'
+        color_l = "#c79d9d" if new_labels < 0 else "#9dc79d" if new_labels > 0 else ""
+        color_tag_l = '' if not color_l else f'style="background-color:{color_l}"|'
+        # ---
         labels_co = make_cou(_labels_, n_tab['All_items'])
+        line += f'''| {_labels_:,} || {labels_co} || {color_tag_l} {plus}{new_labels:,} '''
         # ---
-        plus = '+' if new_labels > 0 else ''
-        # ---
-        line += f'''| {_labels_:,} || {labels_co} || {plus}{new_labels:,} '''
-        # ---
+
+        d_plus = '' if new_descs < 0 else '+'
         color = "#c79d9d" if new_descs < 0 else "#9dc79d" if new_descs > 0 else ""
-        # ---
-        color_tag = '||' if not color else f'| style="background-color:{color}" |'
-        # ---
-        d_plus = '+' if new_descs > 0 else ''
+        color_tag = '' if not color else f'style="background-color:{color}"|'
         # ---
         descs_co = make_cou(_descriptions_, n_tab['All_items'])
-        line += f'''|| {_descriptions_:,} || {descs_co} {color_tag} {d_plus}{new_descs:,} '''
-        # line += f'''|| {_descriptions_:,} || {descs_co} || {d_plus}{new_descs:,} '''
+        line += f'''|| {_descriptions_:,} || {descs_co} || {color_tag} {d_plus}{new_descs:,} '''
         # ---
-        a_plus = '+' if new_aliases > 0 else ''
+
+        a_plus = '' if new_aliases < 0 else '+'
+        color_a = "#c79d9d" if new_aliases < 0 else "#9dc79d" if new_aliases > 0 else ""
+        color_tag_a = '' if not color_a else f'style="background-color:{color_a}"|'
         # ---
-        line += f'''|| {_aliases_:,} || {a_plus}{new_aliases:,}'''
+        line += f'''|| {_aliases_:,} || {color_tag_a} {a_plus}{new_aliases:,}'''
         # ---
 
         rows.append(line)
@@ -126,6 +129,10 @@ def mainar(n_tab):
     delta = n_tab.get('delta') or int(final - start)
     # ---
     diff = n_tab['All_items'] - last_total
+    # ---
+    print(f'Total items last update: {last_total:,}')
+    print(f"Total items new: {n_tab['All_items']:,}")
+    print(f"diff: {diff:,}")
     # ---
     text = f"Update: <onlyinclude>{dumpdate}</onlyinclude>.\n"
     text += f"* Total items last update:{last_total:,}.\n"
@@ -181,9 +188,12 @@ def main_labels(tabb):
     with codecs.open(labels_file, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
     # ---
+    print(f'saved to {labels_file}')
+    # ---
     with codecs.open(template_file, 'w', encoding='utf-8') as outfile:
         outfile.write(tmp_text)
     # ---
+    print(f'saved to {template_file}')
 
 
 if __name__ == '__main__':

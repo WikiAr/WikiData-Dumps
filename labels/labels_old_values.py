@@ -44,22 +44,26 @@ def GetPageText(title):
 
 def from_wiki():
     # ---
-    print('from_wiki')
-    # ---
     title = 'User:Mr. Ibrahem/Language statistics for items'
+    # ---
+    if 'test1' in sys.argv:
+        title += '/sandbox'
+    # ---
+    print(f'from_wiki, title: {title}')
     # ---
     texts = GetPageText(title)
     # texts = codecs.open(f'{dir2}/te.txt', 'r', encoding='utf-8').read()
     # ---
     texts = texts.replace(',', '')
     # ---
-    texts = texts.replace('| style="background-color:#c79d9d" |', '||')
-    texts = texts.replace('| style="background-color:#9dc79d" |', '||')
+    texts = texts.replace('style="background-color:#c79d9d"| ', '')
+    texts = texts.replace('style="background-color:#9dc79d"| ', '')
     # ---
     last_total = 0
     if io := re.search(r"\* Total items:(\d+)\.", texts):
         last_total = int(io.group(1))
     Old = {'last_total': last_total}
+    # ---
     # ---
     texts = texts.split('|}')[0]
     texts = texts.replace('|}', '')
