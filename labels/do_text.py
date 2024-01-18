@@ -88,7 +88,18 @@ def mainar(n_tab):
         labels_co = make_cou(_labels_, n_tab['All_items'])
         descs_co = make_cou(_descriptions_, n_tab['All_items'])
         # ---
-        line = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n| {_labels_:,} || {labels_co} || +{new_labels:,} || {_descriptions_:,} || {descs_co} || +{new_descs:,} || {_aliases_:,} || +{new_aliases:,}'''
+        color = "#c79d9d" if new_descs < 0 else "#9dc79d" if new_descs > 0 else ""
+        # ---
+        if new_descs == 0:
+            color = ""
+        # ---
+        line  = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
+        line += f'''| {_labels_:,} || {labels_co} || +{new_labels:,} '''
+        # ---
+        # line += f'''|| {_descriptions_:,} || {descs_co} | style="background-color:{color}" | +{new_descs:,} '''
+        line += f'''|| {_descriptions_:,} || {descs_co} || +{new_descs:,} '''
+        # ---
+        line += f'''|| {_aliases_:,} || +{new_aliases:,}'''
         # ---
         line = line.replace("+-", "-")
 

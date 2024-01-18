@@ -1,24 +1,22 @@
 #!/usr/bin/env python3
 """
-python3 wd_core/dump/arw2.py test
-python3 core8/pwb.py dump/arw2
-python3 core8/pwb.py dump/arw2 test nosave
-python3 core8/pwb.py dump/arw2 test nosave p31
-python3 core8/pwb.py dump/arw2 test nosave printline
-python3 core8/pwb.py dump/arw2 test nosave limit:5000
-"""
+toolforge jobs run arw2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 $HOME/core8/pwb.py dump/arw/arw2"
 
-#
-# (C) Ibrahem Qasim, 2017
+python3 wd_core/dump/arw/arw2.py test
+python3 core8/pwb.py dump/arw/arw2
+python3 core8/pwb.py dump/arw/arw2 test ask
+python3 core8/pwb.py dump/arw/arw2 test ask p31
+python3 core8/pwb.py dump/arw/arw2 test ask printline
+python3 core8/pwb.py dump/arw/arw2 test ask limit:5000
+"""
 import sys
 import os
 import bz2
 import json
 import time
-
 # ---
+from dump.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
 from dump.memory import print_memory
-
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
@@ -27,11 +25,9 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 Offset = {1: 0}
-Limit = {1: 900000000}
 # ---
-if "test" in sys.argv:
-    Limit[1] = 15000
-    # ---
+Limit = {1: 9000000000} if "test" not in sys.argv else {1: 15000}
+# ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')
     if arg.startswith('-'):
@@ -90,123 +86,6 @@ stats_tab = {
     'delta': 0,
 }
 # ---
-Chart_head = """
-{| class="floatleft sortable" style="text-align:right"
-|-
-|
-{{Graph:Chart|width=170|height=170|xAxisTitle=الشهر|yAxisTitle=عدد المقالات
-|type=pie|showValues1=offset:8,angle:45
-|x=%s
-|y1=%s
-|legend=الخاصية
-}}
-|-
-|}"""
-# ---
-tables_head = """
-{| class="wikitable sortable plainrowheaders"
-|-
-! class="sortable" rowspan="2" | النطاق
-! class="sortable" rowspan="2" | العدد
-! class="unsortable" colspan="4" | labels
-! class="unsortable" colspan="4" | descriptions
-! class="unsortable" colspan="4" | aliases
-|-
-! نعم !! لا !! عربي !! دون عربي !! نعم !! لا !! عربي !! دون عربي !! نعم !! لا !! عربي !! دون عربي
-|-
-"""
-
-
-def ns_stats():
-    texts = """\n== حسب النطاق  ==\n"""
-    xline = ''  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
-    yline = ''  # |y1=718532,564152,46493,4292,1906,850,137,7
-    tables = tables_head
-    # ---
-    fafa = "\n| %d || %d || %d || %d"
-    # ---
-    for ns, nstab in priffixes.items():
-        count = nstab["count"]
-        # ---
-        if count != 0:
-            ns2 = ns.replace(":", "")
-            row = f"| {ns2} || {count:,}"
-            # ---
-            xline += f",{ns2}"
-            yline += f",{count}"
-            # ---
-            nstab_labls = nstab["labels"]
-            # ---
-            row += fafa % (nstab_labls["yes"], nstab_labls["no"], nstab_labls["yesar"], nstab_labls["noar"])
-            nstab_descs = nstab["descriptions"]
-            row += fafa % (nstab_descs["yes"], nstab_descs["no"], nstab_descs["yesar"], nstab_descs["noar"])
-            nstab_alies = nstab["aliases"]
-            row += fafa % (nstab_alies["yes"], nstab_alies["no"], nstab_alies["yesar"], nstab_alies["noar"])
-            # ---
-            tables += f'\n{row}\n|-'
-    # ---
-    Chart = Chart_head % (xline, yline)
-    # ---
-    tables += "\n|}\n"
-    # ---
-    texts += Chart.replace("=,", "=")
-    texts += tables
-    # ---
-    del xline, yline, tables, Chart
-    # ---
-    return texts
-
-
-def make_textP31():
-    textP31 = ''
-    for x, tab in stats_tab['p31_main_tab'].items():
-        # ---
-        if x not in priffixes or tab == {}:
-            continue
-        # ---
-        p31list = [[y, xfx] for xfx, y in tab.items()]
-        # ---
-        try:
-            p31list.sort(reverse=True)
-        except Exception:
-            print('p31list.sort(reverse=True)')
-            print(p31list)
-        # ---
-        rows = []
-        c = 1
-        li = 100
-        # ---
-        if x != 'مقالة':
-            li = 10
-        # ---
-        section_others = 0
-        # ---
-        for xx, yy in p31list:
-            if yy != "no":
-                if xx > li and len(rows) < 150:
-                    yf = "{{Q|%s}}" % yy
-                    rows.append(f'| {c} || {yf} || {xx} ')
-                    c += 1
-                else:
-                    section_others += xx
-        # ---
-        if not rows:
-            del p31list
-            continue
-        tatone = '\n{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدام \n|-\n' + '\n|-\n'.join(rows)
-        # ---
-        tatone += f'\n|-\n! - !! أخرى !! {section_others}\n|-\n'
-        # ---
-        tatone += '\n|}\n'
-        # ---
-        x2 = x.replace(":", "")
-        # ---
-        del rows, p31list, section_others
-        # ---
-        textP31 += f"\n=== {x2} ===\n{tatone}"
-    # ---
-    return textP31
-
 
 def save_to_wp(text):
     if text == "":
@@ -215,13 +94,18 @@ def save_to_wp(text):
     # ---
     print(text)
     # ---
-    if "nosave" in sys.argv or "test" in sys.argv:
+    if "nosave" in sys.argv:
+        print('nosave')
         return
     # ---
     title = 'ويكيبيديا:مشروع_ويكي_بيانات/تقرير_P31'
     # ---
+    if "test" in sys.argv:
+        title += '/ملعب'
+    # ---
+    print(f'title:{title}')
+    # ---
     from API import arAPI
-
     arAPI.page_put(oldtext="", newtext=text, summary='Bot - Updating stats', title=title)
     # ---
     del text
@@ -239,15 +123,14 @@ def read_data():
     # ---
     c = 0
     # ---
-    # with bz2.open(filename, "r", encoding="utf-8") as f:
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
-            line = line.decode("utf-8").strip("\n").strip(",")
+            line = line.strip("\n").strip(",")
             if line.startswith('{') and line.endswith('}'):
                 c += 1
                 # ---
                 if c > Limit[1]:
-                    print('c>Limit[1]')
+                    print(f'c:{c}>Limit[1]:{Limit[1]}')
                     break
                 # ---
                 if c < Offset[1]:
@@ -268,7 +151,7 @@ def read_data():
                 # جميع عناصر ويكي بيانات المفحوصة
                 stats_tab['all_items'] += 1
                 # ---
-                p31_no_ar_lab = []
+                # p31_no_ar_lab = []
                 json1 = json.loads(line)
                 # ---
                 # q = json1['id']
@@ -323,8 +206,8 @@ def read_data():
                     if not p31x:
                         continue
                     # ---
-                    if p31x not in p31_no_ar_lab:
-                        p31_no_ar_lab.append(p31x)
+                    # if p31x not in p31_no_ar_lab:
+                    #     p31_no_ar_lab.append(p31x)
                     # ---
                     if p31x in stats_tab['p31_main_tab'][arlink_type]:
                         stats_tab['p31_main_tab'][arlink_type][p31x] += 1
@@ -358,34 +241,6 @@ def read_data():
                             stats_tab['Table_no_ar_lab'][p31d] += 1
 
 
-def make_P31_table_no():
-    # ---
-    Table_no_ar_lab_rows = []
-    # ---
-    po_list = [[dyy, xxx] for xxx, dyy in stats_tab['Table_no_ar_lab'].items()]
-    po_list.sort(reverse=True)
-    # ---
-    cd = 0
-    # ---
-    other = 0
-    # ---
-    for xf, gh in po_list:
-        if len(Table_no_ar_lab_rows) < 100:
-            cd += 1
-            yf = "{{Q|%s}}" % gh
-            Table_no_ar_lab_rows.append(f'| {cd} || {yf} || {xf} ')
-        else:
-            other += 1
-    P31_table_no = """\n== استخدام خاصية P31 بدون وصف عربي ==\n""" + """{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات\n|-\n"""
-    P31_table_no += '\n|-\n'.join(Table_no_ar_lab_rows)
-    # ---
-    P31_table_no += f'\n|-\n! - !! أخرى !! {other}\n|-\n'
-    # ---
-    P31_table_no += "\n|}\n"
-    # ---
-    return P31_table_no
-
-
 def mainar():
     start = time.time()
     # ---
@@ -402,16 +257,17 @@ def mainar():
     # ---
     text = text.format_map(stats_tab)
     # ---
-    NS_table = ns_stats()
+    NS_table = ns_stats(priffixes)
+    # ---
     P31_secs = '== استخدام خاصية P31 ==\n' + '* {no_claims:,} صفحة دون أية خواص.\n'
     P31_secs += '* {no_p31:,} صفحة بدون خاصية P31.\n'
     P31_secs += '* {other_claims_no_p31:,} صفحة بها خواص أخرى دون خاصية P31.\n'
     # ---
     P31_secs = P31_secs.format_map(stats_tab)
     # ---
-    textP31 = make_textP31()
+    textP31 = make_text_p31(stats_tab['p31_main_tab'], priffixes)
     # ---
-    P31_table_no = make_P31_table_no()
+    P31_table_no = create_p31_table_no(stats_tab['Table_no_ar_lab'])
     # ---
     text += f"\n{NS_table}"
     text += f"\n{P31_secs}"
@@ -429,7 +285,6 @@ def mainar():
     if 'test' not in sys.argv:
         with open(f'{Dump_Dir}/texts/arw2.txt', 'w', encoding='utf-8') as f:
             f.write(text)
-
 
 if __name__ == '__main__':
     mainar()
