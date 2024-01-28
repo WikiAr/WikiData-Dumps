@@ -17,7 +17,7 @@ import time
 # ---
 try:
     from dump.labels.labels_old_values import make_old_values  # make_old_values()
-except BaseException:
+except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---
 Dump_Dir = "/data/project/himo/dumps"
