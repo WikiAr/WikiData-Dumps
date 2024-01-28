@@ -8,6 +8,7 @@ python3 core8/pwb.py dump/arw2 test nosave printline
 python3 core8/pwb.py dump/arw2 test nosave limit:5000
 """
 import sys
+
 CHART_TEMPLATE = """
 {| class="floatleft sortable" style="text-align:right"
 |-
@@ -34,6 +35,7 @@ TABLE_TEMPLATE = """
 |-
 """
 
+
 def generate_table_row(ns, count, nt_labels, nt_descriptions, nt_aliases):
     # ---
     # Remove unnecessary escape characters
@@ -50,12 +52,13 @@ def generate_table_row(ns, count, nt_labels, nt_descriptions, nt_aliases):
     # Use the newline character directly for better readability
     return row + "\n|-"
 
+
 def ns_stats(prefixes):
     texts = """\n== حسب النطاق  ==\n"""
     xline = ''  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
     yline = ''  # |y1=718532,564152,46493,4292,1906,850,137,7
     tables = TABLE_TEMPLATE
-    # ---    
+    # ---
     for ns, nstab in prefixes.items():
         count = nstab["count"]
         # ---
@@ -78,9 +81,10 @@ def ns_stats(prefixes):
     # ---
     return texts
 
+
 def format_section(section, rows, section_others):
     tr = '\n|-\n'
-    section_table  = '{| class="wikitable sortable"\n'
+    section_table = '{| class="wikitable sortable"\n'
     section_table += '! # !! {{P|P31}} !! الاستخدام'
     section_table += tr
 
@@ -90,6 +94,7 @@ def format_section(section, rows, section_others):
     section_table += '|}\n'
 
     return f"=== {section.replace(':', '')} ===\n{section_table}"
+
 
 def make_text_p31(p31_main_tab, prefixes):
     formatted_sections = []
@@ -121,6 +126,7 @@ def make_text_p31(p31_main_tab, prefixes):
         del rows, sorted_items, section_others
     # ---
     return '\n'.join(formatted_sections)
+
 
 def create_p31_table_no(table_no_ar_lab, max_rows=100):
     # ---

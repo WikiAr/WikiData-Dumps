@@ -26,9 +26,9 @@ file_to_title = {
 # ---
 if 'test' in sys.argv:
     file_to_title = {
-    'claims_new_test.txt': 'User:Mr. Ibrahem/claims/sandbox',
-    'claims_p31_test.txt': 'User:Mr. Ibrahem/p31/sandbox',
-}
+        'claims_new_test.txt': 'User:Mr. Ibrahem/claims/sandbox',
+        'claims_p31_test.txt': 'User:Mr. Ibrahem/p31/sandbox',
+    }
 # ---
 for file, title in file_to_title.items():
     if os.path.exists(f"{Dump_Dir}/texts/{file}"):

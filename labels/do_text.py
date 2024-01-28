@@ -85,7 +85,7 @@ def mainar(n_tab):
         langs_tag_line = "{{#language:%s|en}}" % code
         langs_tag_line_2 = "{{#language:%s}}" % code
         # ---
-        line  = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
+        line = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
         # ---
 
         plus = '' if new_labels < 0 else '+'
