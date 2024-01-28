@@ -14,9 +14,11 @@ import os
 import bz2
 import json
 import time
+
 # ---
 from dump.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
 from dump.memory import print_memory
+
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
@@ -87,6 +89,7 @@ stats_tab = {
 }
 # ---
 
+
 def save_to_wp(text):
     if text == "":
         print('text is empty')
@@ -106,6 +109,7 @@ def save_to_wp(text):
     print(f'title:{title}')
     # ---
     from API import arAPI
+
     arAPI.page_put(oldtext="", newtext=text, summary='Bot - Updating stats', title=title)
     # ---
     del text
@@ -285,6 +289,7 @@ def mainar():
     if 'test' not in sys.argv:
         with open(f'{Dump_Dir}/texts/arw2.txt', 'w', encoding='utf-8') as f:
             f.write(text)
+
 
 if __name__ == '__main__':
     mainar()
