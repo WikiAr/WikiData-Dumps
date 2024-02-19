@@ -1,5 +1,13 @@
 """
 from dump.claims.read_dump import read_file
+
+'''
+Read the wikidata dump file and process the claims data.
+'''
+
+'''
+Read the wikidata dump file and process the claims data.
+'''
 python3 core8/pwb.py dump/claims/read_dump test
 python3 /mnt/nfs/labstore-secondary-tools-project/himo/wd_core/dump/claims/read_dump.py test
 
