@@ -25,8 +25,10 @@ file_to_title = {
 }
 # ---
 if 'test' in sys.argv:
-    file_to_title['labels_test.txt'] = 'User:Mr. Ibrahem/Language statistics for items/sandbox'
-    file_to_title['template_test.txt'] = 'Template:Tr langcodes counts/sandbox'
+    file_to_title = {
+        'labels_test.txt' : 'User:Mr. Ibrahem/Language statistics for items/sandbox',
+        'template_test.txt' : 'Template:Tr langcodes counts/sandbox'
+    }
 # ---
 for file, title in file_to_title.items():
     if os.path.exists(f"{Dump_Dir}/texts/{file}"):

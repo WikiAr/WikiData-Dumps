@@ -286,7 +286,7 @@ def mainar():
     # ---
     save_to_wp(text)
     # ---
-    if 'test' not in sys.argv:
+    if 'test' not in sys.argv and 'nodump' not in sys.argv:
         with open(f'{Dump_Dir}/texts/arw2.txt', 'w', encoding='utf-8') as f:
             f.write(text)
 
