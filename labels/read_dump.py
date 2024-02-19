@@ -88,6 +88,24 @@ def do_line(line):
         tab['All_items'] += 1
         cc[1] += 1
         # ---
+        json_data = json.loads(line)
+        # ---
+        temp_stats = ['labels', 'descriptions', 'aliases']
+        for item in temp_stats:
+            for code in json_data.get(item, {}):
+                if code not in tab['langs']:
+                    tab['langs'][code] = {'labels': 0, 'descriptions': 0, 'aliases': 0}
+                tab['langs'][code][item] += 1
+        # ---
+        del json_data
+    # ---
+    if 'pp' in sys.argv:
+        print(line)
+    # ---
+    if line.startswith("{") and line.endswith("}"):
+        tab['All_items'] += 1
+        cc[1] += 1
+        # ---
         json1 = json.loads(line)
         # ---
         tats = ['labels', 'descriptions', 'aliases']
@@ -158,7 +176,7 @@ def read_lines_test():
                 print('cc[1]>test_limit[1]')
                 break
 
-def read_file():
+def parse_file():
     # ---
     print(f"read_file: read file: {filename}")
 
@@ -196,3 +214,24 @@ def read_file():
 
 if __name__ == "__main__":
     read_file()
+    print("def read_lines_test():")
+    # with bz2.open(filename, "r", encoding="utf-8") as f:
+    with bz2.open(filename, "rt", encoding="utf-8") as f:
+        # for line in f: do_line(line)
+        # ---
+        for line in f:
+            # line = line.decode("utf-8").strip("\n").strip(",")
+            do_line(line)
+            # ---
+            if cc[1] % 100 == 0:
+                print(f'cc[1]:{cc[1]}')
+                print(f"done:{tab['done']}")
+                # ---
+                print(cc[1], time.time() - tt[1])
+                tt[1] = time.time()
+                # print memory usage
+                print_memory()
+            # ---
+            if cc[1] > test_limit[1]:
+                print('cc[1]>test_limit[1]')
+                break
