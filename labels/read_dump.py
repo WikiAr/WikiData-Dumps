@@ -19,16 +19,16 @@ import bz2
 import time
 from datetime import datetime
 from pathlib import Path
-# ---
+
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-# split after /dump
+
 core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
 print(f'core_dir:{core_dir}')
 sys.path.append(core_dir)
 print(f'sys.path.append:core_dir: {core_dir}')
-# ---
+
 from dump.memory import print_memory
 va_dir = Path(__file__).parent
 # ---
@@ -61,7 +61,7 @@ tab = {
 
 
 def dump_it(tab):
-    # ---
+    
     if 'nodump' in sys.argv:
         return
     # ---
@@ -77,7 +77,7 @@ def dump_it(tab):
 
 
 def do_line(line):
-    # ---
+    
     line = line.strip("\n").strip(",")
     tab['done'] += 1
     # ---
@@ -108,7 +108,7 @@ def get_file_info(file_path):
 def check_file_date(file_date):
     with codecs.open(f"{va_dir}/file_date.txt", "r", encoding='utf-8') as outfile:
         old_date = outfile.read()
-    # ---
+    
     print(f"file_date: {file_date}, old_date: {old_date}")
     # ---
     if old_date == file_date and 'test' not in sys.argv and 'test1' not in sys.argv:
@@ -120,7 +120,7 @@ def read_lines():
     # with bz2.open(filename, "r", encoding="utf-8") as f:
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         # for line in f: do_line(line)
-        # ---
+        
         for line in f:
             # line = line.decode("utf-8").strip("\n").strip(",")
             do_line(line)
@@ -140,7 +140,7 @@ def read_lines_test():
     # with bz2.open(filename, "r", encoding="utf-8") as f:
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         # for line in f: do_line(line)
-        # ---
+        
         for line in f:
             # line = line.decode("utf-8").strip("\n").strip(",")
             do_line(line)
@@ -159,7 +159,7 @@ def read_lines_test():
                 break
 
 def read_file():
-    # ---
+    
     print(f"read_file: read file: {filename}")
 
     if not os.path.isfile(filename):
