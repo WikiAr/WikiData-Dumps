@@ -23,7 +23,7 @@ from pathlib import Path
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-# split after /dump
+# Update variable names and function calls
 core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
 print(f'core_dir:{core_dir}')
 sys.path.append(core_dir)
