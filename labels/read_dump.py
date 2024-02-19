@@ -1,5 +1,8 @@
 """
 python3 /data/project/himo/wd_core/dump/labels/read_dump.py
+
+
+'''\nRead the wikidata dump file and process the labels data. This script reads and processes the Wikidata dump file to extract label data and generate a JSON output file containing label information.\n'''
 python3 wd_core/dump/labels/read_dump.py
 python3 core8/pwb.py dump/labels/read_dump test
 python3 core8/pwb.py dump/labels/read_dump test nosave
