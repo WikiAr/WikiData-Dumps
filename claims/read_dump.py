@@ -48,7 +48,7 @@ for arg in sys.argv:
 cc = {1:0}
 tt = {1: time.time()}
 # ---
-tab = {
+tab: dict[str, int] = {
     "delta": 0,
     "done": 0,
     "file_date": '',
@@ -93,7 +93,7 @@ def do_line(line):
         # ---
         json1 = json.loads(line)
         # ---
-        claims = json1.get("claims", {})
+        claims: dict = json1.get("claims", {})
         # ---
         if len(claims) == 0:
             tab['items_0_claims'] += 1
@@ -105,7 +105,7 @@ def do_line(line):
             if "P31" not in claims:
                 tab['items_no_P31'] += 1
             # ---
-            claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+            claims_example: dict = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
             # ---
             for p in claims.keys():
                 Type = claims[p][0].get("mainsnak", {}).get("datatype", '')
