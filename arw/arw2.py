@@ -159,12 +159,12 @@ def read_data():
                 json1 = json.loads(line)
                 # ---
                 # q = json1['id']
-                sitelinks = json1.get('sitelinks', {})
+                sitelinks: dict = json1.get('sitelinks', {})
                 if not sitelinks or sitelinks == {}:
                     del json1
                     continue
                 # ---
-                arlink = sitelinks.get('arwiki', {}).get('title', '')
+                arlink: str = sitelinks.get('arwiki', {}).get('title', '')
                 if not arlink:
                     # عناصر بوصلات لغات بدون وصلة عربية
                     stats_tab['sitelinks_no_ar'] += 1
@@ -175,7 +175,7 @@ def read_data():
                 stats_tab['all_ar_sitelinks'] += 1
                 arlink_type = "مقالة"
                 # ---
-                for pri, _ in priffixes.items():
+                for pri: str, _: dict in priffixes.items():
                     if arlink.startswith(pri):
                         priffixes[pri]["count"] += 1
                         arlink_type = pri
@@ -189,7 +189,7 @@ def read_data():
                 # ---
                 p31x = 'no'
                 # ---
-                claims = json1.get('claims', {})
+                claims: dict = json1.get('claims', {})
                 # ---
                 if claims == {}:
                     # صفحات دون أية خواص
