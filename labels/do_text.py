@@ -48,7 +48,7 @@ def make_cou(num, _all):
     return f"{str(fef)[:4]}%"
 
 
-def mainar(n_tab):
+def mainar(n_tab: dict[str, any]) -> str:
     start = time.time()
 
     Old = make_old_values()
@@ -65,9 +65,23 @@ def mainar(n_tab):
     test_new_descs = 0
 
     for code in langs:
-        new_labels = 0
-        new_descs = 0
-        new_aliases = 0
+    start: float = time.time()
+
+    Old: dict = make_old_values()
+
+    dumpdate: str = n_tab.get('file_date') or 'latest'
+    langs_table: dict[str, dict[str, int]] = n_tab['langs']
+
+    langs: list[str] = sorted(langs_table.keys())
+
+    last_total: int = Old.get('last_total', 0)
+
+    rows: list[str] = []
+
+    test_new_descs: int = 0
+        new_labels: int = 0
+        new_descs: int = 0
+        new_aliases: int = 0
 
         _labels_ = langs_table[code]['labels']
         _descriptions_ = langs_table[code]['descriptions']
