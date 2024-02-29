@@ -1,7 +1,7 @@
 """
 from dump.labels.labels_old_values import make_old_values# make_old_values()
 """
-import os
+import os, TIMEOUT
 from pathlib import Path
 import json
 import sys
@@ -10,6 +10,8 @@ import re
 import requests
 
 Session = requests.Session()
+
+TIMEOUT = 10
 dir2 = Path(__file__).parent
 
 file_old_data = f'{dir2}/old_data.json'
@@ -29,7 +31,7 @@ def GetPageText(title):
     # ---
     end_point = 'https://www.wikidata.org/w/api.php?'
     # ---
-    json1 = Session.post(end_point, data=params, timeout=10).json()
+    json1 = Session.post(end_point, data=params, timeout=TIMEOUT).json()
     # ---
     if not json1 or json1 == {}:
         return ''
