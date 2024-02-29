@@ -29,7 +29,7 @@ def GetPageText(title):
     # ---
     end_point = 'https://www.wikidata.org/w/api.php?'
     # ---
-    json1 = Session.post(end_point, data=params, timeout=10).json()
+    response_json = Session.post(end_point, data=params, timeout=10).json()
     # ---
     if not json1 or json1 == {}:
         return ''
