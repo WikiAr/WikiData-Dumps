@@ -34,7 +34,7 @@ def GetPageText(title):
     if not response_json or json_data == {}:
         return ''
     # ---
-    text = json1.get("parse", {}).get("wikitext", {}).get("*", "")
+    text = json_data.get("parse", {}).get("wikitext", {}).get("*", "")
     # ---
     if text == "":
         print(f'no text for {title}')
