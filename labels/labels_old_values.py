@@ -31,7 +31,7 @@ def GetPageText(title):
     # ---
     json_data = Session.post(end_point, data=params, timeout=10).json()
     # ---
-    if not json1 or json1 == {}:
+    if not response_json or json_data == {}:
         return ''
     # ---
     text = json1.get("parse", {}).get("wikitext", {}).get("*", "")
