@@ -17,7 +17,7 @@ if os.path.exists(r"I:\core\dumps"):
 # ---
 print(f"Dump_Dir:{Dump_Dir}")
 # ---
-filename = f"{Dump_Dir}/claims.json"
+filename = Path(Dump_Dir) / "claims.json"
 # ---
 files = ["claims_test_fixed.json", "claims_fixed.json"]
 # ---
