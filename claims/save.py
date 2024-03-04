@@ -47,3 +47,4 @@ for file, title in file_to_title.items():
             continue
         # ---
         himoAPI.page_putWithAsk("", text, "Bot - Updating stats", title, False)
+from pathlib import Path
