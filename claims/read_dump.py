@@ -29,9 +29,9 @@ va_dir = Path(__file__).parent
 # ---
 # from dump.claims.fix_dump import fix_props
 # ---
-filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+filename = Path("/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2")
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = Path("/data/project/himo/dumps")
 # ---
 if os.path.exists(r'I:\core\dumps'):
     Dump_Dir = r'I:\core\dumps'
