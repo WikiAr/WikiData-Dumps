@@ -23,8 +23,8 @@ from pathlib import Path
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-# split after /dump
-core_dir = str(Path(__file__)).replace('\\', '/').split("/dump/", maxsplit=1)[0]
+# Get the parent directory of the current file's directory
+core_dir = str(Path(__file__).parent.parent)
 print(f'core_dir:{core_dir}')
 sys.path.append(core_dir)
 print(f'sys.path.append:core_dir: {core_dir}')
@@ -32,12 +32,12 @@ print(f'sys.path.append:core_dir: {core_dir}')
 from dump.memory import print_memory
 va_dir = Path(__file__).parent
 # ---
-filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+filename = Path("/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2")
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = Path("/data/project/himo/dumps")
 # ---
-if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+if Path('I:/core/dumps').exists():
+    Dump_Dir = Path('I:/core/dumps')
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
