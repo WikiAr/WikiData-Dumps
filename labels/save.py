@@ -12,10 +12,10 @@ import os
 from wd_api import himoAPI
 
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = Path("/data/project/himo/dumps")
 # ---
-if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+if Path('I:/core/dumps').exists():
+    Dump_Dir = Path('I:/core/dumps')
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
@@ -47,3 +47,4 @@ for file, title in file_to_title.items():
             continue
         # ---
         himoAPI.page_putWithAsk("", text, "Bot - Updating stats", title, False)
+from pathlib import Path
