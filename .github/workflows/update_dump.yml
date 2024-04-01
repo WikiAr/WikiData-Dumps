@@ -3,7 +3,7 @@ name: Open URL on Successful Merge
 on:
     pull_request:
         types:
-        - closed
+            - closed
 
 jobs:
     open-url:
