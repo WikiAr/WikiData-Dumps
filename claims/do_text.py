@@ -18,12 +18,12 @@ print(f"time_start:{str(time_start)}")
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
-if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+if os.path.exists(r"I:\core\dumps"):
+    Dump_Dir = r"I:\core\dumps"
 # ---
-print(f'Dump_Dir:{Dump_Dir}')
+print(f"Dump_Dir:{Dump_Dir}")
 # ---
-sections_done = {1: 0, 'max': 100}
+sections_done = {1: 0, "max": 100}
 sections_false = {1: 0}
 
 
@@ -42,7 +42,7 @@ def make_section(P, table, max_n=51):
     # ---
     # if sections_done[1] >= sections_done['max']:    return ""
     # ---
-    Len = table['lenth_of_usage']
+    Len = table["lenth_of_usage"]
     # ---
     texts = "== {{P|%s}} ==" % P
     # ---
@@ -147,33 +147,41 @@ def make_numbers_section(p31list):
     return f"== Numbers ==\n\n{Chart2}\n{table}"
 
 
-def make_text(tab, ty=''):
+def make_text(tab, ty=""):
     p31list = [[y["lenth_of_usage"], x] for x, y in tab["properties"].items() if y["lenth_of_usage"] != 0]
     p31list.sort(reverse=True)
     # ---
     final = time.time()
-    delta = tab.get('delta') or int(final - time_start)
+    delta = tab.get("delta") or int(final - time_start)
     # ---
-    if not tab.get('file_date'):
-        tab['file_date'] = 'latest'
+    if not tab.get("file_date"):
+        tab["file_date"] = "latest"
     # ---
-    text = ("<onlyinclude>;dump date {file_date}</onlyinclude>.\n" "* Total items: {All_items:,}\n" "* Items without P31: {items_no_P31:,} \n" "* Items without claims: {items_0_claims:,}\n" "* Items with 1 claim only: {items_1_claims:,}\n" "* Total number of claims: {all_claims_2020:,}\n" "* Number of properties of the report: {len_all_props:,}\n").format_map(tab)
+    text = (
+        "<onlyinclude>;dump date {file_date}</onlyinclude>.\n"
+        "* Total items: {All_items:,}\n"
+        "* Items without P31: {items_no_P31:,} \n"
+        "* Items without claims: {items_0_claims:,}\n"
+        "* Items with 1 claim only: {items_1_claims:,}\n"
+        "* Total number of claims: {all_claims_2020:,}\n"
+        "* Number of properties of the report: {len_all_props:,}\n"
+        ).format_map(tab)
     # ---
     text += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
     chart = make_numbers_section(p31list)
     # ---
-    text_p31 = ''
+    text_p31 = ""
     # ---
-    if tab["properties"].get('P31'):
-        text_p31 = text + make_section('P31', tab["properties"]['P31'], max_n=501)
+    if tab["properties"].get("P31"):
+        text_p31 = text + make_section("P31", tab["properties"]["P31"], max_n=501)
         # ---
     # ---
-    if 'onlyp31' in sys.argv or ty == "onlyp31":
+    if "onlyp31" in sys.argv or ty == "onlyp31":
         return text, text_p31
     # ---
     sections = ""
     for _, P in p31list:
-        if sections_done[1] >= sections_done['max']:
+        if sections_done[1] >= sections_done["max"]:
             break
         # ---
         sections += make_section(P, tab["properties"][P], max_n=51)
@@ -187,9 +195,9 @@ def make_text(tab, ty=''):
 
 
 if __name__ == "__main__":
-    faf = 'claims'
+    faf = "claims"
     # ---
-    if 'claims_fixed' in sys.argv:
+    if "claims_fixed" in sys.argv:
         if os.path.exists(f"{Dump_Dir}/claims_fixed.json"):
             faf = "claims_fixed"
         else:
@@ -197,10 +205,10 @@ if __name__ == "__main__":
     # ---
     filename = f"{Dump_Dir}/{faf}.json"
     # ---
-    if 'test' in sys.argv:
+    if "test" in sys.argv:
         filename = f"{Dump_Dir}/{faf}_test.json"
     # ---
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
     # ---
     tab = {
@@ -220,19 +228,22 @@ if __name__ == "__main__":
         if x not in data:
             data[x] = g
     # ---
-    text, text_p31 = make_text(data, ty='')
+    if data["len_all_props"] == 0:
+        data["len_all_props"] = len(data["properties"])
     # ---
-    claims_new = f'{Dump_Dir}/texts/claims_new.txt'
-    claims_p31 = f'{Dump_Dir}/texts/claims_p31.txt'
+    text, text_p31 = make_text(data, ty="")
     # ---
-    if 'test' in sys.argv:
-        claims_new = f'{Dump_Dir}/texts/claims_new_test.txt'
-        claims_p31 = f'{Dump_Dir}/texts/claims_p31_test.txt'
+    claims_new = f"{Dump_Dir}/texts/claims_new.txt"
+    claims_p31 = f"{Dump_Dir}/texts/claims_p31.txt"
     # ---
-    with codecs.open(claims_new, 'w', encoding='utf-8') as outfile:
+    if "test" in sys.argv:
+        claims_new = f"{Dump_Dir}/texts/claims_new_test.txt"
+        claims_p31 = f"{Dump_Dir}/texts/claims_p31_test.txt"
+    # ---
+    with codecs.open(claims_new, "w", encoding="utf-8") as outfile:
         outfile.write(text)
     # ---
-    with codecs.open(claims_p31, 'w', encoding='utf-8') as outfile:
+    with codecs.open(claims_p31, "w", encoding="utf-8") as outfile:
         outfile.write(text_p31)
     # ---
     # print(text_p31)

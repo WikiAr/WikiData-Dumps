@@ -22,17 +22,17 @@ from dump.memory import print_memory
 # ---
 Dump_Dir = "/data/project/himo/dumps"
 # ---
-if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+if os.path.exists(r"I:\core\dumps"):
+    Dump_Dir = r"I:\core\dumps"
 # ---
-print(f'Dump_Dir:{Dump_Dir}')
+print(f"Dump_Dir:{Dump_Dir}")
 Offset = {1: 0}
 # ---
 Limit = {1: 9000000000} if "test" not in sys.argv else {1: 15000}
 # ---
 for arg in sys.argv:
-    arg, _, value = arg.partition(':')
-    if arg.startswith('-'):
+    arg, _, value = arg.partition(":")
+    if arg.startswith("-"):
         arg = arg[1:]
     if arg in ["offset", "off"]:
         Offset[1] = int(value)
@@ -77,50 +77,50 @@ priffixes = {
 }
 # ---
 stats_tab = {
-    'all_items': 0,
-    'all_ar_sitelinks': 0,
-    'sitelinks_no_ar': 0,
-    'no_p31': 0,
-    'no_claims': 0,
-    'other_claims_no_p31': 0,
-    'Table_no_ar_lab': {},
-    'p31_main_tab': {},
-    'delta': 0,
+    "all_items": 0,
+    "all_ar_sitelinks": 0,
+    "sitelinks_no_ar": 0,
+    "no_p31": 0,
+    "no_claims": 0,
+    "other_claims_no_p31": 0,
+    "Table_no_ar_lab": {},
+    "p31_main_tab": {},
+    "delta": 0,
 }
 # ---
 
 
 def save_to_wp(text):
     if text == "":
-        print('text is empty')
+        print("text is empty")
         return
     # ---
     print(text)
     # ---
     if "nosave" in sys.argv:
-        print('nosave')
+        print("nosave")
         return
     # ---
-    title = 'ويكيبيديا:مشروع_ويكي_بيانات/تقرير_P31'
+    title = "ويكيبيديا:مشروع_ويكي_بيانات/تقرير_P31"
     # ---
     if "test" in sys.argv:
-        title += '/ملعب'
+        title += "/ملعب"
     # ---
-    print(f'title:{title}')
+    print(f"title:{title}")
     # ---
     from API import arAPI
 
-    arAPI.page_put(oldtext="", newtext=text, summary='Bot - Updating stats', title=title)
+    arAPI.page_put(oldtext="", newtext=text, summary="Bot - Updating stats", title=title)
     # ---
     del text
     del arAPI
 
 
 def read_data():
-    filename = '/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2'
+    filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
     # ---
     if not os.path.isfile(filename):
-        print(f'file {filename} <<lightred>> not found')
+        print(f"file {filename} <<lightred>> not found")
         return
     # ---
     t1 = time.time()
@@ -130,22 +130,22 @@ def read_data():
     with bz2.open(filename, "rt", encoding="utf-8") as f:
         for line in f:
             line = line.strip("\n").strip(",")
-            if line.startswith('{') and line.endswith('}'):
+            if line.startswith("{") and line.endswith("}"):
                 c += 1
                 # ---
                 if c > Limit[1]:
-                    print(f'c:{c}>Limit[1]:{Limit[1]}')
+                    print(f"c:{c}>Limit[1]:{Limit[1]}")
                     break
                 # ---
                 if c < Offset[1]:
                     if c % 1000 == 0:
                         dii = time.time() - t1
-                        print('Offset c:%d, time:%d' % (c, dii))
+                        print("Offset c:%d, time:%d" % (c, dii))
                     continue
                 # ---
                 if (c % 1000 == 0 and c < 100000) or c % 100000 == 0:
                     dii = time.time() - t1
-                    print(f'c:{c}, time:{dii}')
+                    print(f"c:{c}, time:{dii}")
                     t1 = time.time()
                     print_memory()
                 # ---
@@ -153,26 +153,26 @@ def read_data():
                     print(line)
                 # ---
                 # جميع عناصر ويكي بيانات المفحوصة
-                stats_tab['all_items'] += 1
+                stats_tab["all_items"] += 1
                 # ---
                 # p31_no_ar_lab = []
                 json1 = json.loads(line)
                 # ---
                 # q = json1['id']
-                sitelinks = json1.get('sitelinks', {})
+                sitelinks = json1.get("sitelinks", {})
                 if not sitelinks or sitelinks == {}:
                     del json1
                     continue
                 # ---
-                arlink = sitelinks.get('arwiki', {}).get('title', '')
+                arlink = sitelinks.get("arwiki", {}).get("title", "")
                 if not arlink:
                     # عناصر بوصلات لغات بدون وصلة عربية
-                    stats_tab['sitelinks_no_ar'] += 1
+                    stats_tab["sitelinks_no_ar"] += 1
                     del json1, sitelinks
                     continue
                 # ---
                 # عناصر ويكي بيانات بها وصلة عربية
-                stats_tab['all_ar_sitelinks'] += 1
+                stats_tab["all_ar_sitelinks"] += 1
                 arlink_type = "مقالة"
                 # ---
                 for pri, _ in priffixes.items():
@@ -181,44 +181,44 @@ def read_data():
                         arlink_type = pri
                         break
                 # ---
-                if arlink_type not in stats_tab['p31_main_tab']:
-                    stats_tab['p31_main_tab'][arlink_type] = {}
+                if arlink_type not in stats_tab["p31_main_tab"]:
+                    stats_tab["p31_main_tab"][arlink_type] = {}
                 # ---
                 if arlink_type == "مقالة":
                     priffixes["مقالة"]["count"] += 1
                 # ---
-                p31x = 'no'
+                p31x = "no"
                 # ---
-                claims = json1.get('claims', {})
+                claims = json1.get("claims", {})
                 # ---
                 if claims == {}:
                     # صفحات دون أية خواص
-                    stats_tab['no_claims'] += 1
+                    stats_tab["no_claims"] += 1
                 # ---
-                P31 = claims.get('P31', {})
+                P31 = claims.get("P31", {})
                 # ---
                 if P31 == {}:
                     # صفحة بدون خاصية P31
-                    stats_tab['no_p31'] += 1
+                    stats_tab["no_p31"] += 1
                     # ---
                     if len(claims) > 0:
                         # خواص أخرى بدون خاصية P31
-                        stats_tab['other_claims_no_p31'] += 1
+                        stats_tab["other_claims_no_p31"] += 1
                 # ---
                 for x in P31:
-                    p31x = x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id')
+                    p31x = x.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
                     if not p31x:
                         continue
                     # ---
                     # if p31x not in p31_no_ar_lab:
                     #     p31_no_ar_lab.append(p31x)
                     # ---
-                    if p31x in stats_tab['p31_main_tab'][arlink_type]:
-                        stats_tab['p31_main_tab'][arlink_type][p31x] += 1
+                    if p31x in stats_tab["p31_main_tab"][arlink_type]:
+                        stats_tab["p31_main_tab"][arlink_type][p31x] += 1
                     else:
-                        stats_tab['p31_main_tab'][arlink_type][p31x] = 1
+                        stats_tab["p31_main_tab"][arlink_type][p31x] = 1
                 # ---
-                tat = ['labels', 'descriptions', 'aliases']
+                tat = ["labels", "descriptions", "aliases"]
                 # ---
                 for x in tat:
                     if x not in json1:
@@ -229,20 +229,20 @@ def read_data():
                     priffixes[arlink_type][x]["yes"] += 1
                     # ---
                     # تسمية عربي
-                    if 'ar' in json1[x]:
+                    if "ar" in json1[x]:
                         priffixes[arlink_type][x]["yesar"] += 1
                     else:
                         priffixes[arlink_type][x]["noar"] += 1
                 # ---
-                ar_desc = json1.get('descriptions', {}).get('ar', False)
+                ar_desc = json1.get("descriptions", {}).get("ar", False)
                 # ---
                 if not ar_desc:
                     # استخدام خاصية 31 بدون وصف عربي
-                    for x in json1.get('claims', {}).get('P31', []):
-                        if p31d := x.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id'):
-                            if p31d not in stats_tab['Table_no_ar_lab']:
-                                stats_tab['Table_no_ar_lab'][p31d] = 0
-                            stats_tab['Table_no_ar_lab'][p31d] += 1
+                    for x in json1.get("claims", {}).get("P31", []):
+                        if p31d := x.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id"):
+                            if p31d not in stats_tab["Table_no_ar_lab"]:
+                                stats_tab["Table_no_ar_lab"][p31d] = 0
+                            stats_tab["Table_no_ar_lab"][p31d] += 1
 
 
 def mainar():
@@ -252,7 +252,7 @@ def mainar():
     # ---
     final = time.time()
     # ---
-    stats_tab['delta'] = int(final - start)
+    stats_tab["delta"] = int(final - start)
     text = "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n" + "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
     text += "* عناصر ويكي بيانات بها وصلة عربية: {all_ar_sitelinks:,} \n"
     text += "* عناصر بوصلات لغات بدون وصلة عربية: {sitelinks_no_ar:,} \n"
@@ -263,15 +263,15 @@ def mainar():
     # ---
     NS_table = ns_stats(priffixes)
     # ---
-    P31_secs = '== استخدام خاصية P31 ==\n' + '* {no_claims:,} صفحة دون أية خواص.\n'
-    P31_secs += '* {no_p31:,} صفحة بدون خاصية P31.\n'
-    P31_secs += '* {other_claims_no_p31:,} صفحة بها خواص أخرى دون خاصية P31.\n'
+    P31_secs = "== استخدام خاصية P31 ==\n" + "* {no_claims:,} صفحة دون أية خواص.\n"
+    P31_secs += "* {no_p31:,} صفحة بدون خاصية P31.\n"
+    P31_secs += "* {other_claims_no_p31:,} صفحة بها خواص أخرى دون خاصية P31.\n"
     # ---
     P31_secs = P31_secs.format_map(stats_tab)
     # ---
-    textP31 = make_text_p31(stats_tab['p31_main_tab'], priffixes)
+    textP31 = make_text_p31(stats_tab["p31_main_tab"], priffixes)
     # ---
-    P31_table_no = create_p31_table_no(stats_tab['Table_no_ar_lab'])
+    P31_table_no = create_p31_table_no(stats_tab["Table_no_ar_lab"])
     # ---
     text += f"\n{NS_table}"
     text += f"\n{P31_secs}"
@@ -280,16 +280,16 @@ def mainar():
     # ---
     print(text)
     # ---
-    if stats_tab['all_items'] == 0:
-        print('nothing to update')
+    if stats_tab["all_items"] == 0:
+        print("nothing to update")
         return
     # ---
     save_to_wp(text)
     # ---
-    if 'test' not in sys.argv and 'nodump' not in sys.argv:
-        with open(f'{Dump_Dir}/texts/arw2.txt', 'w', encoding='utf-8') as f:
+    if "test" not in sys.argv and "nodump" not in sys.argv:
+        with open(f"{Dump_Dir}/texts/arw2.txt", "w", encoding="utf-8") as f:
             f.write(text)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     mainar()

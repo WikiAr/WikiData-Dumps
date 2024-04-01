@@ -41,7 +41,7 @@ if os.path.exists(r'I:\core\dumps'):
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---
-test_limit = {1: 15000}
+test_limit = {1: 50000}
 # ---
 for arg in sys.argv:
     arg, _, value = arg.partition(':')

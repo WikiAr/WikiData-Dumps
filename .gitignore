@@ -1,3 +1,6 @@
 **/old/**
 labelssql/**
 *.txt
+*.pyc
+/claims/c
+claims/read_dump_x.py
