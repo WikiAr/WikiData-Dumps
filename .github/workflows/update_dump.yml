@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+      with:
+        node-version: '20'  # Specify Node.js version
 
     - name: Open URL on successful merge
       if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
