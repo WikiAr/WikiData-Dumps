@@ -13,3 +13,4 @@ tqdm==4.66.1
 psutil==5.9.7
 jsonlines
 ujson
+qwikidata

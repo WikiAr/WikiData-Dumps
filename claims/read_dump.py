@@ -1,7 +1,7 @@
 """
 from dump.claims.read_dump import read_file
 python3 core8/pwb.py dump/claims/read_dump test nodump
-python3 /mnt/nfs/labstore-secondary-tools-project/himo/wd_core/dump/claims/read_dump.py test
+python3 /data/project/himo/wd_core/dump/claims/read_dump.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
