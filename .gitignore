@@ -4,3 +4,4 @@ labelssql/**
 *.pyc
 /claims/c
 claims/read_dump_x.py
+/claims/preprocessing
