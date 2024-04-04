@@ -1,3 +1,6 @@
+"""
+from claims.most_props import get_data()
+"""
 import re
 import json
 from pathlib import Path
@@ -17,13 +20,14 @@ def log_data(data, file_path):
     with open(file_path, "w") as f:
         json.dump(data, f)
 
-def main():
+def get_data():
     file_path = Path(__file__).parent / "properties.json"
     title = "Template:Number of main statements by property"
     page = MainPage(title, 'www', family='wikidata')
     text = page.get_text()
     data = get_most_usage(text)
     log_data(data, file_path)
+    return data
 
 if __name__ == "__main__":
-    main()
+    get_data()
