@@ -30,6 +30,8 @@ from dump.memory import print_memory
 
 va_dir = Path(__file__).parent
 # ---
+properties_path = va_dir / "properties.json"
+# ---
 # from dump.claims.fix_dump import fix_props
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
@@ -69,6 +71,12 @@ tab = {
     "langs": {},
 }
 
+def get_most_props():
+    # ---
+    with open(properties_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    # ---
+    return data
 
 def log_dump(tab):
     if "nodump" in sys.argv:
