@@ -77,6 +77,8 @@ def get_most_props():
         data = json.load(f)
     # ---
     return data
+    
+most_props = get_most_props()
 
 def log_dump(tab):
     if "nodump" in sys.argv:
@@ -113,7 +115,11 @@ def do_line(line):
 
     for p in claims.keys():
         Type = claims[p][0].get("mainsnak", {}).get("datatype", "")
+        tab["all_claims_2020"] += len(claims[p])
 
+        if p not in most_props:
+            continue
+            
         if Type == "wikibase-item":
             properties_p = tab["properties"].get(p)
             if not properties_p:
@@ -125,7 +131,6 @@ def do_line(line):
                 tab["properties"][p] = properties_p
 
             properties_p["lenth_of_usage"] += 1
-            tab["all_claims_2020"] += len(claims[p])
             properties_p["len_prop_claims"] += len(claims[p])
 
             for claim in claims[p]:
