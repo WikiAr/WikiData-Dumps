@@ -22,7 +22,7 @@ def get_most_usage(text):
     
 def log_data(data):
 	with open(file, "w") as f:
-		json.dump(data)
+		json.dump(data, f)
 		
 def main():
     title = "Template:Number of main statements by property"
