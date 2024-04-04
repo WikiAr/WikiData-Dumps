@@ -219,6 +219,13 @@ def read_lines_test():
 
 def read_file():
     # ---
+    for p,_ in most_props.items():
+        tab["properties"][p] = {
+                "qids": {"others": 0},
+                "lenth_of_usage": 0,
+                "len_prop_claims": 0,
+        }
+    # ---
     print(f"read_file: read file: {filename}")
 
     if not os.path.isfile(filename):
