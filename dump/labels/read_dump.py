@@ -1,6 +1,6 @@
 """
-python3 /data/project/himo/wd_core/dump/labels/read_dump.py
-python3 wd_core/dump/labels/read_dump.py
+python3 /data/project/himo/bots/dump_core/dump/labels/read_dump.py
+python3 bots/dump_core/dump/labels/read_dump.py
 python3 core8/pwb.py dump/labels/read_dump test
 python3 core8/pwb.py dump/labels/read_dump test nosave
 
@@ -34,7 +34,7 @@ va_dir = Path(__file__).parent
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
 if os.path.exists(r'I:\core\dumps'):
     Dump_Dir = r'I:\core\dumps'
@@ -88,7 +88,12 @@ def do_line(line):
         tab['All_items'] += 1
         cc[1] += 1
         # ---
-        json1 = json.loads(line)
+        # json1 = json.loads(line)
+        try:
+            json1 = json.loads(line)
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON: {e}")
+            return
         # ---
         tats = ['labels', 'descriptions', 'aliases']
         for x in tats:

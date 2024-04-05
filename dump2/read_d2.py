@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from qwikidata.json_dump import WikidataJsonDump
 
-done_lines = "/data/project/himo/wd_core/dump2/done_lines.txt"
+done_lines = "/data/project/himo/bots/dump_core/dump2/done_lines.txt"
 
 with open(done_lines, "w", encoding="utf-8") as f:
     f.write("")
@@ -83,10 +83,10 @@ def read_lines(do_test, tst_limit, filename, items_file):
 def main():
     time_start = time.time()
     do_test = "test" in sys.argv
-    items_file = "/data/project/himo/wd_core/dump2/jsons/items.json"
+    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
     
     if do_test:
-        items_file = "/data/project/himo/wd_core/dump2/jsons/items_test.json"
+        items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
     
     with open(items_file, "w", encoding="utf-8") as f:
         f.write("")

@@ -20,7 +20,7 @@ try:
 except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
 if os.path.exists(r'I:\core\dumps'):
     Dump_Dir = r'I:\core\dumps'

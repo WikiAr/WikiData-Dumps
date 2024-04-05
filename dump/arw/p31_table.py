@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-python3 wd_core/dump/arw2.py test
+python3 bots/dump_core/dump/arw2.py test
 python3 core8/pwb.py dump/arw2
 python3 core8/pwb.py dump/arw2 test nosave
 python3 core8/pwb.py dump/arw2 test nosave p31

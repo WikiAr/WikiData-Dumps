@@ -1,7 +1,7 @@
 """
 from dump.claims.read_dump import read_file
 python3 core8/pwb.py dump/claims/read_dump test nodump
-python3 /data/project/himo/wd_core/dump2/claims/do_tab.py test
+python3 /data/project/himo/bots/dump_core/dump2/claims/do_tab.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
@@ -12,12 +12,12 @@ import ujson as json
 import sys
 import time
 # ---
-items_file = "/data/project/himo/wd_core/dump2/jsons/items.json"
-jsonname = "/data/project/himo/wd_core/dump2/jsons/claims.json"
+items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
+jsonname = "/data/project/himo/bots/dump_core/dump2/jsons/claims.json"
 # ---
 if "test" in sys.argv:
-    items_file = "/data/project/himo/wd_core/dump2/jsons/items_test.json"
-    jsonname = "/data/project/himo/wd_core/dump2/jsons/claims_test.json"
+    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
+    jsonname = "/data/project/himo/bots/dump_core/dump2/jsons/claims_test.json"
 # ---
 tt = {1: time.time()}
 # ---

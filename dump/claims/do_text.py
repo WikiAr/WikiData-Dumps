@@ -9,14 +9,13 @@ python3 core8/pwb.py dump/claims/do_text
 import sys
 import os
 import time
-import codecs
 import json
 
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
 if os.path.exists(r"I:\core\dumps"):
     Dump_Dir = r"I:\core\dumps"
@@ -240,10 +239,10 @@ if __name__ == "__main__":
         claims_new = f"{Dump_Dir}/texts/claims_new_test.txt"
         claims_p31 = f"{Dump_Dir}/texts/claims_p31_test.txt"
     # ---
-    with codecs.open(claims_new, "w", encoding="utf-8") as outfile:
+    with open(claims_new, "w", encoding="utf-8") as outfile:
         outfile.write(text)
     # ---
-    with codecs.open(claims_p31, "w", encoding="utf-8") as outfile:
+    with open(claims_p31, "w", encoding="utf-8") as outfile:
         outfile.write(text_p31)
     # ---
     # print(text_p31)

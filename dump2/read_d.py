@@ -1,7 +1,7 @@
 """
-python3 /data/project/himo/wd_core/dump2/read_d.py one
-python3 /data/project/himo/wd_core/dump2/read_d.py test
-tfj run dump2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 /data/project/himo/wd_core/dump2/read_d.py"
+python3 /data/project/himo/bots/dump_core/dump2/read_d.py one
+python3 /data/project/himo/bots/dump_core/dump2/read_d.py test
+tfj run dump2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump2/read_d.py"
 
 
 """
@@ -19,11 +19,11 @@ print(f"time_start:{str(time_start)}")
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
-done_lines = "/data/project/himo/wd_core/dump2/done_lines.txt"
-items_file = "/data/project/himo/wd_core/dump2/jsons/items.json"
+done_lines = "/data/project/himo/bots/dump_core/dump2/done_lines.txt"
+items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
 
 if "test" in sys.argv:
-    items_file = "/data/project/himo/wd_core/dump2/jsons/items_test.json"
+    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
 
 with open(done_lines, "w", encoding="utf-8") as f:
     f.write("")

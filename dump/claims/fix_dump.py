@@ -1,4 +1,4 @@
-"""python3 wd_core/dump/fix_dumps.py"""
+"""python3 bots/dump_core/dump/fix_dumps.py"""
 import json
 import os
 import sys
@@ -8,7 +8,7 @@ import tqdm
 # ---
 try:
     _ = __file__
-    Dump_Dir = "/data/project/himo/dumps"
+    Dump_Dir = "/data/project/himo/bots/dumps"
 except Exception:
     Dump_Dir = "/content/dumps"
 # ---
