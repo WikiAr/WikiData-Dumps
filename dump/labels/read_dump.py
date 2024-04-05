@@ -36,8 +36,8 @@ filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidataw
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
-if os.path.exists(r'I:\core\dumps'):
-    Dump_Dir = r'I:\core\dumps'
+if os.path.exists('I:/core/bots/dumps'):
+    Dump_Dir = 'I:/core/bots/dumps'
 # ---
 print(f'Dump_Dir:{Dump_Dir}')
 # ---

@@ -22,8 +22,8 @@ from dump.memory import print_memory
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
-if os.path.exists(r"I:\core\dumps"):
-    Dump_Dir = r"I:\core\dumps"
+if os.path.exists("I:/core/bots/dumps"):
+    Dump_Dir = "I:/core/bots/dumps"
 # ---
 print(f"Dump_Dir:{Dump_Dir}")
 Offset = {1: 0}
