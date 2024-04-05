@@ -15,7 +15,7 @@ import bz2
 import time
 from datetime import datetime
 from pathlib import Path
-
+from qwikidata.json_dump import WikidataJsonDump
 # ---
 time_start = time.perf_counter()
 print(f"time_start:{str(time_start)}")
@@ -90,20 +90,17 @@ def log_dump(tab):
     print("log_dump done")
 
 
-def do_line(line):
+def do_line(entity_dict):
     tab["done"] += 1
 
     # Avoid repeated calculations
     if "pp" in sys.argv:
-        print(line)
+        print(entity_dict)
 
-    # json1 = json.loads(line)
-    try:
-        json1 = json.loads(line)
-    except json.JSONDecodeError as e:
-        print(f"Error parsing JSON: {e}")
-        return
-    # ---
+    json1 = entity_dict
+
+    # entity_dict.keys = ['type', 'id', 'labels', 'descriptions', 'aliases', 'claims', 'sitelinks', 'pageid', 'ns', 'title', 'lastrevid', 'modified']
+
     claims = json1.get("claims", {})
 
     # Instead of repeatedly checking length, calculate it once
@@ -175,52 +172,50 @@ def check_file_date(file_date):
 
 def read_lines():
     print("def read_lines():")
-    cc = 0
-    with bz2.open(filename, "rt", encoding="utf-8") as f:
+    # ---
+    wjd = WikidataJsonDump(filename)
+    # ---
+    for cc, entity_dict in enumerate(wjd):
         # ---
-        for line in f:
-            line = line.rstrip("\n,")
-            if line.startswith("{") and line.endswith("}"):
-                tab["All_items"] += 1
-                cc += 1
-                # ---
-                do_line(line)
-                # ---
-                if cc % 100000 == 0:
-                    print(cc, time.perf_counter() - tt[1])
-                    tt[1] = time.perf_counter()
-                    # print memory usage
-                    print_memory()
-                # ---
-                if cc % 1000000 == 0:
-                    log_dump(tab)
+        if entity_dict["type"] == "item":
+            tab["All_items"] += 1
+            # ---
+            do_line(entity_dict)
+            # ---
+            if cc % 100000 == 0:
+                print(cc, time.perf_counter() - tt[1])
+                tt[1] = time.perf_counter()
+                # print memory usage
+                print_memory()
+            # ---
+            if cc % 1000000 == 0:
+                log_dump(tab)
 
 
 def read_lines_test():
     print("def read_lines_test():")
-    cc = 0
-    with bz2.open(filename, "rt", encoding="utf-8") as f:
+    # ---
+    wjd = WikidataJsonDump(filename)
+    # ---
+    for cc, entity_dict in enumerate(wjd):
         # ---
-        for line in f:
-            line = line.rstrip("\n,")
-            if line.startswith("{") and line.endswith("}"):
-                tab["All_items"] += 1
-                cc += 1
+        if entity_dict["type"] == "item":
+            tab["All_items"] += 1
+            # ---
+            do_line(entity_dict)
+            # ---
+            if cc % 100 == 0:
+                print(f"cc:{cc}")
+                print(f"done:{tab['done']}")
                 # ---
-                do_line(line)
-                # ---
-                if cc % 100 == 0:
-                    print(f"cc:{cc}")
-                    print(f"done:{tab['done']}")
-                    # ---
-                    print(cc, time.perf_counter() - tt[1])
-                    tt[1] = time.perf_counter()
-                    # print memory usage
-                    print_memory()
-                # ---
-                if cc > test_limit[1]:
-                    print("cc>test_limit[1]")
-                    break
+                print(cc, time.perf_counter() - tt[1])
+                tt[1] = time.perf_counter()
+                # print memory usage
+                print_memory()
+            # ---
+            if cc > test_limit[1]:
+                print("cc>test_limit[1]")
+                break
 
 
 def read_file():
