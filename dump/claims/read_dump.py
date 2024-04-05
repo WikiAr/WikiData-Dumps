@@ -1,7 +1,7 @@
 """
 from dump.claims.read_dump import read_file
 python3 core8/pwb.py dump/claims/read_dump test nodump
-python3 /data/project/himo/wd_core/dump/claims/read_dump.py test
+python3 /data/project/himo/bots/dump_core/dump/claims/read_dump.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
@@ -36,7 +36,7 @@ properties_path = va_dir / "properties.json"
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
 if os.path.exists(r"I:\core\dumps"):
     Dump_Dir = r"I:\core\dumps"
@@ -97,7 +97,13 @@ def do_line(line):
     if "pp" in sys.argv:
         print(line)
 
-    json1 = json.loads(line)
+    # json1 = json.loads(line)
+    try:
+        json1 = json.loads(line)
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}")
+        return
+    # ---
     claims = json1.get("claims", {})
 
     # Instead of repeatedly checking length, calculate it once

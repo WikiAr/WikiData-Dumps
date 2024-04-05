@@ -2,7 +2,7 @@
 """
 toolforge jobs run arw2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 $HOME/core8/pwb.py dump/arw/arw2"
 
-python3 wd_core/dump/arw/arw2.py test
+python3 bots/dump_core/dump/arw/arw2.py test
 python3 core8/pwb.py dump/arw/arw2
 python3 core8/pwb.py dump/arw/arw2 test ask
 python3 core8/pwb.py dump/arw/arw2 test ask p31
@@ -20,7 +20,7 @@ from dump.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
 from dump.memory import print_memory
 
 # ---
-Dump_Dir = "/data/project/himo/dumps"
+Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
 if os.path.exists(r"I:\core\dumps"):
     Dump_Dir = r"I:\core\dumps"
@@ -156,7 +156,12 @@ def read_data():
                 stats_tab["all_items"] += 1
                 # ---
                 # p31_no_ar_lab = []
-                json1 = json.loads(line)
+                # json1 = json.loads(line)
+                try:
+                    json1 = json.loads(line)
+                except json.JSONDecodeError as e:
+                    print(f"Error parsing JSON: {e}")
+                    continue
                 # ---
                 # q = json1['id']
                 sitelinks = json1.get("sitelinks", {})

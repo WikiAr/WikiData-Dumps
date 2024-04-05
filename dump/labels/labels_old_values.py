@@ -29,9 +29,15 @@ def GetPageText(title):
     # ---
     end_point = 'https://www.wikidata.org/w/api.php?'
     # ---
-    json1 = Session.post(end_point, data=params, timeout=10).json()
+    try:
+        response = Session.post(end_point, data=params, timeout=10)
+        response.raise_for_status()  # Raises HTTPError for bad responses
+        json1 = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching page text: {e}")
+        return ''
     # ---
-    if not json1 or json1 == {}:
+    if not json1:
         return ''
     # ---
     text = json1.get("parse", {}).get("wikitext", {}).get("*", "")
@@ -116,7 +122,11 @@ def make_old_values():
     # ---
     Old = from_wiki()
     # ---
-    json.dump(Old, codecs.open(file_old_data, 'w', 'utf-8'), indent=4)
+    try:
+        with codecs.open(file_old_data, 'w', 'utf-8') as f:
+            json.dump(Old, f, indent=4)
+    except IOError as e:
+        print(f"Error writing to {file_old_data}: {e}")
     # ---
     return Old
 
