@@ -1,5 +1,5 @@
 """
-from claims.most_props import get_data()
+from dump.claims.most_props import get_data()
 python3 core8/pwb.py dump/claims/most_props
 """
 import re
