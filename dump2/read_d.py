@@ -17,20 +17,16 @@ from qwikidata.json_dump import WikidataJsonDump
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 # ---
 done_lines = "/data/project/himo/bots/dump_core/dump2/done_lines.txt"
-items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
-
-if "test" in sys.argv:
-    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
 
 with open(done_lines, "w", encoding="utf-8") as f:
     f.write("")
 
 def get_most_props():
     # ---
-    properties_path = Path(__file__).parent.parent / "dump/properties.json"
+    properties_path = Path(__file__).parent.parent / "dump/claims/properties.json"
     with open(properties_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     # ---
@@ -43,42 +39,29 @@ def print_memory():
     usage = psutil.Process(os.getpid()).memory_info().rss
     print(_yellow_ % f"memory usage: psutil {usage / 1024 / 1024} MB")
 
-def dump_lines(lines):
+def dump_lines(lines, items_file):
     if not lines:
         return
     text = "\n".join([json.dumps(line) for line in lines])
-    
     with open(items_file, "a", encoding="utf-8") as f:
         f.write(text + "\n")
 
 def fix_property(pv):
-    pv_example = [
-        {"mainsnak": {"snaktype": "value", "property": "P1344", "datavalue": {"value": {"entity-type": "item", "numeric-id": 1088364, "id": "Q1088364"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q31$7C0DCA8A-CFAE-4ED9-B5FD-69BB380CE331", "rank": "normal"},
-        {"mainsnak": {"snaktype": "value", "property": "P1344", "datavalue": {"value": {"entity-type": "item", "numeric-id": 1088364, "id": "Q1088364"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q31$7C0DCA8A-CFAE-4ED9-B5FD-69BB380CE331", "rank": "normal"},
-    ]
-
-    qids = []
-    # qids is list of mainsnak>datavalue>value>id
-
-    qids = [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv]
-
-    return qids
+    return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv]
 
 
 def do_line(json1):
     # json1.keys = ['type', 'id', 'labels', 'descriptions', 'aliases', 'claims', 'sitelinks', 'pageid', 'ns', 'title', 'lastrevid', 'modified']
 
     claims = json1.get("claims", {})
-
-    qid_text = {}
-
-    qid_text["qid"]          = json1["title"]
-    qid_text["labels"]       = list(json1.get("labels", {}).keys())
-    qid_text["descriptions"] = list(json1.get("descriptions", {}).keys())
-    qid_text["aliases"]      = list(json1.get("aliases", {}).keys())
-    qid_text["sitelinks"]    = list(json1.get("sitelinks", {}).keys())
-
-    # qid_text["claims_keys"] = claims.keys()
+    qid_text = {
+        "qid": json1["title"],
+        "labels": list(json1.get("labels", {}).keys()),
+        "descriptions": list(json1.get("descriptions", {}).keys()),
+        "aliases": list(json1.get("aliases", {}).keys()),
+        "sitelinks": list(json1.get("sitelinks", {}).keys()),
+        #"claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props}
+    }
 
     qid_text["claims"] = {
 	    p: fix_property(pv) 
@@ -89,12 +72,12 @@ def do_line(json1):
 
     return qid_text
 
-def read_lines(do_test, tst_limit):
+def read_lines(do_test, tst_limit, bz2_file, items_file):
     print("def read_lines():")
     # ---
     tt = time.time()
     # ---
-    wjd = WikidataJsonDump(filename)
+    wjd = WikidataJsonDump(bz2_file)
     # ---
     lines = []
     # ---
@@ -108,7 +91,7 @@ def read_lines(do_test, tst_limit):
             lines.append(line)
             # ---
             if cc % 10000 == 0:
-                dump_lines(lines)
+                dump_lines(lines, items_file)
                 lines = []
                 print(f"dump_lines:{cc}, len lines:{len(lines)}")
             # ---
@@ -125,25 +108,29 @@ def read_lines(do_test, tst_limit):
                 with open(done_lines, "a", encoding="utf-8") as f:
                     f.write(f"done: {cc:,}\n")
     # ---
-    dump_lines(lines)
-    
-    
+    dump_lines(lines, items_file)
+
 def main():
-	time_start = time.time()
+    time_start = time.time()
 	# ---
-	do_test = "test" in sys.argv
-    # ---
+    do_test = "test" in sys.argv
+	# ---
+    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
+    
+    if do_test:
+        items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
+	# ---    
     with open(items_file, "w", encoding="utf-8") as f:
         f.write("")
     # ---
-    test_limit = {1: 50000}
+    test_limit = 50000# if "-limit" in sys.argv else None
     # ---
     for arg in sys.argv:
         arg, _, value = arg.partition(":")
         if arg == "-limit":
-            test_limit[1] = int(value)
+            test_limit = int(value)
     # ---
-	read_lines(do_test, test_limit[1])
+    read_lines(do_test, test_limit, bz2_file, items_file)
 	# ---
     end = time.time()
     delta = int(end - time_start)
