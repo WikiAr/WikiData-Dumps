@@ -2,6 +2,6 @@
 labelssql/**
 *.txt
 *.pyc
-/claims/c
-claims/read_dump_x.py
-/claims/preprocessing
+dump/claims/c
+dump/claims/read_dump_x.py
+dump/claims/preprocessing
