@@ -30,7 +30,7 @@ from dump.memory import print_memory
 
 va_dir = Path(__file__).parent
 # ---
-properties_path = va_dir / "properties.json"
+properties_path = va_dir.parent / "properties.json"
 # ---
 # from dump.claims.fix_dump import fix_props
 # ---
@@ -38,8 +38,8 @@ filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidataw
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
-if os.path.exists(r"I:\core\dumps"):
-    Dump_Dir = r"I:\core\dumps"
+if os.path.exists("I:/core/bots/dumps"):
+    Dump_Dir = "I:/core/bots/dumps"
 # ---
 print(f"Dump_Dir:{Dump_Dir}")
 # ---

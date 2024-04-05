@@ -12,8 +12,8 @@ try:
 except Exception:
     Dump_Dir = "/content/dumps"
 # ---
-if os.path.exists(r"I:\core\dumps"):
-    Dump_Dir = r"I:\core\dumps"
+if os.path.exists("I:/core/bots/dumps"):
+    Dump_Dir = "I:/core/bots/dumps"
 # ---
 print(f"Dump_Dir:{Dump_Dir}")
 # ---
