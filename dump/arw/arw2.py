@@ -165,7 +165,7 @@ def read_data():
                 # ---
                 # q = json1['id']
                 sitelinks = json1.get("sitelinks", {})
-                if not sitelinks or sitelinks == {}:
+                if not sitelinks:
                     del json1
                     continue
                 # ---
