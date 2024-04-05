@@ -32,7 +32,9 @@ if 'test' in sys.argv:
 # ---
 for file, title in file_to_title.items():
     if os.path.exists(f"{Dump_Dir}/texts/{file}"):
-        text = open(f"{Dump_Dir}/texts/{file}", encoding="utf-8").read()
+        # ---
+        with open(f"{Dump_Dir}/texts/{file}", encoding="utf-8") as f:
+            text = f.read()
         # ---
         if text.strip() == "":
             print(f'file {file} <<lightred>> empty.')
