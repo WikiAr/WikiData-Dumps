@@ -9,7 +9,7 @@ import sys
 import os
 
 # ---
-from wd_api import himoAPI
+from newapi.page import MainPage
 
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
@@ -48,4 +48,8 @@ for file, title in file_to_title.items():
             print(f'file {file} <<lightred>> too small.')
             continue
         # ---
-        himoAPI.page_putWithAsk("", text, "Bot - Updating stats", title, False)
+        page = MainPage(title, "www", family="wikidata")
+        textold = page.get_text()
+        # ---
+        page.save(newtext=text, summary="Bot - Updating stats")
+
