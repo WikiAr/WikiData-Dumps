@@ -42,7 +42,7 @@ def GetPageText(title):
     # ---
     text = json1.get("parse", {}).get("wikitext", {}).get("*", "")
     # ---
-    if text == "":
+    if not text:
         print(f'no text for {title}')
     # ---
     return text

@@ -54,7 +54,7 @@ def make_section(P, table, max_n=51):
     # ---
     texts += "\n"
     print(texts)
-    if table["qids"] == {}:
+    if not table["qids"]:
         print(f'{P} table["qids"] == empty.')
         return ""
     # ---
