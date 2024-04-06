@@ -91,7 +91,7 @@ stats_tab = {
 
 
 def save_to_wp(text):
-    if text == "":
+    if not text:
         print("text is empty")
         return
     # ---
@@ -196,13 +196,13 @@ def read_data():
                 # ---
                 claims = json1.get("claims", {})
                 # ---
-                if claims == {}:
+                if not claims:
                     # صفحات دون أية خواص
                     stats_tab["no_claims"] += 1
                 # ---
                 P31 = claims.get("P31", {})
                 # ---
-                if P31 == {}:
+                if not P31:
                     # صفحة بدون خاصية P31
                     stats_tab["no_p31"] += 1
                     # ---
