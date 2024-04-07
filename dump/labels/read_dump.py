@@ -48,7 +48,7 @@ for arg in sys.argv:
     if arg == "-limit":
         test_limit[1] = int(value)
 # ---
-cc = {1:0}
+cc = {1: 0}
 tt = {1: time.time()}
 # ---
 tab = {
@@ -104,11 +104,13 @@ def do_line(line):
         # ---
         del json1
 
+
 def get_file_info(file_path):
     # Get the time of last modification
     last_modified_time = os.path.getmtime(file_path)
 
     return datetime.fromtimestamp(last_modified_time).strftime('%Y-%m-%d')
+
 
 def check_file_date(file_date):
     with codecs.open(f"{va_dir}/file_date.txt", "r", encoding='utf-8') as outfile:
@@ -119,6 +121,7 @@ def check_file_date(file_date):
     if old_date == file_date and 'test' not in sys.argv and 'test1' not in sys.argv:
         print(f"file_date: {file_date} <<lightred>> unchanged")
         sys.exit(0)
+
 
 def read_lines():
     print("def read_lines():")
@@ -162,6 +165,7 @@ def read_lines_test():
             if cc[1] > test_limit[1]:
                 print('cc[1]>test_limit[1]')
                 break
+
 
 def read_file():
     # ---

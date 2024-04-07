@@ -26,8 +26,8 @@ file_to_title = {
 # ---
 if 'test' in sys.argv:
     file_to_title = {
-        'labels_test.txt' : 'User:Mr. Ibrahem/Language statistics for items/sandbox',
-        'template_test.txt' : 'Template:Tr langcodes counts/sandbox'
+        'labels_test.txt': 'User:Mr. Ibrahem/Language statistics for items/sandbox',
+        'template_test.txt': 'Template:Tr langcodes counts/sandbox'
     }
 # ---
 for file, title in file_to_title.items():

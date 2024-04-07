@@ -24,6 +24,7 @@ done_lines = "/data/project/himo/bots/dump_core/dump2/done_lines.txt"
 with open(done_lines, "w", encoding="utf-8") as f:
     f.write("")
 
+
 def get_most_props():
     # ---
     properties_path = Path(__file__).parent.parent / "dump/properties.json"
@@ -31,13 +32,16 @@ def get_most_props():
         data = json.load(f)
     # ---
     return data
-    
+
+
 most_props = get_most_props()
+
 
 def print_memory():
     _yellow_ = "\033[93m%s\033[00m"
     usage = psutil.Process(os.getpid()).memory_info().rss
     print(_yellow_ % f"memory usage: psutil {usage / 1024 / 1024} MB")
+
 
 def dump_lines(lines, items_file):
     if not lines:
@@ -45,6 +49,7 @@ def dump_lines(lines, items_file):
     text = "\n".join([json.dumps(line) for line in lines])
     with open(items_file, "a", encoding="utf-8") as f:
         f.write(text + "\n")
+
 
 def fix_property(pv):
     return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv]
@@ -60,17 +65,18 @@ def do_line(json1):
         "descriptions": list(json1.get("descriptions", {}).keys()),
         "aliases": list(json1.get("aliases", {}).keys()),
         "sitelinks": list(json1.get("sitelinks", {}).keys()),
-        #"claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props}
+        # "claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props}
     }
 
     qid_text["claims"] = {
-	    p: fix_property(pv) 
-	    for p, pv in claims.items() 
-	    if p in most_props 
-	    and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"
+        p: fix_property(pv)
+        for p, pv in claims.items()
+        if p in most_props
+        and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"
     }
 
     return qid_text
+
 
 def read_lines(do_test, tst_limit, bz2_file, items_file):
     print("def read_lines():")
@@ -110,20 +116,21 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
     # ---
     dump_lines(lines, items_file)
 
+
 def main():
     time_start = time.time()
-	# ---
+    # ---
     do_test = "test" in sys.argv
-	# ---
+    # ---
     items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
-    
+
     if do_test:
         items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
-	# ---    
+        # ---
     with open(items_file, "w", encoding="utf-8") as f:
         f.write("")
     # ---
-    test_limit = 50000# if "-limit" in sys.argv else None
+    test_limit = 50000  # if "-limit" in sys.argv else None
     # ---
     for arg in sys.argv:
         arg, _, value = arg.partition(":")
@@ -131,10 +138,11 @@ def main():
             test_limit = int(value)
     # ---
     read_lines(do_test, test_limit, bz2_file, items_file)
-	# ---
+    # ---
     end = time.time()
     delta = int(end - time_start)
     print(f"read_file: done in {delta}")
+
 
 if __name__ == "__main__":
     main()

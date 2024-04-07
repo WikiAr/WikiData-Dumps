@@ -52,4 +52,3 @@ for file, title in file_to_title.items():
         textold = page.get_text()
         # ---
         page.save(newtext=text, summary="Bot - Updating stats")
-
