@@ -71,14 +71,17 @@ tab = {
     "langs": {},
 }
 
+
 def get_most_props():
     # ---
     with open(properties_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     # ---
     return data
-    
+
+
 most_props = get_most_props()
+
 
 def log_dump(tab):
     if "nodump" in sys.argv:
@@ -122,7 +125,7 @@ def do_line(entity_dict):
 
         if p not in most_props:
             continue
-            
+
         if Type == "wikibase-item":
             properties_p = tab["properties"].get(p)
             if not properties_p:
@@ -220,11 +223,11 @@ def read_lines_test():
 
 def read_file():
     # ---
-    for p,_ in most_props.items():
+    for p, _ in most_props.items():
         tab["properties"][p] = {
-                "qids": {"others": 0},
-                "lenth_of_usage": 0,
-                "len_prop_claims": 0,
+            "qids": {"others": 0},
+            "lenth_of_usage": 0,
+            "len_prop_claims": 0,
         }
     # ---
     print(f"read_file: read file: {filename}")

@@ -41,6 +41,7 @@ def print_memory():
     usage = psutil.Process(os.getpid()).memory_info().rss
     print(_yellow_ % f"memory usage: psutil {usage / 1024 / 1024} MB")
 
+
 def log_dump(tab):
     if "nodump" in sys.argv:
         return
@@ -49,6 +50,7 @@ def log_dump(tab):
         json.dump(tab, outfile)
     # ---
     print("log_dump done")
+
 
 def do_line(json1):
     tab["All_items"] += 1
@@ -70,7 +72,7 @@ def do_line(json1):
     # json1 = {"qid": "Q31", "labels": ["el", "ay"], "descriptions": ["cy", "sk", "mk", "vls"], "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"], "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]}}
 
     for p, p_qids in claims.items():
-        
+
         tab["total_claims"] += len(p_qids)
 
         p_tab = tab["properties"].get(p)
@@ -88,18 +90,20 @@ def do_line(json1):
         for qid in p_qids:
             if qid:
                 p_tab["qids"][qid] = p_tab["qids"].get(qid, 0) + 1
-        
+
         tab["properties"][p] = p_tab
+
 
 def get_lines():
 
     with open(items_file, "r", encoding="utf-8") as f:
         lines = f.readlines()
-    
+
     for line in lines:
         if line.strip():
             yield json.loads(line.strip())
-    
+
+
 def read_lines():
     print("def read_lines():")
     # ---
@@ -117,6 +121,7 @@ def read_lines():
         # ---
         if cc % 1000000 == 0:
             log_dump(tab)
+
 
 def read_file():
     # ---
@@ -138,6 +143,7 @@ def read_file():
     tab["delta"] = f"{delta:,}"
     # ---
     log_dump(tab)
+
 
 if __name__ == "__main__":
     read_file()

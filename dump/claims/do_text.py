@@ -164,7 +164,7 @@ def make_text(tab, ty=""):
         "* Items with 1 claim only: {items_1_claims:,}\n"
         "* Total number of claims: {all_claims_2020:,}\n"
         "* Number of properties of the report: {len_all_props:,}\n"
-        ).format_map(tab)
+    ).format_map(tab)
     # ---
     text += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
     chart = make_numbers_section(p31list)
