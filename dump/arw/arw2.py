@@ -140,7 +140,7 @@ def read_data():
                 if c < Offset[1]:
                     if c % 1000 == 0:
                         dii = time.time() - t1
-                        print("Offset c:%d, time:%d" % (c, dii))
+                        print(f"Offset c:{int(c)}, time:{int(dii)}")
                     continue
                 # ---
                 if (c % 1000 == 0 and c < 100000) or c % 100000 == 0:
@@ -258,7 +258,7 @@ def mainar():
     final = time.time()
     # ---
     stats_tab["delta"] = int(final - start)
-    text = "* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n" + "* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
+    text = f"* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n* جميع عناصر ويكي بيانات المفحوصة: {all_items:,} \n"
     text += "* عناصر ويكي بيانات بها وصلة عربية: {all_ar_sitelinks:,} \n"
     text += "* عناصر بوصلات لغات بدون وصلة عربية: {sitelinks_no_ar:,} \n"
     text += "<!-- bots work done in {delta} secounds --> \n"
@@ -268,7 +268,7 @@ def mainar():
     # ---
     NS_table = ns_stats(priffixes)
     # ---
-    P31_secs = "== استخدام خاصية P31 ==\n" + "* {no_claims:,} صفحة دون أية خواص.\n"
+    P31_secs = f"== استخدام خاصية P31 ==\n* {no_claims:,} صفحة دون أية خواص.\n"
     P31_secs += "* {no_p31:,} صفحة بدون خاصية P31.\n"
     P31_secs += "* {other_claims_no_p31:,} صفحة بها خواص أخرى دون خاصية P31.\n"
     # ---

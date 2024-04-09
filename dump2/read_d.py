@@ -48,7 +48,7 @@ def dump_lines(lines, items_file):
         return
     text = "\n".join([json.dumps(line) for line in lines])
     with open(items_file, "a", encoding="utf-8") as f:
-        f.write(text + "\n")
+        f.write(f"{text}\n")
 
 
 def fix_property(pv):
