@@ -139,7 +139,7 @@ def mainar(n_tab):
     text += f"* Total items:{n_tab['All_items']:,}. (+{diff})\n"
     text += f"<!-- bots work done in {delta} secounds --> \n"
     text += "--~~~~~\n"
-    text = text + "\n" + table
+    text = f"{text}\n{table}"
     text = text.replace("0 (0000)", "0")
     text = text.replace("0 (0)", "0")
 
@@ -158,7 +158,7 @@ def make_temp_text(ttab):
     langs_tab = dict(sorted(langs_tab.items()))
     # ---
     for x, tab in langs_tab.items():
-        tmp_text += f"\n|{x}=" + str(tab['labels'])
+        tmp_text += f"\n|{x}={str(tab['labels'])}"
     # ---
     tmp_text += "\n}}"
     # ---
