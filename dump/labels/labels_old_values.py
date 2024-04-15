@@ -115,7 +115,7 @@ def make_old_values():
     # ---
     if len(_old_data) > 5 and 'old' in sys.argv:
         print('data in the file..')
-        json.dump(_old_data, codecs.open(file_old_data, 'w', 'utf-8'), indent=4)
+        json.dump(_old_data, codecs.open(file_old_data, 'w', 'utf-8'), indent=2)
         return _old_data
     # ---
     print('get data from page')
@@ -124,7 +124,7 @@ def make_old_values():
     # ---
     try:
         with codecs.open(file_old_data, 'w', 'utf-8') as f:
-            json.dump(Old, f, indent=4)
+            json.dump(Old, f, indent=2)
     except IOError as e:
         print(f"Error writing to {file_old_data}: {e}")
     # ---
