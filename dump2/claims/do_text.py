@@ -6,7 +6,7 @@ python3 core8/pwb.py dump2/claims/do_text
 #
 #
 import sys
-import os
+# import os
 import time
 import json
 # ---

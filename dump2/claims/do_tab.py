@@ -8,16 +8,19 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 """
 import os
 import psutil
-import ujson as json
+import ujson
 import sys
 import time
+
 # ---
-items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
-jsonname = "/data/project/himo/bots/dump_core/dump2/jsons/claims.json"
+jsons_dir = "/data/project/himo/bots/dump_core/dump2/jsons/"
+# ---
+items_file = f"{jsons_dir}/items.json"
+jsonname = f"{jsons_dir}/claims.json"
 # ---
 if "test" in sys.argv:
-    items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
-    jsonname = "/data/project/himo/bots/dump_core/dump2/jsons/claims_test.json"
+    items_file = f"{jsons_dir}/items_test.json"
+    jsonname = f"{jsons_dir}/claims_test.json"
 # ---
 tt = {1: time.time()}
 # ---
@@ -47,7 +50,7 @@ def log_dump(tab):
         return
     # ---
     with open(jsonname, "w", encoding="utf-8") as outfile:
-        json.dump(tab, outfile)
+        ujson.dump(tab, outfile)
     # ---
     print("log_dump done")
 
@@ -66,13 +69,21 @@ def do_line(json1):
     elif claims_length == 1:
         tab["items_1_claims"] += 1
 
+    _claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+
     if "P31" not in claims:
         tab["items_no_P31"] += 1
 
-    # json1 = {"qid": "Q31", "labels": ["el", "ay"], "descriptions": ["cy", "sk", "mk", "vls"], "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"], "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]}}
+    _json1 = {
+        "qid": "Q31",
+        "labels": ["el", "ay"],
+        "aliases": ["cy", "sk", "mk", "vls"],
+        "descriptions": ["cy", "sk", "mk", "vls"],
+        "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"],
+        "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]},
+    }
 
     for p, p_qids in claims.items():
-
         tab["total_claims"] += len(p_qids)
 
         p_tab = tab["properties"].get(p)
@@ -95,13 +106,13 @@ def do_line(json1):
 
 
 def get_lines():
-
     with open(items_file, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
     for line in lines:
         if line.strip():
-            yield json.loads(line.strip())
+            # yield json.loads(line.strip())
+            yield ujson.loads(line.strip())
 
 
 def read_lines():

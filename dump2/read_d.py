@@ -123,10 +123,10 @@ def main():
     do_test = "test" in sys.argv
     # ---
     items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items.json"
-
+    # ---
     if do_test:
         items_file = "/data/project/himo/bots/dump_core/dump2/jsons/items_test.json"
-        # ---
+    # ---
     with open(items_file, "w", encoding="utf-8") as f:
         f.write("")
     # ---

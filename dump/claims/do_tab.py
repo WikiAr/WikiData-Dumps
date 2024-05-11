@@ -9,7 +9,7 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 import os
 
 # import json
-import ujson as json
+import ujson
 import sys
 import bz2
 import time
@@ -75,7 +75,7 @@ tab = {
 def get_most_props():
     # ---
     with open(properties_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+        data = ujson.load(f)
     # ---
     return data
 
@@ -88,7 +88,7 @@ def log_dump(tab):
         return
     # ---
     with open(jsonname, "w", encoding="utf-8") as outfile:
-        json.dump(tab, outfile)
+        ujson.dump(tab, outfile)
     # ---
     print("log_dump done")
 
@@ -114,14 +114,16 @@ def do_line(entity_dict):
     elif claims_length == 1:
         tab["items_1_claims"] += 1
 
-    claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+    _claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
 
     if "P31" not in claims:
         tab["items_no_P31"] += 1
 
-    for p in claims.keys():
-        Type = claims[p][0].get("mainsnak", {}).get("datatype", "")
-        tab["all_claims_2020"] += len(claims[p])
+    # json1 = {"qid": "Q31", "labels": ["el", "ay"], "descriptions": ["cy", "sk", "mk", "vls"], "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"], "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]}}
+
+    for p, p_qids in claims.items():
+        Type = p_qids[0].get("mainsnak", {}).get("datatype", "")
+        tab["all_claims_2020"] += len(p_qids)
 
         if p not in most_props:
             continue
@@ -137,9 +139,9 @@ def do_line(entity_dict):
                 tab["properties"][p] = properties_p
 
             properties_p["lenth_of_usage"] += 1
-            properties_p["len_prop_claims"] += len(claims[p])
+            properties_p["len_prop_claims"] += len(p_qids)
 
-            for claim in claims[p]:
+            for claim in p_qids:
                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
                 idd = datavalue.get("value", {}).get("id")
 
