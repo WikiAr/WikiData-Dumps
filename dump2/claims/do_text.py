@@ -6,19 +6,24 @@ python3 core8/pwb.py dump2/claims/do_text
 #
 #
 import sys
+# import os
 import time
 import json
 # ---
 time_start = time.time()
+print(f"time_start:{str(time_start)}")
 # ---
-texts_dir = "/data/project/himo/bots/dump_core/dump2/texts/"
+du_dir = "dump2"
 # ---
-filename = "/data/project/himo/bots/dump_core/dump2/jsons/claims.json"
+texts_dir = f"/data/project/himo/bots/dump_core/{du_dir}/texts/"
+# ---
+filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims.json"
+# ---
 claims_new = texts_dir + "claims_new.txt"
 claims_p31 = texts_dir + "claims_p31.txt"
 # ---
 if "test" in sys.argv:
-    filename = "/data/project/himo/bots/dump_core/dump2/jsons/claims_test.json"
+    filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims_test.json"
     claims_new = texts_dir + "claims_new_test.txt"
     claims_p31 = texts_dir + "claims_p31_test.txt"
 # ---

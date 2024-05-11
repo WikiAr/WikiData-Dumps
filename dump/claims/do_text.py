@@ -1,5 +1,4 @@
 """
-python3 core8/pwb.py dump/claims/do_text claims_fixed
 python3 core8/pwb.py dump/claims/do_text
 """
 #
@@ -10,17 +9,23 @@ import sys
 import os
 import time
 import json
-
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-Dump_Dir = "/data/project/himo/bots/dumps"
+du_dir = "dump"
 # ---
-if os.path.exists("I:/core/bots/dumps"):
-    Dump_Dir = "I:/core/bots/dumps"
+texts_dir = f"/data/project/himo/bots/dump_core/{du_dir}/texts/"
 # ---
-print(f"Dump_Dir:{Dump_Dir}")
+filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims.json"
+# ---
+claims_new = texts_dir + "claims_new.txt"
+claims_p31 = texts_dir + "claims_p31.txt"
+# ---
+if "test" in sys.argv:
+    filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims_test.json"
+    claims_new = texts_dir + "claims_new_test.txt"
+    claims_p31 = texts_dir + "claims_p31_test.txt"
 # ---
 sections_done = {1: 0, "max": 100}
 sections_false = {1: 0}
@@ -162,7 +167,7 @@ def make_text(tab, ty=""):
         "* Items without P31: {items_no_P31:,} \n"
         "* Items without claims: {items_0_claims:,}\n"
         "* Items with 1 claim only: {items_1_claims:,}\n"
-        "* Total number of claims: {all_claims_2020:,}\n"
+        "* Total number of claims: {total_claims:,}\n"
         "* Number of properties of the report: {len_all_props:,}\n"
     ).format_map(tab)
     # ---
@@ -194,18 +199,6 @@ def make_text(tab, ty=""):
 
 
 if __name__ == "__main__":
-    faf = "claims"
-    # ---
-    if "claims_fixed" in sys.argv:
-        if os.path.exists(f"{Dump_Dir}/claims_fixed.json"):
-            faf = "claims_fixed"
-        else:
-            print("claims_fixed.json not found")
-    # ---
-    filename = f"{Dump_Dir}/{faf}.json"
-    # ---
-    if "test" in sys.argv:
-        filename = f"{Dump_Dir}/{faf}_test.json"
     # ---
     with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -218,7 +211,7 @@ if __name__ == "__main__":
         "items_1_claims": 0,
         "items_no_P31": 0,
         "All_items": 0,
-        "all_claims_2020": 0,
+        "total_claims": 0,
         "properties": {},
         "langs": {},
     }
@@ -231,13 +224,6 @@ if __name__ == "__main__":
         data["len_all_props"] = len(data["properties"])
     # ---
     text, text_p31 = make_text(data, ty="")
-    # ---
-    claims_new = f"{Dump_Dir}/texts/claims_new.txt"
-    claims_p31 = f"{Dump_Dir}/texts/claims_p31.txt"
-    # ---
-    if "test" in sys.argv:
-        claims_new = f"{Dump_Dir}/texts/claims_new_test.txt"
-        claims_p31 = f"{Dump_Dir}/texts/claims_p31_test.txt"
     # ---
     with open(claims_new, "w", encoding="utf-8") as outfile:
         outfile.write(text)
