@@ -1,7 +1,7 @@
 """
-from dump.claims.read_dump import read_file
-python3 core8/pwb.py dump/claims/read_dump test nodump
-python3 /data/project/himo/bots/dump_core/dump/claims/read_dump.py test
+from dump.claims.do_tab import read_file
+python3 core8/pwb.py dump/claims/do_tab test nodump
+python3 /data/project/himo/bots/dump_core/dump/claims/do_tab.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 

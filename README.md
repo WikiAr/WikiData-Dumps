@@ -13,7 +13,6 @@ The claims package includes scripts for processing claims data from WikiData dum
 ### Key Scripts
 
 - `do_text.py`: Processes the claims data and generates a textual report.
-- `fix_dump.py`: Fixes and cleans the claims data from the dump.
 - `read_dump.py`: Reads and parses the claims data from the WikiData dump.
 - `save.py`: Saves the processed claims data to a specified location.
 
