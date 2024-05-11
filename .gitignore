@@ -9,3 +9,5 @@ dump/claims/preprocessing
 **/jsons/**
 **/texts/**
 **/texts_test/**
+dump2/properties.json
+dump2/dump1.sh
