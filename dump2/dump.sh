@@ -1,11 +1,10 @@
 #!/bin/bash
-cd $HOME
-
-# tfj run dumps --mem 2Gi --image tf-python39 --command "/data/project/himo/bots/dump_core/dump2/dump.sh"
 
 $HOME/local/bin/python3 core8/pwb.py dump2/most_props
 
-$HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump2/read_d.py
+
+$HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump2/read_d.py 
+#test -limit:5000000
 
 # claims
 
@@ -24,3 +23,4 @@ $HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump2/labels/do_text.p
 # save
 
 $HOME/local/bin/python3 core8/pwb.py dump2/save
+
