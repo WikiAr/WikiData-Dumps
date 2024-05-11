@@ -15,18 +15,18 @@ try:
 except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---
-du_dir = "dump2"
+du_dir = "/data/project/himo/bots/dump_core/dump2"
 # ---
 texts_dir = f"/data/project/himo/bots/dump_core/{du_dir}/texts/"
 # ---
-filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/labels.json"
-labels_file = f'{texts_dir}/labels.txt'
-template_file = f'{texts_dir}/template.txt'
+filename = f"{du_dir}/jsons/labels.json"
 # ---
-if 'test' in sys.argv:
-    filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/labels_test.json"
-    labels_file = f'{texts_dir}/labels_test.txt'
-    template_file = f'{texts_dir}/template_test.txt'
+if "test" in sys.argv:
+    filename = f"{du_dir}/jsons/labels_test.json"
+    texts_dir = f"{du_dir}/texts_test/"
+# ---
+labels_file = f"{texts_dir}/labels.txt"
+template_file = f"{texts_dir}/template.txt"
 # ---
 main_table_head = """
 == Number of labels, descriptions and aliases for items per language ==
@@ -54,12 +54,12 @@ def mainar(n_tab):
 
     Old = make_old_values()
 
-    dumpdate = n_tab.get('file_date') or 'latest'
-    langs_table = n_tab['langs']
+    dumpdate = n_tab.get("file_date") or "latest"
+    langs_table = n_tab["langs"]
 
     langs = sorted(langs_table.keys())
 
-    last_total = Old.get('last_total', 0)
+    last_total = Old.get("last_total", 0)
 
     rows = []
 
@@ -70,14 +70,14 @@ def mainar(n_tab):
         new_descs = 0
         new_aliases = 0
 
-        _labels_ = langs_table[code]['labels']
-        _descriptions_ = langs_table[code]['descriptions']
-        _aliases_ = langs_table[code]['aliases']
+        _labels_ = langs_table[code]["labels"]
+        _descriptions_ = langs_table[code]["descriptions"]
+        _aliases_ = langs_table[code]["aliases"]
 
         if code in Old:
-            new_labels = _labels_ - Old[code]['labels']
-            new_descs = _descriptions_ - Old[code]['descriptions']
-            new_aliases = _aliases_ - Old[code]['aliases']
+            new_labels = _labels_ - Old[code]["labels"]
+            new_descs = _descriptions_ - Old[code]["descriptions"]
+            new_aliases = _aliases_ - Old[code]["aliases"]
         else:
             print(f'code "{code}" not in Old')
         if new_descs != 0:
@@ -86,35 +86,35 @@ def mainar(n_tab):
         langs_tag_line = "{{#language:%s|en}}" % code
         langs_tag_line_2 = "{{#language:%s}}" % code
         # ---
-        line = f'''| {code} || {langs_tag_line} || {langs_tag_line_2}\n'''
+        line = f"""| {code} || {langs_tag_line} || {langs_tag_line_2}\n"""
         # ---
 
-        plus = '' if new_labels < 0 else '+'
+        plus = "" if new_labels < 0 else "+"
         color_l = "#c79d9d" if new_labels < 0 else "#9dc79d" if new_labels > 0 else ""
-        color_tag_l = '' if not color_l else f'style="background-color:{color_l}"|'
+        color_tag_l = "" if not color_l else f'style="background-color:{color_l}"|'
         # ---
-        labels_co = make_cou(_labels_, n_tab['All_items'])
-        line += f'''| {_labels_:,} || {labels_co} || {color_tag_l} {plus}{new_labels:,} '''
+        labels_co = make_cou(_labels_, n_tab["All_items"])
+        line += f"""| {_labels_:,} || {labels_co} || {color_tag_l} {plus}{new_labels:,} """
         # ---
 
-        d_plus = '' if new_descs < 0 else '+'
+        d_plus = "" if new_descs < 0 else "+"
         color = "#c79d9d" if new_descs < 0 else "#9dc79d" if new_descs > 0 else ""
-        color_tag = '' if not color else f'style="background-color:{color}"|'
+        color_tag = "" if not color else f'style="background-color:{color}"|'
         # ---
-        descs_co = make_cou(_descriptions_, n_tab['All_items'])
-        line += f'''|| {_descriptions_:,} || {descs_co} || {color_tag} {d_plus}{new_descs:,} '''
+        descs_co = make_cou(_descriptions_, n_tab["All_items"])
+        line += f"""|| {_descriptions_:,} || {descs_co} || {color_tag} {d_plus}{new_descs:,} """
         # ---
 
-        a_plus = '' if new_aliases < 0 else '+'
+        a_plus = "" if new_aliases < 0 else "+"
         color_a = "#c79d9d" if new_aliases < 0 else "#9dc79d" if new_aliases > 0 else ""
-        color_tag_a = '' if not color_a else f'style="background-color:{color_a}"|'
+        color_tag_a = "" if not color_a else f'style="background-color:{color_a}"|'
         # ---
-        line += f'''|| {_aliases_:,} || {color_tag_a} {a_plus}{new_aliases:,}'''
+        line += f"""|| {_aliases_:,} || {color_tag_a} {a_plus}{new_aliases:,}"""
         # ---
 
         rows.append(line)
     # ---
-    rows = '\n|-\n'.join(rows)
+    rows = "\n|-\n".join(rows)
     # ---
     table = main_table_head
     # ---
@@ -122,16 +122,16 @@ def mainar(n_tab):
     # ---
     table += "\n|}\n[[Category:Wikidata statistics|Language statistics]]"
     # ---
-    if test_new_descs == 0 and 'test1' not in sys.argv:
-        print('nothing new.. ')
-        return ''
+    if test_new_descs == 0 and "test1" not in sys.argv:
+        print("nothing new.. ")
+        return ""
     # ---
     final = time.time()
-    delta = n_tab.get('delta') or int(final - start)
+    delta = n_tab.get("delta") or int(final - start)
     # ---
-    diff = n_tab['All_items'] - last_total
+    diff = n_tab["All_items"] - last_total
     # ---
-    print(f'Total items last update: {last_total:,}')
+    print(f"Total items last update: {last_total:,}")
     print(f"Total items new: {n_tab['All_items']:,}")
     print(f"diff: {diff:,}")
     # ---
@@ -151,7 +151,7 @@ def mainar(n_tab):
 
 
 def make_temp_text(ttab):
-    langs_tab = ttab.get('langs', {})
+    langs_tab = ttab.get("langs", {})
     # ---
     tmp_text = "{{#switch:{{{c}}}"
     # ---
@@ -175,21 +175,21 @@ def main_labels(tabb):
     if "nosave" in sys.argv:
         return
     # ---
-    text = text.replace('[[Category:Wikidata statistics|Language statistics]]', '')
+    text = text.replace("[[Category:Wikidata statistics|Language statistics]]", "")
     # ---
-    with codecs.open(labels_file, 'w', encoding='utf-8') as outfile:
+    with codecs.open(labels_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)
     # ---
-    print(f'saved to {labels_file}')
+    print(f"saved to {labels_file}")
     # ---
-    with codecs.open(template_file, 'w', encoding='utf-8') as outfile:
+    with codecs.open(template_file, "w", encoding="utf-8") as outfile:
         outfile.write(tmp_text)
     # ---
-    print(f'saved to {template_file}')
+    print(f"saved to {template_file}")
 
 
-if __name__ == '__main__':
-    with codecs.open(filename, 'r', encoding='utf-8') as fa:
+if __name__ == "__main__":
+    with codecs.open(filename, "r", encoding="utf-8") as fa:
         tabb = json.load(fa)
     # ---
     main_labels(tabb)

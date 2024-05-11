@@ -75,6 +75,8 @@ def do_line(json1):
         and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"
     }
 
+    del claims
+
     return qid_text
 
 
@@ -87,7 +89,7 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
     # ---
     lines = []
     # ---
-    numbs = 500 if do_test else 100000
+    numbs = 5000 if do_test else 100000
     # ----
     for cc, entity_dict in enumerate(wjd):
         # ---
@@ -98,6 +100,9 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
             # ---
             if cc % 10000 == 0:
                 dump_lines(lines, items_file)
+                # ---
+                del lines
+                # ---
                 lines = []
                 print(f"dump_lines:{cc}, len lines:{len(lines)}")
             # ---
@@ -113,6 +118,8 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
             if cc % 1000000 == 0:
                 with open(done_lines, "a", encoding="utf-8") as f:
                     f.write(f"done: {cc:,}\n")
+        # ---
+        del entity_dict
     # ---
     dump_lines(lines, items_file)
 

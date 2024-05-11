@@ -13,19 +13,18 @@ import json
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
-du_dir = "dump2"
+du_dir = "/data/project/himo/bots/dump_core/dump2"
 # ---
-texts_dir = f"/data/project/himo/bots/dump_core/{du_dir}/texts/"
+texts_dir = f"{du_dir}/texts/"
 # ---
-filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims.json"
+filename = f"{du_dir}/jsons/claims.json"
+# ---
+if "test" in sys.argv:
+    filename = f"{du_dir}/jsons/claims_test.json"
+    texts_dir = f"{du_dir}/texts_test/"
 # ---
 claims_new = texts_dir + "claims_new.txt"
 claims_p31 = texts_dir + "claims_p31.txt"
-# ---
-if "test" in sys.argv:
-    filename = f"/data/project/himo/bots/dump_core/{du_dir}/jsons/claims_test.json"
-    claims_new = texts_dir + "claims_new_test.txt"
-    claims_p31 = texts_dir + "claims_p31_test.txt"
 # ---
 sections_done = {1: 0, "max": 100}
 sections_false = {1: 0}

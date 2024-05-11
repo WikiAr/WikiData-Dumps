@@ -34,7 +34,14 @@ def GetPageText_new(title):
     # ---
     return text
 
-
+def clean_text(texts):
+    # ---
+    texts = texts.replace(',', '')
+    # ---
+    texts = texts.replace('style="background-color:#c79d9d"| ', '')
+    texts = texts.replace('style="background-color:#9dc79d"| ', '')
+    # ---
+    return texts
 def from_wiki():
     # ---
     title = 'User:Mr. Ibrahem/Language statistics for items'
@@ -47,10 +54,7 @@ def from_wiki():
     texts = GetPageText_new(title)
     # texts = codecs.open(f'{dir2}/te.txt', 'r', encoding='utf-8').read()
     # ---
-    texts = texts.replace(',', '')
-    # ---
-    texts = texts.replace('style="background-color:#c79d9d"| ', '')
-    texts = texts.replace('style="background-color:#9dc79d"| ', '')
+    texts = clean_text(texts)
     # ---
     last_total = 0
     if io := re.search(r"\* Total items:(\d+)\.", texts):
