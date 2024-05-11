@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$HOME/local/bin/python3 core8/pwb.py dump/most_props
+$HOME/local/bin/python3 core8/pwb.py dump2/most_props
 
 $HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump2/read_d.py
 
