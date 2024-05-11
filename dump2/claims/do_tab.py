@@ -111,7 +111,6 @@ def get_lines():
 
     for line in lines:
         if line.strip():
-            # yield json.loads(line.strip())
             yield ujson.loads(line.strip())
 
 

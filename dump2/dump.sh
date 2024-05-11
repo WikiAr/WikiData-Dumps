@@ -1,4 +1,7 @@
 #!/bin/bash
+cd $HOME
+
+# tfj run dumps --mem 2Gi --image tf-python39 --command "/data/project/himo/bots/dump_core/dump2/dump.sh"
 
 $HOME/local/bin/python3 core8/pwb.py dump2/most_props
 

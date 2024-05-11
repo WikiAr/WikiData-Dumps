@@ -3,6 +3,7 @@ python3 core8/pwb.py dump2/save
 """
 import sys
 import os
+import logging
 from newapi.page import MainPage
 
 # ---
@@ -11,7 +12,7 @@ texts_dir = "/data/project/himo/bots/dump_core/dump2/texts/"
 if "test" in sys.argv:
     texts_dir = "/data/project/himo/bots/dump_core/dump2/texts_test/"
 # ---
-print(f"texts_dir:{texts_dir}")
+logging.info(f"texts_dir:{texts_dir}")
 # ---
 file_to_title = {
     "claims_new.txt": "User:Mr. Ibrahem/claims",
@@ -40,16 +41,16 @@ for file, title in file_to_title.items():
             text = f.read()
         # ---
         if not text.strip():
-            print(f"file {file} <<lightred>> empty.")
+            logging.info(f"file {file} <<lightred>> empty.")
             continue
         # ---
         for file, min_length in file_lengths.items():
             if len(text) < min_length:
-                print(f"file {file} <<lightred>> too small.")
+                logging.info(f"file {file} <<lightred>> too small.")
                 continue
         # ---
         page = MainPage(title, "www", family="wikidata")
         # ---
         textold = page.get_text()
         # ---
-        page.save(newtext=text, summary="Bot - Updating stats")
+        page.save(newtext=text, summary="Bot - Updating stats", nocreate=0)
