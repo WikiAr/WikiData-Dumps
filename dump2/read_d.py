@@ -27,7 +27,7 @@ with open(done_lines, "w", encoding="utf-8") as f:
 
 def get_most_props():
     # ---
-    properties_path = Path(__file__).parent.parent / "dump/properties.json"
+    properties_path = Path(__file__).parent / "properties.json"
     with open(properties_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     # ---
@@ -90,6 +90,7 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
     lines = []
     # ---
     numbs = 5000 if do_test else 100000
+    dump_numbs = 10000 if do_test else 1000000
     # ----
     for cc, entity_dict in enumerate(wjd):
         # ---
@@ -98,7 +99,7 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
             line = do_line(entity_dict)
             lines.append(line)
             # ---
-            if cc % 10000 == 0:
+            if cc % dump_numbs == 0:
                 dump_lines(lines, items_file)
                 # ---
                 del lines
