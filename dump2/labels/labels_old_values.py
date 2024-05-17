@@ -52,7 +52,7 @@ def from_wiki():
     print(f'from_wiki, title: {title}')
     # ---
     texts = GetPageText_new(title)
-    # texts = codecs.open(f'{dir2}/te.txt', 'r', encoding='utf-8').read()
+    # texts = codecs.open(f'{dir2}/te.txt', "r", encoding="utf-8").read()
     # ---
     texts = clean_text(texts)
     # ---

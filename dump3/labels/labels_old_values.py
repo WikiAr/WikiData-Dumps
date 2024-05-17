@@ -16,10 +16,10 @@ file_old_data = f'{dir2}/old_data.json'
 
 if not os.path.isfile(file_old_data):
     print(f'create file_old_data:{file_old_data}..')
-    with open(file_old_data, 'w', encoding='utf-8') as f:
+    with open(file_old_data, "w", encoding="utf-8") as f:
         json.dump({}, f)
 
-with open(file_old_data, 'r', encoding='utf-8') as f:
+with open(file_old_data, "r", encoding="utf-8") as f:
     _old_data = json.load(f)
 _old_data = _old_data.get('langs') or _old_data
 
@@ -58,7 +58,7 @@ def from_wiki():
     print(f'from_wiki, title: {title}')
     # ---
     texts = GetPageText(title)
-    # texts = codecs.open(f'{dir2}/te.txt', 'r', encoding='utf-8').read()
+    # texts = codecs.open(f'{dir2}/te.txt', "r", encoding="utf-8").read()
     # ---
     texts = texts.replace(',', '')
     # ---
@@ -115,7 +115,7 @@ def make_old_values():
     # ---
     if len(_old_data) > 5 and 'old' in sys.argv:
         print('data in the file..')
-        json.dump(_old_data, codecs.open(file_old_data, 'w', 'utf-8'), indent=2)
+        json.dump(_old_data, codecs.open(file_old_data, "w", "utf-8"), indent=2)
         return _old_data
     # ---
     print('get data from page')
@@ -123,7 +123,7 @@ def make_old_values():
     Old = from_wiki()
     # ---
     try:
-        with codecs.open(file_old_data, 'w', 'utf-8') as f:
+        with codecs.open(file_old_data, "w", "utf-8") as f:
             json.dump(Old, f, indent=2)
     except IOError as e:
         print(f"Error writing to {file_old_data}: {e}")

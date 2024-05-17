@@ -255,7 +255,7 @@ def main():
     print(f"read_file: done in {tab['delta']}")
     # ---
     if 'test' not in sys.argv and 'nodump' not in sys.argv:
-        with open(f"{va_dir}/file_date.txt", "w", encoding='utf-8') as outfile:
+        with open(f"{va_dir}/file_date.txt", "w", encoding="utf-8") as outfile:
             outfile.write(tab['file_date'])
 
 
