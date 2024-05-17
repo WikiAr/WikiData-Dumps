@@ -6,8 +6,7 @@ dump/claims/c
 dump/claims/read_dump_x.py
 dump/claims/preprocessing
 /preprocessing
-**/jsons/**
 **/texts/**
 **/texts_test/**
-dump2/properties.json
 dump2/dump1.sh
+*.json

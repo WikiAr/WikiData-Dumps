@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 python3 bots/dump_core/dump/arw2.py test
-python3 core8/pwb.py dump/arw2
-python3 core8/pwb.py dump/arw2 test nosave
-python3 core8/pwb.py dump/arw2 test nosave p31
-python3 core8/pwb.py dump/arw2 test nosave printline
-python3 core8/pwb.py dump/arw2 test nosave limit:5000
+python3 core8/pwb.py dump3/arw2
+python3 core8/pwb.py dump3/arw2 test nosave
+python3 core8/pwb.py dump3/arw2 test nosave p31
+python3 core8/pwb.py dump3/arw2 test nosave printline
+python3 core8/pwb.py dump3/arw2 test nosave limit:5000
 """
+# import sys
 
 CHART_TEMPLATE = """
 {| class="floatleft sortable" style="text-align:right"
