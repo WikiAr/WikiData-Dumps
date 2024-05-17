@@ -185,12 +185,12 @@ def main_labels(tabb):
         labels_file = f'{Dump_Dir}/texts/labels_test.txt'
         template_file = f'{Dump_Dir}/texts/template_test.txt'
     # ---
-    with codecs.open(labels_file, 'w', encoding='utf-8') as outfile:
+    with open(labels_file, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
     # ---
     print(f'saved to {labels_file}')
     # ---
-    with codecs.open(template_file, 'w', encoding='utf-8') as outfile:
+    with open(template_file, 'w', encoding='utf-8') as outfile:
         outfile.write(tmp_text)
     # ---
     print(f'saved to {template_file}')

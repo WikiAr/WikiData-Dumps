@@ -186,19 +186,19 @@ def main_labels(tabb):
     # ---
     text = text.replace('[[Category:Wikidata statistics|Language statistics]]', '')
     # ---
-    with codecs.open(labels_file, 'w', encoding='utf-8') as outfile:
+    with open(labels_file, 'w', encoding='utf-8') as outfile:
         outfile.write(text)
     # ---
     print(f'saved to {labels_file}')
     # ---
-    with codecs.open(template_file, 'w', encoding='utf-8') as outfile:
+    with open(template_file, 'w', encoding='utf-8') as outfile:
         outfile.write(tmp_text)
     # ---
     print(f'saved to {template_file}')
 
 
 if __name__ == '__main__':
-    with codecs.open(items_file, 'r', encoding='utf-8') as fa:
+    with open(items_file, 'r', encoding='utf-8') as fa:
         tabb = json.load(fa)
     # ---
     main_labels(tabb)
