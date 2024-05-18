@@ -10,7 +10,7 @@ python3 core8/pwb.py dump/labels/do_text test nosave
 #
 import sys
 import os
-import codecs
+
 import json
 import time
 
@@ -201,7 +201,7 @@ if __name__ == '__main__':
     # ---
     file = f'{Dump_Dir}/{faf}.json'
     # ---
-    with codecs.open(file, "r", encoding="utf-8") as fa:
+    with open(file, "r", encoding="utf-8") as fa:
         tabb = json.load(fa)
     # ---
     main_labels(tabb)
