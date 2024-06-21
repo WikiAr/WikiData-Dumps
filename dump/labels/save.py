@@ -33,7 +33,7 @@ if 'test' in sys.argv:
 for file, title in file_to_title.items():
     if os.path.exists(f"{Dump_Dir}/texts/{file}"):
         # ---
-        with open(f"{Dump_Dir}/texts/{file}", encoding="utf-8") as f:
+        with open(f"{Dump_Dir}/texts/{file}", "r", encoding="utf-8") as f:
             text = f.read()
         # ---
         if not text.strip():

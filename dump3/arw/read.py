@@ -95,9 +95,12 @@ stats_tab = {
 
 
 def print_memory():
-    _yellow_ = "\033[93m%s\033[00m"
+    yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
+
     usage = psutil.Process(os.getpid()).memory_info().rss
-    print(_yellow_ % f"memory usage: psutil {usage / 1024 / 1024} MB")
+    usage = usage / 1024 // 1024
+
+    print(yellow % "Memory usage:", purple % f"{usage} MB")
 
 
 def read_data():
@@ -124,7 +127,7 @@ def read_data():
                 if c < Offset[1]:
                     if c % 1000 == 0:
                         dii = time.time() - t1
-                        print(f"Offset c:{int(c)}, time:{int(dii)}")
+                        print(f"Offset c:{c}, time:{dii}")
                     continue
                 # ---
                 if (c % 1000 == 0 and c < 100000) or c % 100000 == 0:

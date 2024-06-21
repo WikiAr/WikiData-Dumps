@@ -14,7 +14,7 @@ read_file: done in 22
 import os
 import json
 import sys
-import codecs
+
 import bz2
 import time
 from datetime import datetime
@@ -70,7 +70,7 @@ def dump_it(tab):
     if 'test' in sys.argv:
         jsonname = f"{Dump_Dir}/labels_test.json"
     # ---
-    with open(jsonname, "w", encoding='utf-8') as outfile:
+    with open(jsonname, "w", encoding="utf-8") as outfile:
         json.dump(tab, outfile)
     # ---
     print("dump_it done")
@@ -113,7 +113,7 @@ def get_file_info(file_path):
 
 
 def check_file_date(file_date):
-    with codecs.open(f"{va_dir}/file_date.txt", "r", encoding='utf-8') as outfile:
+    with open(f"{va_dir}/file_date.txt", "r", encoding="utf-8") as outfile:
         old_date = outfile.read()
     # ---
     print(f"file_date: {file_date}, old_date: {old_date}")
@@ -199,7 +199,7 @@ def read_file():
     dump_it(tab)
     # ---
     if 'test' not in sys.argv and 'nodump' not in sys.argv:
-        with codecs.open(f"{va_dir}/file_date.txt", "w", encoding='utf-8') as outfile:
+        with open(f"{va_dir}/file_date.txt", "w", encoding="utf-8") as outfile:
             outfile.write(tab['file_date'])
 
 
