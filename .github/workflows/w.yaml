@@ -1,0 +1,20 @@
+name: w.yml
+on:
+  schedule:
+    - cron: '1 1 * * 1'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: 22
+          request_pty: true
+          script_stop: true
+          key: ${{ secrets.KEY }}
+          script: |
+            become himo sh -c "bots/dump_core/dump3/dump_test.sh; echo ''"
