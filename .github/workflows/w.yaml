@@ -18,4 +18,4 @@ jobs:
           script_stop: true
           key: ${{ secrets.KEY }}
           script: |
-            become himo sh -c "bots/dump_core/dump3/dump_test.sh; echo ''"
+            become himo sh -c "~/bots/dump_core/dump3/dump_test.sh"
