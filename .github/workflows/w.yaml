@@ -1,7 +1,8 @@
 name: w.yml
 on:
-  schedule:
-    - cron: '1 1 * * 1'
+  workflow_dispatch:
+  #schedule:
+    #- cron: '1 1 * * 1'
 jobs:
   build:
     runs-on: ubuntu-latest
