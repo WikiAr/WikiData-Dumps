@@ -3,6 +3,7 @@ python3 core8/pwb.py dump3/read_json test nodump
 python3 /data/project/himo/bots/dump_core/dump3/read_json.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
+https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2
 
 """
 
@@ -17,6 +18,7 @@ from qwikidata.json_dump import WikidataJsonDump
 
 # ---
 bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-truthy.nt.bz2"
 # ---
 va_dir = Path(__file__).parent
 # ---
