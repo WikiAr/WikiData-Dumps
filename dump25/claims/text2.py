@@ -8,6 +8,9 @@ sections_done = {"current": 0, "max": 100}
 time_start = time.time()
 print(f"time_start: {time_start}")
 
+items_file = Path(__file__).parent / "claims.json"
+claims_new = Path(__file__).parent / "claims_new.txt"
+claims_p31 = Path(__file__).parent / "claims_p31.txt"
 
 def make_chart(x_values, y_values, chart_type=1):
     if not x_values or not y_values:
@@ -139,10 +142,6 @@ def make_text(data):
 
 
 def main():
-    items_file = Path(__file__).parent / "claims.json"
-    claims_new = Path(__file__).parent / "claims_new.txt"
-    claims_p31 = Path(__file__).parent / "claims_p31.txt"
-
     with open(items_file, "r", encoding="utf-8") as file:
         data = json.load(file)
 
