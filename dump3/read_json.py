@@ -3,6 +3,7 @@ python3 core8/pwb.py dump3/read_json test nodump
 python3 /data/project/himo/bots/dump_core/dump3/read_json.py test
 
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
+https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2
 
 """
 
@@ -17,6 +18,7 @@ from qwikidata.json_dump import WikidataJsonDump
 
 # ---
 bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+# bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-truthy.nt.bz2"
 # ---
 va_dir = Path(__file__).parent
 # ---
@@ -49,6 +51,14 @@ tab = {
     "langs": {},
 }
 
+from rdflib import Graph
+
+
+def read_nt_dump(file_path):
+    g = Graph()
+    g.parse(file_path, format="nt")
+    return g
+
 
 def print_memory():
     yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
@@ -57,6 +67,7 @@ def print_memory():
     usage = usage / 1024 // 1024
 
     print(yellow % "Memory usage:", purple % f"{usage} MB")
+
 
 def get_most_props():
     # ---
@@ -68,6 +79,7 @@ def get_most_props():
 
 
 most_props = get_most_props()
+
 
 def dump_it(tab):
     if "nodump" in sys.argv:
@@ -160,6 +172,7 @@ def get_file_info(file_path):
 
     return datetime.fromtimestamp(last_modified_time).strftime("%Y-%m-%d")
 
+
 def check_file_date(file_date):
     file = va_dir / "file_date.txt"
     if not file.exists():
@@ -169,7 +182,7 @@ def check_file_date(file_date):
     # ---
     print(f"file_date: {file_date}, old_date: {old_date}")
     # ---
-    if old_date == file_date and 'test' not in sys.argv and 'test1' not in sys.argv:
+    if old_date == file_date and "test" not in sys.argv and "test1" not in sys.argv:
         print(f"file_date: {file_date} <<lightred>> unchanged")
         sys.exit(0)
 
@@ -239,12 +252,12 @@ def main():
         print(f"file {bz2_file} <<lightred>> not found")
         return {}
 
-    tab['file_date'] = get_file_info(bz2_file)
+    tab["file_date"] = get_file_info(bz2_file)
     print(f"file date: {tab['file_date']}")
 
     print(f"file {bz2_file} found, read it:")
     # ---
-    check_file_date(tab['file_date'])
+    check_file_date(tab["file_date"])
     # ---
     read_lines(test_limit, bz2_file)
     # ---
@@ -253,13 +266,13 @@ def main():
     end = time.time()
     # ---
     delta = int(end - time_start)
-    tab['delta'] = f'{delta:,}'
+    tab["delta"] = f"{delta:,}"
     # ---
     print(f"read_file: done in {tab['delta']}")
     # ---
-    if 'test' not in sys.argv and 'nodump' not in sys.argv:
+    if "test" not in sys.argv and "nodump" not in sys.argv:
         with open(f"{va_dir}/file_date.txt", "w", encoding="utf-8") as outfile:
-            outfile.write(tab['file_date'])
+            outfile.write(tab["file_date"])
 
 
 if __name__ == "__main__":

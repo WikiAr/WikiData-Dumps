@@ -153,7 +153,7 @@ def read_lines_test():
             # line = line.decode("utf-8").strip("\n").strip(",")
             do_line(line)
             # ---
-            if cc[1] % 100 == 0:
+            if cc[1] % 5000 == 0:
                 print(f'cc[1]:{cc[1]}')
                 print(f"done:{tab['done']}")
                 # ---

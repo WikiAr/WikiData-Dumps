@@ -1,6 +1,8 @@
 """
 from dump2.most_props import get_data()
-python3 core8/pwb.py dump2/most_props
+
+python3 /data/project/himo/bots/dump_core/dump25/most_props.py
+
 """
 import re
 import json
@@ -11,7 +13,6 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 def get_query_result(query):
-    
     # TODO: https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split/Rules#Scholarly_Articles
 
     endpoint_url = "https://query.wikidata.org/sparql"
@@ -67,14 +68,15 @@ def get_most_usage(text):
 
     return dict(sorted_properties[:500])
 
+
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     # get url text
     try:
@@ -83,12 +85,13 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
+
 
 def get_data():
     file_path = Path(__file__).parent / "properties.json"
