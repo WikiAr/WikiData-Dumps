@@ -10,3 +10,4 @@ dump/claims/preprocessing
 **/texts_test/**
 dump2/dump1.sh
 *.json
+old.py

@@ -12,6 +12,7 @@ import sys
 import time
 from pathlib import Path
 from qwikidata.json_dump import WikidataJsonDump
+
 # ---
 
 time_start = time.time()
@@ -71,12 +72,7 @@ def do_line(json1):
         # "claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props}
     }
 
-    qid_text["claims"] = {
-        p: fix_property(pv)
-        for p, pv in claims.items()
-        if p in most_props
-        and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"
-    }
+    qid_text["claims"] = {p: fix_property(pv) for p, pv in claims.items() if p in most_props and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"}
 
     del claims
 
@@ -105,10 +101,9 @@ def read_lines(do_test, tst_limit, bz2_file, items_file):
             if cc % dump_numbs == 0:
                 dump_lines(lines, items_file)
                 # ---
-                del lines
-                # ---
-                lines = []
                 print(f"dump_lines:{cc}, len lines:{len(lines)}")
+                # ---
+                lines.clear()
             # ---
             if cc % numbs == 0:
                 print("cc:", cc, time.time() - tt)
