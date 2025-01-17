@@ -32,14 +32,14 @@ def make_section(property_id, table, max_n=51):
         return ""
 
     total_usage = table.get("lenth_of_usage", 0)
-    texts = f"== {{P|{property_id}}} ==\n"
+    texts = f"== {{{{P|{property_id}}}}} ==\n"
     texts += f"* Total items using this property: {total_usage:,}\n"
 
     if claims_count := table.get("len_prop_claims"):
         texts += f"* Total number of claims with this property: {claims_count:,}\n"
 
     if unique_qids := table.get("len_of_qids"):
-        texts += f"* Number of unique QIDs: {unique_qids:,}\n"
+        texts += f"* Number of unique QIDs:  {unique_qids:,}\n"
 
     if not table.get("qids"):
         print(f"{property_id} has no QIDs.")
@@ -57,17 +57,22 @@ def make_section(property_id, table, max_n=51):
             continue
 
         if idx <= max_n:
-            table_rows.append(f"| {idx} || {{Q|{qid}}} || {count:,}")
+            table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,}")
             x_values.append(qid)
             y_values.append(str(count))
         else:
             other_count += count
 
-    table_rows.append(f"| {len(table_rows) + 1} || others || {other_count:,}")
+    table_rows.append(f"! {len(table_rows) + 1} \n| others \n| {other_count:,}")
     table_content = "\n|-\n".join(table_rows)
 
-    chart = make_chart(x_values, y_values, chart_type=2)
-    section_table = f'\n{{| class="wikitable sortable"\n|-\n! # !! QID !! Count\n{table_content}\n|}}\n'
+    chart = ""
+    if "Chart" in sys.argv:
+        chart = make_chart(x_values, y_values, chart_type=2)
+
+    section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n'
+
+    section_table += table_content + "\n|}\n"
 
     sections_done["current"] += 1
     return texts + chart + section_table
@@ -86,12 +91,13 @@ def make_numbers_section(p31_list):
             other_count += usage
 
         if len(rows) < 100:
-            rows.append(f"| {idx} || {{P|{prop}}} || {usage:,}")
+            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,}")
 
-    rows.append(f"| {len(rows) + 1} || others || {other_count:,}")
+    rows.append(f"! {len(rows) + 1} \n| others \n| {other_count:,}")
     table_content = "\n|-\n".join(rows)
-
-    chart = make_chart(x_values, y_values)
+    chart = ""
+    if "Chart" in sys.argv:
+        chart = make_chart(x_values, y_values)
     return chart + f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage\n{table_content}\n|}}\n'
 
 
