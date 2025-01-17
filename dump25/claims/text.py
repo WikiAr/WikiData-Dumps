@@ -24,7 +24,13 @@ sections_done = {1: 0, "max": 100}
 sections_false = {1: 0}
 
 
-def make_Chart(xline, yline, ty=1):
+def make_Chart(x_values, y_values, ty=1):
+    # ---
+    if not x_values or not y_values:
+        return ""
+    # ---
+    x_line = ",".join(x_values)
+    y_line = ",".join(y_values)
     # ---
     Chart = '{| class="floatright sortable"\n|-\n|\n'
     Chart += "{{Graph:Chart"
@@ -35,7 +41,7 @@ def make_Chart(xline, yline, ty=1):
         Chart += "|width=140|height=140|xAxisTitle=value|yAxisTitle=Number|legend=value\n"
         Chart += "|type=pie|showValues1=offset:8,angle:45\n"
     # ---
-    Chart += f"|x={xline}\n|y1={yline}"
+    Chart += f"|x={x_line}\n|y1={y_line}"
     # ---
     Chart += "\n}}"
     Chart += "\n|-\n|}"
@@ -46,17 +52,6 @@ def make_Chart(xline, yline, ty=1):
 
 
 def make_section(P, table, max_n=51):
-    """
-    Creates a section for a given property in a table.
-
-    Args:
-        P (str): The property value.
-        table (dict): The table data.
-
-    Returns:
-        str: The section text.
-
-    """
     # ---
     # if sections_done[1] >= sections_done['max']:    return ""
     # ---
@@ -106,17 +101,14 @@ def make_section(P, table, max_n=51):
             tables += f"\n! {num} \n| {Q} \n| {ye:,} \n|-"
             # ---
             x_values.append(x)
-            y_values.append(ye)
+            y_values.append(str(ye))
             # ---
         else:
             other += ye
     # ---
     num += 1
     # ---
-    x_line = ",".join(x_values)
-    y_line = ",".join(y_values)
-    # ---
-    Chart = make_Chart(x_line, y_line, ty=2)
+    Chart = make_Chart(x_values, y_values, ty=2)
     # ---
     tables += f"\n! {num} \n! others \n! {other:,} \n|-"
     # ---
@@ -146,7 +138,7 @@ def make_numbers_section(p31list):
         nu += 1
         if nu < 27:
             x_values.append(P)
-            y_values.append(Len)
+            y_values.append(str(Len))
         # ---
         if len(rows) < 101:
             Len = f"{Len:,}"
@@ -156,10 +148,7 @@ def make_numbers_section(p31list):
         else:
             property_other += int(Len)
     # ---
-    x_line = ",".join(x_values)
-    y_line = ",".join(y_values)
-    # ---
-    Chart2 = make_Chart(x_line, y_line)
+    Chart2 = make_Chart(x_values, y_values)
     # ---
     rows.append(f"! {nu} \n! others \n! {property_other:,}")
     # ---
