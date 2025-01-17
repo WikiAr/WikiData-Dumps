@@ -5,6 +5,9 @@ from pathlib import Path
 
 sections_done = {"current": 0, "max": 100}
 
+time_start = time.time()
+print(f"time_start: {time_start}")
+
 
 def make_chart(x_values, y_values, chart_type=1):
     if not x_values or not y_values:
@@ -96,18 +99,38 @@ def make_numbers_section(p31_list):
 
     rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
     table_content = "\n|-\n".join(rows)
-    chart = ""
+    # ---
+    texts = "== Numbers ==\n\n"
+    # ---
     if "Chart" in sys.argv:
         chart = make_chart(x_values, y_values)
-    return chart + f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage\n{table_content}\n|}}\n'
+        texts += chart + "\n"
+    # ---
+    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage\n{table_content}\n|}}\n'
+    # ---
+    texts += table
+    # ---
+    return texts
 
 
 def make_text(data):
     p31_list = [(prop_data["lenth_of_usage"], prop_id) for prop_id, prop_data in data["properties"].items() if prop_data["lenth_of_usage"]]
     p31_list.sort(reverse=True)
 
-    metadata = f"<onlyinclude>;dump date {data.get('file_date', 'latest')}</onlyinclude>.\n" f"* Total items: {data['All_items']:,}\n" f"* Items without P31: {data['items_no_P31']:,}\n" f"* Items without claims: {data['items_0_claims']:,}\n" f"* Items with 1 claim only: {data['items_1_claims']:,}\n" f"* Total number of claims: {data['total_claims']:,}\n" f"* Number of properties in the report: {data['len_all_props']:,}\n"
-
+    if not data.get("file_date"):
+        data["file_date"] = "latest"
+    # ---
+    metadata = f"<onlyinclude>;dump date {data.get('file_date', 'latest')}</onlyinclude>.\n"
+    metadata += f"* Total items: {data['All_items']:,}\n"
+    metadata += f"* Items without P31: {data['items_no_P31']:,}\n"
+    metadata += f"* Items without claims: {data['items_0_claims']:,}\n"
+    metadata += f"* Items with 1 claim only: {data['items_1_claims']:,}\n"
+    metadata += f"* Total number of claims: {data['total_claims']:,}\n"
+    metadata += f"* Number of properties in the report: {data['len_all_props']:,}\n"
+    # ---
+    final = time.time()
+    delta = data.get("delta") or int(final - time_start)
+    metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
     chart_section = make_numbers_section(p31_list)
 
     sections = "".join(make_section(prop, data["properties"][prop]) for _, prop in p31_list if sections_done["current"] < sections_done["max"])
@@ -116,9 +139,6 @@ def make_text(data):
 
 
 def main():
-    time_start = time.time()
-    print(f"time_start: {time_start}")
-
     items_file = Path(__file__).parent / "claims.json"
     claims_new = Path(__file__).parent / "claims_new.txt"
     claims_p31 = Path(__file__).parent / "claims_p31.txt"
