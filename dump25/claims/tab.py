@@ -1,4 +1,7 @@
 """
+https://hub-paws.wmcloud.org/user/Mr.%20Ibrahem/lab/tree/dump/claims/tab.py
+
+python3 dump/claims/tab.py
 
 python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 
