@@ -1,3 +1,11 @@
+"""
+
+python3 dump/claims/text2.py
+
+python3 /data/project/himo/bots/dump_core/dump25/claims/text2.py
+
+
+"""
 import sys
 import time
 import json
