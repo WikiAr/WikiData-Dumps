@@ -50,20 +50,21 @@ def make_section(property_id, table, max_n=51):
     other_count = 0
 
     sorted_qids = dict(sorted(table["qids"].items(), key=lambda item: item[1], reverse=True))
-
+    idx = 0
     for idx, (qid, count) in enumerate(sorted_qids.items(), start=1):
         if qid == "others":
             other_count += count
             continue
 
-        if idx <= max_n:
+        # if idx <= max_n:
+        if idx < max_n:
             table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,}")
             x_values.append(qid)
             y_values.append(str(count))
         else:
             other_count += count
 
-    table_rows.append(f"! {len(table_rows) + 1} \n| others \n| {other_count:,}")
+    table_rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
     table_content = "\n|-\n".join(table_rows)
 
     chart = ""
@@ -72,7 +73,7 @@ def make_section(property_id, table, max_n=51):
 
     section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n'
 
-    section_table += table_content + "\n|}\n"
+    section_table += table_content + "\n|}\n{{clear}}\n"
 
     sections_done["current"] += 1
     return texts + chart + section_table
@@ -82,7 +83,7 @@ def make_numbers_section(p31_list):
     rows = []
     x_values, y_values = [], []
     other_count = 0
-
+    idx = 0
     for idx, (usage, prop) in enumerate(p31_list, start=1):
         if idx <= 26:
             x_values.append(prop)
@@ -93,7 +94,7 @@ def make_numbers_section(p31_list):
         if len(rows) < 100:
             rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,}")
 
-    rows.append(f"! {len(rows) + 1} \n| others \n| {other_count:,}")
+    rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
     table_content = "\n|-\n".join(rows)
     chart = ""
     if "Chart" in sys.argv:

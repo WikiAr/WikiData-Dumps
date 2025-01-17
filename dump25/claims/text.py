@@ -176,7 +176,7 @@ def make_text(tab, ty=""):
     if not tab.get("file_date"):
         tab["file_date"] = "latest"
     # ---
-    text = ("<onlyinclude>;dump date {file_date}</onlyinclude>.\n" "* Total items: {All_items:,}\n" "* Items without P31: {items_no_P31:,} \n" "* Items without claims: {items_0_claims:,}\n" "* Items with 1 claim only: {items_1_claims:,}\n" "* Total number of claims: {total_claims:,}\n" "* Number of properties of the report: {len_all_props:,}\n").format_map(tab)
+    text = ("<onlyinclude>;dump date {file_date}</onlyinclude>.\n" "* Total items: {All_items:,}\n" "* Items without P31: {items_no_P31:,} \n" "* Items without claims: {items_0_claims:,}\n" "* Items with 1 claim only: {items_1_claims:,}\n" "* Total number of claims: {total_claims:,}\n" "* Number of properties in the report: {len_all_props:,}\n").format_map(tab)
     # ---
     text += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
     chart = make_numbers_section(p31list)
