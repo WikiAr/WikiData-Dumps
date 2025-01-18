@@ -141,7 +141,7 @@ def make_text(data):
     # ---
     final = time.time()
     delta = data.get("delta") or int(final - time_start)
-    metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
+    metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~\n"
     chart_section = make_numbers_section(p31_list)
 
     sections = "".join(make_section(prop, data["properties"][prop]) for _, prop in p31_list if sections_done["current"] < sections_done["max"])
