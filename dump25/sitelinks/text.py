@@ -330,6 +330,6 @@ if __name__ == "__main__":
         if x not in tabb:
             tabb[x] = v
     # ---
-    print(f"Total items: {tab['All_items']:,}")
+    print(f"Total items: {tabb['All_items']:,}")
     # ---
     main_labels(tabb)

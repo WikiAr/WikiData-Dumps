@@ -72,6 +72,15 @@ def facts(n_tab, Old):
     return text
 
 
+def get_color_style(value: int) -> tuple[str, str]:
+    """Return color and plus/minus prefix based on value."""
+    plus = "" if value < 0 else "+"
+    color = "#c79d9d" if value < 0 else "#9dc79d" if value > 0 else ""
+    tag = "" if not color else f'style="background-color:{color}"|'
+    # ---
+    return tag, plus
+
+
 def mainar(n_tab):
     start = time.time()
 
@@ -112,30 +121,20 @@ def mainar(n_tab):
         # ---
         line = f"""| {code} || {langs_tag_line} || {langs_tag_line_2}\n"""
         # ---
-
-        plus = "" if new_labels < 0 else "+"
-        color_l = "#c79d9d" if new_labels < 0 else "#9dc79d" if new_labels > 0 else ""
-        color_tag_l = "" if not color_l else f'style="background-color:{color_l}"|'
+        color_tag_l, plus = get_color_style(new_labels)
         # ---
         labels_co = make_cou(_labels_, n_tab["All_items"])
         line += f"""| {_labels_:,} || {labels_co} || {color_tag_l} {plus}{new_labels:,} """
         # ---
-
-        d_plus = "" if new_descs < 0 else "+"
-        color = "#c79d9d" if new_descs < 0 else "#9dc79d" if new_descs > 0 else ""
-        color_tag = "" if not color else f'style="background-color:{color}"|'
+        color_tag_2, d_plus = get_color_style(new_descs)
         # ---
         descs_co = make_cou(_descriptions_, n_tab["All_items"])
-        line += f"""|| {_descriptions_:,} || {descs_co} || {color_tag} {d_plus}{new_descs:,} """
+        line += f"""|| {_descriptions_:,} || {descs_co} || {color_tag_2} {d_plus}{new_descs:,} """
         # ---
-
-        a_plus = "" if new_aliases < 0 else "+"
-        color_a = "#c79d9d" if new_aliases < 0 else "#9dc79d" if new_aliases > 0 else ""
-        color_tag_a = "" if not color_a else f'style="background-color:{color_a}"|'
+        color_tag_a, a_plus = get_color_style(new_aliases)
         # ---
         line += f"""|| {_aliases_:,} || {color_tag_a} {a_plus}{new_aliases:,}"""
         # ---
-
         rows.append(line)
     # ---
     rows = "\n|-\n".join(rows)
@@ -169,10 +168,7 @@ def mainar(n_tab):
     # ---
     text = text.replace("0 (0000)", "0")
     text = text.replace("0 (0)", "0")
-
-    if not text:
-        return
-
+    # ---
     return text
 
 

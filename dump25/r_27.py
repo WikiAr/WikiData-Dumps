@@ -5,8 +5,8 @@ python3 /data/project/himo/bots/dump_core/dump25/r_27.py
 
 tfj run dump2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 /data/project/himo/bots/dump_core/dump25/r_27.py"
 
-cc: 150000 time: 34.07094955444336
-cc: 162500 time: 32.720284938812256
+current_count: 150000 time: 34.07094955444336
+current_count: 162500 time: 32.720284938812256
 
 """
 import os
@@ -53,7 +53,7 @@ def dump_lines(lines):
 def print_memory(i):
     now = time.time()
 
-    print("cc:", i, "time:", now - tt[1])
+    print("current_count:", i, "time:", now - tt[1])
     tt[1] = now
     # ---
     yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"

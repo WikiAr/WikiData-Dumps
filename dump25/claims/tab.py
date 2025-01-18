@@ -105,20 +105,20 @@ class ClaimsProcessor:
         jsonfiles = list(parts_dir.glob("*.json"))
         print(f"all json files: {len(jsonfiles)}")
         # ---
-        cc = 1
+        current_count = 1
         # ---
         for x in tqdm.tqdm(jsonfiles):
             lines = self.get_lines(x)
             # ---
-            for cc, line in tqdm.tqdm(enumerate(lines, start=cc)):
+            for current_count, line in tqdm.tqdm(enumerate(lines, start=current_count)):
                 self.do_line(line)
                 # ---
-                if cc % 100000 == 0:
-                    print(cc, time.time() - self.tt)
+                if current_count % 100000 == 0:
+                    print(current_count, time.time() - self.tt)
                     self.tt = time.time()
                     self.print_memory()
         # ---
-        print(f"all_items: {cc}")
+        print(f"all_items: {current_count}")
         print(f"read all lines: {self.tab['done']}")
         # ---
         self.tab_changes()

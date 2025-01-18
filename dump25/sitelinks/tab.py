@@ -89,22 +89,22 @@ def read_lines():
     jsonfiles = list(parts_dir.glob("*.json"))
     print(f"all json files: {len(jsonfiles)}")
     # ---
-    cc = 0
+    current_count = 0
     # ---
     for x in tqdm.tqdm(jsonfiles):
         lines = get_lines(x)
         # ---
-        for cc, line in enumerate(lines, start=cc):
+        for current_count, line in enumerate(lines, start=current_count):
             # ---
             do_line(line)
             # ---
-            if cc % 1000000 == 0:
-                print(cc, time.time() - tt[1])
+            if current_count % 1000000 == 0:
+                print(current_count, time.time() - tt[1])
                 tt[1] = time.time()
                 # print memory usage
                 print_memory()
             # ---
-            # if cc % 1000000 == 0: log_dump(tab)
+            # if current_count % 1000000 == 0: log_dump(tab)
 
 
 def read_file():
