@@ -1,27 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-python3 tab.py
-
-python3 dump/arw/tab.py
-
 """
-import os
-import psutil
-import ujson
-import tqdm
-import time
-from pathlib import Path
 
-Dir = Path(__file__).parent.parent
-# ---
-parts_dir = Dir / "parts"
-# ---
-time_start = time.time()
-print(f"time_start:{str(time_start)}")
-# ---
-tt = {1: time.time()}
-# ---
 stats_tab = {
     "all_items": 0,
     "all_ar_sitelinks": 0,
@@ -41,25 +22,6 @@ stats_tab = {
     },
 }
 
-
-def print_memory():
-    now = time.time()
-    yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
-
-    usage = psutil.Process(os.getpid()).memory_info().rss
-    usage = usage / 1024 // 1024
-
-    delta = int(now - time_start)
-    print(yellow % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
-
-
-def log_dump(tab):
-    jsonname = Path(__file__).parent / "arw.json"
-    # ---
-    with open(jsonname, "w", encoding="utf-8") as outfile:
-        ujson.dump(tab, outfile)
-    # ---
-    print("log_dump done")
 
 def do_line(json1):
     stats_tab["all_items"] += 1
@@ -120,63 +82,3 @@ def do_line(json1):
                 stats_tab[arlink_type][field]["yesar"] += 1
             else:
                 stats_tab[arlink_type][field]["noar"] += 1
-
-
-def get_lines(x):
-    with open(x, "r", encoding="utf-8") as f:
-        for line in ujson.load(f):
-            yield line
-
-
-def read_lines():
-    print("def read_lines():")
-    # ---
-    jsonfiles = list(parts_dir.glob("*.json"))
-    print(f"all json files: {len(jsonfiles)}")
-    # ---
-    current_count = 0
-    # ---
-    n = 0
-    # ---
-    for x in tqdm.tqdm(jsonfiles):
-        lines = get_lines(x)
-        # ---
-        n += 1
-        # ---
-        for current_count, line in enumerate(lines, start=current_count):
-            # ---
-            do_line(line)
-            # ---
-            if current_count % 1000000 == 0:
-                print(current_count, time.time() - tt[1])
-                tt[1] = time.time()
-                # print memory usage
-                print_memory()
-                log_dump(stats_tab)
-        # ---
-        if n % 100 == 0:
-            print(current_count, time.time() - tt[1])
-            tt[1] = time.time()
-            # print memory usage
-            print_memory()
-            log_dump(stats_tab)
-
-
-def read_file():
-    # ---
-    read_lines()
-    # ---
-    print(f"read all lines: {stats_tab['all_items']}")
-    # ---
-    end = time.time()
-    # ---
-    delta = int(end - time_start)
-    stats_tab["delta"] = f"{delta:,}"
-    # ---
-    log_dump(stats_tab)
-    # ---
-    print(f"read_file: done in {stats_tab['delta']}")
-
-
-if __name__ == "__main__":
-    read_file()

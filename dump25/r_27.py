@@ -15,7 +15,7 @@ import gc
 import json
 import time
 import sys
-import tqdm
+# import tqdm
 import bz2
 from pathlib import Path
 from humanize import naturalsize
