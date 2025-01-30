@@ -15,10 +15,11 @@ import gc
 import json
 import time
 import sys
-import tqdm
+
+# import tqdm
 import bz2
 from pathlib import Path
-from humanize import naturalsize
+from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 # ---
 Dir = Path(__file__).parent
@@ -56,17 +57,17 @@ def print_memory(i):
     print("current_count:", i, "time:", now - tt[1])
     tt[1] = now
     # ---
-    yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
+    green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
 
     usage = psutil.Process(os.getpid()).memory_info().rss
     usage = usage / 1024 // 1024
 
     delta = int(now - time_start)
-    print(yellow % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
+    print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
 
 def fix_property(pv):
-    return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv]
+    return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
 
 
 properties_path = Path(__file__).parent / "properties.json"
@@ -99,7 +100,7 @@ def filter_and_process(entity_dict):
             "descriptions": list(entity_dict.get("descriptions", {}).keys()),
             "aliases": list(entity_dict.get("aliases", {}).keys()),
             "sitelinks": list(entity_dict.get("sitelinks", {}).keys()),
-            "claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props and pv[0].get("mainsnak", {}).get("datatype", "") == "wikibase-item"},
+            "claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props},
         }
         return line
     return None

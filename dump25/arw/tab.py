@@ -44,13 +44,13 @@ stats_tab = {
 
 def print_memory():
     now = time.time()
-    yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
+    green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
 
     usage = psutil.Process(os.getpid()).memory_info().rss
     usage = usage / 1024 // 1024
 
     delta = int(now - time_start)
-    print(yellow % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
+    print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
 
 def log_dump(tab):
@@ -61,84 +61,65 @@ def log_dump(tab):
     # ---
     print("log_dump done")
 
-
 def do_line(json1):
-    # ---
     stats_tab["all_items"] += 1
-    # ---
-    # q = json1['id']
+
     sitelinks = json1.get("sitelinks", [])
     if not sitelinks:
         stats_tab["no_sitelinks"] += 1
         del json1
         return
-    # ---
-    arlink = "arwiki" in sitelinks
-    # ---
-    if not arlink:
+
+    if "arwiki" not in sitelinks:
         # عناصر بوصلات لغات بدون وصلة عربية
         stats_tab["sitelinks_no_ar"] += 1
         del json1, sitelinks
         return
-    # ---
+
     # عناصر ويكي بيانات بها وصلة عربية
     stats_tab["all_ar_sitelinks"] += 1
     arlink_type = "pages"
     stats_tab[arlink_type]["count"] += 1
-    # ---
-    if arlink_type not in stats_tab["p31_main_tab"]:
-        stats_tab["p31_main_tab"][arlink_type] = {}
-    # ---
-    p31x = "no"
-    # ---
+
+    stats_tab["p31_main_tab"].setdefault(arlink_type, {})
+
     claims = json1.get("claims", {})
-    # ---
+
     if not claims:
         # صفحات دون أية خواص
         stats_tab["no_claims"] += 1
-    # ---
-    P31 = claims.get("P31", [])
-    # ---
-    if not P31:
-        # صفحة بدون خاصية P31
-        stats_tab["no_p31"] += 1
-        # ---
-        if len(claims) > 0:
-            # خواص أخرى بدون خاصية P31
-            stats_tab["other_claims_no_p31"] += 1
-    # ---
-    ar_desc = "ar" in json1.get("descriptions", [])
-    # ---
-    for p31x in P31:
-        # ---
-        if p31x in stats_tab["p31_main_tab"][arlink_type]:
+    else:
+        P31 = claims.get("P31", [])
+        if not P31:
+            # صفحة بدون خاصية P31
+            stats_tab["no_p31"] += 1
+            if claims:
+                # خواص أخرى بدون خاصية P31
+                stats_tab["other_claims_no_p31"] += 1
+
+        ar_desc = "ar" in json1.get("descriptions", [])
+
+        for p31x in P31:
+            stats_tab["p31_main_tab"][arlink_type].setdefault(p31x, 0)
             stats_tab["p31_main_tab"][arlink_type][p31x] += 1
-        else:
-            stats_tab["p31_main_tab"][arlink_type][p31x] = 1
-        # ---
-        if not ar_desc:
-            # استخدام خاصية 31 بدون وصف عربي
-            # ---
-            if p31x not in stats_tab["Table_no_ar_lab"]:
-                stats_tab["Table_no_ar_lab"][p31x] = 0
-            # ---
-            stats_tab["Table_no_ar_lab"][p31x] += 1
-    # ---
-    tat = ["labels", "descriptions", "aliases"]
-    # ---
-    for x in tat:
-        if x not in json1:
+
+            if not ar_desc:
+                # استخدام خاصية 31 بدون وصف عربي
+                stats_tab["Table_no_ar_lab"].setdefault(p31x, 0)
+                stats_tab["Table_no_ar_lab"][p31x] += 1
+
+    for field in ["labels", "descriptions", "aliases"]:
+        field_data = json1.get(field, {})
+        if not field_data:
             # دون عربي
-            stats_tab[arlink_type][x]["no"] += 1
-            continue
-        # ---
-        stats_tab[arlink_type][x]["yes"] += 1
-        # ---
-        # تسمية عربي
-        if "ar" in json1[x]:
-            stats_tab[arlink_type][x]["yesar"] += 1
+            stats_tab[arlink_type][field]["no"] += 1
         else:
-            stats_tab[arlink_type][x]["noar"] += 1
+            stats_tab[arlink_type][field]["yes"] += 1
+            # تسمية عربي
+            if "ar" in field_data:
+                stats_tab[arlink_type][field]["yesar"] += 1
+            else:
+                stats_tab[arlink_type][field]["noar"] += 1
 
 
 def get_lines(x):
