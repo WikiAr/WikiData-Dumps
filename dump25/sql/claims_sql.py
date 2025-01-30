@@ -75,6 +75,8 @@ def sql_add_values(tab):
     conn = sqlite3.connect(sql_path)
     # ---
     cursor = conn.cursor()
+    batch_size = 1000
+    values = []
     # ---
     for pid, qids in tab.items():
         # print(table_name)
@@ -83,17 +85,28 @@ def sql_add_values(tab):
             if not qid or not pid or not count:
                 # print(pid, qid, count)
                 continue
-            cursor.execute(
-                """
-                INSERT INTO claims (pid, qid, count)
-                VALUES (?, ?, ?)
-                ON CONFLICT(pid, qid) DO UPDATE SET count = count + excluded.count;
-
-                """,
-                (pid, qid, count),
-            )
-    # ---
-    conn.commit()
+            values.append((pid, qid, count))
+            if len(values) >= batch_size:
+                cursor.executemany(
+                    """
+                    INSERT INTO claims (pid, qid, count)
+                    VALUES (?, ?, ?)
+                    ON CONFLICT(pid, qid) DO UPDATE SET count = count + excluded.count;
+                    """,
+                    values,
+                )
+                values = []
+                conn.commit()
+    if values:
+        cursor.executemany(
+            """
+            INSERT INTO claims (pid, qid, count)
+            VALUES (?, ?, ?)
+            ON CONFLICT(pid, qid) DO UPDATE SET count = count + excluded.count;
+            """,
+            values,
+        )
+        conn.commit()
     # ---
     conn.close()
 

@@ -66,17 +66,23 @@ for x in tqdm.tqdm(jsons_files[1:]):
     if "no" in sys.argv:
         continue
     # ---
-    for p, stab in tqdm.tqdm(data["properties"].items()):
-        if p not in tab["properties"]:
-            tab["properties"][p] = stab
-        else:
-            tab["properties"][p]["len_prop_claims"] += stab["len_prop_claims"]
-            tab["properties"][p]["lenth_of_usage"] += stab["lenth_of_usage"]
-        # ---
-        for x, count in stab["qids"].items():
-            tab["properties"][p]["qids"].setdefault(x, 0)
-            tab["properties"][p]["qids"][x] += count
-        # ---
+    # Process properties in chunks to reduce memory usage
+    CHUNK_SIZE = 1000
+    property_items = list(data["properties"].items())
+
+    for i in range(0, len(property_items), CHUNK_SIZE):
+        chunk = property_items[i : i + CHUNK_SIZE]
+        for p, stab in tqdm.tqdm(chunk, leave=False):
+            if p not in tab["properties"]:
+                tab["properties"][p] = stab
+            else:
+                tab["properties"][p]["len_prop_claims"] += stab["len_prop_claims"]
+                tab["properties"][p]["lenth_of_usage"] += stab["lenth_of_usage"]
+            # ---
+            for x, count in stab["qids"].items():
+                tab["properties"][p]["qids"].setdefault(x, 0)
+                tab["properties"][p]["qids"][x] += count
+        gc.collect()  # More frequent garbage collection
     # ---
     gc.collect()
     # ---
