@@ -1,0 +1,86 @@
+import os
+import tqdm
+import ujson
+from pathlib import Path
+import gc
+import sys
+from humanize import naturalsize
+import time
+import psutil
+
+Dir = Path(__file__).parent.parent / "parts_claims"
+
+jsons_files = list(Dir.glob("*.json"))
+print(f"length of jsons_files: {len(jsons_files)}")
+jsons_files.sort()
+tt = {1: time.time()}
+start_time = time.time()
+
+
+def print_memory(cc):
+    print(cc, time.time() - tt[1])
+    tt[1] = time.time()
+
+    green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
+    usage = psutil.Process(os.getpid()).memory_info().rss
+    usage = naturalsize(usage, binary=True)
+    delta = int(time.time() - start_time)
+
+    print(green % "Memory usage:", purple % f"{usage}", f"time: to now {delta}")
+
+
+tab = {
+    "delta": 0,
+    "done": 0,
+    "file_date": "",
+    "len_all_props": 0,
+    "items_0_claims": 0,
+    "items_1_claims": 0,
+    "items_no_P31": 0,
+    "All_items": 0,
+    "total_claims": 0,
+    "properties": {},
+}
+
+n = 0
+
+with open(jsons_files[0], "r", encoding="utf-8") as f:
+    print(f"file: {jsons_files[0]}")
+    tab = ujson.load(f)
+    n = 1
+# ----
+for x in tqdm.tqdm(jsons_files[1:]):
+    n += 1
+    # ---
+    print(f"file: {x}")
+    # ---
+    with open(x, "r", encoding="utf-8") as f:
+        data = ujson.load(f)
+    # ----
+    for x, v in data.items():
+        if isinstance(v, int):
+            tab[x] += v
+    # ---
+    print(f"len(properties): {len(data['properties'])}")
+    # ---
+    if "no" in sys.argv:
+        continue
+    # ---
+    for p, stab in tqdm.tqdm(data["properties"].items()):
+        if p not in tab["properties"]:
+            tab["properties"][p] = stab
+        else:
+            tab["properties"][p]["len_prop_claims"] += stab["len_prop_claims"]
+            tab["properties"][p]["lenth_of_usage"] += stab["lenth_of_usage"]
+        # ---
+        for x, count in stab["qids"].items():
+            tab["properties"][p]["qids"].setdefault(x, 0)
+            tab["properties"][p]["qids"][x] += count
+        # ---
+    # ---
+    gc.collect()
+    # ---
+    print_memory(n)
+
+with open(Dir / "claims_tabs.json", "w", encoding="utf-8") as f:
+    ujson.dump(tab, f)

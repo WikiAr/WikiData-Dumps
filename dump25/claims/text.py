@@ -17,8 +17,13 @@ time_start = time.time()
 print(f"time_start: {time_start}")
 
 items_file = Path(__file__).parent / "claims.json"
+
+if "P31" in sys.argv:
+    items_file = Path(__file__).parent / "claims_P31.json"
+
 claims_new = Path(__file__).parent / "claims_new.txt"
 claims_p31 = Path(__file__).parent / "claims_p31.txt"
+
 
 def make_chart(x_values, y_values, chart_type=1):
     if not x_values or not y_values:
@@ -98,6 +103,7 @@ def make_numbers_section(p31_list):
     x_values, y_values = [], []
     other_count = 0
     idx = 0
+    max_v = 100 if "P31" not in sys.argv else 501
     for idx, (usage, prop) in enumerate(p31_list, start=1):
         if idx <= 26:
             x_values.append(prop)
@@ -105,7 +111,7 @@ def make_numbers_section(p31_list):
         else:
             other_count += usage
 
-        if len(rows) < 100:
+        if len(rows) < max_v:
             rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,}")
 
     rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")

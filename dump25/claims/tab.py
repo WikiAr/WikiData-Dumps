@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+import sys
 import time
 import psutil
 import os
@@ -31,17 +32,20 @@ class ClaimsProcessor:
             "All_items": 0,
             "total_claims": 0,
             "properties": {},
-            "langs": {},
         }
 
     def print_memory(self):
-        yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
+        green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
         usage = psutil.Process(os.getpid()).memory_info().rss / 1024 // 1024
         delta = int(time.time() - self.start_time)
-        print(yellow % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
+        print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump(self):
         jsonname = Path(__file__).parent / "claims.json"
+        # ---
+        if "P31" in sys.argv:
+            jsonname = Path(__file__).parent / "claims_P31.json"
+        # ---
         with open(jsonname, "w", encoding="utf-8") as outfile:
             ujson.dump(self.tab, outfile)
         print("log_dump done")
@@ -63,6 +67,9 @@ class ClaimsProcessor:
             self.tab["items_no_P31"] += 1
 
         for p, p_qids in claims.items():
+            if "P31" in sys.argv and p != "P31":
+                continue
+
             self.tab["total_claims"] += len(p_qids)
             p_tab = self.tab["properties"].get(
                 p,

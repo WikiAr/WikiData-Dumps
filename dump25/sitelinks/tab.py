@@ -35,13 +35,13 @@ tab = {
 
 def print_memory():
     now = time.time()
-    yellow, purple = "\033[93m%s\033[00m", "\033[95m%s\033[00m"
+    green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
 
     usage = psutil.Process(os.getpid()).memory_info().rss
     usage = usage / 1024 // 1024
 
     delta = int(now - time_start)
-    print(yellow % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
+    print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
 
 def log_dump(tab):

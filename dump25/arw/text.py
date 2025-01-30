@@ -107,7 +107,7 @@ def make_text_p31(p31_main_tab):
         for qid, count in sorted_items:
             if qid == "no":
                 continue
-            if count > threshold and len(rows) < 150:
+            if count > threshold and len(rows) < 500:
                 yf = "{{Q|%s}}" % qid
                 rows.append(f"| {c} || {yf} || {count:,} ")
                 c += 1
