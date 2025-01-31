@@ -101,9 +101,14 @@ class ClaimsProcessor:
             # ---
             qids_1 = sorted(xx["qids"].items(), key=lambda x: x[1], reverse=True)
             # ---
-            self.tab["properties"][x]["qids"] = dict(qids_1[:100])
+            max_items = 100
             # ---
-            others = sum([x[1] for x in qids_1[100:]]) if len(qids_1) > 100 else 0
+            if x == "P31":
+                max_items = 500
+            # ---
+            self.tab["properties"][x]["qids"] = dict(qids_1[:max_items])
+            # ---
+            others = sum([x[1] for x in qids_1[max_items:]]) if len(qids_1) > max_items else 0
             # ---
             self.tab["properties"][x]["qids"]["others"] = others
         # ---

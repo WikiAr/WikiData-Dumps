@@ -14,10 +14,41 @@ import psutil
 import os
 from pathlib import Path
 import ujson
-from .file_processor import FileProcessor
+from typing import Callable, Any
+import tqdm
 
 
-class ClaimsProcessor:
+class FileProcessor:
+    def __init__(self, memory_check_interval: int = 500):
+        self.memory_check_interval = memory_check_interval
+
+    def process_files(self, directory: Path, process_func: Callable[[Path], Any], pattern: str = "*.json"):
+        """
+        Process files in directory with progress tracking and memory monitoring.
+
+        Args:
+            directory: Directory containing files
+            process_func: Function to process each file
+            pattern: File pattern to match
+        """
+        files = list(directory.glob(pattern))
+        print(f"Processing {len(files)} files")
+
+        for current_count, file_path in enumerate(tqdm.tqdm(files), 1):
+            process_func(file_path)
+
+            if current_count % self.memory_check_interval == 0:
+                self._print_progress(current_count)
+
+
+    def _print_progress(self, count: int):
+        current_time = time.time()
+        print(f"Processed {count} files, " f"elapsed: {current_time - self.tt:.2f}s")
+        self.tt = current_time
+        self.print_memory()
+
+
+class ClaimsProcessor(FileProcessor):
     def __init__(self):
         self.start_time = time.time()
         self.tt = time.time()
@@ -33,6 +64,7 @@ class ClaimsProcessor:
             "total_claims": 0,
             "properties": {},
         }
+        super().__init__()
 
     def print_memory(self):
         green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
@@ -107,9 +139,14 @@ class ClaimsProcessor:
             # ---
             qids_1 = sorted(xx["qids"].items(), key=lambda x: x[1], reverse=True)
             # ---
-            self.tab["properties"][x]["qids"] = dict(qids_1[:100])
+            max_items = 100
             # ---
-            others = sum([x[1] for x in qids_1[100:]]) if len(qids_1) > 100 else 0
+            if x == "P31":
+                max_items = 500
+            # ---
+            self.tab["properties"][x]["qids"] = dict(qids_1[:max_items])
+            # ---
+            others = sum([x[1] for x in qids_1[max_items:]]) if len(qids_1) > max_items else 0
             # ---
             self.tab["properties"][x]["qids"]["others"] = others
         # ---
@@ -120,8 +157,7 @@ class ClaimsProcessor:
             return ujson.load(f)
 
     def read_file(self, parts_dir):
-        processor = FileProcessor()
-        processor.process_files(parts_dir, lambda x: self.do_line(self.get_lines(x)))
+        self.process_files(parts_dir, lambda x: self.do_line(self.get_lines(x)))
         self.tab_changes()
         # ---
         delta = int(time.time() - self.start_time)
