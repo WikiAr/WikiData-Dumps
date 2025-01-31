@@ -69,8 +69,6 @@ def dump_lines_claims(linesc):
     # ---
     # with open(items_file, "w", encoding="utf-8") as f: json.dump(linesc, f)
     # ---
-    fixed = {}
-    # ---
     _line = {
         "qid": "Q00",
         "claims": {"P31": ["Q5", "Q0"]},

@@ -9,19 +9,36 @@ import sys
 import re
 import requests
 
+# Compile regex patterns
+TOTAL_ITEMS_PATTERN = re.compile(r"\|\s*Total items\s*\|\|\s*\|\|\s*(\d+) \(")
+LANGUAGE_STATS_PATTERN = re.compile(r"\|(.*?)\|\|(\d*)\|\|(\d*)\|\|(\d*)")
+PERCENTAGE_PATTERN = re.compile(r"\d+\.\d+\%")
+DELTA_PATTERN = re.compile(r"\|\|\s*[\+\-]\d+\s*")
+LANGUAGE_TEMPLATE_PATTERN = re.compile(r"\s*\{\{\#language\:.*?\}\}\s*")
+
 Session = requests.Session()
 dir2 = Path(__file__).parent
 
 file_old_data = f"{dir2}/old_data.json"
 
-if not os.path.isfile(file_old_data):
-    print(f"create file_old_data:{file_old_data}..")
-    with open(file_old_data, "w", encoding="utf-8") as f:
-        json.dump({}, f)
 
-with open(file_old_data, "r", encoding="utf-8") as f:
-    _old_data = json.load(f)
-_old_data = _old_data.get("langs") or _old_data
+def initialize_data_file(file_path):
+    """Initialize and load data file with proper error handling."""
+    try:
+        if not os.path.isfile(file_old_data):
+            print(f"create file_old_data:{file_old_data}..")
+            with open(file_old_data, "w", encoding="utf-8") as f:
+                json.dump({}, f)
+
+        with open(file_old_data, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("langs") or data
+    except (IOError, json.JSONDecodeError) as e:
+        print(f"Error initializing data file: {e}")
+        return {}
+
+
+_old_data = initialize_data_file(file_old_data)
 
 
 def GetPageText(title):
@@ -46,6 +63,57 @@ def GetPageText(title):
         print(f"no text for {title}")
     # ---
     return text
+
+
+def from_wiki_new():
+    title = "User:Mr. Ibrahem/Language statistics for items"
+
+    if "test1" in sys.argv:
+        title += "/sandbox"
+
+    print(f"from_wiki_new, title: {title}")
+    texts = GetPageText(title)
+
+    # Apply string replacements
+    replacements = {
+        ",": "",
+        'style="background-color:#c79d9d"| ': "",
+        'style="background-color:#9dc79d"| ': "",
+    }
+    for old, new in replacements.items():
+        texts = texts.replace(old, new)
+
+    last_total = 0
+
+    if io := TOTAL_ITEMS_PATTERN.search(texts):
+        last_total = int(io.group(1))
+
+    Old = {"last_total": last_total}
+
+    texts = texts.split("== Number of labels, descriptions and aliases for items per language ==")[0]
+    texts = texts.replace("|}", "")
+
+    for L in texts.split("|-"):
+        L = L.strip()
+        L = L.replace("\n", "|")
+
+        if L.find("{{#language:") != -1:
+            L = PERCENTAGE_PATTERN.sub("", L)
+            L = DELTA_PATTERN.sub("", L)
+            L = LANGUAGE_TEMPLATE_PATTERN.sub("", L)
+            L = re.sub(r"\s*\|\|\s*", "||", L)
+            L = re.sub(r"\s*\|\s*", "|", L)
+
+            while "||||" in L:
+                L = L.replace("||||", "||")
+
+            L = L.strip()
+            if "test" in sys.argv:
+                print(L)
+
+            if iu := LANGUAGE_STATS_PATTERN.search(L):
+                lang = iu.group(1).strip()
+                Old[lang] = {"labels": 0, "descriptions": 0, "aliases": 0, "all": 0}
 
 
 def from_wiki():

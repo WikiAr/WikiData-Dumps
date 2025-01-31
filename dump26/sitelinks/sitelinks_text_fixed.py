@@ -194,7 +194,7 @@ def make_families_text_u(du_tab, Old, All_items):
         else:
             family_section = f"=== {family_name} ===\n"
         # ---
-        family
+        # family
         # ---
         family_section += f"* Total number of links: {all_links:,}\n"
         # ---
