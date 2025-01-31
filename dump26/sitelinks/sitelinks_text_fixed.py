@@ -12,7 +12,7 @@ from pathlib import Path
 # ---
 va_dir = Path(__file__).parent
 # ---
-items_file = va_dir / "sitelinks.json"
+items_file = va_dir / "labels_new.json"
 # ---
 labels_file = va_dir / "sitelinks.txt"
 # ---
@@ -255,10 +255,13 @@ def facts(n_tab, Old):
     # ---
     text += f"|-\n| Total items last update || {last_total:,}\n"
     text += f"|-\n| Total items || {n_tab['All_items']:,} (+{diff:,}) \n"
-    text += f"|-\n| Items without sitelinks || {n_tab['no_sitelinks']:,}\n"
+    no_sitelinks = n_tab.get("no", {}).get("sitelinks", 0)
+    text += f"|-\n| Items without sitelinks || {no_sitelinks:,}\n"
     # ---
-    if n_tab["most_linked_item"]:
-        text += f"|-\n| Most linked item ([[{n_tab['most_linked_item']}]]) || {n_tab['most_linked_item_count']:,}\n"
+    if n_tab.get("most", {}).get("sitelinks"):
+        q = n_tab["most"]["sitelinks"]["q"]
+        count = n_tab["most"]["sitelinks"]["count"]
+        text += f"|-\n| Most linked item ([[{q}]]) || {count:,}\n"
     # ---
     text += "|}\n\n"
     # ---
@@ -318,10 +321,7 @@ if __name__ == "__main__":
     tab = {
         "delta": 0,
         "done": 0,
-        "no_sitelinks": 0,
         "file_date": "",
-        "most_linked_item": "",
-        "most_linked_item_count": 0,
         "All_items": 0,
         "sitelinks": {},
     }
@@ -330,6 +330,6 @@ if __name__ == "__main__":
         if x not in tabb:
             tabb[x] = v
     # ---
-    print(f"Total items: {tabb['All_items']:,}")
+    print(f"Total items: {tab['All_items']:,}")
     # ---
     main_labels(tabb)
