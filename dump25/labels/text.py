@@ -12,7 +12,7 @@ from pathlib import Path
 # ---
 va_dir = Path(__file__).parent
 # ---
-items_file = va_dir / "labels.json"
+items_file = va_dir / "labels_new.json"
 # ---
 labels_file = va_dir / "labels.txt"
 template_file = va_dir / "template.txt"

@@ -66,13 +66,15 @@ def from_wiki():
     texts = texts.replace('style="background-color:#9dc79d"| ', "")
     # ---
     last_total = 0
-    if io := re.search(r"\* Total items:(\d+)\.", texts):
+    # | Total items ||  || 113,566,334 (+5,771,637)
+    if io := re.search(r"\|\s*Total items\s*\|\|\s*\|\|\s*(\d+) \(", texts):
         last_total = int(io.group(1))
+    # ---
     Old = {"last_total": last_total}
     # ---
-    # ---
-    texts = texts.split("|}")[0]
+    texts = texts.split("== Number of labels, descriptions and aliases for items per language ==")[0]
     texts = texts.replace("|}", "")
+    # ---
     for L in texts.split("|-"):
         L = L.strip()
         L = L.replace("\n", "|")

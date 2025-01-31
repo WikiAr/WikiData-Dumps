@@ -142,13 +142,16 @@ def dump_lines(lines):
             "labels": 0,
             "descriptions": 0,
             "aliases": 0,
+            "sitelinks": 0,
         },
         "most": {
             "labels": {"q": "", "count": 0},
             "descriptions": {"q": "", "count": 0},
             "aliases": {"q": "", "count": 0},
+            "sitelinks": {"q": "", "count": 0},
         },
         "All_items": 0,
+        "sitelinks": {},
         "langs": {},
     }
     # ---
@@ -158,9 +161,10 @@ def dump_lines(lines):
         "labels": ["el", "ay"],
         "aliases": ["el", "ay"],
         "descriptions": ["cy", "sk", "mk", "vls"],
+        "sitelinks": ["arwiki", "enwiki", "mk", "vls"],
     }
     # ---
-    tats = ["labels", "descriptions", "aliases"]
+    tats = ["labels", "descriptions", "aliases", "sitelinks"]
     # ---
     for json1 in lines:
         for x in tats:
@@ -177,9 +181,14 @@ def dump_lines(lines):
                 # print(f"most {x}: {json1['qid']}, count: {len(ta_o)}")
             # ---
             for code in ta_o:
-                if code not in tab["langs"]:
-                    tab["langs"][code] = {"labels": 0, "descriptions": 0, "aliases": 0}
-                tab["langs"][code][x] += 1
+                if x == "sitelinks":
+                    if code not in tab["sitelinks"]:
+                        tab["sitelinks"][code] = 0
+                    tab["sitelinks"][code] += 1
+                else:
+                    if code not in tab["langs"]:
+                        tab["langs"][code] = {"labels": 0, "descriptions": 0, "aliases": 0}
+                    tab["langs"][code][x] += 1
     # ---
     file_fixed = dump_parts1_fixed / f"{dump_done[1]}.json"
     # ---
