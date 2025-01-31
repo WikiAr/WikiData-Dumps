@@ -83,6 +83,7 @@ class ClaimsProcessor:
                     self.tab["properties"][p]["qids"][qid] = 0
                 # ----
                 self.tab["properties"][p]["qids"][qid] += p_qids[qid]
+                # if qid == "Q5": print(qid, p_qids[qid])
 
     def tab_changes(self):
         # ---

@@ -24,20 +24,16 @@ from humanize import naturalsize  # naturalsize(file_size, binary=True)
 # ---
 Dir = Path(__file__).parent
 # ---
-dump_dir_claims = Dir / "parts1_claims"
-# ---
-if not dump_dir_claims.exists():
-    dump_dir_claims.mkdir()
+# dump_dir_claims = Dir / "parts1_claims"
+# if not dump_dir_claims.exists(): dump_dir_claims.mkdir()
 # ---
 dump_dir_claims_fixed = Dir / "parts1_claims_fixed"
 # ---
 if not dump_dir_claims_fixed.exists():
     dump_dir_claims_fixed.mkdir()
 # ---
-dump_dir = Dir / "parts1"
-# ---
-if not dump_dir.exists():
-    dump_dir.mkdir()
+# dump_dir = Dir / "parts1"
+# if not dump_dir.exists(): dump_dir.mkdir()
 # ---
 dump_parts1_fixed = Dir / "parts1_fixed"
 # ---
@@ -69,10 +65,9 @@ def dump_lines_claims(linesc):
     # ---
     dump_done["claims"] += 1
     # ---
-    items_file = dump_dir_claims / f"{dump_done['claims']}.json"
+    # items_file = dump_dir_claims / f"{dump_done['claims']}.json"
     # ---
-    with open(items_file, "w", encoding="utf-8") as f:
-        json.dump(linesc, f)
+    # with open(items_file, "w", encoding="utf-8") as f: json.dump(linesc, f)
     # ---
     fixed = {}
     # ---
@@ -143,10 +138,12 @@ def dump_lines_claims(linesc):
     with open(items_file_fixed, "w", encoding="utf-8") as f:
         json.dump(tabs, f)
     # ---
-    items_file_size = naturalsize(os.path.getsize(items_file), binary=True)
+    # items_file_size = naturalsize(os.path.getsize(items_file), binary=True)
+    # print(f"dump_lines_claims size: {items_file_size}, fixed: {items_file_fixed_size}")
+    # ---
     items_file_fixed_size = naturalsize(os.path.getsize(items_file_fixed), binary=True)
     # ---
-    print(f"dump_lines_claims size: {items_file_size}, fixed: {items_file_fixed_size}")
+    print(f"dump_lines_claims fixed: {items_file_fixed_size}")
 
 
 def dump_lines(lines):
@@ -155,10 +152,9 @@ def dump_lines(lines):
     # ---
     dump_done[1] += 1
     # ---
-    items_file = dump_dir / f"{dump_done[1]}.json"
+    # items_file = dump_dir / f"{dump_done[1]}.json"
     # ---
-    with open(items_file, "w", encoding="utf-8") as f:
-        json.dump(lines, f)
+    # with open(items_file, "w", encoding="utf-8") as f: json.dump(lines, f)
     # ---
     tab = {
         "no": {
@@ -218,10 +214,12 @@ def dump_lines(lines):
     with open(file_fixed, "w", encoding="utf-8") as f:
         json.dump(tab, f)
     # ---
-    file_size = naturalsize(os.path.getsize(items_file), binary=True)
+    # file_size = naturalsize(os.path.getsize(items_file), binary=True)
+    # print(f"dump_lines size: {file_size}, fixed: {fixed_size}")
+    # ---
     fixed_size = naturalsize(os.path.getsize(file_fixed), binary=True)
     # ---
-    print(f"dump_lines size: {file_size}, fixed: {fixed_size}")
+    print(f"dump_lines fixed: {fixed_size}")
 
 
 def print_memory(i):
@@ -293,7 +291,7 @@ def process_file():
     skip_to = 0
     # ---
     if "skip" in sys.argv:
-        js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in dump_dir.glob("*.json")]
+        js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in dump_parts1_fixed.glob("*.json")]
         maxfile = max(js_f) if js_f else 0
         skip_to = maxfile * dump_numbs
         dump_done[1] = maxfile
