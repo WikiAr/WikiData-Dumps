@@ -1,7 +1,7 @@
 """
 https://hub-paws.wmcloud.org/user/Mr.%20Ibrahem/lab/tree/dump/claims/tab.py
 
-python3 dump/claims/tab.py
+python3 claims/tab_fixed_new.py
 
 python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 
@@ -10,6 +10,8 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 """
 import sys
 import time
+import json
+import gc
 import psutil
 import os
 from pathlib import Path
@@ -17,9 +19,18 @@ import ujson
 from typing import Callable, Any
 import tqdm
 
+most_props_path = Path(__file__).parent.parent / "properties.json"
+
+if not most_props_path.exists():
+    most_props_path.write_text('{"q": "", "count": 0}')
+
+most_props = json.loads(most_props_path.read_text())
+# get only first 50 properties after sort
+most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
+
 
 class FileProcessor:
-    def __init__(self, memory_check_interval: int = 500):
+    def __init__(self, memory_check_interval: int = 80):
         self.memory_check_interval = memory_check_interval
 
     def process_files(self, directory: Path, process_func: Callable[[Path], Any], pattern: str = "*.json"):
@@ -39,7 +50,6 @@ class FileProcessor:
 
             if current_count % self.memory_check_interval == 0:
                 self._print_progress(current_count)
-
 
     def _print_progress(self, count: int):
         current_time = time.time()
@@ -94,12 +104,15 @@ class ClaimsProcessor(FileProcessor):
             self.tab["properties"][prop] = {
                 "qids": {"others": 0},
                 "lenth_of_usage": 0,
+                "len_of_qids": 0,
                 "len_prop_claims": 0,
             }
 
-    def _update_property_stats(self, prop, p_qids) -> None:
+    def _update_property_stats(self, prop, prop_tab) -> None:
         """Update statistics for a single property."""
-        self.tab["properties"][prop]["lenth_of_usage"] += 1
+        p_qids = prop_tab.get("qids") or prop_tab
+
+        self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
         self.tab["properties"][prop]["len_prop_claims"] += len(p_qids)
 
         for qid, count in p_qids.items():
@@ -120,8 +133,12 @@ class ClaimsProcessor(FileProcessor):
             if "P31" in sys.argv and p != "P31":
                 continue
 
+            if p not in most_props:
+                continue
+
             self._init_property(p)
             self._update_property_stats(p, p_qids)
+            gc.collect()
 
     def tab_changes(self):
         # ---
@@ -132,7 +149,7 @@ class ClaimsProcessor(FileProcessor):
         # ---
         for x, xx in self.tab["properties"].items():
             # ---
-            self.tab["properties"][x]["len_of_qids"] = len(xx["qids"])
+            self.tab["properties"][x]["len_of_qids"] += len(xx["qids"])
             # ---
             if count_total_claims:
                 self.tab["total_claims"] += sum(xx["qids"].values())

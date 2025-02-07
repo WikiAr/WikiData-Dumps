@@ -64,7 +64,8 @@ def get_most_usage(text):
 
     sorted_properties = sorted(properties.items(), key=lambda x: x[1], reverse=True)
 
-    return dict(sorted_properties[:500])
+    return dict(sorted_properties[:101])
+
 
 def GetPageText_new(title):
     title = title.replace(' ', '_')
@@ -88,6 +89,7 @@ def GetPageText_new(title):
         print(f'no text for {title}')
     # ---
     return text
+
 
 def get_data():
     file_path = Path(__file__).parent / "properties.json"

@@ -6,10 +6,26 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/text2.py
 
 
 """
+import requests
 import sys
 import time
 import json
 from pathlib import Path
+
+va_dir = Path(__file__).parent
+# ---
+new_data_file = Path(__file__).parent / "claims_new_data.json"
+# ---
+new_data = {
+    "date": "",
+    "All_items": 0,
+    "items_no_P31": 0,
+    "items_0_claims": 0,
+    "items_1_claims": 0,
+    "total_claims": 0,
+    "len_all_props": 0,
+    "properties": {},
+}
 
 sections_done = {"current": 0, "max": 100}
 
@@ -46,22 +62,26 @@ def make_chart(x_values, y_values, chart_type=1):
     return chart
 
 
-def make_section(property_id, table, max_n=51):
+def make_section(pid, table, old_data, max_n=51):
+    # ---
     if sections_done["current"] >= sections_done["max"]:
         return ""
-
+    # ---
+    new_data["properties"][pid] = {
+        "lenth_of_usage": 0,
+        "len_prop_claims": 0,
+        "len_of_qids": 0,
+        "qids": {
+            "others": 0,
+        },
+    }
+    # ---
     total_usage = table.get("lenth_of_usage", 0)
-    texts = f"== {{{{P|{property_id}}}}} ==\n"
-    texts += f"* Total items using this property: {total_usage:,}\n"
-
-    if claims_count := table.get("len_prop_claims"):
-        texts += f"* Total number of claims with this property: {claims_count:,}\n"
-
-    if unique_qids := table.get("len_of_qids"):
-        texts += f"* Number of unique QIDs:  {unique_qids:,}\n"
-
+    claims_count = 0
+    unique_qids = table.get("len_of_qids", 0)
+    # ---
     if not table.get("qids"):
-        print(f"{property_id} has no QIDs.")
+        print(f"{pid} has no QIDs.")
         return ""
 
     table_rows = []
@@ -77,20 +97,59 @@ def make_section(property_id, table, max_n=51):
 
         # if idx <= max_n:
         if idx < max_n:
-            table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,}")
+            old_v = old_data.get("qids", {}).get(qid, 0)
+            diffo = min_it(count, old_v, add_plus=True)
+            # ---
+            table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,} \n| {diffo}")
+            # ---
+            new_data["properties"][pid]["qids"][qid] = count
+            claims_count += count
+            # ---
             x_values.append(qid)
             y_values.append(str(count))
         else:
             other_count += count
-
-    table_rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
+    # ---
+    claims_count += other_count
+    # ---
+    new_data["properties"][pid]["qids"]["others"] = other_count
+    # ---
+    old_others = old_data.get("qids", {}).get("others", 0)
+    diff_others = min_it(other_count, old_others, add_plus=True)
+    # ---
+    table_rows.append(f"! {idx} \n! others \n! {other_count:,} \n! {diff_others} \n|-")
+    # ---
     table_content = "\n|-\n".join(table_rows)
 
     chart = ""
+
     if "Chart" in sys.argv:
         chart = make_chart(x_values, y_values, chart_type=2)
 
-    section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-\n! class="sortable" | #\n! class="sortable" | value\n! class="sortable" | Numbers\n|-\n'
+    texts = f"== {{{{P|{pid}}}}} ==\n"
+    # --- -
+    diff = min_it(total_usage, old_data.get("lenth_of_usage", 0), add_plus=True)
+    # ---
+    texts += f"* Total items using this property: {total_usage:,} ({diff})\n"
+
+    if claims_count:
+        diff2 = min_it(claims_count, old_data.get("len_prop_claims", 0), add_plus=True)
+        texts += f"* Total number of claims with this property: {claims_count:,} ({diff2})\n"
+
+    if unique_qids:
+        diff3 = min_it(unique_qids, old_data.get("len_of_qids", 0), add_plus=True)
+        texts += f"* Number of unique QIDs: {unique_qids:,} ({diff3})\n"
+
+    new_data["properties"][pid]["lenth_of_usage"] = total_usage
+    new_data["properties"][pid]["len_prop_claims"] = claims_count
+    new_data["properties"][pid]["len_of_qids"] = unique_qids
+
+    section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-'
+    section_table += '\n! class="sortable" | #'
+    section_table += '\n! class="sortable" | value'
+    section_table += '\n! class="sortable" | Numbers'
+    section_table += '\n! class="sortable" | Diff'
+    section_table += '\n|-\n'
 
     section_table += table_content + "\n|}\n{{clear}}\n"
 
@@ -98,13 +157,15 @@ def make_section(property_id, table, max_n=51):
     return texts + chart + section_table
 
 
-def make_numbers_section(p31_list):
+def make_numbers_section(p_list, Old_props):
     rows = []
     x_values, y_values = [], []
     other_count = 0
     idx = 0
+
     max_v = 100 if "P31" not in sys.argv else 501
-    for idx, (usage, prop) in enumerate(p31_list, start=1):
+
+    for idx, (usage, prop) in enumerate(p_list, start=1):
         if idx <= 26:
             x_values.append(prop)
             y_values.append(str(usage))
@@ -112,7 +173,9 @@ def make_numbers_section(p31_list):
             other_count += usage
 
         if len(rows) < max_v:
-            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,}")
+            old_usage = Old_props.get(prop, {}).get("lenth_of_usage", 0)
+            diff = min_it(usage, old_usage, add_plus=True)
+            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,} || {diff}")
 
     rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
     table_content = "\n|-\n".join(rows)
@@ -123,36 +186,125 @@ def make_numbers_section(p31_list):
         chart = make_chart(x_values, y_values)
         texts += chart + "\n"
     # ---
-    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage\n{table_content}\n|}}\n'
+    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage !! Diff\n{table_content}\n|}}\n'
     # ---
     texts += table
     # ---
     return texts
 
 
-def make_text(data):
-    p31_list = [(prop_data["lenth_of_usage"], prop_id) for prop_id, prop_data in data["properties"].items() if prop_data["lenth_of_usage"]]
-    p31_list.sort(reverse=True)
+def min_it(new, old, add_plus=False):
+    old = str(old)
+    # ---
+    if old.isdigit():
+        old = int(old)
+    else:
+        return 0
+    # ---
+    if old == 0 or new == old:
+        return 0
+    # ---
+    result = new - old
+    # ---
+    if add_plus:
+        plus = "" if result < 1 else "+"
+        result = f"{plus}{result:,}"
+    # ---
+    return result
+
+
+def facts(n_tab, Old):
+    # ---
+    last_total = Old.get("All_items", 0)
+    # ---
+    text = '{| class="wikitable sortable"\n'
+    text += "! Title !! Number !! Diff \n"
+    # ---
+    texts = {
+        "All_items": "Total items",
+        "items_no_P31": "Items without P31",
+        "items_0_claims": "Items without claims",
+        "items_1_claims": "Items with 1 claim only",
+        "total_claims": "Total number of claims",
+        "len_all_props": "Number of properties in the report",
+    }
+    # ---
+    text += f"|-\n| Total items last update || {last_total:,} || 0 \n"
+    # ---
+    for key, title in texts.items():
+        diff = min_it(n_tab[key], Old.get(key, 0), add_plus=True)
+        text += f"|-\n| {title} || {n_tab[key]:,} || {diff} \n"
+        # ---
+        new_data[key] = int(n_tab[key])
+    # ---
+    text += "|}\n\n"
+    # ---
+    return text
+
+
+def make_text(data, Old):
+    p_list = [(prop_data["lenth_of_usage"], prop_id) for prop_id, prop_data in data["properties"].items() if prop_data["lenth_of_usage"]]
+    p_list.sort(reverse=True)
 
     if not data.get("file_date"):
         data["file_date"] = "latest"
     # ---
     metadata = f"<onlyinclude>;dump date {data.get('file_date', 'latest')}</onlyinclude>.\n"
-    metadata += f"* Total items: {data['All_items']:,}\n"
-    metadata += f"* Items without P31: {data['items_no_P31']:,}\n"
-    metadata += f"* Items without claims: {data['items_0_claims']:,}\n"
-    metadata += f"* Items with 1 claim only: {data['items_1_claims']:,}\n"
-    metadata += f"* Total number of claims: {data['total_claims']:,}\n"
-    metadata += f"* Number of properties in the report: {data['len_all_props']:,}\n"
+    metadata += facts(data, Old)
+    # ---
+    Old_props = Old.get("properties", {})
     # ---
     final = time.time()
     delta = data.get("delta") or int(final - time_start)
     metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~\n"
-    chart_section = make_numbers_section(p31_list)
+    chart_section = make_numbers_section(p_list, Old_props)
 
-    sections = "".join(make_section(prop, data["properties"][prop]) for _, prop in p31_list if sections_done["current"] < sections_done["max"])
+    sections = ""
+
+    for _, prop in p_list:
+        if sections_done["current"] < sections_done["max"]:
+            sections += make_section(prop, data["properties"][prop], Old_props.get(prop, {}))
 
     return metadata + chart_section + sections
+
+
+def GetPageText_new(title):
+    title = title.replace(' ', '_')
+    # ---
+    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    # ---
+    print(f"url: {url}")
+    # ---
+    text = ''
+    # ---
+    # get url text
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()  # Raises HTTPError for bad responses
+        text = response.text
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching page text: {e}")
+        return ''
+    # ---
+    if not text:
+        print(f'no text for {title}')
+    # ---
+    return text
+
+
+def get_old_data():
+    # ---
+    title = "User:Mr._Ibrahem/claims.json"
+    # ---
+    texts = GetPageText_new(title)
+    # ---
+    try:
+        Old = json.loads(texts)
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        Old = {}
+    # ---
+    return Old
 
 
 def main():
@@ -174,17 +326,25 @@ def main():
     for key, default_value in data_defaults.items():
         data.setdefault(key, default_value)
 
-    text_output = make_text(data)
+    Old = get_old_data()
+
+    text_output = make_text(data, Old)
 
     with open(claims_new, "w", encoding="utf-8") as file:
         file.write(text_output)
+
     print(f"Log written to {claims_new}")
 
     if "P31" in data["properties"]:
-        text_p31_output = make_section("P31", data["properties"]["P31"], max_n=501)
+        text_p31_output = make_section("P31", data["properties"]["P31"], Old.get("properties", {}).get("P31", {}), max_n=501)
         with open(claims_p31, "w", encoding="utf-8") as file:
             file.write(text_p31_output)
         print(f"Log written to {claims_p31}")
+
+    with open(new_data_file, "w", encoding="utf-8") as outfile:
+        json.dump(new_data, outfile, indent=4)
+
+    print(f"saved to {new_data_file}")
 
 
 if __name__ == "__main__":
