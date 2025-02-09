@@ -22,23 +22,24 @@ from pathlib import Path
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 # ---
+time_start = time.time()
+# ---
 Dir = Path(__file__).parent
 # ---
 # dump_dir_claims = Dir / "parts1_claims"
 # if not dump_dir_claims.exists(): dump_dir_claims.mkdir()
-# ---
+
+
+def check_dir(path):
+    if not path.exists():
+        path.mkdir()
+
+
 dump_dir_claims_fixed = Dir / "parts1_claims_fixed"
-# ---
-if not dump_dir_claims_fixed.exists():
-    dump_dir_claims_fixed.mkdir()
-# ---
-# dump_dir = Dir / "parts1"
-# if not dump_dir.exists(): dump_dir.mkdir()
-# ---
 dump_parts1_fixed = Dir / "parts1_fixed"
 # ---
-if not dump_parts1_fixed.exists():
-    dump_parts1_fixed.mkdir()
+check_dir(dump_dir_claims_fixed)
+check_dir(dump_parts1_fixed)
 # ---
 dump_done = {1: 0, "claims": 0}
 
@@ -55,6 +56,11 @@ if not most_path.exists():
     most_path.write_text('{"q": "", "count": 0}')
 
 most_data = json.loads(most_path.read_text())
+
+properties_path = Path(__file__).parent / "properties.json"
+
+with open(properties_path, "r", encoding="utf-8") as f:
+    most_props = json.load(f)
 
 
 def dump_lines_claims(linesc):
@@ -86,6 +92,8 @@ def dump_lines_claims(linesc):
         "properties": {},
     }
     # ---
+    tabs["All_items"] += len(linesc)
+    # ---
     for line in linesc:
         # ---
         claims = line.get("claims", {})
@@ -114,15 +122,26 @@ def dump_lines_claims(linesc):
             tabs["total_claims"] += len(qids)
             # ---
             if pid not in tabs["properties"]:
-                tabs["properties"][pid] = {}
+                tabs["properties"][pid] = {
+                    "qids": {},
+                    "items_use_it": 0,
+                    "lenth_of_usage": 0,
+                    "len_of_qids": 0,
+                    "len_prop_claims": 0,
+                }
+            # ---
+            tabs["properties"][pid]["lenth_of_usage"] += 1
+            tabs["properties"][pid]["items_use_it"] += 1
             # ---
             # print(pid, qids)
             # ---
+            # if not
+            # ---
             for qid in qids:
-                if qid not in tabs["properties"][pid]:
-                    tabs["properties"][pid][qid] = 0
+                if qid not in tabs["properties"][pid]["qids"]:
+                    tabs["properties"][pid]["qids"][qid] = 0
                 # ---
-                tabs["properties"][pid][qid] += 1
+                tabs["properties"][pid]["qids"][qid] += 1
         # ---
         del claims, line
     # ---
@@ -239,19 +258,7 @@ def fix_property(pv):
     return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
 
 
-properties_path = Path(__file__).parent / "properties.json"
-# ---
-with open(properties_path, "r", encoding="utf-8") as f:
-    most_props = json.load(f)
-# ---
-bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
-
-file_size = os.path.getsize(bz2_file)
-
-print(naturalsize(file_size, binary=True))
-
-
-def parse_lines():
+def parse_lines(bz2_file):
     with bz2.open(bz2_file, "r") as f:
         for line in f:
             line = line.decode("utf-8").strip("\n").strip(",")
@@ -278,13 +285,10 @@ def filter_and_process(entity_dict):
     return None, None
 
 
-time_start = time.time()
-
-
-def process_file():
+def process_file(bz2_file):
     tt[1] = time.time()
     mem_nu = 10000
-    dump_numbs = 20000
+    dump_numbs = 100000
     # ---
     skip_to = 0
     # ---
@@ -302,7 +306,7 @@ def process_file():
     lines_claims = []
     # ---
     # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):
-    for i, entity_dict in enumerate(parse_lines(), start=1):
+    for i, entity_dict in enumerate(parse_lines(bz2_file), start=1):
         if i < skip_to:
             if i % dump_numbs == 0:
                 print("skip_to:", skip_to, "i:", i)
@@ -351,8 +355,19 @@ def process_file():
     print("Processing completed.")
 
 
-process_file()
+def main():
+    bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
 
-end = time.time()
-delta = int(end - time_start)
-print(f"read_file: done in {delta}")
+    file_size = os.path.getsize(bz2_file)
+
+    print(naturalsize(file_size, binary=True))
+
+    process_file(bz2_file)
+
+    end = time.time()
+    delta = int(end - time_start)
+    print(f"read_file: done in {delta}")
+
+
+if __name__ == "__main__":
+    main()
