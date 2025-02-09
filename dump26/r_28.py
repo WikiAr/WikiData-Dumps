@@ -128,7 +128,7 @@ def dump_lines_claims(linesc):
             # ---
             # print(pid, qids)
             # ---
-            if not
+            # if not
             # ---
             for qid in qids:
                 if qid not in tabs["properties"][pid]["qids"]:

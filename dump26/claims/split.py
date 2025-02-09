@@ -18,6 +18,15 @@ from pathlib import Path
 import ujson
 import tqdm
 
+
+def check_dir(path):
+    if not path.exists():
+        path.mkdir()
+
+
+dump_dir_claims_fixed = Path(__file__).parent / "claims_new"
+check_dir(dump_dir_claims_fixed)
+
 most_props_path = Path(__file__).parent.parent / "properties.json"
 
 if not most_props_path.exists():
@@ -25,10 +34,12 @@ if not most_props_path.exists():
 
 most_props = json.loads(most_props_path.read_text())
 # get only first 50 properties after sort
-most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
+most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:100]}
+
 
 class ClaimsProcessor():
-    def __init__(self):
+    def __init__(self, log_file):
+        self.log_file = log_file
         self.memory_check_interval = 80
         self.start_time = time.time()
         self.tt = time.time()
@@ -67,13 +78,10 @@ class ClaimsProcessor():
         print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump(self):
-        jsonname = Path(__file__).parent / "claims.json"
         # ---
-        if "P31" in sys.argv:
-            jsonname = Path(__file__).parent / "claims_P31.json"
-        # ---
-        with open(jsonname, "w", encoding="utf-8") as outfile:
+        with open(self.log_file, "w", encoding="utf-8") as outfile:
             ujson.dump(self.tab, outfile)
+        # ---
         print("log_dump done")
 
     def _update_counters(self, json1) -> None:
@@ -114,9 +122,6 @@ class ClaimsProcessor():
         claims = json1.get("properties") or json1
 
         for p, p_qids in claims.items():
-            if "P31" in sys.argv and p != "P31":
-                continue
-
             if p not in most_props:
                 continue
 
@@ -158,8 +163,10 @@ class ClaimsProcessor():
             return ujson.load(f)
 
     def read_files(self, files):
+        # ---
         self.process_files(files, lambda x: self.do_line(self.get_lines(x)))
-        self.tab_changes()
+        # ---
+        # self.tab_changes()
         # ---
         delta = int(time.time() - self.start_time)
         # ---
@@ -171,12 +178,31 @@ class ClaimsProcessor():
 
 
 if __name__ == "__main__":
-    Dir = Path(__file__).parent.parent
     # ---
-    parts_dir = Dir / "parts1_claims_fixed"
+    parts_dir = Path(__file__).parent.parent / "parts1_claims_fixed"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---
-    processor = ClaimsProcessor()
+    # split to 8 parts
+    split_at = len(files) // 8
     # ---
-    processor.read_files(files)
+    files.sort()
+    # ---
+    print(f"len(files):{len(files)}, split_at:{split_at}")
+    # ---
+    for i in range(0, len(files), split_at):
+        # ---
+        part_files = files[i : i + split_at]
+        # ---
+        log_file = dump_dir_claims_fixed / f"claims_new_{i}.json"
+        # ---
+        print(f"len(part_files):{len(part_files)}")
+        # ---
+        if "test" in sys.argv:
+            continue
+        # ---
+        processor = ClaimsProcessor(log_file)
+        # ---
+        processor.read_files(part_files)
+        # ---
+        gc.collect()

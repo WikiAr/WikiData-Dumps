@@ -8,7 +8,6 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
-import sys
 import time
 import json
 import gc
@@ -26,6 +25,7 @@ if not most_props_path.exists():
 most_props = json.loads(most_props_path.read_text())
 # get only first 50 properties after sort
 most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
+
 
 class ClaimsProcessor():
     def __init__(self):
@@ -67,10 +67,7 @@ class ClaimsProcessor():
         print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump(self):
-        jsonname = Path(__file__).parent / "claims.json"
-        # ---
-        if "P31" in sys.argv:
-            jsonname = Path(__file__).parent / "claims_P31.json"
+        jsonname = Path(__file__).parent / "claims_no_qids.json"
         # ---
         with open(jsonname, "w", encoding="utf-8") as outfile:
             ujson.dump(self.tab, outfile)
@@ -94,19 +91,15 @@ class ClaimsProcessor():
 
     def _update_property_stats(self, prop, prop_tab) -> None:
         """Update statistics for a single property."""
-        p_qids = prop_tab.get("qids") or prop_tab
+        p_qids = prop_tab.get("qids")  # or prop_tab
 
         self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
         self.tab["properties"][prop]["len_prop_claims"] += len(p_qids)
+        self.tab["properties"][prop]["len_of_qids"] += len(p_qids)
 
-        for qid, count in p_qids.items():
-            if not qid:
-                continue
-            if qid not in self.tab["properties"][prop]["qids"]:
-                self.tab["properties"][prop]["qids"][qid] = 0
-            self.tab["properties"][prop]["qids"][qid] += count
-
-            # if qid == "Q5": print(qid, count)
+        len_values = sum(p_qids.values())
+        self.tab["total_claims"] += len_values
+        self.tab["properties"][prop]["qids"]["others"]+= len_values
 
     def do_line(self, json1):
         self._update_counters(json1)
@@ -114,9 +107,6 @@ class ClaimsProcessor():
         claims = json1.get("properties") or json1
 
         for p, p_qids in claims.items():
-            if "P31" in sys.argv and p != "P31":
-                continue
-
             if p not in most_props:
                 continue
 
@@ -125,32 +115,6 @@ class ClaimsProcessor():
             gc.collect()
 
     def tab_changes(self):
-        # ---
-        count_total_claims = False
-        # ---
-        if self.tab["total_claims"] == 0:
-            count_total_claims = True
-        # ---
-        for x, xx in self.tab["properties"].items():
-            # ---
-            self.tab["properties"][x]["len_of_qids"] += len(xx["qids"])
-            # ---
-            if count_total_claims:
-                self.tab["total_claims"] += sum(xx["qids"].values())
-            # ---
-            qids_1 = sorted(xx["qids"].items(), key=lambda x: x[1], reverse=True)
-            # ---
-            max_items = 100
-            # ---
-            if x == "P31":
-                max_items = 500
-            # ---
-            self.tab["properties"][x]["qids"] = dict(qids_1[:max_items])
-            # ---
-            others = sum([x[1] for x in qids_1[max_items:]]) if len(qids_1) > max_items else 0
-            # ---
-            self.tab["properties"][x]["qids"]["others"] = others
-        # ---
         self.tab["len_all_props"] = len(self.tab["properties"])
 
     def get_lines(self, items_file):
