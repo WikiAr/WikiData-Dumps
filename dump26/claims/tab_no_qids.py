@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+import sys
 import time
 import json
 import gc
@@ -110,7 +111,7 @@ class ClaimsProcessor():
         claims = json1.get("properties") or json1
 
         for p, p_qids in claims.items():
-            if p not in most_props:
+            if p not in most_props and "all" not in sys.argv:
                 continue
 
             self._init_property(p)
