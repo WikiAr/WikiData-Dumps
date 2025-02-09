@@ -281,7 +281,7 @@ def filter_and_process(entity_dict):
 def process_file(bz2_file):
     tt[1] = time.time()
     mem_nu = 10000
-    dump_numbs = 20000
+    dump_numbs = 100000
     # ---
     skip_to = 0
     # ---
