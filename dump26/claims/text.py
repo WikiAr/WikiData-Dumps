@@ -68,6 +68,7 @@ def make_section(pid, table, old_data, max_n=51):
         return ""
     # ---
     new_data["properties"][pid] = {
+        "items_use_it": 0,
         "lenth_of_usage": 0,
         "len_prop_claims": 0,
         "len_of_qids": 0,
@@ -76,7 +77,10 @@ def make_section(pid, table, old_data, max_n=51):
         },
     }
     # ---
-    total_usage = table.get("lenth_of_usage", 0)
+    total_usage = table.get("items_use_it", table.get("lenth_of_usage", 0))
+    # ---
+    old_usage = old_data.get("items_use_it", old_data.get("lenth_of_usage", 0))
+    # ---
     claims_count = 0
     unique_qids = table.get("len_of_qids", 0)
     # ---
@@ -128,7 +132,7 @@ def make_section(pid, table, old_data, max_n=51):
 
     texts = f"== {{{{P|{pid}}}}} ==\n"
     # --- -
-    diff = min_it(total_usage, old_data.get("lenth_of_usage", 0), add_plus=True)
+    diff = min_it(total_usage, old_usage, add_plus=True)
     # ---
     texts += f"* Total items using this property: {total_usage:,} ({diff})\n"
 
@@ -141,6 +145,8 @@ def make_section(pid, table, old_data, max_n=51):
         texts += f"* Number of unique QIDs: {unique_qids:,} ({diff3})\n"
 
     new_data["properties"][pid]["lenth_of_usage"] = total_usage
+    new_data["properties"][pid]["items_use_it"] = total_usage
+    # ---
     new_data["properties"][pid]["len_prop_claims"] = claims_count
     new_data["properties"][pid]["len_of_qids"] = unique_qids
 
@@ -173,7 +179,8 @@ def make_numbers_section(p_list, Old_props):
             other_count += usage
 
         if len(rows) < max_v:
-            old_usage = Old_props.get(prop, {}).get("lenth_of_usage", 0)
+            old_prop = Old_props.get(prop, {})
+            old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
             diff = min_it(usage, old_usage, add_plus=True)
             rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,} || {diff}")
 
@@ -243,7 +250,7 @@ def facts(n_tab, Old):
 
 
 def make_text(data, Old):
-    p_list = [(prop_data["lenth_of_usage"], prop_id) for prop_id, prop_data in data["properties"].items() if prop_data["lenth_of_usage"]]
+    p_list = [(prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0))]
     p_list.sort(reverse=True)
 
     if not data.get("file_date"):

@@ -84,6 +84,7 @@ class ClaimsProcessor():
         if prop not in self.tab["properties"]:
             self.tab["properties"][prop] = {
                 "qids": {"others": 0},
+                "items_use_it": 0,
                 "lenth_of_usage": 0,
                 "len_of_qids": 0,
                 "len_prop_claims": 0,
@@ -93,7 +94,9 @@ class ClaimsProcessor():
         """Update statistics for a single property."""
         p_qids = prop_tab.get("qids")  # or prop_tab
 
+        self.tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
         self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
+        # ---
         self.tab["properties"][prop]["len_prop_claims"] += len(p_qids)
         self.tab["properties"][prop]["len_of_qids"] += len(p_qids)
 
