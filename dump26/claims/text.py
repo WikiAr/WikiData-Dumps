@@ -72,7 +72,7 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     new_data["properties"][pid] = {
         "items_use_it": 0,
-        "lenth_of_usage": 0,
+        # "lenth_of_usage": 0,
         "len_prop_claims": 0,
         "len_of_qids": 0,
         "qids": {
@@ -147,7 +147,7 @@ def make_section(pid, table, old_data, max_n=51):
         diff3 = min_it(unique_qids, old_data.get("len_of_qids", 0), add_plus=True)
         texts += f"* Number of unique QIDs: {unique_qids:,} ({diff3})\n"
 
-    new_data["properties"][pid]["lenth_of_usage"] = total_usage
+    # new_data["properties"][pid]["lenth_of_usage"] = total_usage
     new_data["properties"][pid]["items_use_it"] = total_usage
     # ---
     new_data["properties"][pid]["len_prop_claims"] = claims_count
@@ -190,17 +190,20 @@ def make_numbers_section(p_list, Old_props, data):
             old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
-            Unique_QIDs = prop_data.get("len_of_qids", 0)
-            diff2 = min_it(Unique_QIDs, old_prop.get("len_of_qids", 0), add_plus=True)
+            # Unique_QIDs = prop_data.get("len_of_qids", 0)
+            # diff2 = min_it(Unique_QIDs, old_prop.get("len_of_qids", 0), add_plus=True)
             # ---
-            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
+            # rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
+            rows.append(f"| {idx} || {{{{P|{prop}}}}} ||  {usage:,} || {diff}")
     # ---
     oo_others = Old_props.get("others", {})
     # ---
     o_old_usage = oo_others.get("items_use_it") or oo_others.get("lenth_of_usage", 0)
     o_diff = min_it(other_count, o_old_usage, add_plus=True)
     # ---
-    rows.append(f"! {idx+1} \n! others || || || {other_count:,} || {o_diff}")
+    rows.append(f"! {idx+1} \n! others || {other_count:,} || {o_diff}")
+    # rows.append(f"! {idx+1} \n! others || || || {other_count:,} || {o_diff}")
+    # ---
     table_content = "\n|-\n".join(rows)
     # ---
     texts = "== Numbers ==\n\n"
@@ -209,7 +212,8 @@ def make_numbers_section(p_list, Old_props, data):
         chart = make_chart(x_values, y_values)
         texts += chart + "\n"
     # ---
-    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Unique QIDs !! Diff !! Items use it !! Diff\n{table_content}\n|}}\n'
+    # table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Unique QIDs !! Diff !! Items use it !! Diff\n|-\n{table_content}\n|}}\n'
+    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Items use it !! Diff\n|-\n{table_content}\n|}}\n'
     # ---
     texts += table
     # ---
