@@ -67,7 +67,7 @@ class ClaimsProcessor():
         print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump(self):
-        jsonname = Path(__file__).parent / "claims_no_qids.json"
+        jsonname = Path(__file__).parent / "jsons/claims_no_qids.json"
         # ---
         with open(jsonname, "w", encoding="utf-8") as outfile:
             ujson.dump(self.tab, outfile)

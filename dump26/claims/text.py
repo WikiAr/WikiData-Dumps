@@ -14,7 +14,7 @@ from pathlib import Path
 
 va_dir = Path(__file__).parent
 # ---
-new_data_file = Path(__file__).parent / "claims_new_data.json"
+new_data_file = Path(__file__).parent / "jsons/claims_new_data.json"
 # ---
 new_data = {
     "date": "",
@@ -32,10 +32,13 @@ sections_done = {"current": 0, "max": 100}
 time_start = time.time()
 print(f"time_start: {time_start}")
 
-items_file = Path(__file__).parent / "claims.json"
+items_file = Path(__file__).parent / "jsons/claims.json"
+
+if "no_qids" in sys.argv:
+    items_file = Path(__file__).parent / "jsons/claims_no_qids.json"
 
 if "P31" in sys.argv:
-    items_file = Path(__file__).parent / "claims_P31.json"
+    items_file = Path(__file__).parent / "jsons/claims_P31.json"
 
 claims_new = Path(__file__).parent / "claims_new.txt"
 claims_p31 = Path(__file__).parent / "claims_p31.txt"
@@ -163,7 +166,7 @@ def make_section(pid, table, old_data, max_n=51):
     return texts + chart + section_table
 
 
-def make_numbers_section(p_list, Old_props):
+def make_numbers_section(p_list, Old_props, data):
     rows = []
     x_values, y_values = [], []
     other_count = 0
@@ -172,6 +175,9 @@ def make_numbers_section(p_list, Old_props):
     max_v = 100 if "P31" not in sys.argv else 501
 
     for idx, (usage, prop) in enumerate(p_list, start=1):
+        # ---
+        prop_data = data["properties"].get(prop, {})
+        # ---
         if idx <= 26:
             x_values.append(prop)
             y_values.append(str(usage))
@@ -180,11 +186,21 @@ def make_numbers_section(p_list, Old_props):
 
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
+            # ---
             old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
             diff = min_it(usage, old_usage, add_plus=True)
-            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {usage:,} || {diff}")
-
-    rows.append(f"! {idx} \n! others \n! {other_count:,}\n|-")
+            # ---
+            Unique_QIDs = prop_data.get("len_of_qids", 0)
+            diff2 = min_it(Unique_QIDs, old_prop.get("len_of_qids", 0), add_plus=True)
+            # ---
+            rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
+    # ---
+    oo_others = Old_props.get("others", {})
+    # ---
+    o_old_usage = oo_others.get("items_use_it") or oo_others.get("lenth_of_usage", 0)
+    o_diff = min_it(other_count, o_old_usage, add_plus=True)
+    # ---
+    rows.append(f"! {idx+1} \n! others || || || {other_count:,} || {o_diff}")
     table_content = "\n|-\n".join(rows)
     # ---
     texts = "== Numbers ==\n\n"
@@ -193,7 +209,7 @@ def make_numbers_section(p_list, Old_props):
         chart = make_chart(x_values, y_values)
         texts += chart + "\n"
     # ---
-    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Usage !! Diff\n{table_content}\n|}}\n'
+    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Unique QIDs !! Diff !! Items use it !! Diff\n{table_content}\n|}}\n'
     # ---
     texts += table
     # ---
@@ -263,8 +279,10 @@ def make_text(data, Old):
     # ---
     final = time.time()
     delta = data.get("delta") or int(final - time_start)
-    metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~\n"
-    chart_section = make_numbers_section(p_list, Old_props)
+    # ---
+    # metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~\n"
+    # ---
+    chart_section = make_numbers_section(p_list, Old_props, data)
 
     sections = ""
 
