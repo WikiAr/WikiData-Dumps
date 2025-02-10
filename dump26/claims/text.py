@@ -40,6 +40,9 @@ if "no_qids" in sys.argv:
 if "P31" in sys.argv:
     items_file = Path(__file__).parent / "jsons/claims_P31.json"
 
+if "r_claims" in sys.argv:
+    items_file = Path(__file__).parent / "r_claims.json"
+
 claims_new = Path(__file__).parent / "claims_new.txt"
 claims_p31 = Path(__file__).parent / "claims_p31.txt"
 
@@ -87,15 +90,15 @@ def make_section(pid, table, old_data, max_n=51):
     claims_count = 0
     unique_qids = table.get("len_of_qids", 0)
     # ---
-    if not table.get("qids"):
-        print(f"{pid} has no QIDs.")
-        return ""
+    # if not table.get("qids"):
+    # print(f"{pid} has no QIDs.")
+    # return ""
 
     table_rows = []
     x_values, y_values = [], []
     other_count = 0
 
-    sorted_qids = dict(sorted(table["qids"].items(), key=lambda item: item[1], reverse=True))
+    sorted_qids = dict(sorted(table.get("qids", {}).items(), key=lambda item: item[1], reverse=True))
     idx = 0
     for idx, (qid, count) in enumerate(sorted_qids.items(), start=1):
         if qid == "others":
@@ -188,6 +191,9 @@ def make_numbers_section(p_list, Old_props, data):
             old_prop = Old_props.get(prop, {})
             # ---
             old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
+            # ---
+            print(f"{prop=}, {usage=}, {old_usage=}")
+            # ---
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
             # Unique_QIDs = prop_data.get("len_of_qids", 0)
@@ -355,7 +361,630 @@ def main():
     for key, default_value in data_defaults.items():
         data.setdefault(key, default_value)
 
-    Old = get_old_data()
+    # Old = get_old_data()
+    Old = {
+        "date": "09-08-2023",
+        "All_items": 104484150,
+        "items_no_P31": 1860628,
+        "items_0_claims": 929453,
+        "items_1_claims": 6165572,
+        "total_claims": 1491799701,
+        "len_all_props": 10664,
+        "properties": {
+                "P31": {
+                    "lenth_of_usage": 101694069,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1476": {
+                    "lenth_of_usage": 45038885,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P577": {
+                    "lenth_of_usage": 43402998,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1433": {
+                    "lenth_of_usage": 41110384,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2093": {
+                    "lenth_of_usage": 38442859,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P304": {
+                    "lenth_of_usage": 36498420,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P478": {
+                    "lenth_of_usage": 36418656,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P433": {
+                    "lenth_of_usage": 34659375,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P698": {
+                    "lenth_of_usage": 32037483,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P356": {
+                    "lenth_of_usage": 29382748,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P407": {
+                    "lenth_of_usage": 18628085,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P921": {
+                    "lenth_of_usage": 17837365,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P17": {
+                    "lenth_of_usage": 16298472,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P50": {
+                    "lenth_of_usage": 12588269,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P131": {
+                    "lenth_of_usage": 11824895,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2860": {
+                    "lenth_of_usage": 11765314,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P625": {
+                    "lenth_of_usage": 10160420,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P21": {
+                    "lenth_of_usage": 8833336,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P528": {
+                    "lenth_of_usage": 8311370,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6259": {
+                    "lenth_of_usage": 8081306,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6258": {
+                    "lenth_of_usage": 8081290,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6257": {
+                    "lenth_of_usage": 8081288,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P3083": {
+                    "lenth_of_usage": 8076174,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P106": {
+                    "lenth_of_usage": 7849755,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P59": {
+                    "lenth_of_usage": 7376288,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2671": {
+                    "lenth_of_usage": 7373590,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P735": {
+                    "lenth_of_usage": 6996314,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P932": {
+                    "lenth_of_usage": 6576759,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1215": {
+                    "lenth_of_usage": 6299101,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P569": {
+                    "lenth_of_usage": 6077940,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P373": {
+                    "lenth_of_usage": 5078732,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P18": {
+                    "lenth_of_usage": 4752086,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P5875": {
+                    "lenth_of_usage": 4583156,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P734": {
+                    "lenth_of_usage": 4556233,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P27": {
+                    "lenth_of_usage": 4500943,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P646": {
+                    "lenth_of_usage": 4417840,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P10752": {
+                    "lenth_of_usage": 4068835,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P10751": {
+                    "lenth_of_usage": 4068835,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1566": {
+                    "lenth_of_usage": 3753453,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2216": {
+                    "lenth_of_usage": 3721559,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P225": {
+                    "lenth_of_usage": 3706338,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P105": {
+                    "lenth_of_usage": 3705124,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P171": {
+                    "lenth_of_usage": 3702730,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6216": {
+                    "lenth_of_usage": 3692633,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2214": {
+                    "lenth_of_usage": 3668348,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P361": {
+                    "lenth_of_usage": 3375434,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P19": {
+                    "lenth_of_usage": 3292037,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P846": {
+                    "lenth_of_usage": 3243521,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P214": {
+                    "lenth_of_usage": 3216548,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2888": {
+                    "lenth_of_usage": 3193598,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P276": {
+                    "lenth_of_usage": 3168367,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P570": {
+                    "lenth_of_usage": 3090416,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2583": {
+                    "lenth_of_usage": 3014866,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P571": {
+                    "lenth_of_usage": 3010694,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P279": {
+                    "lenth_of_usage": 2956685,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P703": {
+                    "lenth_of_usage": 2555033,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6769": {
+                    "lenth_of_usage": 2429437,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1412": {
+                    "lenth_of_usage": 2389206,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P10585": {
+                    "lenth_of_usage": 2279886,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1435": {
+                    "lenth_of_usage": 2237913,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P953": {
+                    "lenth_of_usage": 2188891,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P195": {
+                    "lenth_of_usage": 2136874,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1813": {
+                    "lenth_of_usage": 2125022,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P275": {
+                    "lenth_of_usage": 2017361,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P641": {
+                    "lenth_of_usage": 2004002,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P69": {
+                    "lenth_of_usage": 1963369,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P7859": {
+                    "lenth_of_usage": 1894041,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1104": {
+                    "lenth_of_usage": 1868262,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P496": {
+                    "lenth_of_usage": 1786356,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P856": {
+                    "lenth_of_usage": 1784840,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P227": {
+                    "lenth_of_usage": 1773861,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P281": {
+                    "lenth_of_usage": 1749549,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6375": {
+                    "lenth_of_usage": 1690595,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P971": {
+                    "lenth_of_usage": 1664755,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P421": {
+                    "lenth_of_usage": 1631341,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P213": {
+                    "lenth_of_usage": 1628102,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P495": {
+                    "lenth_of_usage": 1605396,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P1448": {
+                    "lenth_of_usage": 1603007,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P6179": {
+                    "lenth_of_usage": 1540409,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P244": {
+                    "lenth_of_usage": 1511058,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P217": {
+                    "lenth_of_usage": 1478642,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2326": {
+                    "lenth_of_usage": 1469087,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P136": {
+                    "lenth_of_usage": 1463934,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2044": {
+                    "lenth_of_usage": 1370162,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P5055": {
+                    "lenth_of_usage": 1362787,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P155": {
+                    "lenth_of_usage": 1360667,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P156": {
+                    "lenth_of_usage": 1344821,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P20": {
+                    "lenth_of_usage": 1338278,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P235": {
+                    "lenth_of_usage": 1331178,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P234": {
+                    "lenth_of_usage": 1319335,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P108": {
+                    "lenth_of_usage": 1310503,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P170": {
+                    "lenth_of_usage": 1227290,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2048": {
+                    "lenth_of_usage": 1166445,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P8608": {
+                    "lenth_of_usage": 1157085,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P662": {
+                    "lenth_of_usage": 1155733,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P819": {
+                    "lenth_of_usage": 1138231,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P830": {
+                    "lenth_of_usage": 1098616,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P274": {
+                    "lenth_of_usage": 1074468,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P644": {
+                    "lenth_of_usage": 1059424,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P645": {
+                    "lenth_of_usage": 1059422,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "P2548": {
+                    "lenth_of_usage": 1058111,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                },
+            "others": {
+                    "lenth_of_usage": 165288449,
+                    "len_prop_claims": 0,
+                    "len_of_qids": 0,
+                    "qids": {}
+                }
+        }
+    }
 
     text_output = make_text(data, Old)
 
