@@ -386,7 +386,7 @@ def main():
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
     url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2"
 
-    process_data(file=bz2_file, url=url)
+    process_data(bz2_file=bz2_file, url=url)
 
     end = time.time()
     delta = int(end - time_start)
