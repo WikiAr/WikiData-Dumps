@@ -18,6 +18,7 @@ import sys
 
 # import tqdm
 import bz2
+import requests
 from pathlib import Path
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
@@ -285,7 +286,24 @@ def filter_and_process(entity_dict):
     return None, None
 
 
-def process_file(bz2_file):
+def parse_lines_from_url(url):
+    with requests.get(url, stream=True) as response:
+        response.raise_for_status()
+        decompressor = bz2.BZ2Decompressor()
+        buffer = b""
+        for chunk in response.iter_content(chunk_size=1024 * 1024):
+            if chunk:
+                buffer += decompressor.decompress(chunk)
+                while b'\n' in buffer:
+                    line, buffer = buffer.split(b'\n', 1)
+                    line = line.strip().strip(b',')
+                    if line.startswith(b"{") and line.endswith(b"}"):
+                        yield line.decode('utf-8')
+        if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
+            yield buffer.decode('utf-8')
+
+
+def process_data(bz2_file="", url=""):
     tt[1] = time.time()
     mem_nu = 10000
     dump_numbs = 100000
@@ -305,8 +323,17 @@ def process_file(bz2_file):
     lines = []
     lines_claims = []
     # ---
+    if "from_url" in sys.argv:
+        print(f"Starting download and processing... {url}")
+        data = parse_lines_from_url(url)
+    else:
+        file_size = os.path.getsize(bz2_file)
+        print(naturalsize(file_size, binary=True))
+        # ---
+        data = parse_lines(bz2_file)
+    # ---
     # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):
-    for i, entity_dict in enumerate(parse_lines(bz2_file), start=1):
+    for i, entity_dict in enumerate(data, start=1):
         if i < skip_to:
             if i % dump_numbs == 0:
                 print("skip_to:", skip_to, "i:", i)
@@ -357,12 +384,9 @@ def process_file(bz2_file):
 
 def main():
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+    url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2"
 
-    file_size = os.path.getsize(bz2_file)
-
-    print(naturalsize(file_size, binary=True))
-
-    process_file(bz2_file)
+    process_data(file=bz2_file, url=url)
 
     end = time.time()
     delta = int(end - time_start)
