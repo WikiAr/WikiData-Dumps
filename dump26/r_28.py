@@ -242,7 +242,7 @@ def dump_lines(lines):
 def print_memory(i):
     now = time.time()
 
-    print("current_count:", i, "time:", now - tt[1])
+    print(f"current_count:{i:,}", "time:", now - tt[1])
     tt[1] = now
     # ---
     green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
