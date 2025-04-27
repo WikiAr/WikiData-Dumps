@@ -7,7 +7,7 @@ wget https://raw.githubusercontent.com/WikiAr/WikiData-Dumps/refs/heads/update/d
 wget https://raw.githubusercontent.com/WikiAr/WikiData-Dumps/refs/heads/update/requirements.in -O requirements.in
 
 pip install -r requirements.in
-
+# nix-shell -p python311Packages.pip
 python3 most_props.py
 
 python3 Web.py
