@@ -49,7 +49,7 @@ class DumpProcessor:
         self.most_data = json.loads(self.most_path.read_text())
 
         # Load properties
-        properties_path = Path(__file__).parent / "properties.json"
+        properties_path = self.Dir / "properties.json"
         with open(properties_path, "r", encoding="utf-8") as f:
             self.most_props = json.load(f)
 
