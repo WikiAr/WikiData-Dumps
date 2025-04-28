@@ -289,9 +289,10 @@ class DumpProcessor():
                 if line.startswith("{") and line.endswith("}"):
                     yield line
 
-    def parse_lines_from_url(self, url):
-        """Parse lines from a URL."""
+    def parse_lines_from_url(self, url, max_lines=1_000_000):
+        """Parse lines from a URL, but stop after processing a maximum number of lines."""
         print(f"Fetching data from URL: {url}")
+
         with requests.get(url, stream=True) as response:
             print("Response received. Checking status...")
             response.raise_for_status()
@@ -300,28 +301,34 @@ class DumpProcessor():
             buffer = b""
             print("Starting to process chunks...")
             all_chunks = 0
+            line_count = 0  # Counter for the number of lines processed
+
             for chunk in response.iter_content(chunk_size=1024 * 1024):
                 all_chunks += 1
                 if chunk:
-                    # print(f"Received a chunk of size: {len(chunk)} bytes")
                     buffer += decompressor.decompress(chunk)
-                    # print(f"Buffer size after decompression: {len(buffer)} bytes")
 
                     while b'\n' in buffer:
                         line, buffer = buffer.split(b'\n', 1)
                         line = line.strip().strip(b',')
-                        # print(f"Extracted line: {line}")
 
                         if line.startswith(b"{") and line.endswith(b"}"):
-                            # print(f"Yielding valid JSON line: {line.decode('utf-8')}")
                             yield line.decode('utf-8')
+                            line_count += 1  # Increment the line counter
+
+                            # Stop processing if the maximum number of lines is reached
+                            if line_count >= max_lines:
+                                print(f"Reached the maximum of {max_lines} lines. Stopping.")
+                                return
 
             print(f"Total chunks processed: {all_chunks}")
 
             # Handle remaining data in buffer
             if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
-                # print(f"Yielding remaining valid JSON line from buffer: {buffer.decode('utf-8')}")
                 yield buffer.decode('utf-8')
+                line_count += 1
+
+            print(f"Processed {line_count} lines in total.")
 
     def check_dir(self, path):
         """Check if directory exists, if not create it."""
@@ -345,7 +352,7 @@ class DumpProcessor():
 
         if "from_url" in sys.argv:
             print(f"Starting download and processing... {url}")
-            data = self.parse_lines_from_url(url)
+            data = self.parse_lines_from_url(url, max_lines=10_000)
         else:
             file_size = os.path.getsize(bz2_file)
             print(naturalsize(file_size, binary=True))
