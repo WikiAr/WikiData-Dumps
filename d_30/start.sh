@@ -12,6 +12,6 @@ pip install -r requirements.in
 # nix-shell -p python311Packages.pip
 python3 most_props.py
 
-python3 web2.py
+python3 web2.py from_url
 
 echo "Finishing dump26..."
