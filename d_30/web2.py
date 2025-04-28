@@ -8,6 +8,7 @@ current_count: 162500 time: 32.720284938812256
 
 """
 import os
+import tqdm
 import psutil
 import gc
 import json
@@ -298,10 +299,11 @@ class DumpProcessor():
             decompressor = bz2.BZ2Decompressor()
             buffer = b""
             print("Starting to process chunks...")
-
-            for chunk in response.iter_content(chunk_size=1024 * 1024):
+            all_chunks = 0
+            for chunk in tqdm.tqdm(response.iter_content(chunk_size=1024 * 1024), desc="Processing chunks"):
+                all_chunks += 1
                 if chunk:
-                    print(f"Received a chunk of size: {len(chunk)} bytes")
+                    # print(f"Received a chunk of size: {len(chunk)} bytes")
                     buffer += decompressor.decompress(chunk)
                     # print(f"Buffer size after decompression: {len(buffer)} bytes")
 
@@ -313,6 +315,8 @@ class DumpProcessor():
                         if line.startswith(b"{") and line.endswith(b"}"):
                             # print(f"Yielding valid JSON line: {line.decode('utf-8')}")
                             yield line.decode('utf-8')
+
+            print(f"Total chunks processed: {all_chunks}")
 
             # Handle remaining data in buffer
             if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
