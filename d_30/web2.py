@@ -116,9 +116,9 @@ class HHH:
         items_file_fixed_size = naturalsize(os.path.getsize(items_file_fixed), binary=True)
         print(f"dump_lines_claims fixed: {items_file_fixed_size}")
 
-    def dump_lines(self, lines):
+    def dump_lines(self, linesx):
         """Process and dump main data lines."""
-        if not lines:
+        if not linesx:
             return
 
         # self.dump_done[1] += 1
@@ -141,7 +141,7 @@ class HHH:
             "langs": {},
         }
 
-        tab["All_items"] += len(lines)
+        tab["All_items"] += len(linesx)
 
         _json1 = {
             "labels": ["el", "ay"],
@@ -152,7 +152,7 @@ class HHH:
 
         tats = ["labels", "descriptions", "aliases", "sitelinks"]
 
-        for json1 in lines:
+        for json1 in linesx:
             for x in tats:
                 ta_o = json1.get(x, {})
 
@@ -220,12 +220,16 @@ class HHH:
         return None, None
 
     def start(self):
-        mem_nu = 10000
+        print("______________________________")
+        print(f"start {len(self.data):,}")
+        # ---
+        mem_nu = len(self.data) // 4
+        # ---
         lines = []
         lines_claims = []
 
-        for i, entity_dict in enumerate(self.data, start=1):
-            line, line2 = self.filter_and_process(entity_dict)
+        for i, entity in enumerate(self.data, start=1):
+            line, line2 = self.filter_and_process(entity)
             if line:
                 lines.append(line)
                 lines_claims.append(line2)
@@ -233,8 +237,9 @@ class HHH:
             if i % mem_nu == 0:
                 self.print_memory(i)
 
-        print(f"dump_lines:{i:,}, len lines:{len(lines):,}")
-        print(f"dump_lines_claims:{i:,}, len lines_claims:{len(lines_claims):,}")
+        print(f"len self.data:{len(self.data):,}:")
+        print(f"\t len lines:{len(lines):,}")
+        print(f"\t len lines_claims:{len(lines_claims):,}")
 
         self.dump_lines(lines)
         self.dump_lines_claims(lines_claims)
@@ -243,7 +248,6 @@ class HHH:
         lines.clear()
         gc.collect()
 
-        ti = time.time() - self.tt
         self.print_memory(i)
 
         return self.most_data
@@ -281,13 +285,21 @@ class DumpProcessor():
         with open(properties_path, "r", encoding="utf-8") as f:
             self.most_props = json.load(f)
 
-    def parse_lines(self, bz2_file):
+    def parse_lines(self, bz2_file, max_lines=None):
         """Parse lines from a bz2 file."""
+        print(f"Parsing lines from file: {bz2_file}")
+        # ---
+        line_count = 0  # Counter for the number of lines processed
+        # ---
         with bz2.open(bz2_file, "r") as f:
             for line in f:
                 line = line.decode("utf-8").strip("\n").strip(",")
                 if line.startswith("{") and line.endswith("}"):
+                    line_count += 1  # Increment the line counter
                     yield line
+                    if max_lines and line_count >= max_lines:
+                        print(f"Reached the maximum of {max_lines:,} lines. Stopping.")
+                        return
 
     def parse_lines_from_url(self, url, max_lines=1_000_000):
         """Parse lines from a URL, but stop after processing a maximum number of lines."""
@@ -317,7 +329,7 @@ class DumpProcessor():
                             line_count += 1  # Increment the line counter
 
                             # Stop processing if the maximum number of lines is reached
-                            if line_count >= max_lines:
+                            if max_lines and line_count >= max_lines:
                                 print(f"Reached the maximum of {max_lines:,} lines. Stopping.")
                                 return
 
@@ -335,10 +347,10 @@ class DumpProcessor():
         if not path.exists():
             path.mkdir()
 
-    def dump_lines_new(self, lines):
+    def dump_lines_new(self, data):
         self.dump_done[1] += 1
 
-        bot = HHH(lines, self.most_props, self.dump_done[1])
+        bot = HHH(data, self.most_props, self.dump_done[1])
 
         most = bot.start()
         if most["count"] > self.most_data["count"]:
@@ -348,29 +360,29 @@ class DumpProcessor():
     def process_data(self, bz2_file="", url=""):
         """Main processing method."""
         dump_numbs = 100000
-        lines = []
+        all_lines = []
 
         if "from_url" in sys.argv:
             print(f"Starting download and processing... {url}")
-            data = self.parse_lines_from_url(url, max_lines=5000)
+            data = self.parse_lines_from_url(url, max_lines=5_000)
         else:
             file_size = os.path.getsize(bz2_file)
             print(naturalsize(file_size, binary=True))
-            data = self.parse_lines(bz2_file)
+            data = self.parse_lines(bz2_file, max_lines=50_000)
 
         for i, entity_dict in enumerate(data, start=1):
-            lines.append(entity_dict)
+            all_lines.append(entity_dict)
 
-            if dump_numbs == len(lines):
-                print(f"data line: {i}, len lines:{len(lines):,}")
+            if dump_numbs == len(all_lines) and all_lines:
+                print(f"data line: {i:,}, len lines:{len(all_lines):,}")
 
-                self.dump_lines_new(lines)
+                self.dump_lines_new(all_lines)
 
-                lines.clear()
+                all_lines.clear()
                 gc.collect()
 
-        if lines:
-            self.dump_lines_new(lines)
+        if all_lines:
+            self.dump_lines_new(all_lines)
 
         print("Processing completed.")
 
