@@ -372,7 +372,7 @@ class DumpProcessor():
         else:
             file_size = os.path.getsize(bz2_file)
             print(naturalsize(file_size, binary=True))
-            data = self.parse_lines(bz2_file, max_lines=50_000)
+            data = self.parse_lines(bz2_file, max_lines=5_000)
 
         for i, entity_dict in enumerate(data, start=1):
             all_lines.append(entity_dict)
