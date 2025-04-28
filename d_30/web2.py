@@ -11,6 +11,7 @@ python3 bots/dump_core/d_30/most_props.py
 python3 bots/dump_core/d_30/web2.py
 
 """
+import multiprocessing as mp
 import os
 import tqdm
 import psutil
@@ -38,8 +39,6 @@ class HHH:
         self.dump_parts1_fixed = self.Dir / "parts1_fixed"
         # ---
         self.dump_file = dump_file
-        # ---
-        self.start()
 
     def dump_lines_claims(self, linesc):
         """Process and dump claims data."""
@@ -238,12 +237,13 @@ class HHH:
                 lines.append(line)
                 lines_claims.append(line2)
 
-            if i % mem_nu == 0:
+            if i % mem_nu == 0 and "multi" not in sys.argv:
                 self.print_memory(i)
 
         print(f"len self.data:{len(self.data):,}:")
         print(f"\t len lines:{len(lines):,}")
         print(f"\t len lines_claims:{len(lines_claims):,}")
+        print(f"\t {self.dump_file=}")
 
         self.dump_lines(lines)
         self.dump_lines_claims(lines_claims)
@@ -270,6 +270,7 @@ class DumpProcessor():
         self.check_dir(self.dump_dir_claims_fixed)
         self.check_dir(self.dump_parts1_fixed)
 
+        self.mosts = []
         # Initialize counters
         self.dump_done = {1: 0, "claims": 0}
         self.done1_lines = self.Dir / "done1_lines.txt"
@@ -308,7 +309,6 @@ class DumpProcessor():
     def parse_lines_from_url(self, url, max_lines=1_000_000):
         """Parse lines from a URL, but stop after processing a maximum number of lines."""
         print(f"Fetching data from URL: {url}")
-
         with requests.get(url, stream=True) as response:
             print("Response received. Checking status...")
             response.raise_for_status()
@@ -357,22 +357,93 @@ class DumpProcessor():
         bot = HHH(data, self.most_props, self.dump_done[1])
 
         most = bot.start()
-        if most["count"] > self.most_data["count"]:
-            self.most_path.write_text(json.dumps(most))
-            self.most_data = most
+        self.mosts.append(most)
+
+        # if most["count"] > self.most_data["count"]:
+        #     self.most_data = most
+            # self.most_path.write_text(json.dumps(self.most_data))
+
+    def dump_lines_new_multi(self, data_n):
+        data, file = data_n
+
+        bot = HHH(data, self.most_props, file)
+
+        most = bot.start()
+        self.mosts.append(most)
+
+    def get_data(self, bz2_file, url):
+        # time_start = time.time()
+        # ---
+        if "from_url" in sys.argv:
+            print(f"Starting download and processing... {url}")
+            data = self.parse_lines_from_url(url, max_lines=50_000)
+        else:
+            file_size = os.path.getsize(bz2_file)
+            print(naturalsize(file_size, binary=True))
+            data = self.parse_lines(bz2_file, max_lines=50_000)
+        # ---
+        # time_end = time.time()
+        # delta = int(time_end - time_start)
+        # # ---
+        # print(f"get_data: Time taken: {delta} seconds, time.sleep(3)")
+        # time.sleep(3)
+        # ---
+        return data
+
+    def dump_batch(self, batch):
+        """دالة لمعالجة دفعة كاملة."""
+        for lines in batch:
+            self.dump_lines_new_multi(lines)
+        gc.collect()
+
+    def process_data_new(self, bz2_file="", url=""):
+        """Main processing method with batching and multiprocessing."""
+        # dump_numbs = 100_000
+        dump_numbs = 5_000
+        batch_size = 2  # عدد القوائم التي تجمعها قبل إرسالها للمعالجة
+        all_lines = []
+        batches = []
+
+        data = self.get_data(bz2_file, url)
+
+        for i, entity_dict in enumerate(data, start=1):
+            # ---
+            all_lines.append(entity_dict)
+            # ---
+            if len(all_lines) == dump_numbs:
+                self.dump_done[1] += 1
+                # ---
+                batches.append([all_lines, self.dump_done[1]])
+                # ---
+                all_lines = []
+                # ---
+                if len(batches) == batch_size:
+                    print(f"Processing batch at line {i:,}")
+
+                    with mp.Pool(processes=batch_size) as pool:
+                        pool.map(self.dump_batch, [[batch] for batch in batches])
+
+                    batches.clear()
+                    gc.collect()
+
+        # معالجة الباقي بعد الانتهاء
+        if all_lines:
+            self.dump_lines_new(all_lines)
+
+        for most in self.mosts:
+            if most["count"] > self.most_data["count"]:
+                self.most_data = most
+
+        self.most_path.write_text(json.dumps(self.most_data))
+
+        print("Processing completed.")
 
     def process_data(self, bz2_file="", url=""):
         """Main processing method."""
         dump_numbs = 100000
         all_lines = []
 
-        if "from_url" in sys.argv:
-            print(f"Starting download and processing... {url}")
-            data = self.parse_lines_from_url(url, max_lines=5_000)
-        else:
-            file_size = os.path.getsize(bz2_file)
-            print(naturalsize(file_size, binary=True))
-            data = self.parse_lines(bz2_file, max_lines=5_000)
+        data = self.get_data(bz2_file, url)
 
         for i, entity_dict in enumerate(data, start=1):
             all_lines.append(entity_dict)
@@ -385,8 +456,16 @@ class DumpProcessor():
                 all_lines.clear()
                 gc.collect()
 
+        print(f"process_data DONE: {i:,=}")
+
         if all_lines:
             self.dump_lines_new(all_lines)
+
+        for most in self.mosts:
+            if most["count"] > self.most_data["count"]:
+                self.most_data = most
+
+        self.most_path.write_text(json.dumps(self.most_data))
 
         print("Processing completed.")
 
@@ -394,11 +473,15 @@ class DumpProcessor():
         """Entry point for the script."""
         bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
         url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2"
-
-        self.process_data(bz2_file=bz2_file, url=url)
-
+        # ---
+        if "multi" in sys.argv:
+            self.process_data_new(bz2_file=bz2_file, url=url)
+        else:
+            self.process_data(bz2_file=bz2_file, url=url)
+        # ---
         end = time.time()
         delta = int(end - self.time_start)
+        # ---
         print(f"read_file: done in {delta}")
 
 
