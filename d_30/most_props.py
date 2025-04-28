@@ -38,14 +38,11 @@ class WikidataPropertyAnalyzer:
         Retrieves all WikibaseItem properties from Wikidata.
         """
         query = """
-            # PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            # PREFIX wikibase: <http://wikiba.se/ontology#>
             SELECT DISTINCT ?property WHERE {
-                ?property rdf:type wikibase:Property .
-                ?property wikibase:propertyType wikibase:WikibaseItem .
+                ?property rdf:type wikibase:Property;
+                wikibase:propertyType wikibase:WikibaseItem.
             }
             """
-
         result = self.get_query_result(query)
         lista = []
 

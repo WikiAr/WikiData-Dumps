@@ -6,6 +6,10 @@ tfj run dump2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 /da
 current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
+
+python3 bots/dump_core/d_30/most_props.py
+python3 bots/dump_core/d_30/web2.py
+
 """
 import os
 import tqdm
