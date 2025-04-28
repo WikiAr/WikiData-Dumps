@@ -290,19 +290,33 @@ class DumpProcessor():
 
     def parse_lines_from_url(self, url):
         """Parse lines from a URL."""
+        print(f"Fetching data from URL: {url}")
         with requests.get(url, stream=True) as response:
+            print("Response received. Checking status...")
             response.raise_for_status()
+
             decompressor = bz2.BZ2Decompressor()
             buffer = b""
+            print("Starting to process chunks...")
+
             for chunk in response.iter_content(chunk_size=1024 * 1024):
                 if chunk:
+                    print(f"Received a chunk of size: {len(chunk)} bytes")
                     buffer += decompressor.decompress(chunk)
+                    # print(f"Buffer size after decompression: {len(buffer)} bytes")
+
                     while b'\n' in buffer:
                         line, buffer = buffer.split(b'\n', 1)
                         line = line.strip().strip(b',')
+                        # print(f"Extracted line: {line}")
+
                         if line.startswith(b"{") and line.endswith(b"}"):
+                            # print(f"Yielding valid JSON line: {line.decode('utf-8')}")
                             yield line.decode('utf-8')
+
+            # Handle remaining data in buffer
             if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
+                # print(f"Yielding remaining valid JSON line from buffer: {buffer.decode('utf-8')}")
                 yield buffer.decode('utf-8')
 
     def check_dir(self, path):
