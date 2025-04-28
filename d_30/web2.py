@@ -303,7 +303,7 @@ class DumpProcessor():
             all_chunks = 0
             line_count = 0  # Counter for the number of lines processed
 
-            for chunk in response.iter_content(chunk_size=1024 * 1024 * 10):
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
                 all_chunks += 1
                 if chunk:
                     buffer += decompressor.decompress(chunk)
@@ -352,7 +352,7 @@ class DumpProcessor():
 
         if "from_url" in sys.argv:
             print(f"Starting download and processing... {url}")
-            data = self.parse_lines_from_url(url, max_lines=10_000)
+            data = self.parse_lines_from_url(url, max_lines=5000)
         else:
             file_size = os.path.getsize(bz2_file)
             print(naturalsize(file_size, binary=True))

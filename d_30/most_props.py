@@ -24,17 +24,27 @@ class WikidataPropertyAnalyzer:
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
 
-        data = sparql.query().convert()
-        return [x for x in data["results"]["bindings"]]
+        try:
+            # 60 s overall timeout is friendlier to the endpoint
+            sparql.setTimeout(60)
+            data = sparql.query().convert()
+            return [x for x in data["results"]["bindings"]]
+        except Exception as exc:
+            print(f"SPARQL query failed: {exc}")
+            return []
 
     def get_WikibaseItem_props(self):
         """
         Retrieves all WikibaseItem properties from Wikidata.
         """
-        query = """SELECT DISTINCT ?property WHERE {
-            ?property rdf:type wikibase:Property.
-            ?property wikibase:propertyType wikibase:WikibaseItem.
-        }"""
+        query = """
+            # PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            # PREFIX wikibase: <http://wikiba.se/ontology#>
+            SELECT DISTINCT ?property WHERE {
+                ?property rdf:type wikibase:Property .
+                ?property wikibase:propertyType wikibase:WikibaseItem .
+            }
+            """
 
         result = self.get_query_result(query)
         lista = []
