@@ -299,7 +299,7 @@ class DumpProcessor():
 
             decompressor = bz2.BZ2Decompressor()
             buffer = b""
-            print("Starting to process chunks...")
+            print(f"Starting to process chunks...:{max_lines=}")
             all_chunks = 0
             line_count = 0  # Counter for the number of lines processed
 
