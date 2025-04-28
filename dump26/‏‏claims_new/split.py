@@ -43,17 +43,18 @@ class ClaimsProcessor():
         self.memory_check_interval = 80
         self.start_time = time.time()
         self.tt = time.time()
+        # ---
+        self.properties = {}
+        # ---
         self.tab = {
             "delta": 0,
             "done": 0,
-            "file_date": "",
             "len_all_props": 0,
             "items_0_claims": 0,
             "items_1_claims": 0,
             "items_no_P31": 0,
             "All_items": 0,
             "total_claims": 0,
-            "properties": {},
         }
 
     def _print_progress(self, count: int):
@@ -71,7 +72,7 @@ class ClaimsProcessor():
     def log_dump(self):
         # ---
         with open(self.log_file, "w", encoding="utf-8") as outfile:
-            ujson.dump(self.tab, outfile)
+            ujson.dump(self.properties, outfile)
         # ---
         print("log_dump done")
 
@@ -83,8 +84,8 @@ class ClaimsProcessor():
 
     def _init_property(self, prop: str) -> None:
         """Initialize property structure if not exists."""
-        if prop not in self.tab["properties"]:
-            self.tab["properties"][prop] = {
+        if prop not in self.properties:
+            self.properties[prop] = {
                 "qids": {"others": 0},
                 "items_use_it": 0,
                 "lenth_of_usage": 0,
@@ -96,16 +97,16 @@ class ClaimsProcessor():
         """Update statistics for a single property."""
         p_qids = prop_tab.get("qids") or prop_tab
 
-        self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
-        self.tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
-        self.tab["properties"][prop]["len_prop_claims"] += len(p_qids)
+        self.properties[prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
+        self.properties[prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
+        self.properties[prop]["len_prop_claims"] += len(p_qids)
 
         for qid, count in p_qids.items():
             if not qid:
                 continue
-            if qid not in self.tab["properties"][prop]["qids"]:
-                self.tab["properties"][prop]["qids"][qid] = 0
-            self.tab["properties"][prop]["qids"][qid] += count
+            if qid not in self.properties[prop]["qids"]:
+                self.properties[prop]["qids"][qid] = 0
+            self.properties[prop]["qids"][qid] += count
 
             # if qid == "Q5": print(qid, count)
 
@@ -129,9 +130,9 @@ class ClaimsProcessor():
         if self.tab["total_claims"] == 0:
             count_total_claims = True
         # ---
-        for x, xx in self.tab["properties"].items():
+        for x, xx in self.properties.items():
             # ---
-            self.tab["properties"][x]["len_of_qids"] += len(xx["qids"])
+            self.properties[x]["len_of_qids"] += len(xx["qids"])
             # ---
             if count_total_claims:
                 self.tab["total_claims"] += sum(xx["qids"].values())
@@ -143,13 +144,13 @@ class ClaimsProcessor():
             if x == "P31":
                 max_items = 500
             # ---
-            self.tab["properties"][x]["qids"] = dict(qids_1[:max_items])
+            self.properties[x]["qids"] = dict(qids_1[:max_items])
             # ---
             others = sum([x[1] for x in qids_1[max_items:]]) if len(qids_1) > max_items else 0
             # ---
-            self.tab["properties"][x]["qids"]["others"] = others
+            self.properties[x]["qids"]["others"] = others
         # ---
-        self.tab["len_all_props"] = len(self.tab["properties"])
+        self.tab["len_all_props"] = len(self.properties)
 
     def get_lines(self, items_file):
         with open(items_file, "r", encoding="utf-8") as f:
@@ -169,9 +170,14 @@ class ClaimsProcessor():
 
         # self.tab_changes()
         delta = int(time.time() - self.start_time)
+        # ---
         print(f"read_files: done in {delta}")
+        # ---
         self.tab["delta"] = f"{delta:,}"
+        # ---
         self.log_dump()
+        # ---
+        return self.tab
 
 
 if __name__ == "__main__":
@@ -187,6 +193,16 @@ if __name__ == "__main__":
     # ---
     print(f"len(files):{len(files)}, split_at:{split_at}")
     # ---
+    tab = {
+        "done": 0,
+        "len_all_props": 0,
+        "items_0_claims": 0,
+        "items_1_claims": 0,
+        "items_no_P31": 0,
+        "All_items": 0,
+        "total_claims": 0,
+    }
+    # ---
     for i in range(0, len(files), split_at):
         # ---
         part_files = files[i : i + split_at]
@@ -200,6 +216,15 @@ if __name__ == "__main__":
         # ---
         processor = ClaimsProcessor(log_file)
         # ---
-        processor.read_files(part_files)
+        new_data = processor.read_files(part_files)
+        # ---
+        for x, v in new_data.items():
+            if x in tab:
+                tab[x] += v
+            else:
+                tab[x] = v
         # ---
         gc.collect()
+    # ---
+    with open(Path(__file__).parent / "split_tab.json", "w", encoding="utf-8") as outfile:
+        ujson.dump(tab, outfile)
