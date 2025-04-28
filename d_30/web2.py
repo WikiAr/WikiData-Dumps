@@ -300,7 +300,7 @@ class DumpProcessor():
             buffer = b""
             print("Starting to process chunks...")
             all_chunks = 0
-            for chunk in tqdm.tqdm(response.iter_content(chunk_size=1024 * 1024), desc="Processing chunks"):
+            for chunk in tqdm.tqdm(response.iter_content(chunk_size=1024 * 1024), desc="Processing chunks", total=100):
                 all_chunks += 1
                 if chunk:
                     # print(f"Received a chunk of size: {len(chunk)} bytes")
