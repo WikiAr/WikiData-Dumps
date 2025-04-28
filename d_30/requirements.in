@@ -1,0 +1,15 @@
+PyMySQL
+python_stdnum
+Requests
+SPARQLWrapper
+wikitextparser
+pandas
+rdflib
+shexer
+regex
+python-dotenv
+tqdm
+psutil
+jsonlines
+ujson
+qwikidata
