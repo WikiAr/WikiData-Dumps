@@ -21,12 +21,12 @@ from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 
 class HHH:
-    def __init__(self, lines, most_props, dump_file):
+    def __init__(self, data, most_props, dump_file):
         self.most_data = {"q": "", "count": 0}
         self.time_start = time.time()
         self.Dir = Path(__file__).parent
         self.most_props = most_props
-        self.lines = lines
+        self.data = data
         self.tt = time.time()
 
         # Initialize directories
@@ -224,7 +224,7 @@ class HHH:
         lines = []
         lines_claims = []
 
-        for i, entity_dict in enumerate(self.lines, start=1):
+        for i, entity_dict in enumerate(self.data, start=1):
             line, line2 = self.filter_and_process(entity_dict)
             if line:
                 lines.append(line)
@@ -233,18 +233,18 @@ class HHH:
             if i % mem_nu == 0:
                 self.print_memory(i)
 
-            print(f"dump_lines:{i:,}, len lines:{len(lines):,}")
-            print(f"dump_lines_claims:{i:,}, len lines_claims:{len(lines_claims):,}")
+        print(f"dump_lines:{i:,}, len lines:{len(lines):,}")
+        print(f"dump_lines_claims:{i:,}, len lines_claims:{len(lines_claims):,}")
 
-            self.dump_lines(lines)
-            self.dump_lines_claims(lines_claims)
+        self.dump_lines(lines)
+        self.dump_lines_claims(lines_claims)
 
-            lines_claims.clear()
-            lines.clear()
-            gc.collect()
+        lines_claims.clear()
+        lines.clear()
+        gc.collect()
 
-            ti = time.time() - self.tt
-            self.print_memory(i)
+        ti = time.time() - self.tt
+        self.print_memory(i)
 
         return self.most_data
 
@@ -303,7 +303,7 @@ class DumpProcessor():
             all_chunks = 0
             line_count = 0  # Counter for the number of lines processed
 
-            for chunk in response.iter_content(chunk_size=1024 * 1024):
+            for chunk in response.iter_content(chunk_size=1024 * 1024 * 10):
                 all_chunks += 1
                 if chunk:
                     buffer += decompressor.decompress(chunk)
@@ -318,7 +318,7 @@ class DumpProcessor():
 
                             # Stop processing if the maximum number of lines is reached
                             if line_count >= max_lines:
-                                print(f"Reached the maximum of {max_lines} lines. Stopping.")
+                                print(f"Reached the maximum of {max_lines:,} lines. Stopping.")
                                 return
 
             print(f"Total chunks processed: {all_chunks}")
