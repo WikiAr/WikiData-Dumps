@@ -16,6 +16,7 @@ from pathlib import Path
 import ujson
 # import ijson
 import tqdm
+from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 
 def check_dir(path):
@@ -161,7 +162,12 @@ class ClaimsProcessor:
             return ujson.load(f)
 
     def read_files(self, files):
-
+        # ---
+        files_size = sum(os.path.getsize(x) for x in files)
+        files_size = naturalsize(files_size, binary=True)
+        # ---
+        print(f"read_files {files_size=}")
+        # ---
         for current_count, file_path in enumerate(tqdm.tqdm(files), 1):
             json_data = self.get_lines(file_path)
             # ---
@@ -212,7 +218,8 @@ if __name__ == "__main__":
     # split to 8 parts
     split_at = len(files) // split_by
     # ---
-    files.sort()
+    # sort files by size
+    files.sort(key=lambda x: os.path.getsize(x), reverse=False)
     # ---
     print(f"{len(files)=}, {split_by=}, {split_at=}")
     # ---
