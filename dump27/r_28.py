@@ -72,7 +72,7 @@ def dump_lines_claims(linesc):
     global most_data
     # ---
     if not linesc:
-        return
+        return {}
     # ---
     dump_done["claims"] += 1
     # ---
@@ -135,7 +135,7 @@ def dump_lines_claims(linesc):
                 }
             # ---
             tabs_properties[pid]["len_prop_claims"] += len(qids)
-            tabs_properties[pid]["lenth_of_usage"] += 1
+            tabs_properties[pid]["len_of_usage"] += 1
             tabs_properties[pid]["items_use_it"] += 1
             # ---
             for qid in qids:
@@ -176,6 +176,9 @@ def dump_lines_claims(linesc):
     items_file_fixed_size = naturalsize(os.path.getsize(items_file_fixed), binary=True)
     # ---
     print(f"dump_lines claims fixed: {items_file_fixed_size}")
+
+    # ---------- NEW: return statistics used by the caller ----------
+    return tabs
 
 
 def dump_lines(lines):

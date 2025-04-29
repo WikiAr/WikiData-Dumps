@@ -91,8 +91,8 @@ def facts(n_tab, Old):
 
 def pid_section_facts(table, old_data):
     # ---
-    table["items_use_it"] = table.get("items_use_it") or table.get("lenth_of_usage", 0)
-    old_data["items_use_it"] = old_data.get("items_use_it") or old_data.get("lenth_of_usage", 0)
+    table["items_use_it"] = table.get("items_use_it") or table.get("len_of_usage", 0)
+    old_data["items_use_it"] = old_data.get("items_use_it") or old_data.get("len_of_usage", 0)
     # ---
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
@@ -169,7 +169,7 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     new_data["properties"][pid] = {
         "items_use_it": table.get("items_use_it", 0),
-        # "lenth_of_usage": table.get("lenth_of_usage", 0),
+        # "len_of_usage": table.get("len_of_usage", 0),
         "len_prop_claims": table.get("len_prop_claims", 0),
         "len_of_qids": table.get("len_of_qids", 0),
         "qids": new_data_qids
@@ -237,7 +237,7 @@ def make_numbers_section(p_list, Old):
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
+            old_usage = old_prop.get("items_use_it") or old_prop.get("len_of_usage", 0)
             # ---
             # print(f"{prop=}, {usage=}, {old_usage=}")
             # ---
@@ -273,7 +273,7 @@ def make_numbers_section(p_list, Old):
 
 
 def make_text(data, Old):
-    p_list = [(prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0))]
+    p_list = [(prop_data.get("items_use_it", prop_data.get("len_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("len_of_usage", 0))]
     p_list.sort(reverse=True)
     # ---
     print(f"{len(p_list)=}")
@@ -369,7 +369,7 @@ def get_split_tab():
     # ---
     for pid, tab in split_tab["properties"].copy().items():
         # ---
-        items_use_it = tab.get("items_use_it") or tab.get("lenth_of_usage", 0)
+        items_use_it = tab.get("items_use_it") or tab.get("len_of_usage", 0)
         # ---
         split_tab["properties"][pid]["items_use_it"] = items_use_it
     # ---

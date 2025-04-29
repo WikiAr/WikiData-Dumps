@@ -105,14 +105,14 @@ class ClaimsProcessor:
                 # ---
                 self.properties[p] = {
                     "items_use_it": 0,
-                    "lenth_of_usage": 0,
+                    "len_of_usage": 0,
                     "len_of_qids": 0,
                     "len_prop_claims": 0,
                 }
 
             p_qidsx = p_qids.get("qids") or p_qids
 
-            self.properties[p]["lenth_of_usage"] += p_qids.get("lenth_of_usage", 0)
+            self.properties[p]["len_of_usage"] += p_qids.get("lenth_of_usage") or p_qids.get("len_of_usage")
             self.properties[p]["items_use_it"] += p_qids.get("items_use_it", 0)
             self.properties[p]["len_prop_claims"] += p_qids.get("len_prop_claims") or len(p_qidsx)
 
@@ -268,13 +268,13 @@ if __name__ == "__main__":
                     if prop not in tab["properties"]:
                         tab["properties"][prop] = {
                             "items_use_it": 0,
-                            "lenth_of_usage": 0,
+                            "len_of_usage": 0,
                             "len_of_qids": 0,
                             "len_prop_claims": 0,
                         }
                     # ---
                     tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
-                    tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
+                    tab["properties"][prop]["len_of_usage"] += prop_tab.get("len_of_usage", 0)
                     tab["properties"][prop]["len_of_qids"] += prop_tab.get("len_of_qids", 0)
                     tab["properties"][prop]["len_prop_claims"] += prop_tab.get("len_prop_claims", 0)
                 # ---
