@@ -206,6 +206,10 @@ if __name__ == "__main__":
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---
+    for file in new_splits_dir.glob("*.json"):
+        file.unlink()
+        print(f"deleted {file}")
+    # ---
     split_by = 32
     # ---
     # python3 claims_max/split.py -split:8
@@ -219,7 +223,7 @@ if __name__ == "__main__":
     split_at = len(files) // split_by
     # ---
     # sort files by size
-    files.sort(key=lambda x: os.path.getsize(x), reverse=False)
+    files.sort(key=lambda x: os.path.getsize(x), reverse=True)
     # ---
     print(f"{len(files)=}, {split_by=}, {split_at=}")
     # ---

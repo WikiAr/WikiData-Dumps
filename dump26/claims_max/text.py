@@ -128,6 +128,10 @@ def fix_others(pid, qids_tab, max=0):
         # ---
         qids_tab["others"] = 0
         # ---
+        if qids_tab.get("null", 0):
+            qids_tab["others"] = qids_tab.get("null", 0)
+            del qids_tab["null"]
+        # ---
         qids_1 = sorted(qids_tab.items(), key=lambda x: x[1], reverse=True)
         # ---
         qids_tab = dict(qids_1[:max_items])
@@ -175,7 +179,10 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     sorted_qids = dict(sorted(new_data_qids.items(), key=lambda item: item[1], reverse=True))
     # ---
+    other_count = table["qids"].get("others", 0)
+    # ---
     for idx, (qid, count) in enumerate(sorted_qids.items(), start=1):
+        # ---
         if qid == "others":
             continue
         # ---
@@ -183,8 +190,6 @@ def make_section(pid, table, old_data, max_n=51):
         diffo = min_it(count, old_v, add_plus=True)
         # ---
         table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,} \n| {diffo}")
-    # ---
-    other_count = table["qids"].get("others", 0)
     # ---
     old_others = old_data_qids.get("others", 0)
     diff_others = min_it(other_count, old_others, add_plus=True)
@@ -343,12 +348,11 @@ def get_old_data():
 
 def get_split_tab():
     split_file = Path(__file__).parent / "split_tab.json"
+    # ---
     with open(split_file, "r", encoding="utf-8") as file:
         split_tab = json.load(file)
-
+    # ---
     data_defaults = {
-        "delta": 0,
-        "done": 0,
         "len_all_props": 0,
         "items_0_claims": 0,
         "items_1_claims": 0,
@@ -356,13 +360,13 @@ def get_split_tab():
         "All_items": 0,
         "total_claims": 0,
         "properties": {},
-        "langs": {},
     }
-
+    # ---
     for key, default_value in data_defaults.items():
         if key not in split_tab:
             split_tab[key] = default_value
-
+            print(f"set default value for {key}")
+    # ---
     for pid, tab in split_tab["properties"].copy().items():
         # ---
         items_use_it = tab.get("items_use_it") or tab.get("lenth_of_usage", 0)
@@ -376,6 +380,10 @@ def get_split_tab():
     split_tab["properties"] = {x: v for x, v in split_tab["properties"].items() if x in json_files}
     # ---
     print(f"len of split_tab properties: {len(split_tab['properties'])}")
+    # ---
+    for x, numb in split_tab.items():
+        if isinstance(numb, int):
+            print(f"split_tab: {x} == {numb:,}")
     # ---
     return split_tab
 
@@ -403,8 +411,10 @@ def main():
         # ---
         print(f"Log written to {claims_p31}")
     # ---
+    split_tab["properties"] = new_data["properties"]
+    # ---
     with open(new_data_file, "w", encoding="utf-8") as outfile:
-        json.dump(new_data, outfile, indent=4)
+        json.dump(split_tab, outfile, indent=4)
     # ---
     print(f"saved to {new_data_file}")
 
