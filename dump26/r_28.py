@@ -83,6 +83,7 @@ def dump_lines_claims(linesc):
     # ---
     most = {"q": "", "count": 0}
     # ---
+    tabs_properties = {}
     tabs = {
         "len_all_props": 0,
         "items_0_claims": 0,
@@ -121,22 +122,22 @@ def dump_lines_claims(linesc):
             # ---
             tabs["total_claims"] += len(qids)
             # ---
-            if pid not in tabs["properties"]:
-                tabs["properties"][pid] = {
+            if pid not in tabs_properties:
+                tabs_properties[pid] = {
                     "qids": {},
                     "items_use_it": 0,
                     # "len_of_qids": 0,
                     "len_prop_claims": 0,
                 }
             # ---
-            tabs["properties"][pid]["len_prop_claims"] += len(qids)
-            tabs["properties"][pid]["items_use_it"] += 1
+            tabs_properties[pid]["len_prop_claims"] += len(qids)
+            tabs_properties[pid]["items_use_it"] += 1
             # ---
             for qid in qids:
-                if qid not in tabs["properties"][pid]["qids"]:
-                    tabs["properties"][pid]["qids"][qid] = 0
+                if qid not in tabs_properties[pid]["qids"]:
+                    tabs_properties[pid]["qids"][qid] = 0
                 # ---
-                tabs["properties"][pid]["qids"][qid] += 1
+                tabs_properties[pid]["qids"][qid] += 1
         # ---
         del claims, line
     # ---
@@ -147,15 +148,17 @@ def dump_lines_claims(linesc):
     # ---
     items_file_fixed = dump_dir_claims_fixed / f"{dump_done['claims']}.json"
     # ---
+    tabs["properties"] = tabs_properties
+    # ---
     with open(items_file_fixed, "w", encoding="utf-8") as f:
         json.dump(tabs, f)
     # ---
     # items_file_size = naturalsize(os.path.getsize(items_file), binary=True)
-    # print(f"dump_lines_claims size: {items_file_size}, fixed: {items_file_fixed_size}")
+    # print(f"dump_lines claims size: {items_file_size}, fixed: {items_file_fixed_size}")
     # ---
     items_file_fixed_size = naturalsize(os.path.getsize(items_file_fixed), binary=True)
     # ---
-    print(f"dump_lines_claims fixed: {items_file_fixed_size}")
+    print(f"dump_lines claims fixed: {items_file_fixed_size}")
 
 
 def dump_lines(lines):
