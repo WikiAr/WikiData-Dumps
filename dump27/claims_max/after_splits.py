@@ -33,7 +33,6 @@ def check_dir(path):
 pids_qids_dir = Path(__file__).parent / "pids_qids"
 # --
 check_dir(pids_qids_dir)
-check_dir(Path(__file__).parent / "jsons")
 
 
 class ClaimsProcessor():
@@ -76,6 +75,10 @@ class ClaimsProcessor():
             # ---
             if pid != m_pid:
                 print(f"{pid=} != {m_pid=}")
+            # ---
+            if pid not in self.qids_tab:
+                # initialize new PID bucket
+                self.qids_tab[pid] = {"others": 0}
             # ---
             qids = x.get("qids")
             # ---

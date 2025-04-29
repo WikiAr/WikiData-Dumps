@@ -181,6 +181,8 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     other_count = table["qids"].get("others", 0)
     # ---
+    idx = 0
+    # ---
     for idx, (qid, count) in enumerate(sorted_qids.items(), start=1):
         # ---
         if qid == "others":
@@ -369,7 +371,7 @@ def get_split_tab():
     # ---
     for pid, tab in split_tab["properties"].copy().items():
         # ---
-        items_use_it = tab.get("items_use_it") or tab.get("len_of_usage", 0)
+        items_use_it = tab.get("items_use_it") or tab.get("len_of_usage") or tab.get("lenth_of_usage", 0)
         # ---
         split_tab["properties"][pid]["items_use_it"] = items_use_it
     # ---

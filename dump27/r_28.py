@@ -130,6 +130,7 @@ def dump_lines_claims(linesc):
                 tabs_properties[pid] = {
                     "qids": {},
                     "items_use_it": 0,
+                    "len_of_usage": 0,
                     # "len_of_qids": 0,
                     "len_prop_claims": 0,
                 }
