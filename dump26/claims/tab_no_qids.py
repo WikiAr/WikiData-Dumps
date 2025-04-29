@@ -139,9 +139,10 @@ class ClaimsProcessor():
 
 
 if __name__ == "__main__":
-    Dir = Path(__file__).parent.parent
     # ---
-    parts_dir = Dir / "parts1_claims_fixed"
+    parts_dir = Path(__file__).parent.parent / "parts1_claims_fixed"
+    # ---
+    parts_dir = Path(__file__).parent / "claims_new"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---

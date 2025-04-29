@@ -56,15 +56,6 @@ class ClaimsProcessor():
             "properties": {},
         }
 
-    def process_files(self, files, process_func):
-        print(f"Processing {len(files)} files")
-
-        for current_count, file_path in enumerate(tqdm.tqdm(files), 1):
-            process_func(file_path)
-
-            if current_count % self.memory_check_interval == 0:
-                self._print_progress(current_count)
-
     def _print_progress(self, count: int):
         current_time = time.time()
         print(f"Processed {count} files, " f"elapsed: {current_time - self.tt:.2f}s")
@@ -165,17 +156,21 @@ class ClaimsProcessor():
             return ujson.load(f)
 
     def read_files(self, files):
-        # ---
-        self.process_files(files, lambda x: self.do_line(self.get_lines(x)))
-        # ---
+        print(f"Processing {len(files)} files")
+
+        for current_count, file_path in enumerate(tqdm.tqdm(files), 1):
+            json_data = self.get_lines(file_path)
+            self.do_line(json_data)
+            del json_data
+            gc.collect()
+
+            if current_count % self.memory_check_interval == 0:
+                self._print_progress(current_count)
+
         # self.tab_changes()
-        # ---
         delta = int(time.time() - self.start_time)
-        # ---
         print(f"read_files: done in {delta}")
-        # ---
         self.tab["delta"] = f"{delta:,}"
-        # ---
         self.log_dump()
 
 
