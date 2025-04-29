@@ -19,6 +19,11 @@ import ujson
 # import ijson
 import tqdm
 
+sys.path.append(str(Path(__file__).parent))
+
+import db_log
+
+db_log.init_db()
 
 def check_dir(path):
     if not path.exists():
@@ -69,11 +74,8 @@ class ClaimsProcessor:
         print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump_db(self):
-        new_data = [{"pid": x, "qids": y} for x, y in self.properties_qids.items()]
         # ---
-        with open(self.log_file, "w", encoding="utf-8") as outfile:
-            for item in new_data:
-                outfile.write(ujson.dumps(item) + "\n")
+        db_log.log_items(self.properties_qids)
         # ---
         print("log_dump done")
 
@@ -108,9 +110,9 @@ class ClaimsProcessor:
 
             p_qidsx = p_qids.get("qids") or p_qids
 
-            # self.properties[prop]["lenth_of_usage"] += p_qids.get("lenth_of_usage", 0)
-            self.properties[prop]["items_use_it"] += p_qids.get("items_use_it", 0)
-            self.properties[prop]["len_prop_claims"] += p_qids.get("len_prop_claims") or len(p_qidsx)
+            # self.properties[p]["lenth_of_usage"] += p_qids.get("lenth_of_usage", 0)
+            self.properties[p]["items_use_it"] += p_qids.get("items_use_it", 0)
+            self.properties[p]["len_prop_claims"] += p_qids.get("len_prop_claims") or len(p_qidsx)
 
             # ---
             for qid, count in p_qidsx.items():
@@ -118,10 +120,10 @@ class ClaimsProcessor:
                 if not qid:
                     continue
                 # ---
-                if qid not in self.properties_qids[prop]:
-                    self.properties_qids[prop][qid] = 0
+                if qid not in self.properties_qids[p]:
+                    self.properties_qids[p][qid] = 0
                 # ---
-                self.properties_qids[prop][qid] += count
+                self.properties_qids[p][qid] += count
 
             gc.collect()
 

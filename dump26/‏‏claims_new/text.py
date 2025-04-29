@@ -188,7 +188,8 @@ def make_numbers_section(p_list, Old):
     other_count = 0
 
     max_v = 100
-
+    idx = 0
+    # ---
     for idx, (usage, prop) in enumerate(p_list, start=1):
         # ---
         other_count += usage

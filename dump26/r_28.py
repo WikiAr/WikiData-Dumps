@@ -132,10 +132,6 @@ def dump_lines_claims(linesc):
             tabs["properties"][pid]["len_prop_claims"] += len(qids)
             tabs["properties"][pid]["items_use_it"] += 1
             # ---
-            # print(pid, qids)
-            # ---
-            # if not
-            # ---
             for qid in qids:
                 if qid not in tabs["properties"][pid]["qids"]:
                     tabs["properties"][pid]["qids"][qid] = 0

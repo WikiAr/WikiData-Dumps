@@ -195,7 +195,7 @@ def one_item(pid, qids):
 
 
 def one_item_qids(pid, qids):
-    batch_size = 10000
+    batch_size = 5000
     # ---
     items = list(qids.items())
     # ---
@@ -205,11 +205,20 @@ def one_item_qids(pid, qids):
         ON CONFLICT(pid, qid) DO UPDATE SET
             counts = counts + excluded.counts
         """
-    for i in tqdm.tqdm(range(0, len(items), batch_size)):
+    # ---
+    # print(f"{len(items)=:,}, {batch_size=:,}")
+    # ---
+    for i in range(0, len(items), batch_size):
         batch = items[i:i + batch_size]
         data = [(pid, qid, counts) for qid, counts in batch]
 
         db_commit(query, data, many=True)
+
+
+def log_items(properties_qids):
+
+    for pid, qids in tqdm.tqdm(properties_qids.items(), desc=f"log_items: {len(properties_qids)=:,}"):
+        one_item_qids(pid, qids)
 
 
 def write_it():
@@ -221,6 +230,7 @@ def write_it():
         # ---
         for pid, qids in data.items():
             one_item_qids(pid, qids)
+
 
     # ---
 if __name__ == "__main__":

@@ -18,6 +18,12 @@ from pathlib import Path
 import ujson
 import tqdm
 
+sys.path.append(str(Path(__file__).parent))
+
+import db_log
+
+db_log.init_db()
+
 most_props_path = Path(__file__).parent.parent / "properties.json"
 
 if not most_props_path.exists():
@@ -109,6 +115,11 @@ class ClaimsProcessor():
                 self.qids_tab[pid][qid] += count
             # ---
             gc.collect()
+        # ---
+        if "log_db" in sys.argv:
+            db_log.log_items(self.qids_tab)
+            self.qids_tab = {}
+        # ---
 
     def tab_changes(self):
         # ---
@@ -144,6 +155,8 @@ class ClaimsProcessor():
             json_data = self.get_lines(file_path)
             # ---
             self.do_lines(json_data)
+            # ---
+
             # ---
             del json_data
             # ---
