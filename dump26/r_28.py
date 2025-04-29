@@ -116,7 +116,6 @@ def dump_lines_claims(linesc):
 
         if "P31" not in claims:
             tabs["items_no_P31"] += 1
-
         # ---
         for pid, qids in claims.items():
             # ---
@@ -126,12 +125,11 @@ def dump_lines_claims(linesc):
                 tabs["properties"][pid] = {
                     "qids": {},
                     "items_use_it": 0,
-                    "lenth_of_usage": 0,
-                    "len_of_qids": 0,
+                    # "len_of_qids": 0,
                     "len_prop_claims": 0,
                 }
             # ---
-            tabs["properties"][pid]["lenth_of_usage"] += 1
+            tabs["properties"][pid]["len_prop_claims"] += len(qids)
             tabs["properties"][pid]["items_use_it"] += 1
             # ---
             # print(pid, qids)
