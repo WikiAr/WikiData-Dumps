@@ -38,13 +38,14 @@ most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[
 
 class ClaimsProcessor:
     def __init__(self, log_dir):
+        self.print_at = time.time()
         self.log_dir = log_dir
         self.memory_check_interval = 80
         self.start_time = time.time()
         self.tt = time.time()
         self.properties = {}
         self.properties_qids = {}
-        self.tab = {
+        self.table = {
             "delta": 0,
             "len_all_props": 0,
             "items_0_claims": 0,
@@ -84,11 +85,17 @@ class ClaimsProcessor:
 
     def do_line(self, json1):
         for field in ["All_items", "items_0_claims", "items_1_claims", "items_no_P31", "total_claims"]:
-            self.tab[field] += json1.get(field, 0)
+            self.table[field] += json1.get(field, 0)
 
         claims = json1.get("properties") or json1
 
         for p, p_qids in claims.items():
+            # ---
+            if time.time() - self.print_at > 10:
+                self.print_at = time.time()
+                # self._print_progress(0)
+                self.print_memory()
+            # ---
             if p not in most_props:
                 continue
 
@@ -125,7 +132,7 @@ class ClaimsProcessor:
         # ---
         count_total_claims = False
         # ---
-        if self.tab["total_claims"] == 0:
+        if self.table["total_claims"] == 0:
             count_total_claims = True
         # ---
         for x, xx in self.properties.items():
@@ -135,7 +142,7 @@ class ClaimsProcessor:
             self.properties[x]["len_of_qids"] += len(qids_tab)
             # ---
             if count_total_claims:
-                self.tab["total_claims"] += sum(qids_tab.values())
+                self.table["total_claims"] += sum(qids_tab.values())
             # ---
             # qids_1 = sorted(qids_tab.items(), key=lambda x: x[1], reverse=True)
             # ---
@@ -147,7 +154,7 @@ class ClaimsProcessor:
             # ---
             # self.properties[x]["qids"]["others"] = 0
         # ---
-        self.tab["len_all_props"] = len(self.properties)
+        self.table["len_all_props"] = len(self.properties)
 
     def get_lines(self, items_file):
         with open(items_file, "r", encoding="utf-8") as f:
@@ -172,20 +179,22 @@ class ClaimsProcessor:
         # ---
         print(f"read_files: done in {delta}")
         # ---
-        self.tab["delta"] = f"{delta:,}"
+        self.table["delta"] = f"{delta:,}"
         # ---
         self.log_dump()
         # ---
-        self.tab["properties"] = self.properties
+        self.table["properties"] = self.properties
         # ---
-        # self.tab["properties_qids"] = self.properties_qids
+        # self.table["properties_qids"] = self.properties_qids
         # ---
         self._print_progress(current_count)
         # ---
-        return self.tab
+        return self.table
 
 
 if __name__ == "__main__":
+    # ---
+    start_time = time.time()
     # ---
     parts_dir = Path(__file__).parent.parent / "parts1_claims_fixed"
     # ---
@@ -193,7 +202,7 @@ if __name__ == "__main__":
     # ---
     split_by = 32
     # ---
-    # python3 claims_new/split.py -split:8
+    # python3 claims_max/split.py -split:8
     # ---
     for arg in sys.argv:
         arg, _, value = arg.partition(":")
@@ -234,7 +243,8 @@ if __name__ == "__main__":
         # ---
         new_data = processor.read_files(part_files)
         # ---
-        for x, v in new_data.items():
+        for x, v in new_data.copy().items():
+            # ---
             if isinstance(v, int):
                 if x in tab:
                     tab[x] += v
@@ -242,16 +252,15 @@ if __name__ == "__main__":
                     tab[x] = v
             # ---
             if x == "properties":
-                _prop_tab = {
-                    "items_use_it": 0,
-                    "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
-                }
                 # ---
                 for prop, prop_tab in v.items():
                     if prop not in tab["properties"]:
-                        tab["properties"][prop] = _prop_tab
+                        tab["properties"][prop] = {
+                            "items_use_it": 0,
+                            "lenth_of_usage": 0,
+                            "len_of_qids": 0,
+                            "len_prop_claims": 0,
+                        }
                     # ---
                     tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
                     tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
@@ -263,6 +272,10 @@ if __name__ == "__main__":
             ujson.dump(tab, outfile)
         # ---
         gc.collect()
+    # ---
+    delta = int(time.time() - start_time)
+    # ---
+    print(f"split_new done in {delta}")
 
 
-# python3 dump1/claims_new/split.py
+# python3 dump1/claims_max/split.py

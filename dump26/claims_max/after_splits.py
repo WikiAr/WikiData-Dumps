@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import ujson
 import tqdm
+from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 most_props_path = Path(__file__).parent.parent / "properties.json"
 
@@ -39,11 +40,12 @@ class ClaimsProcessor():
     def __init__(self):
         self.start_time = time.time()
         self.tt = time.time()
+        self.print_at = time.time()
         self.qids_tab = {}
 
     def _print_progress(self, count: int):
         current_time = time.time()
-        print(f"Processed {count} files, " f"elapsed: {current_time - self.tt:.2f}s")
+        print(f"Processed {count}, " f"elapsed: {current_time - self.tt:.2f}s")
         self.tt = current_time
         self.print_memory()
 
@@ -62,8 +64,13 @@ class ClaimsProcessor():
             ujson.dump(tab, outfile, ensure_ascii=False, indent=2)
 
     def do_lines(self, json1, m_pid):
-        for x in json1:
+        # ---
+        for n, x in enumerate(json1):
             # {"pid":"P282","qids":{"Q8229":2406,"Q82772":77, ... }}
+            # ---
+            if time.time() - self.print_at > 5:
+                self.print_at = time.time()
+                self._print_progress(n)
             # ---
             pid = x.get("pid")
             # ---
@@ -119,17 +126,24 @@ class ClaimsProcessor():
 
 if __name__ == "__main__":
     # ---
+    start_time = time.time()
+    # ---
     parts_dir = Path(__file__).parent / "split_by_pid"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---
     print(f"Processing {len(files)} files")
     # ---
+    # sort files by size
+    files.sort(key=lambda x: os.path.getsize(x), reverse=False)
+    # ---
     for i, file_path in enumerate(tqdm.tqdm(files), 1):
         # ---
         pid = file_path.name.replace(".json", "")
         # ---
-        print(f"Processing {pid=}")
+        file_size = naturalsize(os.path.getsize(file_path), binary=True)
+        # ---
+        print(f"Processing {pid=}, {file_size=}")
         # ---
         if "P31" in sys.argv and pid != "P31":
             continue
@@ -139,6 +153,10 @@ if __name__ == "__main__":
         processor.read_file(file_path, pid)
         # ---
         gc.collect()
+    # ---
+    delta = int(time.time() - start_time)
+    # ---
+    print(f"after_splits done in {delta}")
 
 
-# python3 dump1/claims_new/work_splits.py
+# python3 dump1/claims_max/after_splits.py

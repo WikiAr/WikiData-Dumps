@@ -13,6 +13,7 @@ import os
 import psutil
 import gc
 import json
+import ujson
 import time
 import sys
 
@@ -36,6 +37,9 @@ def check_dir(path):
         path.mkdir()
 
 
+new_splits_dir = Dir / "split_by_pid"
+check_dir(new_splits_dir)
+# ---
 dump_dir_claims_fixed = Dir / "parts1_claims_fixed"
 dump_parts1_fixed = Dir / "parts1_fixed"
 # ---
@@ -131,6 +135,7 @@ def dump_lines_claims(linesc):
                 }
             # ---
             tabs_properties[pid]["len_prop_claims"] += len(qids)
+            tabs_properties[pid]["lenth_of_usage"] += 1
             tabs_properties[pid]["items_use_it"] += 1
             # ---
             for qid in qids:
@@ -152,6 +157,18 @@ def dump_lines_claims(linesc):
     # ---
     with open(items_file_fixed, "w", encoding="utf-8") as f:
         json.dump(tabs, f)
+    # ---
+    for pid, qids in tabs_properties.items():
+        # ---
+        data = {"pid": pid, "qids": qids}
+        # ---
+        pid_file = new_splits_dir / f"{pid}.json"
+        # ---
+        if not pid_file.exists():
+            pid_file.touch()
+        # ---
+        with open(pid_file, "a", encoding="utf-8") as outfile:
+            outfile.write(ujson.dumps(data) + "\n")
     # ---
     # items_file_size = naturalsize(os.path.getsize(items_file), binary=True)
     # print(f"dump_lines claims size: {items_file_size}, fixed: {items_file_fixed_size}")
@@ -266,6 +283,7 @@ def parse_lines(bz2_file):
 
 def filter_and_process(entity_dict):
     entity_dict = json.loads(entity_dict)
+    # ---
     if entity_dict["type"] == "item":
         claims = entity_dict.get("claims", {})
         line = {
@@ -277,9 +295,11 @@ def filter_and_process(entity_dict):
         }
         line2 = {
             "qid": entity_dict["title"],
-            "claims": {p: fix_property(pv) for p, pv in claims.items() if p in most_props},
+            "claims": {p: fix_property(pv) for p, pv in claims.items() if (p in most_props or "all_props" in sys.argv)},
         }
+        # ---
         return line, line2
+    # ---
     return None, None
 
 
@@ -329,6 +349,15 @@ def process_data(bz2_file="", url=""):
         # ---
         data = parse_lines(bz2_file)
     # ---
+    claims_stats = {
+        "len_all_props": 0,
+        "items_0_claims": 0,
+        "items_1_claims": 0,
+        "items_no_P31": 0,
+        "All_items": 0,
+        "total_claims": 0,
+    }
+    # ---
     # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):
     for i, entity_dict in enumerate(data, start=1):
         if i < skip_to:
@@ -353,7 +382,11 @@ def process_data(bz2_file="", url=""):
             print(f"dump_lines_claims:{i}, len lines_claims:{len(lines_claims)}")
             # ---
             dump_lines(lines)
-            dump_lines_claims(lines_claims)
+            # ---
+            stats = dump_lines_claims(lines_claims)
+            # ---
+            for x, v in stats.items():
+                claims_stats[x] += v
             # ---
             lines_claims.clear()
             lines.clear()
@@ -362,6 +395,9 @@ def process_data(bz2_file="", url=""):
             ti = time.time() - tt[1]
             # ---
             print_memory(i)
+            # ---
+            with open(Dir / "claims_stats.json", "w", encoding="utf-8") as f:
+                json.dump(claims_stats, f)
             # ---
             with open(done1_lines, "a", encoding="utf-8") as f:
                 f.write(f"done: {i:,} {ti}\n")
@@ -374,19 +410,28 @@ def process_data(bz2_file="", url=""):
         dump_lines(lines)
     # ---
     if lines_claims:
-        dump_lines_claims(lines_claims)
-
+        stats = dump_lines_claims(lines_claims)
+        # ---
+        for x, v in stats.items():
+            claims_stats[x] += v
+        # ---
+        with open(Dir / "claims_stats.json", "w", encoding="utf-8") as f:
+            json.dump(claims_stats, f)
+    # ---
     print("Processing completed.")
 
 
 def main():
+    time_start2 = time.time()
+    # ---
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
+    # ---
     url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2"
-
+    # ---
     process_data(bz2_file=bz2_file, url=url)
-
-    end = time.time()
-    delta = int(end - time_start)
+    # ---
+    delta = int(time.time() - time_start2)
+    # ---
     print(f"read_file: done in {delta}")
 
 

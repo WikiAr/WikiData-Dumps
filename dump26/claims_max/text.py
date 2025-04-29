@@ -1,18 +1,17 @@
 """
 
+python dump1/claims_max/text.py
 python I:\core\bots\dump_core\dump26\claims_max\text.py
-
 
 """
 import requests
 import sys
+import tqdm
 import time
 import json
 from pathlib import Path
 
 va_dir = Path(__file__).parent
-# ---
-new_data_file = Path(__file__).parent / "jsons/claims_new_data.json"
 # ---
 new_data = {
     "date": "",
@@ -26,26 +25,21 @@ new_data = {
 }
 
 
+def check_dir(path):
+    if not path.exists():
+        path.mkdir()
+
+
+results_dir = Path(__file__).parent / "results"
+check_dir(results_dir)
+
 texts_tab = {}
 
 sections_done = {"current": 0, "max": 100}
 
-time_start = time.time()
-print(f"time_start: {time_start}")
-
-items_file = Path(__file__).parent / "jsons/claims.json"
-
-if "no_qids" in sys.argv:
-    items_file = Path(__file__).parent / "jsons/claims_no_qids.json"
-
-if "P31" in sys.argv:
-    items_file = Path(__file__).parent / "jsons/claims_P31.json"
-
-if "r_claims" in sys.argv:
-    items_file = Path(__file__).parent / "r_claims.json"
-
-claims_new = Path(__file__).parent / "claims_new.txt"
-claims_p31 = Path(__file__).parent / "claims_p31.txt"
+new_data_file = results_dir / "claims_max_data.json"
+claims_max = results_dir / "claims_max.txt"
+claims_p31 = results_dir / "claims_p31.txt"
 
 
 def min_it(new, old, add_plus=False):
@@ -230,12 +224,10 @@ def make_numbers_section(p_list, Old):
     # ---
     other_count = 0
     # ---
-    max_v = 100
+    max_v = 500
     idx = 0
     # ---
     for idx, (usage, prop) in enumerate(p_list, start=1):
-        # ---
-        other_count += usage
         # ---
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
@@ -252,6 +244,8 @@ def make_numbers_section(p_list, Old):
             # rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
             # ---
             rows.append(f"| {idx} || {{{{P|{prop}}}}} ||  {usage:,} || {diff}")
+        else:
+            other_count += usage
     # ---
     oo_others = Old.get("others", 0)
     # ---
@@ -264,9 +258,9 @@ def make_numbers_section(p_list, Old):
     # ---
     table_content = "\n|-\n".join(rows)
     # ---
-    texts = "== Numbers ==\n\n"
+    texts = "== Numbers ==\n"
     # ---
-    table = f'\n{{| class="wikitable sortable"\n|-\n! # !! Property !! Items use it !! Diff\n|-\n{table_content}\n|}}\n'
+    table = f'{{| class="wikitable sortable"\n|-\n! # !! Property !! Items use it !! Diff\n|-\n{table_content}\n|}}\n'
     # ---
     texts += table
     # ---
@@ -287,14 +281,14 @@ def make_text(data, Old):
     # ---
     Old_props = Old.get("properties", {})
     # ---
-    chart_section = make_numbers_section(p_list, Old)
+    numbers_section = make_numbers_section(p_list, Old)
 
     sections = ""
 
-    for _, prop in p_list:
+    for _, prop in tqdm.tqdm(p_list, desc="def make_section(): "):
         sections += make_section(prop, data["properties"][prop], Old_props.get(prop, {}))
 
-    return metadata + chart_section + sections
+    return metadata + numbers_section + sections
 
 
 def GetPageText_new(title):
@@ -325,9 +319,10 @@ def get_old_data():
     # ---
     title = "User:Mr._Ibrahem/claims.json"
     # ---
-    with open(Path(__file__).parent / "old.json", "r", encoding="utf-8") as file:
-        Old = json.load(file)
-        return Old
+    if "old" in sys.argv:
+        with open(Path(__file__).parent / "old.json", "r", encoding="utf-8") as file:
+            Old = json.load(file)
+            return Old
     # ---
     texts = GetPageText_new(title)
     # ---
@@ -386,16 +381,20 @@ def get_split_tab():
 
 
 def main():
+    # ---
+    time_start = time.time()
+    print(f"time_start: {time_start}")
+    # ---
     Old = get_old_data()
     # ---
     split_tab = get_split_tab()
     # ---
     text_output = make_text(split_tab, Old)
     # ---
-    with open(claims_new, "w", encoding="utf-8") as file:
+    with open(claims_max, "w", encoding="utf-8") as file:
         file.write(text_output)
     # ---
-    print(f"Log written to {claims_new}")
+    print(f"Log written to {claims_max}")
     # ---
     if "P31" in texts_tab:
         # ---
