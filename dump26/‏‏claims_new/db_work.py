@@ -19,6 +19,9 @@ import ujson
 # import ijson
 import tqdm
 
+sys.path.append(str(Path(__file__).parent))
+
+import db_log
 
 def check_dir(path):
     if not path.exists():
@@ -69,11 +72,9 @@ class ClaimsProcessor:
         print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
 
     def log_dump_db(self):
-        new_data = [{"pid": x, "qids": y} for x, y in self.properties_qids.items()]
         # ---
-        with open(self.log_file, "w", encoding="utf-8") as outfile:
-            for item in new_data:
-                outfile.write(ujson.dumps(item) + "\n")
+        for pid, qids in self.properties_qids.items():
+            db_log.one_item_qids(pid, qids)
         # ---
         print("log_dump done")
 
