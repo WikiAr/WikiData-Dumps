@@ -24,7 +24,7 @@ def check_dir(path):
         path.mkdir()
 
 
-new_splits_dir = Path(__file__).parent / "split_by_pid"
+new_splits_dir = Path(__file__).parent / "split_by_pidxx"
 check_dir(new_splits_dir)
 
 most_props_path = Path(__file__).parent.parent / "properties.json"

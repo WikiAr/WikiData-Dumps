@@ -131,7 +131,7 @@ if __name__ == "__main__":
     # ---
     start_time = time.time()
     # ---
-    parts_dir = Path(__file__).parent / "split_by_pid"
+    parts_dir = Path(__file__).parent / "split_by_pidxx"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---
