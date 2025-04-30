@@ -62,10 +62,9 @@ if not most_path.exists():
 
 most_data = json.loads(most_path.read_text())
 
-properties_path = Path(__file__).parent / "properties.json"
+# properties_path = Path(__file__).parent / "properties.json"
 
-with open(properties_path, "r", encoding="utf-8") as f:
-    most_props = json.load(f)
+# with open(properties_path, "r", encoding="utf-8") as f: most_props = json.load(f)
 
 
 def dump_lines_claims(linesc):
@@ -156,12 +155,11 @@ def dump_lines_claims(linesc):
     # ---
     tabs["properties"] = tabs_properties
     # ---
-    with open(items_file_fixed, "w", encoding="utf-8") as f:
-        json.dump(tabs, f)
+    # with open(items_file_fixed, "w", encoding="utf-8") as f: json.dump(tabs, f)
     # ---
-    for pid, qids in tabs_properties.items():
+    for pid, data in tabs_properties.items():
         # ---
-        data = {"pid": pid, "qids": qids}
+        data["pid"] = pid
         # ---
         pid_file = new_splits_dir / f"{pid}.json"
         # ---
@@ -299,7 +297,9 @@ def filter_and_process(entity_dict):
         }
         line2 = {
             "qid": entity_dict["title"],
-            "claims": {p: fix_property(pv) for p, pv in claims.items() if (p in most_props or "all_props" in sys.argv)},
+            "claims": {p: fix_property(pv) for p, pv in claims.items() if (
+                "all_props" in sys.argv  # or p in most_props
+            )},
         }
         # ---
         return line, line2
