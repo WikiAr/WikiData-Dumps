@@ -15,14 +15,14 @@ import ujson
 import tqdm
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
-most_props_path = Path(__file__).parent.parent / "properties.json"
+# most_props_path = Path(__file__).parent.parent / "properties.json"
 
-if not most_props_path.exists():
-    most_props_path.write_text('{"q": "", "count": 0}')
+# if not most_props_path.exists():
+#     most_props_path.write_text('{"P31": 0}')
 
-most_props = json.loads(most_props_path.read_text())
-# get only first 50 properties after sort
-most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
+# most_props = json.loads(most_props_path.read_text())
+# # get only first 50 properties after sort
+# most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
 
 
 def check_dir(path):
@@ -34,12 +34,17 @@ pids_qids_dir = Path(__file__).parent / "pids_qids"
 # --
 check_dir(pids_qids_dir)
 
+for file in pids_qids_dir.glob("*.json"):
+    file.unlink()
+    print(f"deleted {file}")
+
 
 class ClaimsProcessor():
     def __init__(self):
         self.start_time = time.time()
         self.tt = time.time()
         self.print_at = time.time()
+        self.infos = {}
         self.qids_tab = {}
 
     def _print_progress(self, count: int):
@@ -57,8 +62,6 @@ class ClaimsProcessor():
     def dump_one_pid(self, pid, tab):
         jsonname = pids_qids_dir / f"{pid}.json"
         # ---
-        tab = dict(sorted(tab.items(), key=lambda x: x[1], reverse=True))
-        # ---
         with open(jsonname, "w", encoding="utf-8") as outfile:
             ujson.dump(tab, outfile, ensure_ascii=False, indent=2)
 
@@ -71,7 +74,7 @@ class ClaimsProcessor():
                 self.print_at = time.time()
                 self._print_progress(n)
             # ---
-            pid = x.get("pid")
+            pid = x.get("pid") or m_pid
             # ---
             if pid != m_pid:
                 print(f"{pid=} != {m_pid=}")
@@ -80,7 +83,20 @@ class ClaimsProcessor():
                 # initialize new PID bucket
                 self.qids_tab[pid] = {"others": 0}
             # ---
+            tab = x
             qids = x.get("qids")
+            # ---
+            if qids.get("qids"):
+                # {"pid":"P6216","qids":{"qids":{"Q19652":244},"items_use_it":243,"len_of_usage":243,"len_prop_claims":256}}
+                qids = qids.get("qids")
+                tab = x.get("qids")
+            # ---
+            for hh, counts in tab.items():
+                if isinstance(counts, int):
+                    if hh in self.infos:
+                        self.infos[hh] += counts
+                    else:
+                        self.infos[hh] = counts
             # ---
             for qid, count in qids.items():
                 if not qid:
@@ -92,6 +108,14 @@ class ClaimsProcessor():
                 self.qids_tab[pid][qid] += count
             # ---
             gc.collect()
+        # ---
+        if self.qids_tab[pid].get("null"):
+            others = self.qids_tab[pid].get("others", 0) + self.qids_tab[pid]["null"]
+            # ---
+            del self.qids_tab[pid]["null"]
+            # ---
+            self.qids_tab[pid]["others"] = others
+        # ---
 
     def get_lines(self, items_file):
         with open(items_file, "r", encoding="utf-8") as infile:
@@ -115,23 +139,41 @@ class ClaimsProcessor():
         # ---
         self._print_progress(1)
         # ---
-        self.dump_one_pid(pid, self.qids_tab[pid])
+        self.qids_tab[pid] = dict(sorted(self.qids_tab[pid].items(), key=lambda x: x[1], reverse=True))
+        # ---
+        self.infos["qids"] = self.qids_tab[pid]
+        # ---
+        self.dump_one_pid(pid, self.infos)
         # ---
         del json_data
-        del self.qids_tab[pid]
+        # ---
+        del self.infos["qids"]
+        # ---
+        self.qids_tab = {}
         # ---
         gc.collect()
         # ---
         delta = int(time.time() - self.start_time)
         # ---
         print(f"read_file: done in {delta}")
+        # ---
+        return self.infos
+
+
+def update_pids(tab):
+    with open(Path(__file__).parent / "split_tab.json", "w", encoding="utf-8") as outfile:
+        ujson.dump(tab, outfile, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":
     # ---
     start_time = time.time()
     # ---
-    parts_dir = Path(__file__).parent / "split_by_pidxx"
+    parts_dir = Path(__file__).parent / "split_by_pid"
+    # ---
+    if not parts_dir.exists():
+        # ---
+        parts_dir = Path(__file__).parent.parent / "split_by_pid"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---
@@ -139,6 +181,8 @@ if __name__ == "__main__":
     # ---
     # sort files by size
     files.sort(key=lambda x: os.path.getsize(x), reverse=False)
+    # ---
+    properties_infos = {}
     # ---
     for i, file_path in enumerate(tqdm.tqdm(files), 1):
         # ---
@@ -153,13 +197,19 @@ if __name__ == "__main__":
         # ---
         processor = ClaimsProcessor()
         # ---
-        processor.read_file(file_path, pid)
+        pid_infos = processor.read_file(file_path, pid)
+        # ---
+        properties_infos[pid] = pid_infos
+        # ---
+        update_pids(properties_infos)
         # ---
         gc.collect()
     # ---
+    properties_infos = dict(sorted(properties_infos.items(), key=lambda x: x[1]["items_use_it"], reverse=True))
+    # ---
     delta = int(time.time() - start_time)
     # ---
-    print(f"after_splits done in {delta}")
+    print(f"bot done in {delta}")
 
 
-# python3 dump1/claims_max/after_splits.py
+# python3 I:\core\bots\dump_core\dump27\claims_max\bot.py
