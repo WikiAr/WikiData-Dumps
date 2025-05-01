@@ -18,7 +18,7 @@ from humanize import naturalsize  # naturalsize(file_size, binary=True)
 # most_props_path = Path(__file__).parent.parent / "properties.json"
 
 # if not most_props_path.exists():
-#     most_props_path.write_text('{"q": "", "count": 0}')
+#     most_props_path.write_text('{"P31": 0}')
 
 # most_props = json.loads(most_props_path.read_text())
 # # get only first 50 properties after sort
@@ -170,6 +170,10 @@ if __name__ == "__main__":
     start_time = time.time()
     # ---
     parts_dir = Path(__file__).parent / "split_by_pid"
+    # ---
+    if not parts_dir.exists():
+        # ---
+        parts_dir = Path(__file__).parent.parent / "split_by_pid"
     # ---
     files = list(parts_dir.glob("*.json"))
     # ---

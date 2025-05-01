@@ -24,6 +24,13 @@ new_data = {
     "properties": {},
 }
 
+most_props_path = Path(__file__).parent.parent / "properties.json"
+
+if not most_props_path.exists():
+    most_props_path.write_text('{"P31": 0}')
+
+most_props = json.loads(most_props_path.read_text())
+
 
 def check_dir(path):
     if not path.exists():
@@ -88,8 +95,8 @@ def facts(n_tab, Old):
     # ---
     report_date = n_tab.get('file_date') or n_tab.get('date') or "latest"
     # ---
-    text += f"|-\n| Report date || {report_date} || 0 \n"
-    text += f"|-\n| Total items last update || {last_total:,} || 0 \n"
+    text += f"|-\n| Report date || {report_date} ||  \n"
+    text += f"|-\n| Total items last update || {last_total:,} ||  \n"
     # ---
     for key, title in texts.items():
         diff = min_it_tab(n_tab, Old, key, add_plus=True)
@@ -110,9 +117,9 @@ def pid_section_facts(table, old_data):
     text += "! Title !! Number !! Diff \n"
     # ---
     texts_tab_x = {
-        "items_use_it": "Total items using this property",
-        "len_prop_claims": "Total number of claims with this property:",
-        "len_of_qids": "Number of unique QIDs",
+        # "items_use_it": "Total items using this property",
+        "len_prop_claims": "Total number of claims:",
+        # "len_of_qids": "Number of unique QIDs",
     }
     # ---
     for key, title in texts_tab_x.items():
@@ -161,7 +168,7 @@ def fix_others(pid, qids_tab, max=0):
     return qids_tab
 
 
-def make_section(pid, table, old_data, max_n=51):
+def load_qids(pid, table):
     # ---
     qids_file = Path(__file__).parent / f"pids_qids/{pid}.json"
     # ---
@@ -169,13 +176,7 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     if not qids_file.exists():
         print(f"file not found: {qids_file}")
-        return ""
-    # ---
-    if sections_done["current"] >= sections_done["max"]:
-        texts_tab[pid] = ""
-        return ""
-    # ---
-    old_data_qids = old_data.get("qids") or {"others": 0}
+        return {}
     # ---
     new_data["properties"][pid] = {
         "items_use_it": table.get("items_use_it", 0),
@@ -185,10 +186,25 @@ def make_section(pid, table, old_data, max_n=51):
         # "qids": new_data_qids
     }
     # ---
+    new_qids = {}
+    # ---
     with open(qids_file, "r", encoding="utf-8") as file:
         qids = json.load(file)
-        new_data["properties"][pid]["len_of_qids"] = len(qids)
-        table["qids"] = fix_others(pid, qids.get("qids", {}))
+    # ---
+    new_data["properties"][pid]["len_of_qids"] = len(qids.get("qids", {}))
+    # ---
+    new_qids = fix_others(pid, qids.get("qids", {}))
+    # ---
+    return new_qids
+
+
+def make_section(pid, table, old_data, max_n=51):
+    # ---
+    if sections_done["current"] >= sections_done["max"]:
+        texts_tab[pid] = ""
+        return ""
+    # ---
+    old_data_qids = old_data.get("qids") or {"others": 0}
     # ---
     new_data_qids = table.get("qids") or {"others": 0}
     # ---
@@ -214,7 +230,7 @@ def make_section(pid, table, old_data, max_n=51):
     old_others = old_data_qids.get("others", 0)
     diff_others = min_it(other_count, old_others, add_plus=True)
     # ---
-    table_rows.append(f"! {idx} \n! others \n! {other_count:,} \n! {diff_others} \n|-")
+    table_rows.append(f"! {idx+1} \n! others \n! {other_count:,} \n! - \n|-")
     # ---
     table_content = "\n|-\n".join(table_rows)
     # ---
@@ -257,19 +273,22 @@ def make_numbers_section(properties_infos, Old):
         # ---
         if len(rows) < max_v:
             # ---
-            usage = prop_tab.get("items_use_it", 0)
+            # usage = prop_tab.get("items_use_it", 0)
+            usage = prop_tab.get("len_prop_claims", 0)
             # ---
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("items_use_it") or old_prop.get("len_of_usage", 0)
+            old_usage = old_prop.get("len_prop_claims")
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
-            line = f"| {idx} || {{{{P|{prop}}}}} ||  {usage:,} || {diff}"
+            value_in_most_props = most_props.get(prop, 0)
             # ---
-            len_prop_claims = prop_tab.get("len_prop_claims", 0)
-            diff2 = min_it_tab(prop_tab, old_prop, "len_prop_claims", add_plus=True)
+            line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} <!-- {value_in_most_props:,} -->|| {diff}"
             # ---
-            line += f" || {len_prop_claims:,}  || {diff2}"
+            # len_prop_claims = prop_tab.get("len_prop_claims", 0)
+            # diff2 = min_it_tab(prop_tab, old_prop, "len_prop_claims", add_plus=True)
+            # # ---
+            # line += f" || {len_prop_claims:,}  || {diff2}"
             # ---
             rows.append(line)
         else:
@@ -282,15 +301,17 @@ def make_numbers_section(properties_infos, Old):
     # ---
     o_diff = min_it(other_count, oo_others, add_plus=True)
     # ---
-    rows.append(f"! {idx+1} \n! others || {other_count:,} || {o_diff}")
+    rows.append(f"! {idx+1} \n! others || {other_count:,} || -")
     # ---
     table_content = "\n|-\n".join(rows)
     # ---
     texts = "== Numbers ==\n"
     # ---
     table = '| class="wikitable sortable"\n|-\n'
-    table += '! # !! Property !! Items use it !! Diff !! Claims !! Diff\n'
-    table += f'|-\n{table_content}\n'
+    table += '! # !! Property'
+    # table += '!! Items use it !! Diff'
+    table += '!! Claims !! Diff'
+    table += f'\n|-\n{table_content}\n'
     # ---
     table = f'{{{table}|}}\n'
     # ---
@@ -301,7 +322,7 @@ def make_numbers_section(properties_infos, Old):
 
 def make_text(data, Old):
     # ---
-    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("items_use_it", 0), reverse=True))
+    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("len_prop_claims", 0), reverse=True))
     # ---
     print(f"{len(properties_infos)=}")
     # ---
@@ -309,7 +330,7 @@ def make_text(data, Old):
     # ---
     metadata = facts(data, Old)
     # ---
-    metadata = "\n --~~~~"
+    metadata += "\n--~~~~\n\n"
     # ---
     Old_props = Old.get("properties", {})
     # ---
@@ -317,8 +338,16 @@ def make_text(data, Old):
     # ---
     sections = ""
     # ---
+    section_done = 0
+    # ---
     for prop, prop_tab in tqdm.tqdm(properties_infos.items(), desc="def make_section(): "):
-        sections += make_section(prop, prop_tab, Old_props.get(prop, {}))
+        # ---
+        prop_tab['qids'] = load_qids(prop, prop_tab)
+        # ---
+        if section_done < 11:
+            sections += make_section(prop, prop_tab, Old_props.get(prop, {}))
+            # ---
+            section_done += 1
     # ---
     return metadata + numbers_section + sections
 
@@ -381,12 +410,13 @@ def get_split_tab():
         claims_stats = json.load(file)
     # ---
     data_defaults = {
-        "len_all_props": 0,
+        "date": "",
+        "All_items": 0,
+        "items_no_P31": 0,
         "items_0_claims": 0,
         "items_1_claims": 0,
-        "items_no_P31": 0,
-        "All_items": 0,
         "total_claims": 0,
+        "len_all_props": 0,
         "properties": {},
     }
     # ---
@@ -442,8 +472,10 @@ def main():
     # ---
     if "P31" in texts_tab:
         # ---
+        text = f"--~~~~\n\n{texts_tab['P31']}"
+        # ---
         with open(claims_p31, "w", encoding="utf-8") as file:
-            file.write(texts_tab["P31"])
+            file.write(text)
         # ---
         print(f"Log written to {claims_p31}")
     # ---
