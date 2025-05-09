@@ -1,3 +1,7 @@
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/WikiAr/WikiData-Dumps)
+
+
 # WikiData Dumps Processing Scripts
 
 This repository contains scripts used for processing WikiData dumps, specifically for the "claims" and "labels" data.
