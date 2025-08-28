@@ -9,12 +9,16 @@ from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON
 import requests
 
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import most_props_path
+
 
 class WikidataPropertyAnalyzer:
     def __init__(self):
         self.endpoint_url = "https://query.wikidata.org/sparql"
         self.user_agent = f"WDQS-example Python/{sys.version_info[0]}.{sys.version_info[1]}"
-        self.file_path = Path(__file__).parent / "properties.json"
+        self.file_path = most_props_path
 
     def get_query_result(self, query):
         """

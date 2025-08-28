@@ -6,7 +6,6 @@ python I:\core\bots\dump_core\dump26\claims_max\aftter_splits.py
 """
 import sys
 import time
-import json
 import gc
 import psutil
 import os
@@ -15,24 +14,9 @@ import ujson
 import tqdm
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
-# most_props_path = Path(__file__).parent.parent / "properties.json"
+sys.path.append(str(Path(__file__).parent.parent))
 
-# if not most_props_path.exists():
-#     most_props_path.write_text('{"P31": 0}')
-
-# most_props = json.loads(most_props_path.read_text())
-# # get only first 50 properties after sort
-# most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
-
-
-def check_dir(path):
-    if not path.exists():
-        path.mkdir()
-
-
-pids_qids_dir = Path(__file__).parent / "pids_qids"
-# --
-check_dir(pids_qids_dir)
+from dir_handler import pids_qids_dir, split_by_pid_dir, claims_results_dir
 
 for file in pids_qids_dir.glob("*.json"):
     file.unlink()
@@ -161,7 +145,7 @@ class ClaimsProcessor():
 
 
 def update_pids(tab):
-    with open(Path(__file__).parent / "split_tab.json", "w", encoding="utf-8") as outfile:
+    with open(claims_results_dir / "split_tab.json", "w", encoding="utf-8") as outfile:
         ujson.dump(tab, outfile, ensure_ascii=False, indent=2)
 
 
@@ -169,13 +153,7 @@ if __name__ == "__main__":
     # ---
     start_time = time.time()
     # ---
-    parts_dir = Path(__file__).parent / "split_by_pid"
-    # ---
-    if not parts_dir.exists():
-        # ---
-        parts_dir = Path(__file__).parent.parent / "split_by_pid"
-    # ---
-    files = list(parts_dir.glob("*.json"))
+    files = list(split_by_pid_dir.glob("*.json"))
     # ---
     print(f"Processing {len(files)} files")
     # ---

@@ -10,12 +10,13 @@ import psutil
 import ujson
 import tqdm
 import time
+import sys
 from pathlib import Path
 
-Dir = Path(__file__).parent.parent
-# ---
-parts_dir = Dir / "parts1_fixed"
-# ---
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import dump_parts1_fixed, labels_results_dir
+
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
 # ---
@@ -55,7 +56,7 @@ def print_memory():
 
 
 def log_dump(tab):
-    jsonname = Path(__file__).parent / "labels_new.json"
+    jsonname = labels_results_dir / "labels_new.json"
     # ---
     with open(jsonname, "w", encoding="utf-8") as outfile:
         ujson.dump(tab, outfile)
@@ -97,7 +98,7 @@ def get_lines(x):
 def read_lines():
     print("def read_lines():")
     # ---
-    jsonfiles = list(parts_dir.glob("*.json"))
+    jsonfiles = list(dump_parts1_fixed.glob("*.json"))
     print(f"all json files: {len(jsonfiles)}")
     # ---
     current_count = 0
