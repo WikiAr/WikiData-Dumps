@@ -13,3 +13,4 @@ psutil
 jsonlines
 ujson
 qwikidata
+humanize
