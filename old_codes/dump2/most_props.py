@@ -11,7 +11,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 def get_query_result(query):
-    
+
     # TODO: https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split/Rules#Scholarly_Articles
 
     endpoint_url = "https://query.wikidata.org/sparql"
@@ -76,9 +76,12 @@ def GetPageText_new(title):
     # ---
     text = ''
     # ---
+    session = requests.session()
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+    # ---
     # get url text
     try:
-        response = requests.get(url, timeout=10)
+        response = session.get(url, timeout=10)
         response.raise_for_status()  # Raises HTTPError for bad responses
         text = response.text
     except requests.exceptions.RequestException as e:
