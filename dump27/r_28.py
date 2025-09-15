@@ -286,7 +286,11 @@ def filter_and_process(entity_dict):
 
 
 def parse_lines_from_url(url):
-    with requests.get(url, stream=True) as response:
+    # ---
+    session = requests.session()
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+    # ---
+    with session.get(url, stream=True) as response:
         response.raise_for_status()
         decompressor = bz2.BZ2Decompressor()
         buffer = b""

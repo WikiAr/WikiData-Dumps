@@ -309,7 +309,11 @@ class DumpProcessor():
     def parse_lines_from_url(self, url, max_lines=1_000_000):
         """Parse lines from a URL, but stop after processing a maximum number of lines."""
         print(f"Fetching data from URL: {url}")
-        with requests.get(url, stream=True) as response:
+        # ---
+        session = requests.session()
+        session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+        # ---
+        with session.get(url, stream=True) as response:
             print("Response received. Checking status...")
             response.raise_for_status()
 
