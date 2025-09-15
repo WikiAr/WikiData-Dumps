@@ -11,7 +11,10 @@ import time
 import json
 from pathlib import Path
 
-va_dir = Path(__file__).parent
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import pids_qids_dir, most_props_path, claims_results_dir, dump_files_dir
+
 # ---
 new_data = {
     "date": "",
@@ -24,29 +27,15 @@ new_data = {
     "properties": {},
 }
 
-most_props_path = Path(__file__).parent.parent / "properties.json"
-
-if not most_props_path.exists():
-    most_props_path.write_text('{"P31": 0}')
-
 most_props = json.loads(most_props_path.read_text())
-
-
-def check_dir(path):
-    if not path.exists():
-        path.mkdir()
-
-
-results_dir = Path(__file__).parent / "results"
-check_dir(results_dir)
 
 texts_tab = {}
 
 sections_done = {"current": 0, "max": 100}
 
-new_data_file = results_dir / "claims_max_data.json"
-claims_max = results_dir / "claims_max.txt"
-claims_p31 = results_dir / "claims_p31.txt"
+new_data_file = claims_results_dir / "claims_max_data.json"
+claims_max = claims_results_dir / "claims_max.txt"
+claims_p31 = claims_results_dir / "claims_p31.txt"
 
 
 def min_it(new, old, add_plus=False):
@@ -170,7 +159,7 @@ def fix_others(pid, qids_tab, max=0):
 
 def load_qids(pid, table):
     # ---
-    qids_file = Path(__file__).parent / f"pids_qids/{pid}.json"
+    qids_file = pids_qids_dir / f"{pid}.json"
     # ---
     print(f"file:{qids_file}")
     # ---
@@ -361,9 +350,12 @@ def GetPageText_new(title):
     # ---
     text = ''
     # ---
+    session = requests.session()
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+    # ---
     # get url text
     try:
-        response = requests.get(url, timeout=10)
+        response = session.get(url, timeout=10)
         response.raise_for_status()  # Raises HTTPError for bad responses
         text = response.text
     except requests.exceptions.RequestException as e:
@@ -381,7 +373,7 @@ def get_old_data():
     title = "User:Mr._Ibrahem/claims.json"
     # ---
     if "old" in sys.argv:
-        with open(Path(__file__).parent / "old.json", "r", encoding="utf-8") as file:
+        with open(claims_results_dir / "old_claims.json", "r", encoding="utf-8") as file:
             Old = json.load(file)
             return Old
     # ---
@@ -394,16 +386,16 @@ def get_old_data():
         Old = {}
     # ---
     if Old:
-        with open(Path(__file__).parent / "old.json", "w", encoding="utf-8") as file:
+        with open(claims_results_dir / "old_claims.json", "w", encoding="utf-8") as file:
             json.dump(Old, file, indent=4)
         # ---
-        print("Old saved to old.json")
+        print("Old saved to old_claims.json")
     # ---
     return Old
 
 
 def get_split_tab():
-    split_file = Path(__file__).parent.parent / "claims_stats.json"
+    split_file = dump_files_dir / "claims_stats.json"
     # ---
     # { "len_all_props": 0, "items_0_claims": 1482902, "items_1_claims": 8972766, "items_no_P31": 937647, "All_items": 115641305, "total_claims": 790665159 }
     with open(split_file, "r", encoding="utf-8") as file:
@@ -425,9 +417,7 @@ def get_split_tab():
             claims_stats[key] = default_value
             print(f"set default value for {key}")
     # ---
-    qids_dir = Path(__file__).parent / "pids_qids"
-    # ---
-    files = list(qids_dir.glob("*.json"))
+    files = list(pids_qids_dir.glob("*.json"))
     # ---
     for file_path in tqdm.tqdm(files):
         pid = file_path.stem

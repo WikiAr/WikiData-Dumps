@@ -141,7 +141,6 @@ def dump_lines(lines):
             if len(line.get(k, [])) > most[k]["count"]:
                 most[k]["count"] = len(line.get(k, []))
                 most[k]["q"] = line["qid"]
-        # ---
     # ---
     sql_add_values(tabs)
     # ---

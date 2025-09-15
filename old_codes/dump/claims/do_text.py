@@ -178,7 +178,6 @@ def make_text(tab, ty=""):
     # ---
     if tab["properties"].get("P31"):
         text_p31 = text + make_section("P31", tab["properties"]["P31"], max_n=501)
-        # ---
     # ---
     if "onlyp31" in sys.argv or ty == "onlyp31":
         return text, text_p31

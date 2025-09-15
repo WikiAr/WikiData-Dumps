@@ -5,6 +5,7 @@ python3 dump/sitelinks/text.py
 python3 dump25/sitelinks/text.py
 
 """
+import sys
 import os
 import requests
 import re
@@ -12,10 +13,12 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-# ---
-va_dir = Path(__file__).parent
-# ---
-items_file = va_dir.parent / "labels" / "labels_new.json"
+
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import sitelinks_results_dir, labels_results_dir
+
+items_file = labels_results_dir / "labels_new.json"
 # ---
 new_data = {
     "date": "",
@@ -24,9 +27,8 @@ new_data = {
     "sitelinks": {},
 }
 # ---
-new_data_file = va_dir / "sitelinks.json"
-# ---
-labels_file = va_dir / "sitelinks.txt"
+new_data_file = sitelinks_results_dir / "sitelinks.json"
+labels_file = sitelinks_results_dir / "sitelinks.txt"
 # ---
 main_table_head = """
 == sitelinks per family ==
@@ -141,7 +143,7 @@ def split_by_family(tab):
     new["wikipedia"] = {x: v for x, v in tab.items() if not any(x.endswith(y) for y in familys) and x not in others}
     new["others"] = {x: v for x, v in tab.items() if x in others}
     # ---
-    with open(va_dir / "splits.json", "w", encoding="utf-8") as f:
+    with open(sitelinks_results_dir / "splits.json", "w", encoding="utf-8") as f:
         json.dump(new, f)
     # ---
     return new
@@ -404,9 +406,13 @@ def main_labels(tabb):
 def check_date():
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
     # get last change time of bz2_file
-    last_change = os.path.getmtime(bz2_file)
-    # ---
-    return datetime.fromtimestamp(last_change).strftime("%Y-%m-%d")
+    try:
+        last_change = os.path.getmtime(bz2_file)
+        # ---
+        return datetime.fromtimestamp(last_change).strftime("%Y-%m-%d")
+    except Exception as e:
+        print(f"Error: {e}")
+        return ""
 
 
 def main():

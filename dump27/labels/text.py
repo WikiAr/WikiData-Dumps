@@ -4,6 +4,7 @@ python3 dump/labels/text.py
 python3 text.py
 
 """
+import sys
 import requests
 import os
 import json
@@ -11,10 +12,14 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-# ---
-va_dir = Path(__file__).parent
-# ---
-new_data_file = Path(__file__).parent / "labels_new_data.json"
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import labels_results_dir
+
+new_data_file = labels_results_dir / "labels_new_data.json"
+items_file = labels_results_dir / "labels_new.json"
+labels_file = labels_results_dir / "labels.txt"
+template_file = labels_results_dir / "template.txt"
 # ---
 new_data = {
     "date": "",
@@ -26,11 +31,6 @@ new_data = {
     },
     "langs": {},
 }
-# ---
-items_file = va_dir / "labels_new.json"
-# ---
-labels_file = va_dir / "labels.txt"
-template_file = va_dir / "template.txt"
 # ---
 main_table_head = """
 == Number of labels, descriptions and aliases for items per language ==
@@ -298,9 +298,12 @@ def GetPageText_new(title):
     # ---
     text = ''
     # ---
+    session = requests.session()
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+    # ---
     # get url text
     try:
-        response = requests.get(url, timeout=10)
+        response = session.get(url, timeout=10)
         response.raise_for_status()  # Raises HTTPError for bad responses
         text = response.text
     except requests.exceptions.RequestException as e:
@@ -331,9 +334,13 @@ def get_old_data():
 def check_date():
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
     # get last change time of bz2_file
-    last_change = os.path.getmtime(bz2_file)
-    # ---
-    return datetime.fromtimestamp(last_change).strftime("%Y-%m-%d")
+    try:
+        last_change = os.path.getmtime(bz2_file)
+        # ---
+        return datetime.fromtimestamp(last_change).strftime("%Y-%m-%d")
+    except Exception as e:
+        print(f"Error: {e}")
+        return ""
 
 
 if __name__ == "__main__":

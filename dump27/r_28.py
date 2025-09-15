@@ -22,49 +22,27 @@ import bz2
 import requests
 from pathlib import Path
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
+sys.path.append(str(Path(__file__).parent))
 
-# ---
+from dir_handler import split_by_pid_dir, dump_dir_claims_fixed, dump_parts1_fixed, dump_files_dir
+
 time_start = time.time()
-# ---
-Dir = Path(__file__).parent
-# ---
-# dump_dir_claims = Dir / "parts1_claims"
-# if not dump_dir_claims.exists(): dump_dir_claims.mkdir()
 
-
-def check_dir(path):
-    if not path.exists():
-        path.mkdir()
-
-
-new_splits_dir = Dir / "split_by_pid"
-check_dir(new_splits_dir)
-# ---
-dump_dir_claims_fixed = Dir / "parts1_claims_fixed"
-dump_parts1_fixed = Dir / "parts1_fixed"
-# ---
-check_dir(dump_dir_claims_fixed)
-check_dir(dump_parts1_fixed)
-# ---
 dump_done = {1: 0, "claims": 0}
 
-done1_lines = Dir / "done1_lines.txt"
+done1_lines = dump_files_dir / "done1_lines.txt"
 
 with open(done1_lines, "w", encoding="utf-8") as f:
     f.write("")
 
 tt = {1: 0}
 
-most_path = Dir / "most_claims.json"
+most_path = dump_files_dir / "most_claims.json"
 
 if not most_path.exists():
     most_path.write_text('{"q": "", "count": 0}')
 
 most_data = json.loads(most_path.read_text())
-
-# properties_path = Path(__file__).parent / "properties.json"
-
-# with open(properties_path, "r", encoding="utf-8") as f: most_props = json.load(f)
 
 
 def dump_lines_claims(linesc):
@@ -161,7 +139,7 @@ def dump_lines_claims(linesc):
         # ---
         data["pid"] = pid
         # ---
-        pid_file = new_splits_dir / f"{pid}.json"
+        pid_file = split_by_pid_dir / f"{pid}.json"
         # ---
         if not pid_file.exists():
             pid_file.touch()
@@ -308,7 +286,11 @@ def filter_and_process(entity_dict):
 
 
 def parse_lines_from_url(url):
-    with requests.get(url, stream=True) as response:
+    # ---
+    session = requests.session()
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+    # ---
+    with session.get(url, stream=True) as response:
         response.raise_for_status()
         decompressor = bz2.BZ2Decompressor()
         buffer = b""
@@ -400,7 +382,7 @@ def process_data(bz2_file="", url=""):
             # ---
             print_memory(i)
             # ---
-            with open(Dir / "claims_stats.json", "w", encoding="utf-8") as f:
+            with open(dump_files_dir / "claims_stats.json", "w", encoding="utf-8") as f:
                 json.dump(claims_stats, f)
             # ---
             with open(done1_lines, "a", encoding="utf-8") as f:
@@ -419,7 +401,7 @@ def process_data(bz2_file="", url=""):
         for x, v in stats.items():
             claims_stats[x] += v
         # ---
-        with open(Dir / "claims_stats.json", "w", encoding="utf-8") as f:
+        with open(dump_files_dir / "claims_stats.json", "w", encoding="utf-8") as f:
             json.dump(claims_stats, f)
     # ---
     print("Processing completed.")

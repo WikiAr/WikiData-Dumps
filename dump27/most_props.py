@@ -9,12 +9,16 @@ from pathlib import Path
 from SPARQLWrapper import SPARQLWrapper, JSON
 import requests
 
+sys.path.append(str(Path(__file__).parent.parent))
+
+from dir_handler import most_props_path
+
 
 class WikidataPropertyAnalyzer:
     def __init__(self):
         self.endpoint_url = "https://query.wikidata.org/sparql"
         self.user_agent = f"WDQS-example Python/{sys.version_info[0]}.{sys.version_info[1]}"
-        self.file_path = Path(__file__).parent / "properties.json"
+        self.file_path = most_props_path
 
     def get_query_result(self, query):
         """
@@ -78,8 +82,12 @@ class WikidataPropertyAnalyzer:
         print(f"url: {url}")
         text = ''
 
+        # ---
+        session = requests.session()
+        session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
+        # ---
         try:
-            response = requests.get(url, timeout=10)
+            response = session.get(url, timeout=10)
             response.raise_for_status()  # Raises HTTPError for bad responses
             text = response.text
         except requests.exceptions.RequestException as e:
