@@ -68,7 +68,9 @@ def get_new(new_data, sitelinks_old):
             # ---
             old_value = family_old.get(wiki, 0)
             # ---
-            wiki_new = new_codes.get(wiki) if new_codes.get(wiki) else wiki
+            mapped = new_codes.get(wiki)
+            # ---
+            wiki_new = mapped if mapped else wiki
             # ---
             if not old_value and wiki_new != wiki:
                 old_value = family_old.get(wiki_new, 0)
