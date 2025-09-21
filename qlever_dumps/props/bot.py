@@ -25,6 +25,14 @@ dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
 qids_dir.mkdir(parents=True, exist_ok=True)
 
+breaks = {1: 5_000}
+
+for arg in sys.argv:
+    arg, _, value = arg.partition(':')
+    # ---
+    if arg == '-break' and value.isdigit():
+        breaks[1] = int(value)
+
 
 def GetPageText_new(title):
     title = title.replace(' ', '_')
@@ -116,7 +124,7 @@ def props_ren(old_data):
         "properties": {}
     }
     # ---
-    for p, p_old in tqdm(old_properties.items(), desc="Work on props:", total=len(old_properties)):
+    for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
         # ---
         p_data = one_prop(p)
         # ---
@@ -136,7 +144,8 @@ def props_ren(old_data):
         with open(file, "w", encoding="utf-8") as f:
             json.dump(data["properties"][p], f, indent=4)
         # ---
-        break
+        if n == breaks[1]:
+            break
     # ---
     return data
 
