@@ -127,7 +127,16 @@ def props_ren(old_data):
     # ---
     for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
         # ---
-        p_data = one_prop(p)
+        file = qids_dir / f"{p}.json"
+        # ---
+        p_data = {}
+        # ---
+        if file.exists() and "props_json" in sys.argv:
+            with open(file, "r", encoding="utf-8") as f:
+                p_data = json.load(f)
+        # ---
+        if not p_data:
+            p_data = one_prop(p)
         # ---
         data["properties"][p] = {
             "qids_others": p_data["others"],
@@ -139,8 +148,6 @@ def props_ren(old_data):
         # ---
         data["properties"][p]["old"] = p_old
         data["properties"][p]["qids"] = p_data["qids"]
-        # ---
-        file = qids_dir / f"{p}.json"
         # ---
         with open(file, "w", encoding="utf-8") as f:
             json.dump(data["properties"][p], f, indent=4)
