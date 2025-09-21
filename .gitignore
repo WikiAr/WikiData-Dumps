@@ -8,7 +8,6 @@ dump/claims/preprocessing
 **/texts/**
 **/texts_test/**
 dump2/dump1.sh
-*.json
 old.py
 dump25/arw/sub_tab1.py
 **/.ipynb_checkpoints/**
@@ -23,7 +22,11 @@ dump_files/properties.json
 /qlever_dumps/new/dumps
 /qlever_dumps/tests
 **/texts_test
-tests/**/** */.json
+dump27/**/*.json
+results/**/*.json
+tests/**/*.json
+dump_files/**/*.json
 dump_files/done1_lines.txt
 dump27/claims_max/results/claims_max.txt
 results/**/*.txt
+/qlever_dumps/props/dumps/qids_by_prop

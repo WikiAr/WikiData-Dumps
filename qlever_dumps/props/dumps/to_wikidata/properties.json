@@ -1,0 +1,16 @@
+{
+    "date": "2025-09-03",
+    "all_items": 117416494,
+    "items_no_P31": 937647,
+    "items_0_claims": 1482902,
+    "items_1_claims": 8972766,
+    "total_claims": 790665159,
+    "len_all_props": 100,
+    "properties": {
+        "P31": {
+            "len_prop_claims": 120307859,
+            "len_of_qids": 107786,
+            "items_use_it": 115056853
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "date": "2025-09-03",
+    "all_items": 117416494,
+    "properties": {
+        "P31": {
+            "new": {
+                "len_prop_claims": 120307859,
+                "len_of_qids": 107786,
+                "items_use_it": 115056853
+            },
+            "old": {
+                "items_use_it": 113220756,
+                "len_prop_claims": 121322991,
+                "len_of_qids": 105592
+            }
+        }
+    }
+}

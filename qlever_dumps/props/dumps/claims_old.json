@@ -1,0 +1,511 @@
+{
+    "date": "23-04-2025",
+    "All_items": 115641305,
+    "items_no_P31": 937647,
+    "items_0_claims": 1482902,
+    "items_1_claims": 8972766,
+    "total_claims": 790665159,
+    "len_all_props": 100,
+    "properties": {
+        "P31": {
+            "items_use_it": 113220756,
+            "len_prop_claims": 121322991,
+            "len_of_qids": 105592
+        },
+        "P1433": {
+            "items_use_it": 45720558,
+            "len_prop_claims": 45828534,
+            "len_of_qids": 132929
+        },
+        "P50": {
+            "items_use_it": 14214575,
+            "len_prop_claims": 34076543,
+            "len_of_qids": 2482945
+        },
+        "P921": {
+            "items_use_it": 20213951,
+            "len_prop_claims": 32539941,
+            "len_of_qids": 1199081
+        },
+        "P407": {
+            "items_use_it": 24595830,
+            "len_prop_claims": 24958860,
+            "len_of_qids": 2801
+        },
+        "P17": {
+            "items_use_it": 18409071,
+            "len_prop_claims": 18864015,
+            "len_of_qids": 4191
+        },
+        "P131": {
+            "items_use_it": 13049833,
+            "len_prop_claims": 14041324,
+            "len_of_qids": 449862
+        },
+        "P106": {
+            "items_use_it": 8582165,
+            "len_prop_claims": 11966190,
+            "len_of_qids": 20963
+        },
+        "P21": {
+            "items_use_it": 10034021,
+            "len_prop_claims": 10037474,
+            "len_of_qids": 72
+        },
+        "P6259": {
+            "items_use_it": 8173960,
+            "len_prop_claims": 8173971,
+            "len_of_qids": 2533
+        },
+        "P735": {
+            "items_use_it": 7633841,
+            "len_prop_claims": 8156972,
+            "len_of_qids": 97346
+        },
+        "P59": {
+            "items_use_it": 7370556,
+            "len_prop_claims": 7370847,
+            "len_of_qids": 92
+        },
+        "P27": {
+            "items_use_it": 5110143,
+            "len_prop_claims": 5605771,
+            "len_of_qids": 4048
+        },
+        "P734": {
+            "items_use_it": 5417993,
+            "len_prop_claims": 5602876,
+            "len_of_qids": 501044
+        },
+        "P361": {
+            "items_use_it": 3742425,
+            "len_prop_claims": 5157662,
+            "len_of_qids": 555040
+        },
+        "P279": {
+            "items_use_it": 4226377,
+            "len_prop_claims": 4963598,
+            "len_of_qids": 285159
+        },
+        "P684": {
+            "items_use_it": 271675,
+            "len_prop_claims": 4369944,
+            "len_of_qids": 270246
+        },
+        "P276": {
+            "items_use_it": 4255340,
+            "len_prop_claims": 4340570,
+            "len_of_qids": 271944
+        },
+        "P6216": {
+            "items_use_it": 4148729,
+            "len_prop_claims": 4316206,
+            "len_of_qids": 8
+        },
+        "P171": {
+            "items_use_it": 3888320,
+            "len_prop_claims": 3903530,
+            "len_of_qids": 388670
+        },
+        "P105": {
+            "items_use_it": 3894119,
+            "len_prop_claims": 3894690,
+            "len_of_qids": 99
+        },
+        "P19": {
+            "items_use_it": 3610660,
+            "len_prop_claims": 3646793,
+            "len_of_qids": 285903
+        },
+        "P69": {
+            "items_use_it": 2381207,
+            "len_prop_claims": 3442019,
+            "len_of_qids": 85295
+        },
+        "P195": {
+            "items_use_it": 3125580,
+            "len_prop_claims": 3440278,
+            "len_of_qids": 16539
+        },
+        "P971": {
+            "items_use_it": 1907736,
+            "len_prop_claims": 3325538,
+            "len_of_qids": 315742
+        },
+        "P1412": {
+            "items_use_it": 2684199,
+            "len_prop_claims": 3028510,
+            "len_of_qids": 3056
+        },
+        "P703": {
+            "items_use_it": 2570190,
+            "len_prop_claims": 2886693,
+            "len_of_qids": 38490
+        },
+        "P1435": {
+            "items_use_it": 2416973,
+            "len_prop_claims": 2503187,
+            "len_of_qids": 2033
+        },
+        "P495": {
+            "items_use_it": 2414936,
+            "len_prop_claims": 2460737,
+            "len_of_qids": 2068
+        },
+        "P527": {
+            "items_use_it": 774501,
+            "len_prop_claims": 2444860,
+            "len_of_qids": 1372681
+        },
+        "P108": {
+            "items_use_it": 1483369,
+            "len_prop_claims": 2431586,
+            "len_of_qids": 147134
+        },
+        "P275": {
+            "items_use_it": 2370162,
+            "len_prop_claims": 2379794,
+            "len_of_qids": 477
+        },
+        "P641": {
+            "items_use_it": 2225855,
+            "len_prop_claims": 2285826,
+            "len_of_qids": 2061
+        },
+        "P13046": {
+            "items_use_it": 2138069,
+            "len_prop_claims": 2148129,
+            "len_of_qids": 45
+        },
+        "P186": {
+            "items_use_it": 1272720,
+            "len_prop_claims": 2147066,
+            "len_of_qids": 7811
+        },
+        "P136": {
+            "items_use_it": 1793445,
+            "len_prop_claims": 2146868,
+            "len_of_qids": 11803
+        },
+        "P421": {
+            "items_use_it": 1634936,
+            "len_prop_claims": 2051166,
+            "len_of_qids": 509
+        },
+        "P40": {
+            "items_use_it": 987278,
+            "len_prop_claims": 1827496,
+            "len_of_qids": 1147988
+        },
+        "P1343": {
+            "items_use_it": 1216621,
+            "len_prop_claims": 1808251,
+            "len_of_qids": 88307
+        },
+        "P166": {
+            "items_use_it": 794747,
+            "len_prop_claims": 1711765,
+            "len_of_qids": 44106
+        },
+        "P39": {
+            "items_use_it": 894177,
+            "len_prop_claims": 1710536,
+            "len_of_qids": 134694
+        },
+        "P54": {
+            "items_use_it": 623063,
+            "len_prop_claims": 1693517,
+            "len_of_qids": 47893
+        },
+        "P161": {
+            "items_use_it": 259505,
+            "len_prop_claims": 1685360,
+            "len_of_qids": 255684
+        },
+        "P155": {
+            "items_use_it": 1535187,
+            "len_prop_claims": 1545499,
+            "len_of_qids": 1512084
+        },
+        "P156": {
+            "items_use_it": 1505374,
+            "len_prop_claims": 1513537,
+            "len_of_qids": 1492638
+        },
+        "P20": {
+            "items_use_it": 1486993,
+            "len_prop_claims": 1509008,
+            "len_of_qids": 129296
+        },
+        "P170": {
+            "items_use_it": 1384477,
+            "len_prop_claims": 1421694,
+            "len_of_qids": 134057
+        },
+        "P5008": {
+            "items_use_it": 1230180,
+            "len_prop_claims": 1272116,
+            "len_of_qids": 982
+        },
+        "P101": {
+            "items_use_it": 571629,
+            "len_prop_claims": 1218760,
+            "len_of_qids": 41665
+        },
+        "P680": {
+            "items_use_it": 398165,
+            "len_prop_claims": 1207682,
+            "len_of_qids": 8150
+        },
+        "P682": {
+            "items_use_it": 365264,
+            "len_prop_claims": 1190838,
+            "len_of_qids": 15405
+        },
+        "P793": {
+            "items_use_it": 683157,
+            "len_prop_claims": 1165032,
+            "len_of_qids": 29135
+        },
+        "P150": {
+            "items_use_it": 90821,
+            "len_prop_claims": 1164493,
+            "len_of_qids": 1127749
+        },
+        "P1001": {
+            "items_use_it": 1077087,
+            "len_prop_claims": 1135320,
+            "len_of_qids": 135984
+        },
+        "P22": {
+            "items_use_it": 1123264,
+            "len_prop_claims": 1126524,
+            "len_of_qids": 643858
+        },
+        "P1889": {
+            "items_use_it": 837941,
+            "len_prop_claims": 1117877,
+            "len_of_qids": 804706
+        },
+        "P127": {
+            "items_use_it": 1036255,
+            "len_prop_claims": 1101330,
+            "len_of_qids": 127875
+        },
+        "P2548": {
+            "items_use_it": 1058397,
+            "len_prop_claims": 1069895,
+            "len_of_qids": 4
+        },
+        "P5572": {
+            "items_use_it": 130994,
+            "len_prop_claims": 1058470,
+            "len_of_qids": 1521
+        },
+        "P179": {
+            "items_use_it": 1000048,
+            "len_prop_claims": 1015303,
+            "len_of_qids": 32217
+        },
+        "P702": {
+            "items_use_it": 969301,
+            "len_prop_claims": 981257,
+            "len_of_qids": 966664
+        },
+        "P688": {
+            "items_use_it": 963780,
+            "len_prop_claims": 978244,
+            "len_of_qids": 966278
+        },
+        "P6104": {
+            "items_use_it": 965783,
+            "len_prop_claims": 974125,
+            "len_of_qids": 902
+        },
+        "P180": {
+            "items_use_it": 410063,
+            "len_prop_claims": 943732,
+            "len_of_qids": 118342
+        },
+        "P4224": {
+            "items_use_it": 927529,
+            "len_prop_claims": 934485,
+            "len_of_qids": 6853
+        },
+        "P47": {
+            "items_use_it": 199704,
+            "len_prop_claims": 933373,
+            "len_of_qids": 202943
+        },
+        "P681": {
+            "items_use_it": 340986,
+            "len_prop_claims": 897887,
+            "len_of_qids": 2384
+        },
+        "P710": {
+            "items_use_it": 122065,
+            "len_prop_claims": 887029,
+            "len_of_qids": 195839
+        },
+        "P159": {
+            "items_use_it": 853089,
+            "len_prop_claims": 868343,
+            "len_of_qids": 119176
+        },
+        "P1344": {
+            "items_use_it": 353931,
+            "len_prop_claims": 859923,
+            "len_of_qids": 101451
+        },
+        "P7959": {
+            "items_use_it": 856694,
+            "len_prop_claims": 857908,
+            "len_of_qids": 195
+        },
+        "P282": {
+            "items_use_it": 841017,
+            "len_prop_claims": 847752,
+            "len_of_qids": 700
+        },
+        "P26": {
+            "items_use_it": 773381,
+            "len_prop_claims": 844314,
+            "len_of_qids": 770223
+        },
+        "P137": {
+            "items_use_it": 783844,
+            "len_prop_claims": 821588,
+            "len_of_qids": 78489
+        },
+        "P301": {
+            "items_use_it": 773669,
+            "len_prop_claims": 775212,
+            "len_of_qids": 766890
+        },
+        "P910": {
+            "items_use_it": 768568,
+            "len_prop_claims": 770900,
+            "len_of_qids": 767698
+        },
+        "P25": {
+            "items_use_it": 699000,
+            "len_prop_claims": 700341,
+            "len_of_qids": 341868
+        },
+        "P291": {
+            "items_use_it": 664403,
+            "len_prop_claims": 676445,
+            "len_of_qids": 15680
+        },
+        "P123": {
+            "items_use_it": 654664,
+            "len_prop_claims": 674263,
+            "len_of_qids": 51000
+        },
+        "P126": {
+            "items_use_it": 656993,
+            "len_prop_claims": 664839,
+            "len_of_qids": 10125
+        },
+        "P463": {
+            "items_use_it": 458074,
+            "len_prop_claims": 637260,
+            "len_of_qids": 72824
+        },
+        "P1454": {
+            "items_use_it": 631518,
+            "len_prop_claims": 635611,
+            "len_of_qids": 2056
+        },
+        "P1057": {
+            "items_use_it": 634875,
+            "len_prop_claims": 635053,
+            "len_of_qids": 8850
+        },
+        "P6224": {
+            "items_use_it": 631413,
+            "len_prop_claims": 631472,
+            "len_of_qids": 21
+        },
+        "P452": {
+            "items_use_it": 606944,
+            "len_prop_claims": 630673,
+            "len_of_qids": 8600
+        },
+        "P102": {
+            "items_use_it": 551176,
+            "len_prop_claims": 615350,
+            "len_of_qids": 12219
+        },
+        "P175": {
+            "items_use_it": 552315,
+            "len_prop_claims": 611500,
+            "len_of_qids": 102299
+        },
+        "P7937": {
+            "items_use_it": 590486,
+            "len_prop_claims": 608463,
+            "len_of_qids": 806
+        },
+        "P4510": {
+            "items_use_it": 473783,
+            "len_prop_claims": 593730,
+            "len_of_qids": 47128
+        },
+        "P140": {
+            "items_use_it": 557684,
+            "len_prop_claims": 569534,
+            "len_of_qids": 2265
+        },
+        "P138": {
+            "items_use_it": 515301,
+            "len_prop_claims": 546560,
+            "len_of_qids": 229620
+        },
+        "P937": {
+            "items_use_it": 405951,
+            "len_prop_claims": 518081,
+            "len_of_qids": 39199
+        },
+        "P3373": {
+            "items_use_it": 239216,
+            "len_prop_claims": 505867,
+            "len_of_qids": 242117
+        },
+        "P6379": {
+            "items_use_it": 188545,
+            "len_prop_claims": 463546,
+            "len_of_qids": 9894
+        },
+        "P364": {
+            "items_use_it": 434600,
+            "len_prop_claims": 452969,
+            "len_of_qids": 770
+        },
+        "P7763": {
+            "items_use_it": 440014,
+            "len_prop_claims": 441454,
+            "len_of_qids": 7
+        },
+        "P437": {
+            "items_use_it": 379008,
+            "len_prop_claims": 439701,
+            "len_of_qids": 758
+        },
+        "P413": {
+            "items_use_it": 420607,
+            "len_prop_claims": 431924,
+            "len_of_qids": 401
+        },
+        "P7228": {
+            "items_use_it": 429604,
+            "len_prop_claims": 429918,
+            "len_of_qids": 21
+        },
+        "P5185": {
+            "items_use_it": 22,
+            "len_prop_claims": 25,
+            "len_of_qids": 5
+        }
+    }
+}
