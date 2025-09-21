@@ -81,7 +81,6 @@ class WikidataPropertyAnalyzer:
 
         print(f"url: {url}")
         text = ''
-
         # ---
         session = requests.session()
         session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})

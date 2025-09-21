@@ -72,7 +72,7 @@ def dump_lines_claims(linesc):
         "items_no_P31": 0,
         "All_items": 0,
         "total_claims": 0,
-        "properties": {},
+        # "properties": {},
     }
     # ---
     tabs["All_items"] += len(linesc)
@@ -131,7 +131,7 @@ def dump_lines_claims(linesc):
     # ---
     items_file_fixed = dump_dir_claims_fixed / f"{dump_done['claims']}.json"
     # ---
-    tabs["properties"] = tabs_properties
+    # tabs["properties"] = tabs_properties
     # ---
     # with open(items_file_fixed, "w", encoding="utf-8") as f: json.dump(tabs, f)
     # ---
@@ -150,12 +150,14 @@ def dump_lines_claims(linesc):
     # items_file_size = naturalsize(os.path.getsize(items_file), binary=True)
     # print(f"dump_lines claims size: {items_file_size}, fixed: {items_file_fixed_size}")
     # ---
-    items_file_fixed_size = naturalsize(os.path.getsize(items_file_fixed), binary=True)
+    ss = os.path.getsize(items_file_fixed) if items_file_fixed.exists() else 0
+    # ---
+    items_file_fixed_size = naturalsize(ss, binary=True)
     # ---
     print(f"dump_lines claims fixed: {items_file_fixed_size}")
 
     # ---------- NEW: return statistics used by the caller ----------
-    return tabs
+    return tabs  # , tabs_properties
 
 
 def dump_lines(lines):
@@ -280,6 +282,9 @@ def filter_and_process(entity_dict):
             )},
         }
         # ---
+        if "all_props" not in sys.argv:
+            print('Add "all_props" to sys.argv to process all properties')
+        # ---
         return line, line2
     # ---
     return None, None
@@ -308,8 +313,8 @@ def parse_lines_from_url(url):
 
 def process_data(bz2_file="", url=""):
     tt[1] = time.time()
-    mem_nu = 10000
-    dump_numbs = 100000
+    mem_nu = 10_000
+    dump_numbs = 10_000 if "test" in sys.argv else 100_000
     # ---
     skip_to = 0
     # ---
@@ -372,6 +377,7 @@ def process_data(bz2_file="", url=""):
             stats = dump_lines_claims(lines_claims)
             # ---
             for x, v in stats.items():
+                claims_stats.setdefault(x, 0)
                 claims_stats[x] += v
             # ---
             lines_claims.clear()
@@ -399,6 +405,7 @@ def process_data(bz2_file="", url=""):
         stats = dump_lines_claims(lines_claims)
         # ---
         for x, v in stats.items():
+            claims_stats.setdefault(x, 0)
             claims_stats[x] += v
         # ---
         with open(dump_files_dir / "claims_stats.json", "w", encoding="utf-8") as f:

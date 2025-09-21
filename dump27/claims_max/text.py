@@ -1,7 +1,7 @@
 """
 
 python dump1/claims_max/text.py
-python I:\core\bots\dump_core\dump26\claims_max\text.py
+python I:/core/bots/dump_core/dump26/claims_max/text.py
 
 """
 import requests
