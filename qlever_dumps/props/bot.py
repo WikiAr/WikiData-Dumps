@@ -69,7 +69,7 @@ def get_old_props():
     # ---
     old_claims_file = dump_dir / "claims_old.json"
     # ---
-    if "fromjson" in sys.argv:
+    if "fromjson" in sys.argv and old_claims_file.exists():
         # ---
         with open(old_claims_file, "r", encoding="utf-8") as f:
             old_claims = json.load(f)
