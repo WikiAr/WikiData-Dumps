@@ -16,8 +16,8 @@ def min_it(new, old, add_plus=False):
     else:
         return 0
     # ---
-    if old == 0 or new == old:
-        return 0
+    if old == 0 or new == 0 or new == old:
+        return ""
     # ---
     result = new - old
     # ---
@@ -79,9 +79,9 @@ def pid_section_facts(table, old_data):
     text += "! Title !! Number !! Diff \n"
     # ---
     texts_tab_x = {
-        # "items_use_it": "Total items using this property",
+        "items_use_it": "Total items using this property",
         "len_prop_claims": "Total number of claims:",
-        # "len_of_qids": "Number of unique QIDs",
+        "len_of_qids": "Number of unique QIDs",
     }
     # ---
     for key, title in texts_tab_x.items():
