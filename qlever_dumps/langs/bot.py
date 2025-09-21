@@ -21,7 +21,6 @@ texts_dir = dump_dir / 'texts'
 # ---
 dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
-# ---
 
 
 def GetPageText_new(title):

@@ -205,6 +205,15 @@ def main():
     # ---
     sitelinks_data = get_sitelinks_data()
     # ---
+    file_date = sitelinks_data.get("file_date", "")
+    file_date_old = old_data.get("file_date") or old_data.get("date")
+    # ---
+    if file_date == file_date_old:
+        print(f"same old date {file_date=}")
+        return
+    else:
+        print(f"new date {file_date=}")
+    # ---
     file = Path(__file__).parent / "tests/texts_test/sitelinks_new.json"
     # ---
     with open(file, "w", encoding="utf-8") as f:

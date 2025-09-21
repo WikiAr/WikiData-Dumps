@@ -14,11 +14,15 @@ from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from qlever_bot import one_prop, one_lang, get_all_props
+from qlever_bot import one_prop, get_date, get_all_props
 
 dump_dir = Path(__file__).parent / 'dumps'
+dump_to_wikidata_dir = dump_dir / 'to_wikidata'
+texts_dir = dump_dir / 'texts'
 qids_dir = dump_dir / 'qids_by_prop'
-
+# ---
+dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
+texts_dir.mkdir(parents=True, exist_ok=True)
 qids_dir.mkdir(parents=True, exist_ok=True)
 
 
@@ -81,11 +85,11 @@ def get_props():
     return properties[:101]
 
 
-def props_render():
+def props_ren(old_data):
     # ---
     # props = get_props()
     # ---
-    old_properties = get_old_data("User:Mr._Ibrahem/claims.json").get("properties", {})
+    old_properties = old_data.get("properties", {})
     # ---
     prop_data_dump = {}
     # ---
@@ -105,44 +109,73 @@ def props_render():
         with open(file, "w", encoding="utf-8") as f:
             json.dump(p_data, f, indent=4)
     # ---
-    with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
-        json.dump(prop_data_dump, f, indent=4)
-    # ---
     return prop_data_dump
 
 
-def lang_render():
+def render(old_data, file_date):
     # ---
-    old_langs = get_old_data("User:Mr._Ibrahem/langs.json")
-    old_langs_items = old_langs.get("langs", {})
+    props_data = props_ren(old_data)
     # ---
-    lang_data = {}
-    # ---
-    for lang, old_data in tqdm(old_langs_items.items(), desc="Work on langs:", total=len(old_langs_items)):
+    if "fromjson" in sys.argv:
+        all_items = props_data["all_items"]
+        withouts = props_data["without"]
+    else:
         # ---
-        p_data = one_lang(lang)
+        new_data = get_langs_status()
         # ---
-        lang_data[lang] = {
-            "new": p_data,
-            "old": old_data
+        all_items = new_data["all_items"]
+        withouts = new_data["without"]
+        # ---
+        data_new = {
+            "date": file_date,
+            "all_items": all_items,
+            "without": withouts,
+            "langs": props_data["langs"]
         }
+        # ---
+        with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
+            json.dump(data_new, f, indent=4)
+        # ---
     # ---
-    data = {
-        "old": {
-            "all_items": old_langs.get("last_total") or old_langs.get("all_items"),
-            "without": old_langs.get("without"),
-        },
-        "langs": lang_data
+    to_save_data = {
+        "date": file_date,
+        "all_items": all_items,
+        "without": withouts,
     }
     # ---
-    with open(dump_dir / "langs.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+    to_save_data["langs"] = {x: f["new"] for x, f in props_data["langs"].items() if f["new"]}
     # ---
-    return lang_data
+    with open(dump_to_wikidata_dir / "langs.json", "w", encoding="utf-8") as f:
+        json.dump(to_save_data, f, indent=4)
+    # ---
+    text_file = texts_dir / "langs.txt"
+    temp_file = texts_dir / "template.txt"
+    # ---
+    text = make_text(props_data)
+    temp_text = make_temp_text(props_data)
+    # ---
+    with open(temp_file, "w", encoding="utf-8") as outfile:
+        outfile.write(temp_text)
+    # ---
+    with open(text_file, "w", encoding="utf-8") as outfile:
+        outfile.write(text)
+
+
+def main():
+    # ---
+    old_data = get_old_data("User:Mr._Ibrahem/claims.json")
+    # ---
+    file_date = get_date()
+    file_date_old = old_data.get("file_date") or old_data.get("date")
+    # ---
+    if file_date == file_date_old:
+        print(f"same old date {file_date=}")
+        return
+    else:
+        print(f"new date {file_date=}")
+    # ---
+    render(old_data, file_date)
 
 
 if __name__ == "__main__":
-    if "props" in sys.argv:
-        props_render()
-    elif "langs" in sys.argv:
-        lang_render()
+    main()

@@ -195,7 +195,7 @@ class SitelinksReport:
         self.new_data["date"] = dumpdate
         self.new_data["all_items"] = total_items
 
-        print("make_text composed: total_items=%s dumpdate=%s", total_items, dumpdate)
+        print(f"make_text composed: total_items={total_items} dumpdate={dumpdate}")
         return text
 
 
