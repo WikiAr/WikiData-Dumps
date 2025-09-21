@@ -64,14 +64,17 @@ def facts(n_tab, Old):
     old_without = Old.get("without", {})
     # ---
     tab_no = n_tab.get("without", {})
+    # ---
     if tab_no:
         for x in tats:
             # ---
-            old_v = old_without.get(x, 0)
+            old_v = int(old_without.get(x, 0))
             # ---
-            diff_v = min_it(tab_no[x], old_v, add_plus=True)
+            cur_v = int(tab_no.get(x, 0))
             # ---
-            text += f"|-\n| Items without {x} || {tab_no[x]:,} || {diff_v} \n"
+            diff_v = min_it(cur_v, old_v, add_plus=True)
+            # ---
+            text += f"|-\n| Items without {x} || {cur_v:,} || {diff_v} \n"
     # ---
     text += "|}\n\n"
     # ---
