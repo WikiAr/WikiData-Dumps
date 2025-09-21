@@ -1,6 +1,5 @@
 **/old/**
 labelssql/**
-*.txt
 *.pyc
 dump/claims/c
 dump/claims/read_dump_x.py
@@ -16,16 +15,15 @@ dump25/arw/sub_tab1.py
 dump26/‏‏claims_new/wd_logs.db
 dump26/claims_max/r_28.py
 **/old/**
-*.pyc
-*.txt
 /dump_files/split_by_pid
 /dump_files/parts1_claims_fixed
 *.zip
 /dump_files/parts1_fixed
 dump_files/properties.json
-dump_files/properties.json
 /qlever_dumps/new/dumps
 /qlever_dumps/tests
-dump_files/properties.json
 **/texts_test
 tests/**/** */.json
+dump_files/done1_lines.txt
+dump27/claims_max/results/claims_max.txt
+results/**/*.txt
