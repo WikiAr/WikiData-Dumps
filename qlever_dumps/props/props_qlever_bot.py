@@ -186,6 +186,8 @@ def one_prop_count_all(prop_main):
 
 def one_prop(prop_main):
     # ---
+    print(f"load one_prop: {prop_main}")
+    # ---
     first_100 = one_prop_first_100(prop_main) or {}
     # ---
     first_100_sum = sum(first_100.values())

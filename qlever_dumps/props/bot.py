@@ -32,6 +32,7 @@ for arg in sys.argv:
     # ---
     if arg == '-break' and value.isdigit():
         breaks[1] = int(value)
+        print(f"BREAK AT {value}\n" * 3)
 
 
 def GetPageText_new(title):
