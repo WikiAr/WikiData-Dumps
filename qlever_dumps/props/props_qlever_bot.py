@@ -203,5 +203,46 @@ def one_prop(prop_main):
     return data
 
 
+def get_all_items():
+    # ---
+    sparql = """
+        PREFIX wikibase: <http://wikiba.se/ontology#>
+        SELECT (COUNT(?item) AS ?all_items)
+        WHERE {
+
+        ?item wikibase:sitelinks ?sl.
+        }
+    """
+    # ---
+    sparql = """
+        PREFIX wikibase: <http://wikiba.se/ontology#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        SELECT (COUNT(?item) AS ?all_items)
+        WHERE {
+            ?item rdf:type wikibase:Item.
+        }
+    """
+    # ---
+    result = query_qlever(sparql)
+    # ---
+    all_items = int(result[0][0]) if result else 0
+    # ---
+    print(f"get_all_items: {all_items}")
+    # ---
+    return all_items
+
+
+def get_props_status():
+    print("get_props_status")
+    # ---
+    all_items = get_all_items()
+    # ---
+    return {
+        "all_items": all_items,
+    }
+
+
 if __name__ == "__main__":
-    print(one_prop_first_100("P31"))
+    # print(one_prop_first_100("P31"))
+    print(get_props_status())

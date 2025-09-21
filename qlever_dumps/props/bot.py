@@ -1,8 +1,6 @@
 """
 
-python3 core8/pwb.py I:/core/bots/wd_dumps/qlever_dumps/new/start.py langs
-python3 core8/pwb.py I:/core/bots/wd_dumps/qlever_dumps/new/start.py props
-python3 new_dump/start.py
+python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/props/bot.py
 
 """
 import json
@@ -14,7 +12,7 @@ from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from qlever_bot import one_prop, get_date, get_all_props
+from props_qlever_bot import one_prop, get_date, get_all_props, get_props_status
 from props_text import make_text
 
 dump_dir = Path(__file__).parent / 'dumps'
@@ -92,13 +90,20 @@ def props_ren(old_data):
     # ---
     old_properties = old_data.get("properties", {})
     # ---
-    prop_data_dump = {}
+    data = {
+        "properties": {}
+    }
+    # ---
+    if "fromjson" in sys.argv:
+        with open(dump_dir / "properties.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data
     # ---
     for p, p_old in tqdm(old_properties.items(), desc="Work on props:", total=len(old_properties)):
         # ---
         p_data = one_prop(p)
         # ---
-        prop_data_dump[p] = {
+        data["properties"][p] = {
             "new": p_data["new"],
             "old": p_old
         }
@@ -109,8 +114,10 @@ def props_ren(old_data):
         # ---
         with open(file, "w", encoding="utf-8") as f:
             json.dump(p_data, f, indent=4)
+        # ---
+        break
     # ---
-    return prop_data_dump
+    return data
 
 
 def render(old_data, file_date):
@@ -119,19 +126,16 @@ def render(old_data, file_date):
     # ---
     if "fromjson" in sys.argv:
         all_items = props_data["all_items"]
-        withouts = props_data["without"]
     else:
         # ---
-        new_data = get_langs_status()
+        new_data = get_props_status()
         # ---
         all_items = new_data["all_items"]
-        withouts = new_data["without"]
         # ---
         data_new = {
             "date": file_date,
             "all_items": all_items,
-            "without": withouts,
-            "langs": props_data["langs"]
+            "properties": props_data["properties"]
         }
         # ---
         with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
@@ -139,17 +143,28 @@ def render(old_data, file_date):
         # ---
     # ---
     to_save_data = {
-        "date": file_date,
-        "all_items": all_items,
-        "without": withouts,
+        "date": "23-04-2025",
+        "all_items": 115641305,
+        "items_no_P31": 937647,
+        "items_0_claims": 1482902,
+        "items_1_claims": 8972766,
+        "total_claims": 790665159,
+        "len_all_props": 100,
+        "properties": {
+            "P31": {
+                "items_use_it": 113220756,
+                "len_prop_claims": 121322991,
+                "len_of_qids": 105592
+            }
+        }
     }
     # ---
-    to_save_data["langs"] = {x: f["new"] for x, f in props_data["langs"].items() if f["new"]}
+    to_save_data["properties"] = {x: f["new"] for x, f in props_data["properties"].items() if f["new"]}
     # ---
-    with open(dump_to_wikidata_dir / "langs.json", "w", encoding="utf-8") as f:
+    with open(dump_to_wikidata_dir / "properties.json", "w", encoding="utf-8") as f:
         json.dump(to_save_data, f, indent=4)
     # ---
-    text_file = texts_dir / "langs.txt"
+    text_file = texts_dir / "properties.txt"
     # ---
     text = make_text(props_data)
     # ---
