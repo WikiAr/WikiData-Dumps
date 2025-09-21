@@ -65,6 +65,27 @@ def get_old_data(title):
     return Old
 
 
+def get_old_props():
+    # ---
+    old_claims_file = dump_dir / "claims_old.json"
+    # ---
+    if "fromjson" in sys.argv:
+        # ---
+        with open(old_claims_file, "r", encoding="utf-8") as f:
+            old_claims = json.load(f)
+        # ---
+        if old_claims:
+            return old_claims
+    # ---
+    old_data = get_old_data("User:Mr._Ibrahem/claims.json")
+    # ---
+    if old_data:
+        with open(old_claims_file, "w", encoding="utf-8") as f:
+            json.dump(old_data, f, ensure_ascii=False, indent=4)
+    # ---
+    return old_data
+
+
 def get_props():
     itemsprop = get_all_props()
     # ---
@@ -94,11 +115,6 @@ def props_ren(old_data):
         "properties": {}
     }
     # ---
-    if "fromjson" in sys.argv:
-        with open(dump_dir / "props.json", "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data
-    # ---
     for p, p_old in tqdm(old_properties.items(), desc="Work on props:", total=len(old_properties)):
         # ---
         p_data = one_prop(p)
@@ -115,35 +131,52 @@ def props_ren(old_data):
         with open(file, "w", encoding="utf-8") as f:
             json.dump(p_data, f, indent=4)
         # ---
-        break
+        # break
     # ---
     return data
 
 
-def render(old_data, file_date):
+def props_new_data(old_data, file_date):
+    # ---
+    if "fromjson" in sys.argv:
+        # ---
+        with open(dump_dir / "props.json", "r", encoding="utf-8") as f:
+            props_data = json.load(f)
+        # ---
+        if props_data:
+            return props_data
     # ---
     props_data = props_ren(old_data)
     # ---
-    if "fromjson" in sys.argv:
-        all_items = props_data["all_items"]
-    else:
-        # ---
-        new_data = get_props_status()
-        # ---
-        all_items = new_data["all_items"]
-        # ---
-        data_new = {
-            "date": file_date,
-            "all_items": all_items,
-            "properties": props_data["properties"]
-        }
-        # ---
-        with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
-            json.dump(data_new, f, indent=4)
+    new_data = get_props_status()
+    # ---
+    all_items = new_data["all_items"]
+    # ---
+    data_main = {
+        "date": file_date,
+        "all_items": all_items,
+        "old" : {x: v for x, v in old_data.items() if x != "properties"},
+        "properties": props_data["properties"]
+    }
+    # ---
+    file1 = dump_dir / "props.json"
+    # ---
+    with open(file1, "w", encoding="utf-8") as f:
+        json.dump(data_main, f, indent=4)
+        print(f"save data_main {len(data_main)} to {str(file1)}")
+    # ---
+    return data_main
+
+
+def render(old_data, file_date):
+    # ---
+    props_data = props_new_data(old_data, file_date)
+    # ---
+    all_items = props_data["all_items"]
     # ---
     to_save_data = {
-        "date": "23-04-2025",
-        "all_items": 115641305,
+        "date": file_date,
+        "all_items": all_items,
         "items_no_P31": 937647,
         "items_0_claims": 1482902,
         "items_1_claims": 8972766,
@@ -158,10 +191,19 @@ def render(old_data, file_date):
         }
     }
     # ---
-    to_save_data["properties"] = {x: f["new"] for x, f in props_data["properties"].items() if f["new"]}
+    to_save_data.update({x: v for x, v in props_data.items() if x not in ["properties", "old"]})
     # ---
-    with open(dump_to_wikidata_dir / "properties.json", "w", encoding="utf-8") as f:
+    to_save_data["properties"] = {
+        x: f["new"] for x, f
+        in props_data["properties"].items()
+        if f["new"]
+    }
+    # ---
+    file2 = dump_to_wikidata_dir / "properties.json"
+    # ---
+    with open(file2, "w", encoding="utf-8") as f:
         json.dump(to_save_data, f, indent=4)
+        print(f"save {len(to_save_data)} to {str(file2)}")
     # ---
     text_file = texts_dir / "properties.txt"
     # ---
@@ -169,11 +211,12 @@ def render(old_data, file_date):
     # ---
     with open(text_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)
+        print(f"save text to {str(text_file)}")
 
 
 def main():
     # ---
-    old_data = get_old_data("User:Mr._Ibrahem/claims.json")
+    old_data = get_old_props()
     # ---
     file_date = get_date()
     file_date_old = old_data.get("file_date") or old_data.get("date")

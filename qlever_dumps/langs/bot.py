@@ -115,8 +115,11 @@ def render(old_data, file_date):
             "langs": lang_data["langs"]
         }
         # ---
-        with open(dump_dir / "langs.json", "w", encoding="utf-8") as f:
+        file1 = dump_dir / "langs.json"
+        # ---
+        with open(file1, "w", encoding="utf-8") as f:
             json.dump(data_new, f, indent=4)
+            print(f"save {len(data_new)} to {str(file1)}")
     # ---
     to_save_data = {
         "date": file_date,
@@ -126,8 +129,11 @@ def render(old_data, file_date):
     # ---
     to_save_data["langs"] = {x: f["new"] for x, f in lang_data["langs"].items() if f["new"]}
     # ---
-    with open(dump_to_wikidata_dir / "langs.json", "w", encoding="utf-8") as f:
+    file2 = dump_to_wikidata_dir / "langs.json"
+    # ---
+    with open(file2, "w", encoding="utf-8") as f:
         json.dump(to_save_data, f, indent=4)
+        print(f"save {len(to_save_data)} to {str(file2)}")
     # ---
     text_file = texts_dir / "langs.txt"
     temp_file = texts_dir / "template.txt"
@@ -137,9 +143,11 @@ def render(old_data, file_date):
     # ---
     with open(temp_file, "w", encoding="utf-8") as outfile:
         outfile.write(temp_text)
+        print(f"save temp_text to {str(temp_file)}")
     # ---
     with open(text_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)
+        print(f"save text to {str(text_file)}")
     # ---
 
 
