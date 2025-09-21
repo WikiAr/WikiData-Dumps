@@ -8,9 +8,9 @@
     "len_all_props": 100,
     "properties": {
         "P31": {
-            "len_prop_claims": 120307859,
-            "len_of_qids": 107786,
-            "items_use_it": 115056853
+            "len_prop_claims": 120305811,
+            "len_of_qids": 107797,
+            "items_use_it": 115056878
         }
     }
 }

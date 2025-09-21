@@ -29,6 +29,8 @@ def query_qlever(sparql_query, limit=10_000_000):
 
     if response.status_code != 200:
         print(f"Error: {response.status_code}")
+        print(sparql_query)
+        print(response.text)
         return None
     # ---
     res_table = response.json()['res']
@@ -188,12 +190,12 @@ def one_prop(prop_main):
     # ---
     first_100_sum = sum(first_100.values())
     # ---
-    count_all = one_prop_count_all(prop_main)
+    count_all_status = one_prop_count_all(prop_main)
     # ---
-    len_prop_claims = count_all['len_prop_claims']
+    len_prop_claims = count_all_status['len_prop_claims']
     # ---
     data = {
-        "new" : count_all,
+        "new" : count_all_status,
         "qids" : first_100,
         "others": len_prop_claims - first_100_sum
     }

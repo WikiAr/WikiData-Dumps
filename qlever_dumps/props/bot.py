@@ -1,6 +1,7 @@
 """
 
 python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/props/bot.py
+python3 bots/dump_core/qlever_dumps/props/bot.py
 
 """
 import json
@@ -120,18 +121,19 @@ def props_ren(old_data):
         p_data = one_prop(p)
         # ---
         data["properties"][p] = {
+            "qids_others": p_data["others"],
+            "others": p_data["others"],
             "new": p_data["new"],
+            "qids": p_data["qids"],
             "old": p_old
         }
-        # ---
-        p_data["old"] = p_old
         # ---
         file = qids_dir / f"{p}.json"
         # ---
         with open(file, "w", encoding="utf-8") as f:
-            json.dump(p_data, f, indent=4)
+            json.dump(data["properties"][p], f, indent=4)
         # ---
-        # break
+        break
     # ---
     return data
 
