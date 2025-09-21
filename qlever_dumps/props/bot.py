@@ -95,7 +95,7 @@ def props_ren(old_data):
     }
     # ---
     if "fromjson" in sys.argv:
-        with open(dump_dir / "properties.json", "r", encoding="utf-8") as f:
+        with open(dump_dir / "props.json", "r", encoding="utf-8") as f:
             data = json.load(f)
         return data
     # ---
@@ -140,7 +140,6 @@ def render(old_data, file_date):
         # ---
         with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
             json.dump(data_new, f, indent=4)
-        # ---
     # ---
     to_save_data = {
         "date": "23-04-2025",
