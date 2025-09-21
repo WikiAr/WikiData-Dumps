@@ -124,8 +124,8 @@ def props_ren(old_data):
             "qids_others": p_data["others"],
             "others": p_data["others"],
             "new": p_data["new"],
+            "old": p_old,
             "qids": p_data["qids"],
-            "old": p_old
         }
         # ---
         file = qids_dir / f"{p}.json"
