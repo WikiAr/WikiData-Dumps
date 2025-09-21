@@ -3,6 +3,8 @@
 python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/props/bot.py
 python3 bots/dump_core/qlever_dumps/props/bot.py
 
+python3 bots/dump_core/qlever_dumps/props/bot.py -break:10 props_json
+
 """
 import json
 import re
@@ -115,6 +117,34 @@ def get_props():
     return properties[:101]
 
 
+def get_prop_infos(p, p_old):
+    # ---
+    file = qids_dir / f"{p}.json"
+    # ---
+    p_data = {}
+    # ---
+    if file.exists() and "props_json" in sys.argv:
+        with open(file, "r", encoding="utf-8") as f:
+            p_data = json.load(f)
+    # ---
+    if not p_data or not p_data.get("items_use_it"):
+        p_data = one_prop(p, first_100=p_data.get("qids", {}))
+    # ---
+    prop_infos = {
+        "len_prop_claims": p_data.get("len_prop_claims", 0),
+        "len_of_qids": p_data.get("len_of_qids", 0),
+        "items_use_it": p_data.get("items_use_it", 0),
+
+        "qids_others": p_data["others"],
+        "others": p_data["others"],
+
+        "qids": p_data["qids"],
+        "old" : p_old,
+    }
+    # ---
+    return prop_infos
+
+
 def props_ren(old_data):
     # ---
     # props = get_props()
@@ -127,30 +157,7 @@ def props_ren(old_data):
     # ---
     for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
         # ---
-        file = qids_dir / f"{p}.json"
-        # ---
-        p_data = {}
-        # ---
-        if file.exists() and "props_json" in sys.argv:
-            with open(file, "r", encoding="utf-8") as f:
-                p_data = json.load(f)
-        # ---
-        if not p_data:
-            p_data = one_prop(p)
-        # ---
-        data["properties"][p] = {
-            "qids_others": p_data["others"],
-            "others": p_data["others"],
-            # "new": p_data["new"],
-        }
-        # ---
-        data["properties"][p].update(p_data["new"])
-        # ---
-        data["properties"][p]["old"] = p_old
-        data["properties"][p]["qids"] = p_data["qids"]
-        # ---
-        with open(file, "w", encoding="utf-8") as f:
-            json.dump(data["properties"][p], f, indent=4)
+        data["properties"][p] = get_prop_infos(p, p_old)
         # ---
         if n == breaks[1]:
             break

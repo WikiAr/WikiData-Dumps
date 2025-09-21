@@ -184,11 +184,12 @@ def one_prop_count_all(prop_main):
     return data
 
 
-def one_prop(prop_main):
+def one_prop(prop_main, first_100={}):
     # ---
     print(f"load one_prop: {prop_main}")
     # ---
-    first_100 = one_prop_first_100(prop_main) or {}
+    if not first_100:
+        first_100 = one_prop_first_100(prop_main) or {}
     # ---
     first_100_sum = sum(first_100.values())
     # ---
@@ -197,12 +198,13 @@ def one_prop(prop_main):
     len_prop_claims = count_all_status['len_prop_claims']
     # ---
     data = {
-        "new" : count_all_status,
-        "qids" : first_100,
+        # "new" : count_all_status,
         "others": len_prop_claims - first_100_sum
     }
     # ---
-    # data.update(count_all_status)
+    data.update(count_all_status)
+    # ---
+    data["qids"] = first_100
     # ---
     print(f"one_prop:({prop_main}): len_prop_claims: {len_prop_claims:,} others: {data['others']:,}")
     # ---
