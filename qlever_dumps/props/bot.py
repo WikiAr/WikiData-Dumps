@@ -15,6 +15,7 @@ from tqdm import tqdm
 sys.path.append(str(Path(__file__).parent))
 
 from qlever_bot import one_prop, get_date, get_all_props
+from props_text import make_text
 
 dump_dir = Path(__file__).parent / 'dumps'
 dump_to_wikidata_dir = dump_dir / 'to_wikidata'
@@ -149,13 +150,8 @@ def render(old_data, file_date):
         json.dump(to_save_data, f, indent=4)
     # ---
     text_file = texts_dir / "langs.txt"
-    temp_file = texts_dir / "template.txt"
     # ---
     text = make_text(props_data)
-    temp_text = make_temp_text(props_data)
-    # ---
-    with open(temp_file, "w", encoding="utf-8") as outfile:
-        outfile.write(temp_text)
     # ---
     with open(text_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)
