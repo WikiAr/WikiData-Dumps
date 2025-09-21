@@ -170,6 +170,15 @@ def props_new_data(old_data, file_date):
     return data_main
 
 
+def one_prop_tab(f):
+    result = f["new"]
+    # ---
+    result["qids_others"] = f["qids_others"]
+    result["qids"] = f["qids"]
+    # ---
+    return result
+
+
 def render(old_data, file_date):
     # ---
     props_data = props_new_data(old_data, file_date)
@@ -179,16 +188,16 @@ def render(old_data, file_date):
     to_save_data = {
         "date": file_date,
         "all_items": all_items,
-        "items_no_P31": 937647,
-        "items_0_claims": 1482902,
-        "items_1_claims": 8972766,
-        "total_claims": 790665159,
-        "len_all_props": 100,
+        "items_no_P31": 0,
+        "items_0_claims": 0,
+        "items_1_claims": 0,
+        "total_claims": 0,
+        "len_all_props": 0,
         "properties": {
             "P31": {
-                "items_use_it": 113220756,
-                "len_prop_claims": 121322991,
-                "len_of_qids": 105592
+                "items_use_it": 0,
+                "len_prop_claims": 0,
+                "len_of_qids": 0
             }
         }
     }
@@ -196,7 +205,7 @@ def render(old_data, file_date):
     to_save_data.update({x: v for x, v in props_data.items() if x not in ["properties", "old"]})
     # ---
     to_save_data["properties"] = {
-        x: f["new"] for x, f
+        x: one_prop_tab(f) for x, f
         in props_data["properties"].items()
         if f["new"]
     }
@@ -209,7 +218,7 @@ def render(old_data, file_date):
     # ---
     text_file = texts_dir / "properties.txt"
     # ---
-    text = make_text(props_data)
+    text = make_text(props_data, props_data.get("old", {}))
     # ---
     with open(text_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)

@@ -1,14 +1,7 @@
 """
-
-python dump1/claims_max/text.py
-python I:/core/bots/dump_core/dump26/claims_max/text.py
-
+!
 """
-import requests
-import sys
 import tqdm
-import time
-import json
 
 texts_tab = {}
 
@@ -45,13 +38,13 @@ def min_it_tab(new_tab, old_tab, key, add_plus=False):
 
 def facts(n_tab, Old):
     # ---
-    last_total = Old.get("All_items", 0)
+    last_total = Old.get("all_items", 0)
     # ---
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
     # ---
     texts = {
-        "All_items": "Total items",
+        "all_items": "Total items",
         "items_no_P31": "Items without P31",
         "items_0_claims": "Items without claims",
         "items_1_claims": "Items with 1 claim only",
@@ -65,9 +58,12 @@ def facts(n_tab, Old):
     text += f"|-\n| Total items last update || {last_total:,} ||  \n"
     # ---
     for key, title in texts.items():
+        # ---
+        value = n_tab.get(key, 0)
+        # ---
         diff = min_it_tab(n_tab, Old, key, add_plus=True)
         # ---
-        text += f"|-\n| {title} || {n_tab[key]:,} || {diff} \n"
+        text += f"|-\n| {title} || {value:,} || {diff} \n"
     # ---
     text += "|}\n\n"
     # ---
@@ -101,69 +97,6 @@ def pid_section_facts(table, old_data):
     return text
 
 
-def fix_others(pid, qids_tab, max=0):
-    # ---
-    max_items = 500 if pid == "P31" else 100
-    max_items += 2
-    # ---
-    if max > 0 :
-        max_items = max
-    # ---
-    if len(qids_tab.items()) > max_items:
-        # ---
-        others = qids_tab.get("others", 0)
-        # ---
-        print(f"len of qids: {len(qids_tab.items())}, others: {others}")
-        # ---
-        qids_tab["others"] = 0
-        # ---
-        if qids_tab.get("null", 0):
-            qids_tab["others"] = qids_tab.get("null", 0)
-            del qids_tab["null"]
-        # ---
-        qids_1 = sorted(qids_tab.items(), key=lambda x: x[1], reverse=True)
-        # ---
-        qids_tab = dict(qids_1[:max_items])
-        # ---
-        others += sum([x[1] for x in qids_1[max_items:]])
-        # ---
-        print(f" new others: {others}")
-        # ---
-        qids_tab["others"] = others
-    # ---
-    return qids_tab
-
-
-def load_qids(pid, table):
-    # ---
-    qids_file = pids_qids_dir / f"{pid}.json"
-    # ---
-    print(f"file:{qids_file}")
-    # ---
-    if not qids_file.exists():
-        print(f"file not found: {qids_file}")
-        return {}
-    # ---
-    new_data["properties"][pid] = {
-        "items_use_it": table.get("items_use_it", 0),
-        # "len_of_usage": table.get("len_of_usage", 0),
-        "len_prop_claims": table.get("len_prop_claims", 0),
-        "len_of_qids": table.get("len_of_qids", 0),
-        # "qids": new_data_qids
-    }
-    # ---
-    new_qids = {}
-    # ---
-    with open(qids_file, "r", encoding="utf-8") as file:
-        qids = json.load(file)
-    # ---
-    new_data["properties"][pid]["len_of_qids"] = len(qids.get("qids", {}))
-    # ---
-    new_qids = fix_others(pid, qids.get("qids", {}))
-    # ---
-    return new_qids
-
-
 def make_section(pid, table, old_data, max_n=51):
     # ---
     if sections_done["current"] >= sections_done["max"]:
@@ -178,7 +111,7 @@ def make_section(pid, table, old_data, max_n=51):
     # ---
     sorted_qids = dict(sorted(new_data_qids.items(), key=lambda item: item[1], reverse=True))
     # ---
-    other_count = table["qids"].get("others", 0)
+    other_count = table["qids"].get("others", 0) or table.get("qids_others", 0)
     # ---
     idx = 0
     # ---
@@ -194,7 +127,7 @@ def make_section(pid, table, old_data, max_n=51):
         table_rows.append(f"! {idx} \n| {{{{Q|{qid}}}}} \n| {count:,} \n| {diffo}")
     # ---
     old_others = old_data_qids.get("others", 0)
-    diff_others = min_it(other_count, old_others, add_plus=True)
+    _diff_others = min_it(other_count, old_others, add_plus=True)
     # ---
     table_rows.append(f"! {idx+1} \n! others \n! {other_count:,} \n! - \n|-")
     # ---
@@ -247,9 +180,10 @@ def make_numbers_section(properties_infos, Old):
             old_usage = old_prop.get("len_prop_claims")
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
-            value_in_most_props = most_props.get(prop, 0)
+            # value_in_most_props = most_props.get(prop, 0)
+            # line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} <!-- {value_in_most_props:,} -->|| {diff}"
             # ---
-            line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} <!-- {value_in_most_props:,} -->|| {diff}"
+            line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} || {diff}"
             # ---
             # len_prop_claims = prop_tab.get("len_prop_claims", 0)
             # diff2 = min_it_tab(prop_tab, old_prop, "len_prop_claims", add_plus=True)
@@ -292,13 +226,9 @@ def make_text(data, Old):
     # ---
     print(f"{len(properties_infos)=}")
     # ---
-    # if not data.get("file_date"): data["file_date"] = "latest"
-    # ---
     metadata = facts(data, Old)
     # ---
     metadata += "\n--~~~~\n\n"
-    # ---
-    Old_props = Old.get("properties", {})
     # ---
     numbers_section = make_numbers_section(properties_infos, Old)
     # ---
@@ -308,151 +238,9 @@ def make_text(data, Old):
     # ---
     for prop, prop_tab in tqdm.tqdm(properties_infos.items(), desc="def make_section(): "):
         # ---
-        prop_tab['qids'] = load_qids(prop, prop_tab)
-        # ---
         if section_done < 11:
-            sections += make_section(prop, prop_tab, Old_props.get(prop, {}))
+            sections += make_section(prop, prop_tab, prop_tab.get("old", {}))
             # ---
             section_done += 1
     # ---
     return metadata + numbers_section + sections
-
-
-def GetPageText_new(title):
-    title = title.replace(' ', '_')
-    # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
-    # ---
-    print(f"url: {url}")
-    # ---
-    text = ''
-    # ---
-    session = requests.session()
-    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
-    # ---
-    # get url text
-    try:
-        response = session.get(url, timeout=10)
-        response.raise_for_status()  # Raises HTTPError for bad responses
-        text = response.text
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching page text: {e}")
-        return ''
-    # ---
-    if not text:
-        print(f'no text for {title}')
-    # ---
-    return text
-
-
-def get_old_data():
-    # ---
-    title = "User:Mr._Ibrahem/claims.json"
-    # ---
-    if "old" in sys.argv:
-        with open(claims_results_dir / "old_claims.json", "r", encoding="utf-8") as file:
-            Old = json.load(file)
-            return Old
-    # ---
-    texts = GetPageText_new(title)
-    # ---
-    try:
-        Old = json.loads(texts)
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-        Old = {}
-    # ---
-    if Old:
-        with open(claims_results_dir / "old_claims.json", "w", encoding="utf-8") as file:
-            json.dump(Old, file, indent=4)
-        # ---
-        print("Old saved to old_claims.json")
-    # ---
-    return Old
-
-
-def get_split_tab():
-    split_file = dump_files_dir / "claims_stats.json"
-    # ---
-    # { "len_all_props": 0, "items_0_claims": 1482902, "items_1_claims": 8972766, "items_no_P31": 937647, "All_items": 115641305, "total_claims": 790665159 }
-    with open(split_file, "r", encoding="utf-8") as file:
-        claims_stats = json.load(file)
-    # ---
-    data_defaults = {
-        "date": "",
-        "All_items": 0,
-        "items_no_P31": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "total_claims": 0,
-        "len_all_props": 0,
-        "properties": {},
-    }
-    # ---
-    for key, default_value in data_defaults.items():
-        if key not in claims_stats:
-            claims_stats[key] = default_value
-            print(f"set default value for {key}")
-    # ---
-    files = list(pids_qids_dir.glob("*.json"))
-    # ---
-    for file_path in tqdm.tqdm(files):
-        pid = file_path.stem
-        # ---
-        with open(file_path, "r", encoding="utf-8") as file:
-            pid_data = json.load(file)
-        # ---
-        if pid_data.get("qids"):
-            del pid_data["qids"]
-        # ---
-        pid_data["items_use_it"] = pid_data.get("items_use_it") or pid_data.get("len_of_usage") or 0
-        # ---
-        claims_stats["properties"][pid] = pid_data
-    # ---
-    if not claims_stats.get("len_all_props"):
-        claims_stats["len_all_props"] = len(claims_stats["properties"])
-    # ---
-    print(f"len of claims_stats properties: {len(claims_stats['properties'])}")
-    # ---
-    for x, numb in claims_stats.items():
-        if isinstance(numb, int):
-            print(f"claims_stats: {x} == {numb:,}")
-    # ---
-    return claims_stats
-
-
-def main():
-    # ---
-    time_start = time.time()
-    print(f"time_start: {time_start}")
-    # ---
-    Old = get_old_data()
-    # ---
-    claims_stats = get_split_tab()
-    # ---
-    text_output = make_text(claims_stats, Old)
-    # ---
-    with open(claims_max, "w", encoding="utf-8") as file:
-        file.write(text_output)
-    # ---
-    print(f"Log written to {claims_max}")
-    # ---
-    if "P31" in texts_tab:
-        # ---
-        text = f"--~~~~\n\n{texts_tab['P31']}"
-        # ---
-        with open(claims_p31, "w", encoding="utf-8") as file:
-            file.write(text)
-        # ---
-        print(f"Log written to {claims_p31}")
-    # ---
-    claims_stats["properties"] = new_data["properties"]
-    # ---
-    with open(new_data_file, "w", encoding="utf-8") as outfile:
-        json.dump(claims_stats, outfile, indent=4)
-    # ---
-    print(f"saved to {new_data_file}")
-
-
-if __name__ == "__main__":
-    main()
