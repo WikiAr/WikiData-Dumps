@@ -123,10 +123,13 @@ def props_ren(old_data):
         data["properties"][p] = {
             "qids_others": p_data["others"],
             "others": p_data["others"],
-            "new": p_data["new"],
-            "old": p_old,
-            "qids": p_data["qids"],
+            # "new": p_data["new"],
         }
+        # ---
+        data["properties"][p].update(p_data["new"])
+        # ---
+        data["properties"][p]["old"] = p_old
+        data["properties"][p]["qids"] = p_data["qids"]
         # ---
         file = qids_dir / f"{p}.json"
         # ---
@@ -171,7 +174,8 @@ def props_new_data(old_data, file_date):
 
 
 def one_prop_tab(f):
-    result = f["new"]
+    # ---
+    result = {x: v for x, v in f.items() if x != "old"}
     # ---
     result["qids_others"] = f["qids_others"]
     result["qids"] = f["qids"]
@@ -207,7 +211,6 @@ def render(old_data, file_date):
     to_save_data["properties"] = {
         x: one_prop_tab(f) for x, f
         in props_data["properties"].items()
-        if f["new"]
     }
     # ---
     file2 = dump_to_wikidata_dir / "properties.json"

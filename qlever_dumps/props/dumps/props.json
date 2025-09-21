@@ -14,11 +14,9 @@
         "P31": {
             "qids_others": 20124553,
             "others": 20124553,
-            "new": {
-                "len_prop_claims": 120305811,
-                "len_of_qids": 107797,
-                "items_use_it": 115056878
-            },
+            "len_prop_claims": 120305811,
+            "len_of_qids": 107797,
+            "items_use_it": 115056878,
             "qids": {
                 "Q13442814": 45216423,
                 "Q5": 12554590,

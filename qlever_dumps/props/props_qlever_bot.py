@@ -200,6 +200,8 @@ def one_prop(prop_main):
         "others": len_prop_claims - first_100_sum
     }
     # ---
+    # data.update(count_all_status)
+    # ---
     print(f"one_prop:({prop_main}): len_prop_claims: {len_prop_claims:,} others: {data['others']:,}")
     # ---
     return data
