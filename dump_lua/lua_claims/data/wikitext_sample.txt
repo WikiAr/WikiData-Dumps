@@ -1,0 +1,112 @@
+{| class="wikitable sortable"
+! Title !! Number !! Diff
+|-
+| Report date || 2025-09-03 || -
+|-
+| Total items last update || 115641305 || -
+|-
+| Total items || 117416494 || +1775189
+|-
+| Items without P31 || 938847 || +1200
+|-
+| Items without claims || 1482802 || -100
+|-
+| Items with 1 claim only || 8972866 || +100
+|-
+| Total number of claims || 790669159 || +4000
+|-
+| Number of properties in the report || 100 || -
+|}
+
+
+--~~~~
+
+== Numbers ==
+{| class="wikitable sortable"
+|-
+! # !! Property!! Claims !! Diff
+|-
+| 1 || {{P|P31}} || 120307873 || -1015118
+|-
+| 2 || {{P|P1433}} || 46222400 || +393866
+|-
+! 101
+! others || 0 || -
+|}
+== {{P|P31}} ==
+{| class="wikitable sortable"
+! Title !! Number !! Diff
+|-
+| Total items using this property || 115057279 || +1836523
+|-
+| Total number of claims: || 120307873 || -1015118
+|-
+| Number of unique QIDs || 107839 || +2247
+|}
+
+
+{| class="wikitable sortable plainrowheaders"
+|-
+! class="sortable" | #
+! class="sortable" | value
+! class="sortable" | Numbers
+! class="sortable" | Diff
+|-
+! 1
+| {{Q|Q13442814}}
+| 45216404
+| +99239
+|-
+! 2
+| {{Q|Q5}}
+| 12554395
+| +232292
+|-
+! 3
+| {{Q|Q4167836}}
+| 5698793
+| +90896
+|-
+! 3
+! others
+! 20126806
+! -
+|-
+|}
+{{clear}}
+== {{P|P1433}} ==
+{| class="wikitable sortable"
+! Title !! Number !! Diff
+|-
+| Total items using this property || 46109823 || +389265
+|-
+| Total number of claims: || 46222400 || +393866
+|-
+| Number of unique QIDs || 136875 || +3946
+|}
+
+
+{| class="wikitable sortable plainrowheaders"
+|-
+! class="sortable" | #
+! class="sortable" | value
+! class="sortable" | Numbers
+! class="sortable" | Diff
+|-
+! 1
+| {{Q|Q546003}}
+| 407532
+| +1540
+|-
+! 2
+| {{Q|Q180445}}
+| 384594
+| +124
+|-
+! 3
+! others
+! 39954791
+! -
+|-
+|}
+{{clear}}
