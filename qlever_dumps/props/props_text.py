@@ -244,3 +244,10 @@ def make_text(data, Old):
             section_done += 1
     # ---
     return metadata + numbers_section + sections
+
+
+def P31_texts_tab():
+    # ---
+    text = f"--~~~~\n\n{texts_tab['P31']}" if "P31" in texts_tab else ""
+    # ---
+    return text

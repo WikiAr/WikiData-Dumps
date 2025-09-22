@@ -17,7 +17,7 @@ from tqdm import tqdm
 sys.path.append(str(Path(__file__).parent))
 
 from props_qlever_bot import one_prop, get_date, get_all_props, get_props_status
-from props_text import make_text
+from props_text import make_text, P31_texts_tab
 
 PROPS_JSON = "props_json" in sys.argv
 OLD_FROM_JSON = "oldjson" in sys.argv
@@ -181,7 +181,7 @@ def get_prop_infos(p, p_old, n):
     }
     # ---
     with open(file, "w", encoding="utf-8") as f:
-        json.dump(prop_infos, f, ensure_ascii=False, indent=4)
+        json.dump(prop_infos, f, ensure_ascii=False)  # , indent=4
     # ---
     if not p_old.get("qids", {}):
         p_old["qids"] = qids_olds.get(p, {})
@@ -341,6 +341,15 @@ def render(old_data, file_date):
     with open(text_file, "w", encoding="utf-8") as outfile:
         outfile.write(text)
         print(f"save text to {str(text_file)}")
+    # ---
+    p31_text = P31_texts_tab()
+    # ---
+    if p31_text:
+        p31_text_file = texts_dir / "P31.txt"
+        # ---
+        with open(p31_text_file, "w", encoding="utf-8") as outfile:
+            outfile.write(p31_text)
+            print(f"save p31_text to {str(p31_text_file)}")
 
 
 def main():

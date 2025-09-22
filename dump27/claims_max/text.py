@@ -444,6 +444,17 @@ def get_split_tab():
     return claims_stats
 
 
+def P31_texts_tab():
+    if "P31" in texts_tab:
+        # ---
+        text = f"--~~~~\n\n{texts_tab['P31']}"
+        # ---
+        with open(claims_p31, "w", encoding="utf-8") as file:
+            file.write(text)
+        # ---
+        print(f"Log written to {claims_p31}")
+
+
 def main():
     # ---
     time_start = time.time()
@@ -460,14 +471,7 @@ def main():
     # ---
     print(f"Log written to {claims_max}")
     # ---
-    if "P31" in texts_tab:
-        # ---
-        text = f"--~~~~\n\n{texts_tab['P31']}"
-        # ---
-        with open(claims_p31, "w", encoding="utf-8") as file:
-            file.write(text)
-        # ---
-        print(f"Log written to {claims_p31}")
+    P31_texts_tab()
     # ---
     claims_stats["properties"] = new_data["properties"]
     # ---
