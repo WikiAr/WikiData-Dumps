@@ -122,7 +122,8 @@
             "old": {
                 "items_use_it": 113220756,
                 "len_prop_claims": 121322991,
-                "len_of_qids": 105592
+                "len_of_qids": 105592,
+                "qids": {}
             }
         },
         "P1433": {
@@ -236,7 +237,8 @@
             "old": {
                 "items_use_it": 45720558,
                 "len_prop_claims": 45828534,
-                "len_of_qids": 132929
+                "len_of_qids": 132929,
+                "qids": {}
             }
         },
         "P50": {
@@ -350,7 +352,8 @@
             "old": {
                 "items_use_it": 14214575,
                 "len_prop_claims": 34076543,
-                "len_of_qids": 2482945
+                "len_of_qids": 2482945,
+                "qids": {}
             }
         },
         "P921": {
@@ -464,7 +467,8 @@
             "old": {
                 "items_use_it": 20213951,
                 "len_prop_claims": 32539941,
-                "len_of_qids": 1199081
+                "len_of_qids": 1199081,
+                "qids": {}
             }
         },
         "P407": {
@@ -578,7 +582,8 @@
             "old": {
                 "items_use_it": 24595830,
                 "len_prop_claims": 24958860,
-                "len_of_qids": 2801
+                "len_of_qids": 2801,
+                "qids": {}
             }
         },
         "P17": {
@@ -692,7 +697,8 @@
             "old": {
                 "items_use_it": 18409071,
                 "len_prop_claims": 18864015,
-                "len_of_qids": 4191
+                "len_of_qids": 4191,
+                "qids": {}
             }
         },
         "P131": {
@@ -806,7 +812,8 @@
             "old": {
                 "items_use_it": 13049833,
                 "len_prop_claims": 14041324,
-                "len_of_qids": 449862
+                "len_of_qids": 449862,
+                "qids": {}
             }
         },
         "P106": {
@@ -920,7 +927,8 @@
             "old": {
                 "items_use_it": 8582165,
                 "len_prop_claims": 11966190,
-                "len_of_qids": 20963
+                "len_of_qids": 20963,
+                "qids": {}
             }
         },
         "P21": {
@@ -987,7 +995,8 @@
             "old": {
                 "items_use_it": 10034021,
                 "len_prop_claims": 10037474,
-                "len_of_qids": 72
+                "len_of_qids": 72,
+                "qids": {}
             }
         },
         "P6259": {
@@ -1101,7 +1110,8 @@
             "old": {
                 "items_use_it": 8173960,
                 "len_prop_claims": 8173971,
-                "len_of_qids": 2533
+                "len_of_qids": 2533,
+                "qids": {}
             }
         },
         "P735": {
@@ -1215,7 +1225,8 @@
             "old": {
                 "items_use_it": 7633841,
                 "len_prop_claims": 8156972,
-                "len_of_qids": 97346
+                "len_of_qids": 97346,
+                "qids": {}
             }
         }
     }

@@ -27,7 +27,7 @@ dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
 qids_dir.mkdir(parents=True, exist_ok=True)
 
-qids_old_file = qids_dir / 'qids_old.json'
+qids_old_file = dump_dir / 'qids_old.json'
 qids_olds = {}
 
 if qids_old_file.exists():
