@@ -11,256 +11,112 @@
         "total_properties_count": 100
     },
     "properties": {
-        "P5185": {
-            "property_claims_count": 33,
-            "unique_qids_count": 5,
-            "items_with_property": 30,
-            "qids_others": 0,
-            "others": 0,
+        "P31": {
+            "property_claims_count": 120307873,
+            "unique_qids_count": 107839,
+            "items_with_property": 115057279,
+            "qids_others": 20126806,
+            "others": 20126806,
             "old": {
-                "items_with_property": 22,
-                "property_claims_count": 25,
-                "unique_qids_count": 5
+                "items_with_property": 113220756,
+                "property_claims_count": 121322991,
+                "unique_qids_count": 105592
             }
         },
-        "P7228": {
-            "property_claims_count": 433490,
-            "unique_qids_count": 20,
-            "items_with_property": 433176,
-            "qids_others": 0,
-            "others": 0,
+        "P1433": {
+            "property_claims_count": 46222400,
+            "unique_qids_count": 136875,
+            "items_with_property": 46109823,
+            "qids_others": 39954791,
+            "others": 39954791,
             "old": {
-                "items_with_property": 429604,
-                "property_claims_count": 429918,
-                "unique_qids_count": 21
+                "items_with_property": 45720558,
+                "property_claims_count": 45828534,
+                "unique_qids_count": 132929
             }
         },
-        "P413": {
-            "property_claims_count": 435642,
-            "unique_qids_count": 410,
-            "items_with_property": 423702,
-            "qids_others": 2717,
-            "others": 2717,
+        "P50": {
+            "property_claims_count": 34728045,
+            "unique_qids_count": 2520597,
+            "items_with_property": 14581769,
+            "qids_others": 34408407,
+            "others": 34408407,
             "old": {
-                "items_with_property": 420607,
-                "property_claims_count": 431924,
-                "unique_qids_count": 401
+                "items_with_property": 14214575,
+                "property_claims_count": 34076543,
+                "unique_qids_count": 2482945
             }
         },
-        "P437": {
-            "property_claims_count": 521258,
-            "unique_qids_count": 832,
-            "items_with_property": 454426,
-            "qids_others": 3132,
-            "others": 3132,
+        "P921": {
+            "property_claims_count": 33757001,
+            "unique_qids_count": 1246861,
+            "items_with_property": 20616475,
+            "qids_others": 28941283,
+            "others": 28941283,
             "old": {
-                "items_with_property": 379008,
-                "property_claims_count": 439701,
-                "unique_qids_count": 758
+                "items_with_property": 20213951,
+                "property_claims_count": 32539941,
+                "unique_qids_count": 1199081
             }
         },
-        "P7763": {
-            "property_claims_count": 447547,
-            "unique_qids_count": 9,
-            "items_with_property": 447372,
-            "qids_others": 1,
-            "others": 1,
+        "P407": {
+            "property_claims_count": 28480136,
+            "unique_qids_count": 11296,
+            "items_with_property": 27846929,
+            "qids_others": 466510,
+            "others": 466510,
             "old": {
-                "items_with_property": 440014,
-                "property_claims_count": 441454,
-                "unique_qids_count": 7
+                "items_with_property": 24595830,
+                "property_claims_count": 24958860,
+                "unique_qids_count": 2801
             }
         },
-        "P364": {
-            "property_claims_count": 429547,
-            "unique_qids_count": 771,
-            "items_with_property": 415181,
-            "qids_others": 3214,
-            "others": 3214,
+        "P17": {
+            "property_claims_count": 19240784,
+            "unique_qids_count": 4623,
+            "items_with_property": 18975160,
+            "qids_others": 786220,
+            "others": 786220,
             "old": {
-                "items_with_property": 434600,
-                "property_claims_count": 452969,
-                "unique_qids_count": 770
+                "items_with_property": 18409071,
+                "property_claims_count": 18864015,
+                "unique_qids_count": 4191
             }
         },
-        "P6379": {
-            "property_claims_count": 472852,
-            "unique_qids_count": 10180,
-            "items_with_property": 193926,
-            "qids_others": 212641,
-            "others": 212641,
+        "P131": {
+            "property_claims_count": 14203837,
+            "unique_qids_count": 452523,
+            "items_with_property": 13369757,
+            "qids_others": 13027740,
+            "others": 13027740,
             "old": {
-                "items_with_property": 188545,
-                "property_claims_count": 463546,
-                "unique_qids_count": 9894
+                "items_with_property": 13049833,
+                "property_claims_count": 14041324,
+                "unique_qids_count": 449862
             }
         },
-        "P3373": {
-            "property_claims_count": 523168,
-            "unique_qids_count": 251974,
-            "items_with_property": 248969,
-            "qids_others": 511968,
-            "others": 511968,
+        "P106": {
+            "property_claims_count": 12347324,
+            "unique_qids_count": 22091,
+            "items_with_property": 8863218,
+            "qids_others": 3164954,
+            "others": 3164954,
             "old": {
-                "items_with_property": 239216,
-                "property_claims_count": 505867,
-                "unique_qids_count": 242117
+                "items_with_property": 8582165,
+                "property_claims_count": 11966190,
+                "unique_qids_count": 20963
             }
         },
-        "P937": {
-            "property_claims_count": 531107,
-            "unique_qids_count": 40698,
-            "items_with_property": 420712,
-            "qids_others": 219255,
-            "others": 219255,
+        "P21": {
+            "property_claims_count": 10264384,
+            "unique_qids_count": 2106,
+            "items_with_property": 10261884,
+            "qids_others": 3790,
+            "others": 3790,
             "old": {
-                "items_with_property": 405951,
-                "property_claims_count": 518081,
-                "unique_qids_count": 39199
-            }
-        },
-        "P138": {
-            "property_claims_count": 566728,
-            "unique_qids_count": 237777,
-            "items_with_property": 536346,
-            "qids_others": 493528,
-            "others": 493528,
-            "old": {
-                "items_with_property": 515301,
-                "property_claims_count": 546560,
-                "unique_qids_count": 229620
-            }
-        },
-        "P140": {
-            "property_claims_count": 640578,
-            "unique_qids_count": 2337,
-            "items_with_property": 628694,
-            "qids_others": 18521,
-            "others": 18521,
-            "old": {
-                "items_with_property": 557684,
-                "property_claims_count": 569534,
-                "unique_qids_count": 2265
-            }
-        },
-        "P4510": {
-            "property_claims_count": 592689,
-            "unique_qids_count": 47185,
-            "items_with_property": 477448,
-            "qids_others": 94110,
-            "others": 94110,
-            "old": {
-                "items_with_property": 473783,
-                "property_claims_count": 593730,
-                "unique_qids_count": 47128
-            }
-        },
-        "P7937": {
-            "property_claims_count": 664427,
-            "unique_qids_count": 945,
-            "items_with_property": 646287,
-            "qids_others": 7773,
-            "others": 7773,
-            "old": {
-                "items_with_property": 590486,
-                "property_claims_count": 608463,
-                "unique_qids_count": 806
-            }
-        },
-        "P175": {
-            "property_claims_count": 617944,
-            "unique_qids_count": 104124,
-            "items_with_property": 565034,
-            "qids_others": 570497,
-            "others": 570497,
-            "old": {
-                "items_with_property": 552315,
-                "property_claims_count": 611500,
-                "unique_qids_count": 102299
-            }
-        },
-        "P102": {
-            "property_claims_count": 613015,
-            "unique_qids_count": 12504,
-            "items_with_property": 553419,
-            "qids_others": 257162,
-            "others": 257162,
-            "old": {
-                "items_with_property": 551176,
-                "property_claims_count": 615350,
-                "unique_qids_count": 12219
-            }
-        },
-        "P452": {
-            "property_claims_count": 692765,
-            "unique_qids_count": 9056,
-            "items_with_property": 667740,
-            "qids_others": 218298,
-            "others": 218298,
-            "old": {
-                "items_with_property": 606944,
-                "property_claims_count": 630673,
-                "unique_qids_count": 8600
-            }
-        },
-        "P279": {
-            "property_claims_count": 5143728,
-            "unique_qids_count": 288971,
-            "items_with_property": 4399095,
-            "qids_others": 1334644,
-            "others": 1334644,
-            "old": {
-                "items_with_property": 4226377,
-                "property_claims_count": 4963598,
-                "unique_qids_count": 285159
-            }
-        },
-        "P361": {
-            "property_claims_count": 5226634,
-            "unique_qids_count": 567658,
-            "items_with_property": 3807902,
-            "qids_others": 4012242,
-            "others": 4012242,
-            "old": {
-                "items_with_property": 3742425,
-                "property_claims_count": 5157662,
-                "unique_qids_count": 555040
-            }
-        },
-        "P734": {
-            "property_claims_count": 5774887,
-            "unique_qids_count": 517232,
-            "items_with_property": 5590680,
-            "qids_others": 5082243,
-            "others": 5082243,
-            "old": {
-                "items_with_property": 5417993,
-                "property_claims_count": 5602876,
-                "unique_qids_count": 501044
-            }
-        },
-        "P27": {
-            "property_claims_count": 5823713,
-            "unique_qids_count": 5211,
-            "items_with_property": 5354695,
-            "qids_others": 408782,
-            "others": 408782,
-            "old": {
-                "items_with_property": 5110143,
-                "property_claims_count": 5605771,
-                "unique_qids_count": 4048
-            }
-        },
-        "P59": {
-            "property_claims_count": 7370930,
-            "unique_qids_count": 88,
-            "items_with_property": 7370641,
-            "qids_others": 0,
-            "others": 0,
-            "old": {
-                "items_with_property": 7370556,
-                "property_claims_count": 7370847,
-                "unique_qids_count": 92
+                "items_with_property": 10034021,
+                "property_claims_count": 10037474,
+                "unique_qids_count": 72
             }
         },
         "P735": {
@@ -287,112 +143,256 @@
                 "unique_qids_count": 2533
             }
         },
-        "P21": {
-            "property_claims_count": 10264384,
-            "unique_qids_count": 2106,
-            "items_with_property": 10261884,
-            "qids_others": 3790,
-            "others": 3790,
+        "P59": {
+            "property_claims_count": 7370930,
+            "unique_qids_count": 88,
+            "items_with_property": 7370641,
+            "qids_others": 0,
+            "others": 0,
             "old": {
-                "items_with_property": 10034021,
-                "property_claims_count": 10037474,
-                "unique_qids_count": 72
+                "items_with_property": 7370556,
+                "property_claims_count": 7370847,
+                "unique_qids_count": 92
             }
         },
-        "P106": {
-            "property_claims_count": 12347324,
-            "unique_qids_count": 22091,
-            "items_with_property": 8863218,
-            "qids_others": 3164954,
-            "others": 3164954,
+        "P27": {
+            "property_claims_count": 5823713,
+            "unique_qids_count": 5211,
+            "items_with_property": 5354695,
+            "qids_others": 408782,
+            "others": 408782,
             "old": {
-                "items_with_property": 8582165,
-                "property_claims_count": 11966190,
-                "unique_qids_count": 20963
+                "items_with_property": 5110143,
+                "property_claims_count": 5605771,
+                "unique_qids_count": 4048
             }
         },
-        "P131": {
-            "property_claims_count": 14203837,
-            "unique_qids_count": 452523,
-            "items_with_property": 13369757,
-            "qids_others": 13027740,
-            "others": 13027740,
+        "P734": {
+            "property_claims_count": 5774887,
+            "unique_qids_count": 517232,
+            "items_with_property": 5590680,
+            "qids_others": 5082243,
+            "others": 5082243,
             "old": {
-                "items_with_property": 13049833,
-                "property_claims_count": 14041324,
-                "unique_qids_count": 449862
+                "items_with_property": 5417993,
+                "property_claims_count": 5602876,
+                "unique_qids_count": 501044
             }
         },
-        "P17": {
-            "property_claims_count": 19240784,
-            "unique_qids_count": 4623,
-            "items_with_property": 18975160,
-            "qids_others": 786220,
-            "others": 786220,
+        "P361": {
+            "property_claims_count": 5226634,
+            "unique_qids_count": 567658,
+            "items_with_property": 3807902,
+            "qids_others": 4012242,
+            "others": 4012242,
             "old": {
-                "items_with_property": 18409071,
-                "property_claims_count": 18864015,
-                "unique_qids_count": 4191
+                "items_with_property": 3742425,
+                "property_claims_count": 5157662,
+                "unique_qids_count": 555040
             }
         },
-        "P407": {
-            "property_claims_count": 28480136,
-            "unique_qids_count": 11296,
-            "items_with_property": 27846929,
-            "qids_others": 466510,
-            "others": 466510,
+        "P279": {
+            "property_claims_count": 5143728,
+            "unique_qids_count": 288971,
+            "items_with_property": 4399095,
+            "qids_others": 1334644,
+            "others": 1334644,
             "old": {
-                "items_with_property": 24595830,
-                "property_claims_count": 24958860,
-                "unique_qids_count": 2801
+                "items_with_property": 4226377,
+                "property_claims_count": 4963598,
+                "unique_qids_count": 285159
             }
         },
-        "P921": {
-            "property_claims_count": 33757001,
-            "unique_qids_count": 1246861,
-            "items_with_property": 20616475,
-            "qids_others": 28941283,
-            "others": 28941283,
+        "P452": {
+            "property_claims_count": 692765,
+            "unique_qids_count": 9056,
+            "items_with_property": 667740,
+            "qids_others": 218298,
+            "others": 218298,
             "old": {
-                "items_with_property": 20213951,
-                "property_claims_count": 32539941,
-                "unique_qids_count": 1199081
+                "items_with_property": 606944,
+                "property_claims_count": 630673,
+                "unique_qids_count": 8600
             }
         },
-        "P50": {
-            "property_claims_count": 34728045,
-            "unique_qids_count": 2520597,
-            "items_with_property": 14581769,
-            "qids_others": 34408407,
-            "others": 34408407,
+        "P7937": {
+            "property_claims_count": 664427,
+            "unique_qids_count": 945,
+            "items_with_property": 646287,
+            "qids_others": 7773,
+            "others": 7773,
             "old": {
-                "items_with_property": 14214575,
-                "property_claims_count": 34076543,
-                "unique_qids_count": 2482945
+                "items_with_property": 590486,
+                "property_claims_count": 608463,
+                "unique_qids_count": 806
             }
         },
-        "P1433": {
-            "property_claims_count": 46222400,
-            "unique_qids_count": 136875,
-            "items_with_property": 46109823,
-            "qids_others": 39954791,
-            "others": 39954791,
+        "P140": {
+            "property_claims_count": 640578,
+            "unique_qids_count": 2337,
+            "items_with_property": 628694,
+            "qids_others": 18521,
+            "others": 18521,
             "old": {
-                "items_with_property": 45720558,
-                "property_claims_count": 45828534,
-                "unique_qids_count": 132929
+                "items_with_property": 557684,
+                "property_claims_count": 569534,
+                "unique_qids_count": 2265
             }
         },
-        "P31": {
-            "property_claims_count": 120307873,
-            "unique_qids_count": 107839,
-            "items_with_property": 115057279,
-            "qids_others": 20126806,
-            "others": 20126806,
+        "P175": {
+            "property_claims_count": 617944,
+            "unique_qids_count": 104124,
+            "items_with_property": 565034,
+            "qids_others": 570497,
+            "others": 570497,
             "old": {
-                "items_with_property": 113220756,
-                "property_claims_count": 121322991,
-                "unique_qids_count": 105592
+                "items_with_property": 552315,
+                "property_claims_count": 611500,
+                "unique_qids_count": 102299
+            }
+        },
+        "P102": {
+            "property_claims_count": 613015,
+            "unique_qids_count": 12504,
+            "items_with_property": 553419,
+            "qids_others": 257162,
+            "others": 257162,
+            "old": {
+                "items_with_property": 551176,
+                "property_claims_count": 615350,
+                "unique_qids_count": 12219
+            }
+        },
+        "P4510": {
+            "property_claims_count": 592689,
+            "unique_qids_count": 47185,
+            "items_with_property": 477448,
+            "qids_others": 94110,
+            "others": 94110,
+            "old": {
+                "items_with_property": 473783,
+                "property_claims_count": 593730,
+                "unique_qids_count": 47128
+            }
+        },
+        "P138": {
+            "property_claims_count": 566728,
+            "unique_qids_count": 237777,
+            "items_with_property": 536346,
+            "qids_others": 493528,
+            "others": 493528,
+            "old": {
+                "items_with_property": 515301,
+                "property_claims_count": 546560,
+                "unique_qids_count": 229620
+            }
+        },
+        "P937": {
+            "property_claims_count": 531107,
+            "unique_qids_count": 40698,
+            "items_with_property": 420712,
+            "qids_others": 219255,
+            "others": 219255,
+            "old": {
+                "items_with_property": 405951,
+                "property_claims_count": 518081,
+                "unique_qids_count": 39199
+            }
+        },
+        "P3373": {
+            "property_claims_count": 523168,
+            "unique_qids_count": 251974,
+            "items_with_property": 248969,
+            "qids_others": 511968,
+            "others": 511968,
+            "old": {
+                "items_with_property": 239216,
+                "property_claims_count": 505867,
+                "unique_qids_count": 242117
+            }
+        },
+        "P437": {
+            "property_claims_count": 521258,
+            "unique_qids_count": 832,
+            "items_with_property": 454426,
+            "qids_others": 3132,
+            "others": 3132,
+            "old": {
+                "items_with_property": 379008,
+                "property_claims_count": 439701,
+                "unique_qids_count": 758
+            }
+        },
+        "P6379": {
+            "property_claims_count": 472852,
+            "unique_qids_count": 10180,
+            "items_with_property": 193926,
+            "qids_others": 212641,
+            "others": 212641,
+            "old": {
+                "items_with_property": 188545,
+                "property_claims_count": 463546,
+                "unique_qids_count": 9894
+            }
+        },
+        "P7763": {
+            "property_claims_count": 447547,
+            "unique_qids_count": 9,
+            "items_with_property": 447372,
+            "qids_others": 1,
+            "others": 1,
+            "old": {
+                "items_with_property": 440014,
+                "property_claims_count": 441454,
+                "unique_qids_count": 7
+            }
+        },
+        "P413": {
+            "property_claims_count": 435642,
+            "unique_qids_count": 410,
+            "items_with_property": 423702,
+            "qids_others": 2717,
+            "others": 2717,
+            "old": {
+                "items_with_property": 420607,
+                "property_claims_count": 431924,
+                "unique_qids_count": 401
+            }
+        },
+        "P7228": {
+            "property_claims_count": 433490,
+            "unique_qids_count": 20,
+            "items_with_property": 433176,
+            "qids_others": 0,
+            "others": 0,
+            "old": {
+                "items_with_property": 429604,
+                "property_claims_count": 429918,
+                "unique_qids_count": 21
+            }
+        },
+        "P364": {
+            "property_claims_count": 429547,
+            "unique_qids_count": 771,
+            "items_with_property": 415181,
+            "qids_others": 3214,
+            "others": 3214,
+            "old": {
+                "items_with_property": 434600,
+                "property_claims_count": 452969,
+                "unique_qids_count": 770
+            }
+        },
+        "P5185": {
+            "property_claims_count": 33,
+            "unique_qids_count": 5,
+            "items_with_property": 30,
+            "qids_others": 0,
+            "others": 0,
+            "old": {
+                "items_with_property": 22,
+                "property_claims_count": 25,
+                "unique_qids_count": 5
             }
         }
     }

@@ -269,6 +269,9 @@ def props_new_data(old_data, file_date):
         if "qids" in p_data.get("old", {}):
             del p_data["old"]["qids"]
     # ---
+    # sort data_dump["properties"] by p['property_claims_count']
+    data_dump["properties"] = dict(sorted(data_dump["properties"].items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True))
+    # ---
     with open(props_main_file, "w", encoding="utf-8") as f:
         json.dump(data_dump, f, indent=4)
         print(f"save data_dump {len(data_dump)} to {str(props_main_file)}")
