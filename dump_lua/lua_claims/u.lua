@@ -128,16 +128,17 @@ local function make_qids_table(pdata, old_pdata)
     table.insert(lines, '{| class="wikitable mw-collapsible mw-collapsed sortable plainrowheaders"')
     table.insert(lines, "|-")
     table.insert(lines, '! class="sortable" | #')
-    table.insert(lines, '! class="sortable" | value')
-    table.insert(lines, '! class="sortable" | Numbers')
+    table.insert(lines, '! class="sortable" | QID')
+    table.insert(lines, '! class="sortable" | Count')
     table.insert(lines, '! class="sortable" | Diff')
 
     local qidx = 1
     for _, q in ipairs(sorted_qids) do
-        local old_num = old_pdata.qids[q.qid] or 0
+        local old_num = old_pdata.qids and old_pdata.qids[q.qid] or 0
         table.insert(lines, "|-")
         table.insert(lines, "! " .. qidx)
-        table.insert(lines, "| {{Q|" .. q.qid .. "}}")
+        -- table.insert(lines, "| {{Q|" .. q.qid .. "}}")
+        table.insert(lines, "| [[" .. q.qid .. "]]")
         table.insert(lines, "| " .. formatNum(q.num))
         table.insert(lines, "| " .. format_diff(q.num, old_num))
         qidx = qidx + 1
@@ -148,8 +149,8 @@ local function make_qids_table(pdata, old_pdata)
     table.insert(lines, "|-")
     table.insert(lines, "! " .. qidx)
     table.insert(lines, "! others")
-    table.insert(lines, "| " .. formatNum(new_others))
-    table.insert(lines, "| " .. format_diff(new_others, old_others))
+    table.insert(lines, "! " .. formatNum(new_others))
+    table.insert(lines, "! " .. format_diff(new_others, old_others))
 
     table.insert(lines, "|}")
     return table.concat(lines, "\n")
