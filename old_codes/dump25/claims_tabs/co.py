@@ -76,7 +76,7 @@ for x in tqdm.tqdm(jsons_files[1:]):
             if p not in tab["properties"]:
                 tab["properties"][p] = stab
             else:
-                tab["properties"][p]["len_prop_claims"] += stab["len_prop_claims"]
+                tab["properties"][p]["total_claims_count"] += stab["total_claims_count"]
                 tab["properties"][p]["lenth_of_usage"] += stab["lenth_of_usage"]
             # ---
             for x, count in stab["qids"].items():

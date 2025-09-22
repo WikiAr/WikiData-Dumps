@@ -43,7 +43,7 @@ def query_qlever(sparql_query, limit=10_000_000):
         print(f"Error: {response.status_code}")
         print(sparql_query)
         print(response.text)
-        return None
+        return []
     # ---
     res_table = response.json()['res']
     # ---

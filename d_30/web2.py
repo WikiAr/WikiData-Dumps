@@ -94,8 +94,8 @@ class HHH:
                         "qids": {},
                         "items_use_it": 0,
                         "lenth_of_usage": 0,
-                        "len_of_qids": 0,
-                        "len_prop_claims": 0,
+                        "unique_qids_count": 0,
+                        "total_claims_count": 0,
                     }
 
                 tabs["properties"][pid]["lenth_of_usage"] += 1

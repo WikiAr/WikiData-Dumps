@@ -106,8 +106,8 @@ def pid_section_facts(table, old_data):
     # ---
     texts_tab = {
         "items_use_it": "Total items using this property",
-        "len_prop_claims": "Total number of claims with this property:",
-        "len_of_qids": "Number of unique QIDs",
+        "total_claims_count": "Total number of claims with this property:",
+        "unique_qids_count": "Number of unique QIDs",
     }
     # ---
     for key, title in texts_tab.items():
@@ -131,8 +131,8 @@ def make_section(pid, table, old_data, max_n=51):
     new_data["properties"][pid] = {
         "items_use_it": table.get("items_use_it", 0),
         # "lenth_of_usage": table.get("lenth_of_usage", 0),
-        "len_prop_claims": table.get("len_prop_claims", 0),
-        "len_of_qids": table.get("len_of_qids", 0),
+        "total_claims_count": table.get("total_claims_count", 0),
+        "unique_qids_count": table.get("unique_qids_count", 0),
         "qids": new_data_qids
     }
     # ---
@@ -203,8 +203,8 @@ def make_numbers_section(p_list, Old):
             # ---
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
-            # Unique_QIDs = data["properties"].get(prop, {}).get("len_of_qids", 0)
-            # diff2 = min_it(Unique_QIDs, old_prop.get("len_of_qids", 0), add_plus=True)
+            # Unique_QIDs = data["properties"].get(prop, {}).get("unique_qids_count", 0)
+            # diff2 = min_it(Unique_QIDs, old_prop.get("unique_qids_count", 0), add_plus=True)
             # ---
             # rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
             # ---

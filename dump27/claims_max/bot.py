@@ -71,7 +71,7 @@ class ClaimsProcessor():
             qids = x.get("qids")
             # ---
             if qids.get("qids"):
-                # {"pid":"P6216","qids":{"qids":{"Q19652":244},"items_use_it":243,"len_of_usage":243,"len_prop_claims":256}}
+                # {"pid":"P6216","qids":{"qids":{"Q19652":244},"items_use_it":243,"len_of_usage":243,"total_claims_count":256}}
                 qids = qids.get("qids")
                 tab = x.get("qids")
             # ---

@@ -82,11 +82,11 @@ def dump_lines_claims(linesc):
                 tabs["properties"][pid] = {
                     "items_use_it": 0,
                     "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    "unique_qids_count": 0,
+                    "total_claims_count": 0,
                 }
             # ---
-            tabs["properties"][pid]["len_prop_claims"] += len_qids
+            tabs["properties"][pid]["total_claims_count"] += len_qids
             tabs["properties"][pid]["lenth_of_usage"] += 1
             tabs["properties"][pid]["items_use_it"] += 1
         # ---

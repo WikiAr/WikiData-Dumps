@@ -88,8 +88,8 @@ class ClaimsProcessor():
                 "qids": {"others": 0},
                 "items_use_it": 0,
                 "lenth_of_usage": 0,
-                "len_of_qids": 0,
-                "len_prop_claims": 0,
+                "unique_qids_count": 0,
+                "total_claims_count": 0,
             }
 
     def _update_property_stats(self, prop, prop_tab) -> None:
@@ -98,7 +98,7 @@ class ClaimsProcessor():
 
         self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
         self.tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
-        self.tab["properties"][prop]["len_prop_claims"] += len(p_qids)
+        self.tab["properties"][prop]["total_claims_count"] += len(p_qids)
 
         for qid, count in p_qids.items():
             if not qid:
@@ -131,7 +131,7 @@ class ClaimsProcessor():
         # ---
         for x, xx in self.tab["properties"].items():
             # ---
-            self.tab["properties"][x]["len_of_qids"] += len(xx["qids"])
+            self.tab["properties"][x]["unique_qids_count"] += len(xx["qids"])
             # ---
             if count_total_claims:
                 self.tab["total_claims"] += sum(xx["qids"].values())

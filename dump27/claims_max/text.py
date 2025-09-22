@@ -107,8 +107,8 @@ def pid_section_facts(table, old_data):
     # ---
     texts_tab_x = {
         # "items_use_it": "Total items using this property",
-        "len_prop_claims": "Total number of claims:",
-        # "len_of_qids": "Number of unique QIDs",
+        "total_claims_count": "Total number of claims:",
+        # "unique_qids_count": "Number of unique QIDs",
     }
     # ---
     for key, title in texts_tab_x.items():
@@ -170,8 +170,8 @@ def load_qids(pid, table):
     new_data["properties"][pid] = {
         "items_use_it": table.get("items_use_it", 0),
         # "len_of_usage": table.get("len_of_usage", 0),
-        "len_prop_claims": table.get("len_prop_claims", 0),
-        "len_of_qids": table.get("len_of_qids", 0),
+        "total_claims_count": table.get("total_claims_count", 0),
+        "unique_qids_count": table.get("unique_qids_count", 0),
         # "qids": new_data_qids
     }
     # ---
@@ -180,7 +180,7 @@ def load_qids(pid, table):
     with open(qids_file, "r", encoding="utf-8") as file:
         qids = json.load(file)
     # ---
-    new_data["properties"][pid]["len_of_qids"] = len(qids.get("qids", {}))
+    new_data["properties"][pid]["unique_qids_count"] = len(qids.get("qids", {}))
     # ---
     new_qids = fix_others(pid, qids.get("qids", {}))
     # ---
@@ -263,21 +263,21 @@ def make_numbers_section(properties_infos, Old):
         if len(rows) < max_v:
             # ---
             # usage = prop_tab.get("items_use_it", 0)
-            usage = prop_tab.get("len_prop_claims", 0)
+            usage = prop_tab.get("total_claims_count", 0)
             # ---
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("len_prop_claims")
+            old_usage = old_prop.get("total_claims_count")
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
             value_in_most_props = most_props.get(prop, 0)
             # ---
             line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} <!-- {value_in_most_props:,} -->|| {diff}"
             # ---
-            # len_prop_claims = prop_tab.get("len_prop_claims", 0)
-            # diff2 = min_it_tab(prop_tab, old_prop, "len_prop_claims", add_plus=True)
+            # total_claims_count = prop_tab.get("total_claims_count", 0)
+            # diff2 = min_it_tab(prop_tab, old_prop, "total_claims_count", add_plus=True)
             # # ---
-            # line += f" || {len_prop_claims:,}  || {diff2}"
+            # line += f" || {total_claims_count:,}  || {diff2}"
             # ---
             rows.append(line)
         else:
@@ -311,7 +311,7 @@ def make_numbers_section(properties_infos, Old):
 
 def make_text(data, Old):
     # ---
-    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("len_prop_claims", 0), reverse=True))
+    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("total_claims_count", 0), reverse=True))
     # ---
     print(f"{len(properties_infos)=}")
     # ---

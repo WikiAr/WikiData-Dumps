@@ -26,40 +26,82 @@
 |-
 ! # !! Property!! Claims !! Diff
 |-
-| 1 || {{P|P31}} || 120,306,561 || -1,016,430
+| 1 || {{P|P31}} || 120,307,873 || -1,015,118
 |-
-| 2 || {{P|P1433}} || 46,222,375 || +393,841
+| 2 || {{P|P1433}} || 46,222,400 || +393,866
 |-
-| 3 || {{P|P50}} || 34,723,565 || +647,022
+| 3 || {{P|P50}} || 34,728,045 || +651,502
 |-
-| 4 || {{P|P921}} || 33,764,143 || +1,224,202
+| 4 || {{P|P921}} || 33,757,001 || +1,217,060
 |-
-| 5 || {{P|P407}} || 28,204,217 || +3,245,357
+| 5 || {{P|P407}} || 28,480,136 || +3,521,276
 |-
-| 6 || {{P|P17}} || 19,240,435 || +376,420
+| 6 || {{P|P17}} || 19,240,784 || +376,769
 |-
-| 7 || {{P|P131}} || 14,202,918 || +161,594
+| 7 || {{P|P131}} || 14,203,837 || +162,513
 |-
-| 8 || {{P|P106}} || 12,346,011 || +379,821
+| 8 || {{P|P106}} || 12,347,324 || +381,134
 |-
-| 9 || {{P|P21}} || 10,262,845 || +225,371
+| 9 || {{P|P21}} || 10,264,384 || +226,910
 |-
-| 10 || {{P|P735}} || 8,288,570 || +131,598
+| 10 || {{P|P735}} || 8,289,829 || +132,857
 |-
-| 11 || {{P|P6259}} || 8,174,085 || +114
+| 11 || {{P|P6259}} || 8,174,084 || +113
 |-
-! 12 
+| 12 || {{P|P59}} || 7,370,930 || +83
+|-
+| 13 || {{P|P27}} || 5,823,713 || +217,942
+|-
+| 14 || {{P|P734}} || 5,774,887 || +172,011
+|-
+| 15 || {{P|P361}} || 5,226,634 || +68,972
+|-
+| 16 || {{P|P279}} || 5,143,728 || +180,130
+|-
+| 17 || {{P|P452}} || 692,765 || +62,092
+|-
+| 18 || {{P|P7937}} || 664,427 || +55,964
+|-
+| 19 || {{P|P140}} || 640,578 || +71,044
+|-
+| 20 || {{P|P175}} || 617,944 || +6,444
+|-
+| 21 || {{P|P102}} || 613,015 || -2,335
+|-
+| 22 || {{P|P4510}} || 592,689 || -1,041
+|-
+| 23 || {{P|P138}} || 566,728 || +20,168
+|-
+| 24 || {{P|P937}} || 531,107 || +13,026
+|-
+| 25 || {{P|P3373}} || 523,168 || +17,301
+|-
+| 26 || {{P|P437}} || 521,258 || +81,557
+|-
+| 27 || {{P|P6379}} || 472,852 || +9,306
+|-
+| 28 || {{P|P7763}} || 447,547 || +6,093
+|-
+| 29 || {{P|P413}} || 435,642 || +3,718
+|-
+| 30 || {{P|P7228}} || 433,490 || +3,572
+|-
+| 31 || {{P|P364}} || 429,547 || -23,422
+|-
+| 32 || {{P|P5185}} || 33 || +8
+|-
+! 33 
 ! others || 0 || -
 |}
 == {{P|P31}} ==
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 115,056,915 || +1,836,159 
+| Total items using this property || 115,057,279 || +1,836,523 
 |-
-| Total number of claims: || 120,306,561 || -1,016,430 
+| Total number of claims: || 120,307,873 || -1,015,118 
 |-
-| Number of unique QIDs || 107,818 || +2,226 
+| Number of unique QIDs || 107,839 || +2,247 
 |}
 
 
@@ -572,7 +614,7 @@
 |-
 ! 101 
 ! others 
-! 20,125,494 
+! 20,126,806 
 ! - 
 |-
 |}
@@ -581,11 +623,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 46,109,817 || +389,259 
+| Total items using this property || 46,109,823 || +389,265 
 |-
-| Total number of claims: || 46,222,375 || +393,841 
+| Total number of claims: || 46,222,400 || +393,866 
 |-
-| Number of unique QIDs || 136,868 || +3,939 
+| Number of unique QIDs || 136,875 || +3,946 
 |}
 
 
@@ -1098,7 +1140,7 @@
 |-
 ! 101 
 ! others 
-! 39,954,766 
+! 39,954,791 
 ! - 
 |-
 |}
@@ -1107,11 +1149,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 14,579,991 || +365,416 
+| Total items using this property || 14,581,769 || +367,194 
 |-
-| Total number of claims: || 34,723,565 || +647,022 
+| Total number of claims: || 34,728,045 || +651,502 
 |-
-| Number of unique QIDs || 2,520,447 || +37,502 
+| Number of unique QIDs || 2,520,597 || +37,652 
 |}
 
 
@@ -1624,7 +1666,7 @@
 |-
 ! 101 
 ! others 
-! 34,403,927 
+! 34,408,407 
 ! - 
 |-
 |}
@@ -1633,11 +1675,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 20,619,070 || +405,119 
+| Total items using this property || 20,616,475 || +402,524 
 |-
-| Total number of claims: || 33,764,143 || +1,224,202 
+| Total number of claims: || 33,757,001 || +1,217,060 
 |-
-| Number of unique QIDs || 1,246,708 || +47,627 
+| Number of unique QIDs || 1,246,861 || +47,780 
 |}
 
 
@@ -2150,7 +2192,7 @@
 |-
 ! 101 
 ! others 
-! 28,948,425 
+! 28,941,283 
 ! - 
 |-
 |}
@@ -2159,11 +2201,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 27,571,089 || +2,975,259 
+| Total items using this property || 27,846,929 || +3,251,099 
 |-
-| Total number of claims: || 28,204,217 || +3,245,357 
+| Total number of claims: || 28,480,136 || +3,521,276 
 |-
-| Number of unique QIDs || 11,295 || +8,494 
+| Number of unique QIDs || 11,296 || +8,495 
 |}
 
 
@@ -2676,7 +2718,7 @@
 |-
 ! 101 
 ! others 
-! 190,591 
+! 466,510 
 ! - 
 |-
 |}
@@ -2685,11 +2727,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 18,974,886 || +565,815 
+| Total items using this property || 18,975,160 || +566,089 
 |-
-| Total number of claims: || 19,240,435 || +376,420 
+| Total number of claims: || 19,240,784 || +376,769 
 |-
-| Number of unique QIDs || 4,622 || +431 
+| Number of unique QIDs || 4,623 || +432 
 |}
 
 
@@ -3202,7 +3244,7 @@
 |-
 ! 101 
 ! others 
-! 785,871 
+! 786,220 
 ! - 
 |-
 |}
@@ -3211,11 +3253,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 13,369,280 || +319,447 
+| Total items using this property || 13,369,757 || +319,924 
 |-
-| Total number of claims: || 14,202,918 || +161,594 
+| Total number of claims: || 14,203,837 || +162,513 
 |-
-| Number of unique QIDs || 452,363 || +2,501 
+| Number of unique QIDs || 452,523 || +2,661 
 |}
 
 
@@ -3728,7 +3770,7 @@
 |-
 ! 101 
 ! others 
-! 13,026,821 
+! 13,027,740 
 ! - 
 |-
 |}
@@ -3737,11 +3779,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 8,862,870 || +280,705 
+| Total items using this property || 8,863,218 || +281,053 
 |-
-| Total number of claims: || 12,346,011 || +379,821 
+| Total number of claims: || 12,347,324 || +381,134 
 |-
-| Number of unique QIDs || 22,079 || +1,116 
+| Number of unique QIDs || 22,091 || +1,128 
 |}
 
 
@@ -4254,7 +4296,7 @@
 |-
 ! 101 
 ! others 
-! 3,163,641 
+! 3,164,954 
 ! - 
 |-
 |}
@@ -4263,9 +4305,9 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 10,260,345 || +226,324 
+| Total items using this property || 10,261,884 || +227,863 
 |-
-| Total number of claims: || 10,262,845 || +225,371 
+| Total number of claims: || 10,264,384 || +226,910 
 |-
 | Number of unique QIDs || 2,106 || +2,034 
 |}
@@ -4545,7 +4587,7 @@
 |-
 ! 54 
 ! others 
-! 2,251 
+! 3,790 
 ! - 
 |-
 |}
@@ -4554,11 +4596,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 7,763,451 || +129,610 
+| Total items using this property || 7,764,335 || +130,494 
 |-
-| Total number of claims: || 8,288,570 || +131,598 
+| Total number of claims: || 8,289,829 || +132,857 
 |-
-| Number of unique QIDs || 167,969 || +70,623 
+| Number of unique QIDs || 167,985 || +70,639 
 |}
 
 
@@ -5071,7 +5113,7 @@
 |-
 ! 101 
 ! others 
-! 5,885,090 
+! 5,886,349 
 ! - 
 |-
 |}
@@ -5080,11 +5122,11 @@
 {| class="wikitable sortable"
 ! Title !! Number !! Diff 
 |-
-| Total items using this property || 8,174,075 || +115 
+| Total items using this property || 8,174,074 || +114 
 |-
-| Total number of claims: || 8,174,085 || +114 
+| Total number of claims: || 8,174,084 || +113 
 |-
-| Number of unique QIDs || 2,526 || -7 
+| Number of unique QIDs || 2,527 || -6 
 |}
 
 
@@ -5597,7 +5639,7 @@
 |-
 ! 101 
 ! others 
-! 3,129 
+! 3,128 
 ! - 
 |-
 |}

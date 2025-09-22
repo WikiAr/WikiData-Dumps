@@ -16,6 +16,18 @@ session = requests.session()
 session.headers.update(headers)
 
 
+def print_with_color(text, color):
+    color_table = {
+        "green": 32,
+        "yellow": 33,
+        "red": 31
+    }
+    # ---
+    color_m = color_table.get(color, 0)
+    # ---
+    print(f"\033[{color_m}m{text}\033[0m")
+
+
 def query_qlever(sparql_query, limit=10_000_000):
 
     url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
@@ -31,7 +43,7 @@ def query_qlever(sparql_query, limit=10_000_000):
         print(f"Error: {response.status_code}")
         print(sparql_query)
         print(response.text)
-        return None
+        return []
     # ---
     res_table = response.json()['res']
     # ---
@@ -155,7 +167,7 @@ def one_prop_count_all(prop_main):
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
         PREFIX wikibase: <http://wikiba.se/ontology#>
 
-        SELECT DISTINCT (COUNT(?value) AS ?len_prop_claims) (COUNT(DISTINCT ?value) AS ?unique_values) (COUNT(DISTINCT ?item) AS ?items_use_it)
+        SELECT DISTINCT (COUNT(?value) AS ?total_claims_count) (COUNT(DISTINCT ?value) AS ?unique_values) (COUNT(DISTINCT ?item) AS ?items_with_property)
         WHERE {{
             VALUES ?prop {{ wdt:{prop_main} }}
             ?item a wikibase:Item .
@@ -166,27 +178,27 @@ def one_prop_count_all(prop_main):
     result = query_qlever(sparql, limit=10)
 
     data = {
-        "len_prop_claims": 0,
-        "len_of_qids": 0,
-        "items_use_it": 0
+        "total_claims_count": 0,
+        "unique_qids_count": 0,
+        "items_with_property": 0
     }
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']
 
-        data['len_prop_claims'] = int(x[0])
+        data['total_claims_count'] = int(x[0])
         # ---
         # unique_values
-        data['len_of_qids'] = int(x[1])
+        data['unique_qids_count'] = int(x[1])
         # ---
-        # items_use_it
-        data['items_use_it'] = int(x[2])
+        # items_with_property
+        data['items_with_property'] = int(x[2])
     # ---
     return data
 
 
 def one_prop(prop_main, first_100={}):
     # ---
-    print(f"load one_prop: {prop_main}" + (f", len first_100: {len(first_100)}" if first_100 else ""))
+    # print_with_color(f"load one_prop: {prop_main}" + (f", len first_100: {len(first_100)}" if first_100 else ""), "red")
     # ---
     if not first_100:
         first_100 = one_prop_first_100(prop_main) or {}
@@ -195,19 +207,19 @@ def one_prop(prop_main, first_100={}):
     # ---
     count_all_status = one_prop_count_all(prop_main)
     # ---
-    len_prop_claims = count_all_status['len_prop_claims']
+    total_claims_count = count_all_status['total_claims_count']
     # ---
     data = {
         # "new" : count_all_status,
-        "others": len_prop_claims - first_100_sum
+        "others": total_claims_count - first_100_sum
     }
     # ---
     data.update(count_all_status)
     # ---
     data["qids"] = first_100
     # ---
-    print(f"p \t {prop_main} \t claims: {len_prop_claims:,} \t others: {data['others']:,}"
-          f"\t unique qids:{data['len_of_qids']:,} \t items:{data['items_use_it']:,}")
+    print(f"p \t {prop_main} \t claims: {total_claims_count:,} \t others: {data['others']:,}"
+          f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}")
     # ---
     return data
 
@@ -253,5 +265,5 @@ def get_props_status():
 
 
 if __name__ == "__main__":
-    # print(one_prop_first_100("P31"))
+    print(one_prop("P31"))
     print(get_props_status())

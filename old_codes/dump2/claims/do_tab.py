@@ -95,11 +95,11 @@ def do_line(json1):
             p_tab = {
                 "qids": {"others": 0},
                 "lenth_of_usage": 0,
-                "len_prop_claims": 0,
+                "total_claims_count": 0,
             }
 
         p_tab["lenth_of_usage"] += 1
-        p_tab["len_prop_claims"] += len(p_qids)
+        p_tab["total_claims_count"] += len(p_qids)
 
         for qid in p_qids:
             if qid:
@@ -145,7 +145,7 @@ def read_file():
     print(f"read all lines: {tab['done']}")
     # ---
     for x, xx in tab["properties"].items():
-        tab["properties"][x]["len_of_qids"] = len(xx["qids"])
+        tab["properties"][x]["unique_qids_count"] = len(xx["qids"])
     # ---
     tab["len_all_props"] = len(tab["properties"])
     # ---

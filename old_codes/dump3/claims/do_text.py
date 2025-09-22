@@ -52,10 +52,10 @@ def make_section(P, table, max_n=51):
     # ---
     print(f"make_section for property:{P}")
     texts += f"\n* Total items use these property:{Len:,}"
-    if lnnn := table.get("len_prop_claims"):
+    if lnnn := table.get("total_claims_count"):
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
-    if len_of_qids := table.get("len_of_qids"):
-        texts += f"\n* Number of unique qids:{len_of_qids:,}"
+    if unique_qids_count := table.get("unique_qids_count"):
+        texts += f"\n* Number of unique qids:{unique_qids_count:,}"
     # ---
     texts += "\n"
     print(texts)

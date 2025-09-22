@@ -104,15 +104,15 @@ class ClaimsProcessor:
                 self.properties[p] = {
                     "items_use_it": 0,
                     # "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    "unique_qids_count": 0,
+                    "total_claims_count": 0,
                 }
 
             p_qidsx = p_qids.get("qids") or p_qids
 
             # self.properties[p]["lenth_of_usage"] += p_qids.get("lenth_of_usage", 0)
             self.properties[p]["items_use_it"] += p_qids.get("items_use_it", 0)
-            self.properties[p]["len_prop_claims"] += p_qids.get("len_prop_claims") or len(p_qidsx)
+            self.properties[p]["total_claims_count"] += p_qids.get("total_claims_count") or len(p_qidsx)
 
             # ---
             for qid, count in p_qidsx.items():
@@ -138,7 +138,7 @@ class ClaimsProcessor:
             # ---
             qids_tab = self.properties_qids.get(x, {})
             # ---
-            self.properties[x]["len_of_qids"] += len(qids_tab)
+            self.properties[x]["unique_qids_count"] += len(qids_tab)
             # ---
             if count_total_claims:
                 self.tab["total_claims"] += sum(qids_tab.values())
@@ -254,8 +254,8 @@ if __name__ == "__main__":
                 _prop_tab = {
                     "items_use_it": 0,
                     # "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    "unique_qids_count": 0,
+                    "total_claims_count": 0,
                 }
                 # ---
                 for prop, prop_tab in v.items():
@@ -264,8 +264,8 @@ if __name__ == "__main__":
                     # ---
                     tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
                     # tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
-                    tab["properties"][prop]["len_of_qids"] += prop_tab.get("len_of_qids", 0)
-                    tab["properties"][prop]["len_prop_claims"] += prop_tab.get("len_prop_claims", 0)
+                    tab["properties"][prop]["unique_qids_count"] += prop_tab.get("unique_qids_count", 0)
+                    tab["properties"][prop]["total_claims_count"] += prop_tab.get("total_claims_count", 0)
                 # ---
         # ---
         with open(Path(__file__).parent / "split_tab.json", "w", encoding="utf-8") as outfile:

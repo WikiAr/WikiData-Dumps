@@ -76,12 +76,12 @@ class ClaimsProcessor:
                 {
                     "qids": {"others": 0},
                     "lenth_of_usage": 0,
-                    "len_prop_claims": 0,
+                    "total_claims_count": 0,
                 },
             )
 
             p_tab["lenth_of_usage"] += 1
-            p_tab["len_prop_claims"] += len(p_qids)
+            p_tab["total_claims_count"] += len(p_qids)
 
             for qid in p_qids:
                 if qid:
@@ -93,7 +93,7 @@ class ClaimsProcessor:
         # ---
         for x, xx in self.tab["properties"].items():
             # ---
-            self.tab["properties"][x]["len_of_qids"] = len(xx["qids"])
+            self.tab["properties"][x]["unique_qids_count"] = len(xx["qids"])
             # ---
             qids_1 = sorted(xx["qids"].items(), key=lambda x: x[1], reverse=True)
             # ---
