@@ -18,6 +18,9 @@ sys.path.append(str(Path(__file__).parent))
 from props_qlever_bot import one_prop, get_date, get_all_props, get_props_status
 from props_text import make_text
 
+PROPS_JSON = "props_json" in sys.argv
+MAIN_FROM_JSON = "fromjson" in sys.argv
+
 dump_dir = Path(__file__).parent / 'dumps'
 dump_to_wikidata_dir = dump_dir / 'to_wikidata'
 texts_dir = dump_dir / 'texts'
@@ -88,7 +91,7 @@ def get_old_props():
     # ---
     old_claims_file = dump_dir / "claims_old.json"
     # ---
-    if "fromjson" in sys.argv and old_claims_file.exists():
+    if MAIN_FROM_JSON and old_claims_file.exists():
         # ---
         with open(old_claims_file, "r", encoding="utf-8") as f:
             old_claims = json.load(f)
@@ -129,16 +132,19 @@ def get_prop_infos(p, p_old):
     file = qids_dir / f"{p}.json"
     # ---
     p_data = {}
+    first_100 = {}
     # ---
-    if file.exists() and "props_json" in sys.argv:
+    if file.exists():
         with open(file, "r", encoding="utf-8") as f:
-            p_data = json.load(f)
+            data = json.load(f)
+        # ----
+        first_100 = data.get("qids", {})
+        # ----
+        if PROPS_JSON:
+            p_data = data
     # ---
     if not p_data or not p_data.get("items_use_it"):
-        p_data = one_prop(p, first_100=p_data.get("qids", {}))
-    # ---
-    if not p_old.get("qids", {}):
-        p_old["qids"] = qids_olds.get(p, {})
+        p_data = one_prop(p, first_100=first_100)
     # ---
     prop_infos = {
         "len_prop_claims": p_data.get("len_prop_claims", 0),
@@ -149,8 +155,15 @@ def get_prop_infos(p, p_old):
         "others": p_data["others"],
 
         "qids": p_data["qids"],
-        "old" : p_old,
     }
+    # ---
+    with open(file, "w", encoding="utf-8") as f:
+        json.dump(p_data, f, ensure_ascii=False, indent=4)
+    # ---
+    if not p_old.get("qids", {}):
+        p_old["qids"] = qids_olds.get(p, {})
+    # ---
+    prop_infos["old"] = p_old
     # ---
     return prop_infos
 
@@ -177,7 +190,7 @@ def props_ren(old_data):
 
 def props_new_data(old_data, file_date):
     # ---
-    if "fromjson" in sys.argv:
+    if MAIN_FROM_JSON:
         # ---
         with open(dump_dir / "props.json", "r", encoding="utf-8") as f:
             props_data = json.load(f)
