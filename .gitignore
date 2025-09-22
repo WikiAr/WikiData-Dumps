@@ -31,4 +31,4 @@ dump27/claims_max/results/claims_max.txt
 results/**/*.txt
 /qlever_dumps/props/dumps/qids_by_prop
 qlever_dumps/props/dumps/qids_old.json
-!qlever_dumps/props/dumps/texts/properties.txt
+!qlever_dumps/props/dumps/texts/*.txt
