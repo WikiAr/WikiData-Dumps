@@ -44,7 +44,6 @@
 | Number of unique QIDs || 107839 || +2247
 |}
 
-
 {| class="wikitable sortable plainrowheaders"
 |-
 ! class="sortable" | #
@@ -67,11 +66,10 @@
 | 5698793
 | +90896
 |-
-! 3
+! 4
 ! others
 ! 20126806
-! -
-|-
+! +11846792
 |}
 {{clear}}
 == {{P|P1433}} ==
@@ -84,7 +82,6 @@
 |-
 | Number of unique QIDs || 136875 || +3946
 |}
-
 
 {| class="wikitable sortable plainrowheaders"
 |-
@@ -104,9 +101,18 @@
 | +124
 |-
 ! 3
+| {{Q|Q564954}}
+| 252295
+| +404
+|-
+! 4
+| {{Q|Q192864}}
+| 190111
+| +3236
+|-
+! 5
 ! others
 ! 39954791
-! -
-|-
+! +439875
 |}
 {{clear}}
