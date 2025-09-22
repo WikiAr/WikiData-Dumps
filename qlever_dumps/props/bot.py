@@ -27,6 +27,13 @@ dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
 qids_dir.mkdir(parents=True, exist_ok=True)
 
+qids_old_file = qids_dir / 'qids_old.json'
+qids_olds = {}
+
+if qids_old_file.exists():
+    with open(qids_old_file, 'r', encoding='utf-8') as f:
+        qids_olds = json.load(f)
+
 breaks = {1: 5_000}
 
 for arg in sys.argv:
@@ -244,6 +251,10 @@ def render(old_data, file_date):
         print(f"save {len(to_save_data)} to {str(file2)}")
     # ---
     text_file = texts_dir / "properties.txt"
+    # ---
+    for p, p_data in props_data["properties"].items():
+        if not p_data.get("old", {}).get("qids", {}):
+            p_data["old"]["qids"] = qids_olds.get(p, {})
     # ---
     text = make_text(props_data, props_data.get("old", {}))
     # ---

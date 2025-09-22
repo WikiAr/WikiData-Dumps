@@ -97,13 +97,15 @@ def pid_section_facts(table, old_data):
     return text
 
 
-def make_section(pid, table, old_data, max_n=51):
+def make_section(pid, table):
     # ---
     if sections_done["current"] >= sections_done["max"]:
         texts_tab[pid] = ""
         return ""
     # ---
-    old_data_qids = old_data.get("qids") or {"others": 0}
+    old_data = table.get("old", {})
+    # ---
+    old_data_qids = old_data.get("qids") or {}
     # ---
     new_data_qids = table.get("qids") or {"others": 0}
     # ---
@@ -161,8 +163,6 @@ def make_numbers_section(properties_infos, Old):
     # ---
     rows = []
     # ---
-    Old_props = Old.get("properties", {})
-    # ---
     other_count = 0
     # ---
     max_v = 500
@@ -175,7 +175,7 @@ def make_numbers_section(properties_infos, Old):
             # usage = prop_tab.get("items_use_it", 0)
             usage = prop_tab.get("len_prop_claims", 0)
             # ---
-            old_prop = Old_props.get(prop, {})
+            old_prop = prop_tab.get("old", {})
             # ---
             old_usage = old_prop.get("len_prop_claims")
             diff = min_it(usage, old_usage, add_plus=True)
@@ -239,7 +239,7 @@ def make_text(data, Old):
     for prop, prop_tab in tqdm.tqdm(properties_infos.items(), desc="def make_section(): "):
         # ---
         if section_done < 11:
-            sections += make_section(prop, prop_tab, prop_tab.get("old", {}))
+            sections += make_section(prop, prop_tab)
             # ---
             section_done += 1
     # ---

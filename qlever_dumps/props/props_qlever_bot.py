@@ -186,7 +186,7 @@ def one_prop_count_all(prop_main):
 
 def one_prop(prop_main, first_100={}):
     # ---
-    print(f"load one_prop: {prop_main}" + (f"len first_100: {len(first_100)}" if first_100 else ""))
+    print(f"load one_prop: {prop_main}" + (f", len first_100: {len(first_100)}" if first_100 else ""))
     # ---
     if not first_100:
         first_100 = one_prop_first_100(prop_main) or {}
@@ -206,7 +206,8 @@ def one_prop(prop_main, first_100={}):
     # ---
     data["qids"] = first_100
     # ---
-    print(f"one_prop:({prop_main}): len_prop_claims: {len_prop_claims:,} others: {data['others']:,}")
+    print(f"p \t {prop_main} \t claims: {len_prop_claims:,} \t others: {data['others']:,}"
+          "\t unique qids:{data['len_of_qids']:,} \t items:{data['items_use_it']:,}")
     # ---
     return data
 
