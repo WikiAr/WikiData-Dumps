@@ -183,6 +183,17 @@ def props_new_data(old_data, file_date):
             props_data = json.load(f)
         # ---
         if props_data:
+            changed = False
+            # ---
+            for p, p_data in props_data["properties"].items():
+                if not p_data.get("old", {}).get("qids", {}):
+                    props_data["properties"][p]["old"]["qids"] = qids_olds.get(p, {})
+                    changed = True
+            # ---
+            if changed:
+                with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
+                    json.dump(props_data, f, ensure_ascii=False, indent=2)
+            # ---
             return props_data
     # ---
     props_data = props_ren(old_data)
