@@ -8,13 +8,13 @@
     "total_properties_count": 100,
     "properties": {
         "P31": {
-            "items_with_property": 113220756,
             "property_claims_count": 121322991,
+            "items_with_property": 113220756,
             "unique_qids_count": 105592
         },
         "P1433": {
-            "items_with_property": 45720558,
             "property_claims_count": 45828534,
+            "items_with_property": 45720558,
             "unique_qids_count": 132929
         },
         "P50": {
