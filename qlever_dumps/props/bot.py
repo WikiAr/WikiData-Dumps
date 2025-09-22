@@ -192,7 +192,7 @@ def props_new_data(old_data, file_date):
             # ---
             if changed:
                 with open(dump_dir / "props.json", "w", encoding="utf-8") as f:
-                    json.dump(props_data, f, ensure_ascii=False, indent=2)
+                    json.dump(props_data, f, ensure_ascii=False, indent=4)
             # ---
             return props_data
     # ---
