@@ -1,0 +1,1879 @@
+Update: <onlyinclude>2025-09-03</onlyinclude>.
+--~~~~
+{| class="wikitable sortable"
+! Title !! Number !! Diff 
+|-
+| Total items last update || 117,232,191 || 0 
+|-
+| Total items || 117,416,494 || +184,303 
+|-
+| Items without labels || 190,567 || +79 
+|-
+| Items without descriptions || 6,861,106 || +1,608 
+|-
+| Items without aliases || 102,123,796 || +169,404 
+|}
+
+{| class="wikitable sortable"
+! Title !! Id !! Number 
+|}
+
+<!-- bots work done in 0 secounds --> 
+
+
+== Number of labels, descriptions and aliases for items per language ==
+{| class="wikitable sortable"
+! rowspan="2" |Language code
+! colspan="2" |Language
+! colspan="3" data-sort-type="number" |Labels
+! colspan="3" data-sort-type="number" |Descriptions
+! colspan="2" data-sort-type="number" |Aliases
+|-
+!English !!Native !!All !! % !!New !!All !! % !!New !!All !!New
+|-
+| aa || {{#language:aa|en}} || {{#language:aa}}
+| 478,651 || 0.40% || style="background-color:#9dc79d"| +414 || 57 || 4.85% || style="background-color:#9dc79d"| +1 || 174,477 || style="background-color:#c79d9d"| -44
+|-
+| aae || {{#language:aae|en}} || {{#language:aae}}
+| 5 || 4.25% || style="background-color:#9dc79d"| +1 || 2 || 1.70% || style="background-color:#9dc79d"| +1 || 2 || style="background-color:#9dc79d"| +1
+|-
+| ab || {{#language:ab|en}} || {{#language:ab}}
+| 294,828 || 0.25% || style="background-color:#9dc79d"| +158 || 242,163 || 0.20% || style="background-color:#9dc79d"| +5,950 || 423,003 || style="background-color:#c79d9d"| -16
+|-
+| abs || {{#language:abs|en}} || {{#language:abs}}
+| 153,161 || 0.13% ||  +0 || 3 || 2.55% ||  +0 || 150,871 ||  +0
+|-
+| ace || {{#language:ace|en}} || {{#language:ace}}
+| 736,552 || 0.62% || style="background-color:#9dc79d"| +9,478 || 7,836,865 || 6.67% || style="background-color:#9dc79d"| +8,652 || 179,799 || style="background-color:#c79d9d"| -36
+|-
+| acm || {{#language:acm|en}} || {{#language:acm}}
+| 2,660 || 0.00% || style="background-color:#9dc79d"| +24 || 29,559 || 0.02% || style="background-color:#9dc79d"| +345 || 207 ||  +0
+|-
+| ady || {{#language:ady|en}} || {{#language:ady}}
+| 267,457 || 0.22% || style="background-color:#9dc79d"| +8 || 108,275 || 0.09% ||  +0 || 421,752 || style="background-color:#c79d9d"| -18
+|-
+| ady-cyrl || {{#language:ady-cyrl|en}} || {{#language:ady-cyrl}}
+| 158,205 || 0.13% || style="background-color:#9dc79d"| +1 || 3 || 2.55% || style="background-color:#9dc79d"| +1 || 421,720 || style="background-color:#c79d9d"| -18
+|-
+| aeb || {{#language:aeb|en}} || {{#language:aeb}}
+| 154,205 || 0.13% || style="background-color:#9dc79d"| +2 || 36 || 3.06% || style="background-color:#9dc79d"| +2 || 425,154 || style="background-color:#c79d9d"| -20
+|-
+| aeb-arab || {{#language:aeb-arab|en}} || {{#language:aeb-arab}}
+| 157,811 || 0.13% ||  +0 || 3,633 || 0.00% || style="background-color:#9dc79d"| +1 || 425,277 || style="background-color:#c79d9d"| -20
+|-
+| aeb-latn || {{#language:aeb-latn|en}} || {{#language:aeb-latn}}
+| 420,847 || 0.35% || style="background-color:#9dc79d"| +22 || 187 || 0.00% || style="background-color:#9dc79d"| +1 || 168,480 || style="background-color:#c79d9d"| -50
+|-
+| af || {{#language:af|en}} || {{#language:af}}
+| 1,831,587 || 1.55% || style="background-color:#9dc79d"| +617 || 8,405,970 || 7.15% || style="background-color:#9dc79d"| +9,665 || 202,201 || style="background-color:#c79d9d"| -17
+|-
+| agq || {{#language:agq|en}} || {{#language:agq}}
+| 152 || 0.00% ||  +0 || 29 || 2.46% ||  +0 || 12 ||  +0
+|-
+| aig || {{#language:aig|en}} || {{#language:aig}}
+| 22 || 1.87% || style="background-color:#9dc79d"| +7 || 11 || 9.36% || style="background-color:#9dc79d"| +7 || 6 ||  +0
+|-
+| ak || {{#language:ak|en}} || {{#language:ak}}
+| 563,911 || 0.48% || style="background-color:#c79d9d"| -111 || 239,861 || 0.20% || style="background-color:#9dc79d"| +5,948 || 171,098 || style="background-color:#c79d9d"| -50
+|-
+| aln || {{#language:aln|en}} || {{#language:aln}}
+| 468,328 || 0.39% || style="background-color:#9dc79d"| +413 || 437 || 0.00% || style="background-color:#9dc79d"| +2 || 173,379 || style="background-color:#c79d9d"| -45
+|-
+| als || {{#language:als|en}} || {{#language:als}}
+| 106,802 || 0.09% || style="background-color:#c79d9d"| -14 || 118,372 || 0.10% || style="background-color:#9dc79d"| +114 || 27 ||  +0
+|-
+| alt || {{#language:alt|en}} || {{#language:alt}}
+| 111,837 || 0.09% ||  +0 || 108,326 || 0.09% || style="background-color:#c79d9d"| -1 || 89 ||  +0
+|-
+| am || {{#language:am|en}} || {{#language:am}}
+| 281,052 || 0.23% || style="background-color:#9dc79d"| +7 || 397,701 || 0.33% || style="background-color:#9dc79d"| +5,878 || 449,283 || style="background-color:#c79d9d"| -20
+|-
+| ami || {{#language:ami|en}} || {{#language:ami}}
+| 3,455 || 0.00% || style="background-color:#c79d9d"| -40 || 15 || 1.27% ||  +0 || 136 || style="background-color:#c79d9d"| -2
+|-
+| an || {{#language:an|en}} || {{#language:an}}
+| 5,504,740 || 4.68% || style="background-color:#9dc79d"| +727 || 11,544,328 || 9.83% || style="background-color:#9dc79d"| +11,058 || 196,822 || style="background-color:#c79d9d"| -42
+|-
+| ang || {{#language:ang|en}} || {{#language:ang}}
+| 589,352 || 0.50% || style="background-color:#9dc79d"| +396 || 239,961 || 0.20% || style="background-color:#9dc79d"| +5,901 || 173,655 || style="background-color:#c79d9d"| -41
+|-
+| ann || {{#language:ann|en}} || {{#language:ann}}
+| 553 || 0.00% || style="background-color:#9dc79d"| +1 || 153 || 0.00% || style="background-color:#9dc79d"| +1 || 80 || style="background-color:#9dc79d"| +1
+|-
+| anp || {{#language:anp|en}} || {{#language:anp}}
+| 252,450 || 0.21% || style="background-color:#9dc79d"| +1 || 57,367 || 0.04% || style="background-color:#9dc79d"| +1 || 425,509 || style="background-color:#c79d9d"| -19
+|-
+| apc || {{#language:apc|en}} || {{#language:apc}}
+| 1,121 || 0.00% || style="background-color:#9dc79d"| +18 || 370 || 0.00% || style="background-color:#9dc79d"| +2 || 81 ||  +0
+|-
+| ar || {{#language:ar|en}} || {{#language:ar}}
+| 3,578,290 || 3.04% || style="background-color:#9dc79d"| +5,798 || 60,122,830 || 51.2% || style="background-color:#9dc79d"| +46,436 || 1,026,671 || style="background-color:#9dc79d"| +476
+|-
+| arc || {{#language:arc|en}} || {{#language:arc}}
+| 267,593 || 0.22% || style="background-color:#9dc79d"| +1 || 238,947 || 0.20% || style="background-color:#9dc79d"| +5,878 || 426,081 || style="background-color:#9dc79d"| +14
+|-
+| arn || {{#language:arn|en}} || {{#language:arn}}
+| 470,522 || 0.40% || style="background-color:#9dc79d"| +416 || 150 || 0.00% || style="background-color:#9dc79d"| +2 || 174,284 || style="background-color:#c79d9d"| -44
+|-
+| arq || {{#language:arq|en}} || {{#language:arq}}
+| 155,903 || 0.13% || style="background-color:#9dc79d"| +4 || 21,651 || 0.01% || style="background-color:#9dc79d"| +1,650 || 425,502 || style="background-color:#c79d9d"| -18
+|-
+| ary || {{#language:ary|en}} || {{#language:ary}}
+| 314,951 || 0.26% || style="background-color:#9dc79d"| +102 || 4,049,000 || 3.44% || style="background-color:#c79d9d"| -247 || 427,026 || style="background-color:#c79d9d"| -8
+|-
+| arz || {{#language:arz|en}} || {{#language:arz}}
+| 1,898,752 || 1.61% || style="background-color:#9dc79d"| +387 || 5,941,051 || 5.05% || style="background-color:#9dc79d"| +4,556 || 429,902 || style="background-color:#c79d9d"| -14
+|-
+| as || {{#language:as|en}} || {{#language:as}}
+| 583,024 || 0.49% || style="background-color:#9dc79d"| +296 || 3,287,289 || 2.79% || style="background-color:#9dc79d"| +6,456 || 449,015 || style="background-color:#c79d9d"| -7
+|-
+| ase || {{#language:ase|en}} || {{#language:ase}}
+| 153,153 || 0.13% ||  +0 || 10 || 8.51% || style="background-color:#9dc79d"| +2 || 150,869 ||  +0
+|-
+| ast || {{#language:ast|en}} || {{#language:ast}}
+| 19,026,557 || 16.2% || style="background-color:#c79d9d"| -280 || 58,275,338 || 49.6% || style="background-color:#9dc79d"| +18,163 || 550,299 || style="background-color:#9dc79d"| +178
+|-
+| atj || {{#language:atj|en}} || {{#language:atj}}
+| 567,504 || 0.48% || style="background-color:#9dc79d"| +21 || 261,177 || 0.22% || style="background-color:#9dc79d"| +1 || 170,191 || style="background-color:#c79d9d"| -51
+|-
+| av || {{#language:av|en}} || {{#language:av}}
+| 297,076 || 0.25% || style="background-color:#9dc79d"| +38 || 296,167 || 0.25% || style="background-color:#9dc79d"| +5,897 || 422,990 || style="background-color:#c79d9d"| -17
+|-
+| avk || {{#language:avk|en}} || {{#language:avk}}
+| 564,062 || 0.48% || style="background-color:#9dc79d"| +128 || 109,531 || 0.09% || style="background-color:#9dc79d"| +1 || 170,531 || style="background-color:#c79d9d"| -50
+|-
+| awa || {{#language:awa|en}} || {{#language:awa}}
+| 361,640 || 0.30% || style="background-color:#9dc79d"| +14 || 108,478 || 0.09% || style="background-color:#9dc79d"| +11 || 425,511 || style="background-color:#c79d9d"| -12
+|-
+| ay || {{#language:ay|en}} || {{#language:ay}}
+| 588,807 || 0.50% || style="background-color:#9dc79d"| +417 || 239,326 || 0.20% || style="background-color:#9dc79d"| +5,880 || 174,648 || style="background-color:#c79d9d"| -44
+|-
+| az || {{#language:az|en}} || {{#language:az}}
+| 753,212 || 0.64% || style="background-color:#9dc79d"| +1,652 || 1,500,192 || 1.27% || style="background-color:#9dc79d"| +10,945 || 607,239 || style="background-color:#9dc79d"| +95
+|-
+| azb || {{#language:azb|en}} || {{#language:azb}}
+| 755,917 || 0.64% || style="background-color:#9dc79d"| +71 || 309,505 || 0.26% || style="background-color:#9dc79d"| +6 || 167,661 || style="background-color:#c79d9d"| -50
+|-
+| ba || {{#language:ba|en}} || {{#language:ba}}
+| 390,856 || 0.33% || style="background-color:#9dc79d"| +27 || 7,072,536 || 6.02% || style="background-color:#9dc79d"| +8,668 || 449,099 || style="background-color:#c79d9d"| -14
+|-
+| bag || {{#language:bag|en}} || {{#language:bag}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 3 ||  +0
+|-
+| ban || {{#language:ban|en}} || {{#language:ban}}
+| 638,791 || 0.54% || style="background-color:#9dc79d"| +12,680 || 136,023 || 0.11% || style="background-color:#9dc79d"| +7,799 || 174,136 || style="background-color:#c79d9d"| -43
+|-
+| ban-bali || {{#language:ban-bali|en}} || {{#language:ban-bali}}
+| 757 || 0.00% ||  +0 || 4 || 3.40% ||  +0 || 10 ||  +0
+|-
+| bar || {{#language:bar|en}} || {{#language:bar}}
+| 1,812,715 || 1.54% || style="background-color:#9dc79d"| +448 || 7,599,549 || 6.47% || style="background-color:#9dc79d"| +9,099 || 204,417 || style="background-color:#c79d9d"| -55
+|-
+| bas || {{#language:bas|en}} || {{#language:bas}}
+| 213 || 0.00% ||  +0 || 12 || 1.02% ||  +0 || 5 ||  +0
+|-
+| bat-smg || {{#language:bat-smg|en}} || {{#language:bat-smg}}
+| 106,997 || 0.09% || style="background-color:#c79d9d"| -14 || 106,997 || 0.09% || style="background-color:#c79d9d"| -12 || 0 ||  +0
+|-
+| bax || {{#language:bax|en}} || {{#language:bax}}
+| 37 || 3.15% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| bbc || {{#language:bbc|en}} || {{#language:bbc}}
+| 477,291 || 0.40% || style="background-color:#9dc79d"| +12,009 || 48,582 || 0.04% || style="background-color:#9dc79d"| +7,793 || 171,821 || style="background-color:#c79d9d"| -47
+|-
+| bbc-latn || {{#language:bbc-latn|en}} || {{#language:bbc-latn}}
+| 420,817 || 0.35% || style="background-color:#9dc79d"| +22 || 73,093 || 0.06% || style="background-color:#9dc79d"| +1 || 168,589 || style="background-color:#c79d9d"| -50
+|-
+| bbj || {{#language:bbj|en}} || {{#language:bbj}}
+| 91 || 7.75% ||  +0 || 0 || 0% ||  +0 || 5 ||  +0
+|-
+| bcc || {{#language:bcc|en}} || {{#language:bcc}}
+| 252,262 || 0.21% || style="background-color:#9dc79d"| +1 || 389 || 0.00% || style="background-color:#9dc79d"| +2 || 426,005 || style="background-color:#c79d9d"| -19
+|-
+| bci || {{#language:bci|en}} || {{#language:bci}}
+| 36 || 3.06% || style="background-color:#9dc79d"| +1 || 10 || 8.51% ||  +0 || 7 ||  +0
+|-
+| bcl || {{#language:bcl|en}} || {{#language:bcl}}
+| 604,971 || 0.51% || style="background-color:#9dc79d"| +493 || 321,792 || 0.27% || style="background-color:#9dc79d"| +5,946 || 174,723 || style="background-color:#c79d9d"| -50
+|-
+| bdr || {{#language:bdr|en}} || {{#language:bdr}}
+| 493 || 0.00% ||  +0 || 37 || 3.15% ||  +0 || 42 || style="background-color:#c79d9d"| -1
+|-
+| be || {{#language:be|en}} || {{#language:be}}
+| 806,111 || 0.68% || style="background-color:#9dc79d"| +1,527 || 10,378,144 || 8.83% || style="background-color:#9dc79d"| +12,234 || 677,255 || style="background-color:#9dc79d"| +322
+|-
+| be-tarask || {{#language:be-tarask|en}} || {{#language:be-tarask}}
+| 628,393 || 0.53% || style="background-color:#9dc79d"| +1,524 || 9,251,959 || 7.87% || style="background-color:#9dc79d"| +12,974 || 670,890 || style="background-color:#9dc79d"| +274
+|-
+| be-x-old || {{#language:be-x-old|en}} || {{#language:be-x-old}}
+| 59 || 5.02% ||  +0 || 880 || 0.00% ||  +0 || 15 ||  +0
+|-
+| bew || {{#language:bew|en}} || {{#language:bew}}
+| 50,456 || 0.04% || style="background-color:#9dc79d"| +11,885 || 14,406 || 0.01% || style="background-color:#9dc79d"| +7,760 || 1,721 || style="background-color:#9dc79d"| +6
+|-
+| bfd || {{#language:bfd|en}} || {{#language:bfd}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| bg || {{#language:bg|en}} || {{#language:bg}}
+| 4,820,008 || 4.10% || style="background-color:#9dc79d"| +441 || 41,895,956 || 35.6% || style="background-color:#9dc79d"| +18,096 || 703,745 || style="background-color:#9dc79d"| +98
+|-
+| bgc || {{#language:bgc|en}} || {{#language:bgc}}
+| 1 || 8.51% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| bgn || {{#language:bgn|en}} || {{#language:bgn}}
+| 250,536 || 0.21% || style="background-color:#9dc79d"| +1 || 12 || 1.02% || style="background-color:#9dc79d"| +1 || 425,151 || style="background-color:#c79d9d"| -19
+|-
+| bh || {{#language:bh|en}} || {{#language:bh}}
+| 494 || 0.00% || style="background-color:#c79d9d"| -16 || 3,211 || 0.00% || style="background-color:#9dc79d"| +1 || 7 ||  +0
+|-
+| bho || {{#language:bho|en}} || {{#language:bho}}
+| 388,364 || 0.33% || style="background-color:#9dc79d"| +11 || 6,096,902 || 5.19% || style="background-color:#9dc79d"| +8,522 || 427,879 || style="background-color:#c79d9d"| -17
+|-
+| bi || {{#language:bi|en}} || {{#language:bi}}
+| 508,938 || 0.43% || style="background-color:#9dc79d"| +413 || 166,023 || 0.14% || style="background-color:#c79d9d"| -20 || 174,714 || style="background-color:#c79d9d"| -40
+|-
+| bjn || {{#language:bjn|en}} || {{#language:bjn}}
+| 302,107 || 0.25% || style="background-color:#9dc79d"| +11,871 || 5,823,560 || 4.95% || style="background-color:#9dc79d"| +16,322 || 434,651 || style="background-color:#c79d9d"| -5
+|-
+| bkc || {{#language:bkc|en}} || {{#language:bkc}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| bkh || {{#language:bkh|en}} || {{#language:bkh}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| bkm || {{#language:bkm|en}} || {{#language:bkm}}
+| 84 || 7.15% ||  +0 || 0 || 0% ||  +0 || 2 ||  +0
+|-
+| blk || {{#language:blk|en}} || {{#language:blk}}
+| 4,239 || 0.00% || style="background-color:#9dc79d"| +18 || 299 || 0.00% || style="background-color:#c79d9d"| -2 || 51 || style="background-color:#9dc79d"| +1
+|-
+| bm || {{#language:bm|en}} || {{#language:bm}}
+| 615,609 || 0.52% || style="background-color:#9dc79d"| +410 || 180,477 || 0.15% || style="background-color:#9dc79d"| +5,878 || 176,582 || style="background-color:#c79d9d"| -43
+|-
+| bn || {{#language:bn|en}} || {{#language:bn}}
+| 10,151,220 || 8.64% || style="background-color:#9dc79d"| +2,306 || 48,417,811 || 41.2% || style="background-color:#9dc79d"| +84,141 || 655,995 || style="background-color:#9dc79d"| +129
+|-
+| bo || {{#language:bo|en}} || {{#language:bo}}
+| 290,053 || 0.24% || style="background-color:#9dc79d"| +16 || 211,694 || 0.18% || style="background-color:#9dc79d"| +5,949 || 441,363 || style="background-color:#9dc79d"| +1
+|-
+| bpy || {{#language:bpy|en}} || {{#language:bpy}}
+| 356,461 || 0.30% || style="background-color:#9dc79d"| +1 || 1,629,968 || 1.38% || style="background-color:#9dc79d"| +7,405 || 425,676 || style="background-color:#c79d9d"| -19
+|-
+| bqi || {{#language:bqi|en}} || {{#language:bqi}}
+| 252,200 || 0.21% ||  +0 || 1 || 8.51% ||  +0 || 426,006 || style="background-color:#c79d9d"| -19
+|-
+| br || {{#language:br|en}} || {{#language:br}}
+| 1,797,251 || 1.53% || style="background-color:#9dc79d"| +527 || 7,816,828 || 6.65% || style="background-color:#9dc79d"| +11,288 || 206,731 || style="background-color:#c79d9d"| -32
+|-
+| brh || {{#language:brh|en}} || {{#language:brh}}
+| 199,123 || 0.16% || style="background-color:#9dc79d"| +394 || 15 || 1.27% ||  +0 || 430,102 || style="background-color:#c79d9d"| -13
+|-
+| bs || {{#language:bs|en}} || {{#language:bs}}
+| 1,128,451 || 0.96% || style="background-color:#9dc79d"| +867 || 9,610,047 || 8.18% || style="background-color:#9dc79d"| +10,799 || 183,850 || style="background-color:#c79d9d"| -28
+|-
+| btm || {{#language:btm|en}} || {{#language:btm}}
+| 154,525 || 0.13% || style="background-color:#9dc79d"| +24 || 6,310 || 0.00% || style="background-color:#9dc79d"| +21 || 150,935 || style="background-color:#9dc79d"| +21
+|-
+| bto || {{#language:bto|en}} || {{#language:bto}}
+| 426,373 || 0.36% || style="background-color:#c79d9d"| -23 || 33 || 2.81% ||  +0 || 169,646 || style="background-color:#c79d9d"| -54
+|-
+| bug || {{#language:bug|en}} || {{#language:bug}}
+| 245,365 || 0.20% || style="background-color:#c79d9d"| -41 || 5,699,293 || 4.85% || style="background-color:#9dc79d"| +8,521 || 428,974 || style="background-color:#c79d9d"| -22
+|-
+| bug-bugi || {{#language:bug-bugi|en}} || {{#language:bug-bugi}}
+| 11 || 9.36% ||  +0 || 9 || 7.66% ||  +0 || 9 ||  +0
+|-
+| bxr || {{#language:bxr|en}} || {{#language:bxr}}
+| 164,817 || 0.14% || style="background-color:#9dc79d"| +2 || 198,467 || 0.16% || style="background-color:#c79d9d"| -34 || 421,922 || style="background-color:#c79d9d"| -17
+|-
+| byv || {{#language:byv|en}} || {{#language:byv}}
+| 83 || 7.06% ||  +0 || 0 || 0% ||  +0 || 4 ||  +0
+|-
+| ca || {{#language:ca|en}} || {{#language:ca}}
+| 9,509,915 || 8.09% || style="background-color:#9dc79d"| +3,664 || 47,712,555 || 40.6% || style="background-color:#9dc79d"| +22,548 || 475,066 || style="background-color:#9dc79d"| +999
+|-
+| cak || {{#language:cak|en}} || {{#language:cak}}
+| 6 || 5.11% ||  +0 || 3 || 2.55% ||  +0 || 1 ||  +0
+|-
+| cal || {{#language:cal|en}} || {{#language:cal}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| cbk-zam || {{#language:cbk-zam|en}} || {{#language:cbk-zam}}
+| 477,396 || 0.40% || style="background-color:#9dc79d"| +369 || 153,320 || 0.13% || style="background-color:#9dc79d"| +5,950 || 174,329 || style="background-color:#c79d9d"| -52
+|-
+| ccp || {{#language:ccp|en}} || {{#language:ccp}}
+| 3 || 2.55% ||  +0 || 1,195 || 0.00% ||  +0 || 2 ||  +0
+|-
+| cdo || {{#language:cdo|en}} || {{#language:cdo}}
+| 230,615 || 0.19% || style="background-color:#9dc79d"| +394 || 238,246 || 0.20% || style="background-color:#9dc79d"| +106 || 431,230 || style="background-color:#c79d9d"| -8
+|-
+| cdo-latn || {{#language:cdo-latn|en}} || {{#language:cdo-latn}}
+| 8 || 6.81% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| ce || {{#language:ce|en}} || {{#language:ce}}
+| 787,249 || 0.67% || style="background-color:#9dc79d"| +93,078 || 1,238,529 || 1.05% || style="background-color:#9dc79d"| +5,930 || 429,770 || style="background-color:#c79d9d"| -21
+|-
+| ceb || {{#language:ceb|en}} || {{#language:ceb}}
+| 8,295,541 || 7.06% || style="background-color:#9dc79d"| +387 || 903,364 || 0.76% || style="background-color:#9dc79d"| +6,281 || 246,759 || style="background-color:#9dc79d"| +71
+|-
+| ch || {{#language:ch|en}} || {{#language:ch}}
+| 473,205 || 0.40% || style="background-color:#9dc79d"| +410 || 144,453 || 0.12% || style="background-color:#c79d9d"| -19 || 174,143 || style="background-color:#c79d9d"| -44
+|-
+| chn || {{#language:chn|en}} || {{#language:chn}}
+| 1 || 8.51% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| cho || {{#language:cho|en}} || {{#language:cho}}
+| 472,838 || 0.40% || style="background-color:#9dc79d"| +411 || 5 || 4.25% ||  +0 || 174,113 || style="background-color:#c79d9d"| -44
+|-
+| chr || {{#language:chr|en}} || {{#language:chr}}
+| 199,398 || 0.16% || style="background-color:#9dc79d"| +400 || 249,818 || 0.21% || style="background-color:#9dc79d"| +92 || 429,440 || style="background-color:#c79d9d"| -15
+|-
+| chy || {{#language:chy|en}} || {{#language:chy}}
+| 473,376 || 0.40% || style="background-color:#9dc79d"| +414 || 143,211 || 0.12% || style="background-color:#9dc79d"| +95 || 174,146 || style="background-color:#c79d9d"| -44
+|-
+| ckb || {{#language:ckb|en}} || {{#language:ckb}}
+| 606,468 || 0.51% || style="background-color:#9dc79d"| +684 || 7,305,529 || 6.22% || style="background-color:#9dc79d"| +10,685 || 428,389 || style="background-color:#c79d9d"| -11
+|-
+| cnh || {{#language:cnh|en}} || {{#language:cnh}}
+| 5 || 4.25% ||  +0 || 2 || 1.70% ||  +0 || 0 ||  +0
+|-
+| co || {{#language:co|en}} || {{#language:co}}
+| 1,448,811 || 1.23% || style="background-color:#9dc79d"| +350 || 212,713 || 0.18% || style="background-color:#c79d9d"| -19 || 194,130 || style="background-color:#c79d9d"| -45
+|-
+| cop || {{#language:cop|en}} || {{#language:cop}}
+| 20 || 1.70% ||  +0 || 7 || 5.96% ||  +0 || 3 ||  +0
+|-
+| cps || {{#language:cps|en}} || {{#language:cps}}
+| 426,514 || 0.36% || style="background-color:#c79d9d"| -24 || 17 || 1.44% ||  +0 || 169,563 || style="background-color:#c79d9d"| -54
+|-
+| cpx || {{#language:cpx|en}} || {{#language:cpx}}
+| 14 || 1.19% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 6 ||  +0
+|-
+| cpx-hans || {{#language:cpx-hans|en}} || {{#language:cpx-hans}}
+| 1 || 8.51% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| cpx-hant || {{#language:cpx-hant|en}} || {{#language:cpx-hant}}
+| 2 || 1.70% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 2 ||  +0
+|-
+| cpx-latn || {{#language:cpx-latn|en}} || {{#language:cpx-latn}}
+| 5 || 4.25% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| cr || {{#language:cr|en}} || {{#language:cr}}
+| 203,031 || 0.17% || style="background-color:#9dc79d"| +388 || 143,222 || 0.12% || style="background-color:#9dc79d"| +94 || 429,406 || style="background-color:#c79d9d"| -8
+|-
+| crh || {{#language:crh|en}} || {{#language:crh}}
+| 382,548 || 0.32% || style="background-color:#9dc79d"| +44 || 550,914 || 0.46% || style="background-color:#9dc79d"| +135 || 167,279 || style="background-color:#c79d9d"| -50
+|-
+| crh-cyrl || {{#language:crh-cyrl|en}} || {{#language:crh-cyrl}}
+| 158,375 || 0.13% ||  +0 || 3 || 2.55% ||  +0 || 421,723 || style="background-color:#c79d9d"| -17
+|-
+| crh-latn || {{#language:crh-latn|en}} || {{#language:crh-latn}}
+| 479,650 || 0.40% || style="background-color:#9dc79d"| +416 || 152,704 || 0.13% || style="background-color:#9dc79d"| +5,877 || 174,418 || style="background-color:#c79d9d"| -44
+|-
+| crh-ro || {{#language:crh-ro|en}} || {{#language:crh-ro}}
+| 248 || 0.00% || style="background-color:#c79d9d"| -1 || 118 || 0.00% ||  +0 || 91 ||  +0
+|-
+| cs || {{#language:cs|en}} || {{#language:cs}}
+| 4,849,343 || 4.13% || style="background-color:#9dc79d"| +3,617 || 44,440,264 || 37.8% || style="background-color:#9dc79d"| +19,911 || 737,264 || style="background-color:#9dc79d"| +809
+|-
+| csb || {{#language:csb|en}} || {{#language:csb}}
+| 677,144 || 0.57% || style="background-color:#9dc79d"| +419 || 705,318 || 0.60% || style="background-color:#9dc79d"| +6,020 || 175,026 || style="background-color:#c79d9d"| -43
+|-
+| cu || {{#language:cu|en}} || {{#language:cu}}
+| 199,650 || 0.17% || style="background-color:#9dc79d"| +396 || 141,546 || 0.12% || style="background-color:#c79d9d"| -26 || 429,601 || style="background-color:#9dc79d"| +21
+|-
+| cv || {{#language:cv|en}} || {{#language:cv}}
+| 246,071 || 0.20% || style="background-color:#9dc79d"| +194 || 819,690 || 0.69% || style="background-color:#9dc79d"| +6,018 || 615,086 || style="background-color:#c79d9d"| -24
+|-
+| cy || {{#language:cy|en}} || {{#language:cy}}
+| 2,569,494 || 2.18% || style="background-color:#9dc79d"| +1,345 || 9,693,984 || 8.25% || style="background-color:#9dc79d"| +9,114 || 224,857 || style="background-color:#9dc79d"| +19
+|-
+| da || {{#language:da|en}} || {{#language:da}}
+| 3,990,385 || 3.39% || style="background-color:#9dc79d"| +1,051 || 41,929,629 || 35.7% || style="background-color:#9dc79d"| +18,724 || 353,601 || style="background-color:#9dc79d"| +208
+|-
+| dag || {{#language:dag|en}} || {{#language:dag}}
+| 294,525 || 0.25% || style="background-color:#9dc79d"| +534 || 792,839 || 0.67% || style="background-color:#9dc79d"| +114 || 6,688 || style="background-color:#9dc79d"| +18
+|-
+| de || {{#language:de|en}} || {{#language:de}}
+| 17,087,542 || 14.5% || style="background-color:#9dc79d"| +14,520 || 71,867,106 || 61.2% || style="background-color:#9dc79d"| +27,809 || 1,909,775 || style="background-color:#9dc79d"| +2,482
+|-
+| de-at || {{#language:de-at|en}} || {{#language:de-at}}
+| 1,637,216 || 1.39% || style="background-color:#9dc79d"| +119 || 7,305,351 || 6.22% || style="background-color:#c79d9d"| -131 || 199,238 || style="background-color:#c79d9d"| -39
+|-
+| de-ch || {{#language:de-ch|en}} || {{#language:de-ch}}
+| 1,651,859 || 1.40% || style="background-color:#9dc79d"| +343 || 8,186,891 || 6.97% || style="background-color:#9dc79d"| +201 || 196,890 || style="background-color:#c79d9d"| -39
+|-
+| de-formal || {{#language:de-formal|en}} || {{#language:de-formal}}
+| 151,406 || 0.12% || style="background-color:#9dc79d"| +2 || 225 || 0.00% || style="background-color:#9dc79d"| +4 || 150,887 ||  +0
+|-
+| dga || {{#language:dga|en}} || {{#language:dga}}
+| 3,447 || 0.00% || style="background-color:#9dc79d"| +25 || 1,952 || 0.00% || style="background-color:#9dc79d"| +15 || 1,216 || style="background-color:#9dc79d"| +15
+|-
+| din || {{#language:din|en}} || {{#language:din}}
+| 425,679 || 0.36% || style="background-color:#9dc79d"| +20 || 32 || 2.72% ||  +0 || 169,568 || style="background-color:#c79d9d"| -51
+|-
+| diq || {{#language:diq|en}} || {{#language:diq}}
+| 255,683 || 0.21% || style="background-color:#9dc79d"| +380 || 184,474 || 0.15% || style="background-color:#9dc79d"| +7,528 || 431,104 || style="background-color:#c79d9d"| -8
+|-
+| dlg || {{#language:dlg|en}} || {{#language:dlg}}
+| 1 || 8.51% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| dsb || {{#language:dsb|en}} || {{#language:dsb}}
+| 535,988 || 0.45% || style="background-color:#9dc79d"| +391 || 183,416 || 0.15% || style="background-color:#9dc79d"| +7,595 || 176,416 || style="background-color:#c79d9d"| -47
+|-
+| dso || {{#language:dso|en}} || {{#language:dso}}
+| 2 || 1.70% || style="background-color:#c79d9d"| -1 || 2 || 1.70% || style="background-color:#c79d9d"| -1 || 1 || style="background-color:#c79d9d"| -1
+|-
+| dtp || {{#language:dtp|en}} || {{#language:dtp}}
+| 473,900 || 0.40% || style="background-color:#9dc79d"| +452 || 108,906 || 0.09% || style="background-color:#c79d9d"| -1 || 173,667 || style="background-color:#c79d9d"| -45
+|-
+| dty || {{#language:dty|en}} || {{#language:dty}}
+| 255,489 || 0.21% || style="background-color:#9dc79d"| +3 || 4,745,470 || 4.04% || style="background-color:#c79d9d"| -1,409 || 425,558 || style="background-color:#c79d9d"| -18
+|-
+| dua || {{#language:dua|en}} || {{#language:dua}}
+| 95 || 8.09% || style="background-color:#c79d9d"| -1 || 11 || 9.36% || style="background-color:#c79d9d"| -1 || 3 || style="background-color:#c79d9d"| -1
+|-
+| dv || {{#language:dv|en}} || {{#language:dv}}
+| 530,505 || 0.45% || style="background-color:#9dc79d"| +6 || 3,546,969 || 3.02% || style="background-color:#9dc79d"| +5,878 || 425,798 || style="background-color:#c79d9d"| -20
+|-
+| dz || {{#language:dz|en}} || {{#language:dz}}
+| 251,564 || 0.21% || style="background-color:#9dc79d"| +5 || 56 || 4.76% ||  +0 || 425,647 || style="background-color:#9dc79d"| +15
+|-
+| ee || {{#language:ee|en}} || {{#language:ee}}
+| 601,344 || 0.51% || style="background-color:#9dc79d"| +448 || 234,066 || 0.19% || style="background-color:#c79d9d"| -4 || 175,159 || style="background-color:#c79d9d"| -35
+|-
+| efi || {{#language:efi|en}} || {{#language:efi}}
+| 3 || 2.55% || style="background-color:#c79d9d"| -1 || 3 || 2.55% ||  +0 || 1 ||  +0
+|-
+| egl || {{#language:egl|en}} || {{#language:egl}}
+| 437,799 || 0.37% || style="background-color:#9dc79d"| +18 || 16 || 1.36% ||  +0 || 170,299 || style="background-color:#c79d9d"| -51
+|-
+| el || {{#language:el|en}} || {{#language:el}}
+| 1,075,410 || 0.91% || style="background-color:#9dc79d"| +207,665 || 39,240,622 || 33.4% || style="background-color:#9dc79d"| +223,920 || 880,443 || style="background-color:#9dc79d"| +199,741
+|-
+| eml || {{#language:eml|en}} || {{#language:eml}}
+| 610,685 || 0.52% || style="background-color:#9dc79d"| +460 || 433,294 || 0.36% || style="background-color:#9dc79d"| +5,880 || 175,512 || style="background-color:#c79d9d"| -46
+|-
+| en || {{#language:en|en}} || {{#language:en}}
+| 90,435,660 || 77.0% || style="background-color:#9dc79d"| +105,804 || 99,522,405 || 84.7% || style="background-color:#9dc79d"| +168,962 || 8,641,691 || style="background-color:#9dc79d"| +11,868
+|-
+| en-ca || {{#language:en-ca|en}} || {{#language:en-ca}}
+| 2,478,255 || 2.11% || style="background-color:#9dc79d"| +486 || 29,471,012 || 25.0% || style="background-color:#c79d9d"| -407,664 || 205,386 || style="background-color:#c79d9d"| -32
+|-
+| en-gb || {{#language:en-gb|en}} || {{#language:en-gb}}
+| 3,139,816 || 2.67% || style="background-color:#9dc79d"| +764 || 32,704,578 || 27.8% || style="background-color:#c79d9d"| -406,671 || 264,500 || style="background-color:#9dc79d"| +49
+|-
+| en-us || {{#language:en-us|en}} || {{#language:en-us}}
+| 287,098 || 0.24% || style="background-color:#9dc79d"| +1,118 || 899,498 || 0.76% || style="background-color:#9dc79d"| +899 || 27,097 || style="background-color:#9dc79d"| +193
+|-
+| eo || {{#language:eo|en}} || {{#language:eo}}
+| 6,085,943 || 5.18% || style="background-color:#9dc79d"| +1,746 || 43,492,524 || 37.0% || style="background-color:#9dc79d"| +19,325 || 276,962 || style="background-color:#9dc79d"| +568
+|-
+| es || {{#language:es|en}} || {{#language:es}}
+| 16,169,084 || 13.7% || style="background-color:#9dc79d"| +6,847 || 61,583,515 || 52.4% || style="background-color:#9dc79d"| +28,128 || 1,244,195 || style="background-color:#9dc79d"| +2,089
+|-
+| es-419 || {{#language:es-419|en}} || {{#language:es-419}}
+| 160,561 || 0.13% || style="background-color:#9dc79d"| +34 || 4,304 || 0.00% || style="background-color:#9dc79d"| +33 || 152,270 || style="background-color:#9dc79d"| +2
+|-
+| es-formal || {{#language:es-formal|en}} || {{#language:es-formal}}
+| 151,994 || 0.12% || style="background-color:#c79d9d"| -4 || 397 || 0.00% || style="background-color:#c79d9d"| -1 || 150,982 || style="background-color:#c79d9d"| -3
+|-
+| et || {{#language:et|en}} || {{#language:et}}
+| 2,083,800 || 1.77% || style="background-color:#9dc79d"| +1,584 || 39,362,784 || 33.5% || style="background-color:#9dc79d"| +19,752 || 246,624 || style="background-color:#c79d9d"| -86
+|-
+| eto || {{#language:eto|en}} || {{#language:eto}}
+| 83 || 7.06% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| etu || {{#language:etu|en}} || {{#language:etu}}
+| 81 || 6.89% || style="background-color:#9dc79d"| +1 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| eu || {{#language:eu|en}} || {{#language:eu}}
+| 6,354,565 || 5.41% || style="background-color:#9dc79d"| +2,413 || 13,058,602 || 11.1% || style="background-color:#9dc79d"| +11,461 || 251,568 || style="background-color:#9dc79d"| +87
+|-
+| ewo || {{#language:ewo|en}} || {{#language:ewo}}
+| 84 || 7.15% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| ext || {{#language:ext|en}} || {{#language:ext}}
+| 4,309,421 || 3.67% || style="background-color:#9dc79d"| +453 || 388,606 || 0.33% || style="background-color:#9dc79d"| +5,969 || 176,897 || style="background-color:#c79d9d"| -32
+|-
+| fa || {{#language:fa|en}} || {{#language:fa}}
+| 2,568,253 || 2.18% || style="background-color:#9dc79d"| +4,654 || 18,572,040 || 15.8% || style="background-color:#9dc79d"| +10,663 || 722,514 || style="background-color:#9dc79d"| +68
+|-
+| fat || {{#language:fat|en}} || {{#language:fat}}
+| 2,079 || 0.00% || style="background-color:#9dc79d"| +33 || 19,723 || 0.01% || style="background-color:#9dc79d"| +3 || 472 || style="background-color:#9dc79d"| +13
+|-
+| ff || {{#language:ff|en}} || {{#language:ff}}
+| 605,112 || 0.51% || style="background-color:#9dc79d"| +1,138 || 239,023 || 0.20% || style="background-color:#9dc79d"| +5,876 || 174,773 || style="background-color:#c79d9d"| -47
+|-
+| fi || {{#language:fi|en}} || {{#language:fi}}
+| 7,633,821 || 6.50% || style="background-color:#9dc79d"| +1,570 || 39,689,926 || 33.8% || style="background-color:#9dc79d"| +18,059 || 431,898 || style="background-color:#9dc79d"| +93
+|-
+| fit || {{#language:fit|en}} || {{#language:fit}}
+| 682,041 || 0.58% || style="background-color:#9dc79d"| +424 || 550,776 || 0.46% || style="background-color:#9dc79d"| +137 || 176,027 || style="background-color:#c79d9d"| -42
+|-
+| fiu-vro || {{#language:fiu-vro|en}} || {{#language:fiu-vro}}
+| 106,804 || 0.09% || style="background-color:#c79d9d"| -17 || 109,120 || 0.09% || style="background-color:#9dc79d"| +113 || 0 || style="background-color:#c79d9d"| -1
+|-
+| fj || {{#language:fj|en}} || {{#language:fj}}
+| 594,821 || 0.50% || style="background-color:#9dc79d"| +369 || 230,317 || 0.19% || style="background-color:#c79d9d"| -21 || 174,845 || style="background-color:#c79d9d"| -43
+|-
+| fkv || {{#language:fkv|en}} || {{#language:fkv}}
+| 155,297 || 0.13% || style="background-color:#9dc79d"| +2 || 2 || 1.70% ||  +0 || 151,088 || style="background-color:#9dc79d"| +2
+|-
+| fmp || {{#language:fmp|en}} || {{#language:fmp}}
+| 104 || 8.85% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| fo || {{#language:fo|en}} || {{#language:fo}}
+| 902,990 || 0.76% || style="background-color:#9dc79d"| +398 || 6,341,123 || 5.40% || style="background-color:#9dc79d"| +4,785 || 178,315 || style="background-color:#c79d9d"| -47
+|-
+| fon || {{#language:fon|en}} || {{#language:fon}}
+| 2,277 || 0.00% || style="background-color:#9dc79d"| +56 || 1,285 || 0.00% || style="background-color:#9dc79d"| +12 || 119 || style="background-color:#9dc79d"| +5
+|-
+| fr || {{#language:fr|en}} || {{#language:fr}}
+| 17,962,070 || 15.2% || style="background-color:#9dc79d"| +64,449 || 64,141,657 || 54.6% || style="background-color:#9dc79d"| +113,134 || 2,120,370 || style="background-color:#9dc79d"| +2,529
+|-
+| frc || {{#language:frc|en}} || {{#language:frc}}
+| 600,043 || 0.51% || style="background-color:#9dc79d"| +11 || 228,131 || 0.19% ||  +0 || 173,611 || style="background-color:#c79d9d"| -50
+|-
+| frp || {{#language:frp|en}} || {{#language:frp}}
+| 1,355,312 || 1.15% || style="background-color:#9dc79d"| +364 || 245,765 || 0.20% || style="background-color:#9dc79d"| +5,947 || 185,198 || style="background-color:#c79d9d"| -42
+|-
+| frr || {{#language:frr|en}} || {{#language:frr}}
+| 675,770 || 0.57% || style="background-color:#9dc79d"| +399 || 1,346,696 || 1.14% || style="background-color:#9dc79d"| +7,374 || 177,070 || style="background-color:#c79d9d"| -47
+|-
+| fur || {{#language:fur|en}} || {{#language:fur}}
+| 1,387,232 || 1.18% || style="background-color:#9dc79d"| +380 || 297,545 || 0.25% || style="background-color:#9dc79d"| +5,879 || 185,841 || style="background-color:#c79d9d"| -41
+|-
+| fy || {{#language:fy|en}} || {{#language:fy}}
+| 946,499 || 0.80% || style="background-color:#9dc79d"| +673 || 10,674,397 || 9.09% || style="background-color:#9dc79d"| +10,788 || 182,757 || style="background-color:#c79d9d"| -47
+|-
+| ga || {{#language:ga|en}} || {{#language:ga}}
+| 10,647,027 || 9.06% || style="background-color:#c79d9d"| -89 || 15,789,694 || 13.4% || style="background-color:#9dc79d"| +5,115 || 217,038 || style="background-color:#9dc79d"| +58
+|-
+| gaa || {{#language:gaa|en}} || {{#language:gaa}}
+| 1,718 || 0.00% || style="background-color:#9dc79d"| +88 || 208 || 0.00% || style="background-color:#9dc79d"| +4 || 699 || style="background-color:#9dc79d"| +49
+|-
+| gag || {{#language:gag|en}} || {{#language:gag}}
+| 585,506 || 0.49% || style="background-color:#9dc79d"| +413 || 238,633 || 0.20% || style="background-color:#9dc79d"| +5,879 || 174,211 || style="background-color:#c79d9d"| -45
+|-
+| gan || {{#language:gan|en}} || {{#language:gan}}
+| 1,022,993 || 0.87% || style="background-color:#9dc79d"| +2 || 791,669 || 0.67% || style="background-color:#9dc79d"| +6,082 || 617,644 || style="background-color:#c79d9d"| -27
+|-
+| gan-hans || {{#language:gan-hans|en}} || {{#language:gan-hans}}
+| 898,904 || 0.76% || style="background-color:#c79d9d"| -2 || 552,103 || 0.47% || style="background-color:#9dc79d"| +137 || 616,947 || style="background-color:#c79d9d"| -28
+|-
+| gan-hant || {{#language:gan-hant|en}} || {{#language:gan-hant}}
+| 157,395 || 0.13% || style="background-color:#9dc79d"| +1 || 552,074 || 0.47% || style="background-color:#9dc79d"| +138 || 616,835 || style="background-color:#c79d9d"| -28
+|-
+| gcf || {{#language:gcf|en}} || {{#language:gcf}}
+| 1 || 8.51% || style="background-color:#c79d9d"| -1 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| gcr || {{#language:gcr|en}} || {{#language:gcr}}
+| 264,074 || 0.22% || style="background-color:#9dc79d"| +1 || 568,782 || 0.48% || style="background-color:#c79d9d"| -1 || 150,966 ||  +0
+|-
+| gd || {{#language:gd|en}} || {{#language:gd}}
+| 1,610,775 || 1.37% || style="background-color:#9dc79d"| +362 || 903,229 || 0.76% || style="background-color:#9dc79d"| +6,024 || 187,925 || style="background-color:#c79d9d"| -41
+|-
+| gju-deva || {{#language:gju-deva|en}} || {{#language:gju-deva}}
+| 0 || 0% || style="background-color:#c79d9d"| -1 || 0 || 0% || style="background-color:#c79d9d"| -1 || 0 ||  +0
+|-
+| gl || {{#language:gl|en}} || {{#language:gl}}
+| 6,353,924 || 5.41% || style="background-color:#9dc79d"| +2,731 || 45,766,498 || 38.9% || style="background-color:#9dc79d"| +21,408 || 298,984 || style="background-color:#9dc79d"| +130
+|-
+| gld || {{#language:gld|en}} || {{#language:gld}}
+| 1 || 8.51% || style="background-color:#c79d9d"| -1 || 0 || 0% ||  +0 || 2 ||  +0
+|-
+| glk || {{#language:glk|en}} || {{#language:glk}}
+| 405,389 || 0.34% || style="background-color:#9dc79d"| +9 || 238,706 || 0.20% || style="background-color:#9dc79d"| +5,879 || 425,951 || style="background-color:#c79d9d"| -19
+|-
+| gn || {{#language:gn|en}} || {{#language:gn}}
+| 589,424 || 0.50% || style="background-color:#9dc79d"| +434 || 5,101,002 || 4.34% || style="background-color:#9dc79d"| +4,463 || 175,109 || style="background-color:#c79d9d"| -41
+|-
+| gom || {{#language:gom|en}} || {{#language:gom}}
+| 267,664 || 0.22% || style="background-color:#9dc79d"| +3 || 108,408 || 0.09% || style="background-color:#c79d9d"| -1 || 425,316 || style="background-color:#c79d9d"| -19
+|-
+| gom-deva || {{#language:gom-deva|en}} || {{#language:gom-deva}}
+| 251,031 || 0.21% ||  +0 || 6 || 5.11% ||  +0 || 425,238 || style="background-color:#c79d9d"| -19
+|-
+| gom-latn || {{#language:gom-latn|en}} || {{#language:gom-latn}}
+| 421,140 || 0.35% || style="background-color:#9dc79d"| +21 || 4 || 3.40% ||  +0 || 168,490 || style="background-color:#c79d9d"| -50
+|-
+| gor || {{#language:gor|en}} || {{#language:gor}}
+| 589,961 || 0.50% || style="background-color:#c79d9d"| -18 || 108,894 || 0.09% || style="background-color:#c79d9d"| -1 || 176,624 || style="background-color:#c79d9d"| -53
+|-
+| got || {{#language:got|en}} || {{#language:got}}
+| 307,686 || 0.26% || style="background-color:#9dc79d"| +401 || 238,598 || 0.20% || style="background-color:#9dc79d"| +5,881 || 429,398 || style="background-color:#c79d9d"| -9
+|-
+| gpe || {{#language:gpe|en}} || {{#language:gpe}}
+| 47,114 || 0.04% || style="background-color:#9dc79d"| +582 || 14,031 || 0.01% || style="background-color:#9dc79d"| +109 || 5,840 || style="background-color:#9dc79d"| +53
+|-
+| grc || {{#language:grc|en}} || {{#language:grc}}
+| 162,288 || 0.13% || style="background-color:#9dc79d"| +56 || 10,576 || 0.00% || style="background-color:#9dc79d"| +2 || 425,207 || style="background-color:#c79d9d"| -17
+|-
+| gsw || {{#language:gsw|en}} || {{#language:gsw}}
+| 1,688,719 || 1.43% || style="background-color:#9dc79d"| +352 || 9,180,634 || 7.81% || style="background-color:#9dc79d"| +10,447 || 191,924 || style="background-color:#c79d9d"| -42
+|-
+| gu || {{#language:gu|en}} || {{#language:gu}}
+| 604,495 || 0.51% || style="background-color:#9dc79d"| +130 || 9,220,423 || 7.85% || style="background-color:#9dc79d"| +10,025 || 621,253 || style="background-color:#9dc79d"| +26
+|-
+| guc || {{#language:guc|en}} || {{#language:guc}}
+| 1,382 || 0.00% || style="background-color:#9dc79d"| +10 || 47,679 || 0.04% || style="background-color:#9dc79d"| +11 || 98 ||  +0
+|-
+| gur || {{#language:gur|en}} || {{#language:gur}}
+| 2,819 || 0.00% || style="background-color:#9dc79d"| +18 || 1,521 || 0.00% || style="background-color:#9dc79d"| +3 || 688 || style="background-color:#9dc79d"| +6
+|-
+| guw || {{#language:guw|en}} || {{#language:guw}}
+| 2,825 || 0.00% || style="background-color:#9dc79d"| +3 || 82 || 6.98% ||  +0 || 83 || style="background-color:#c79d9d"| -1
+|-
+| gv || {{#language:gv|en}} || {{#language:gv}}
+| 776,950 || 0.66% || style="background-color:#9dc79d"| +866 || 5,836,919 || 4.97% || style="background-color:#9dc79d"| +5,015 || 177,248 || style="background-color:#c79d9d"| -43
+|-
+| gya || {{#language:gya|en}} || {{#language:gya}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| ha || {{#language:ha|en}} || {{#language:ha}}
+| 637,319 || 0.54% || style="background-color:#9dc79d"| +1,175 || 257,617 || 0.21% || style="background-color:#9dc79d"| +610 || 180,835 || style="background-color:#9dc79d"| +129
+|-
+| hak || {{#language:hak|en}} || {{#language:hak}}
+| 220,841 || 0.18% || style="background-color:#9dc79d"| +404 || 346,941 || 0.29% || style="background-color:#c79d9d"| -21 || 429,806 || style="background-color:#c79d9d"| -1
+|-
+| hak-hans || {{#language:hak-hans|en}} || {{#language:hak-hans}}
+| 3 || 2.55% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| hak-hant || {{#language:hak-hant|en}} || {{#language:hak-hant}}
+| 4 || 3.40% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| hak-latn || {{#language:hak-latn|en}} || {{#language:hak-latn}}
+| 9 || 7.66% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| haw || {{#language:haw|en}} || {{#language:haw}}
+| 478,589 || 0.40% || style="background-color:#9dc79d"| +428 || 153,108 || 0.13% || style="background-color:#9dc79d"| +5,879 || 174,146 || style="background-color:#c79d9d"| -40
+|-
+| he || {{#language:he|en}} || {{#language:he}}
+| 1,098,068 || 0.93% || style="background-color:#9dc79d"| +2,182 || 44,869,082 || 38.2% || style="background-color:#9dc79d"| +38,565 || 727,593 || style="background-color:#9dc79d"| +147
+|-
+| hi || {{#language:hi|en}} || {{#language:hi}}
+| 821,368 || 0.69% || style="background-color:#9dc79d"| +467 || 9,660,932 || 8.22% || style="background-color:#9dc79d"| +11,131 || 641,298 || style="background-color:#9dc79d"| +191
+|-
+| hif || {{#language:hif|en}} || {{#language:hif}}
+| 581,904 || 0.49% || style="background-color:#9dc79d"| +431 || 330,558 || 0.28% || style="background-color:#c79d9d"| -11 || 174,585 || style="background-color:#c79d9d"| -38
+|-
+| hif-latn || {{#language:hif-latn|en}} || {{#language:hif-latn}}
+| 486,880 || 0.41% || style="background-color:#9dc79d"| +414 || 14 || 1.19% ||  +0 || 172,676 || style="background-color:#c79d9d"| -44
+|-
+| hil || {{#language:hil|en}} || {{#language:hil}}
+| 429,389 || 0.36% || style="background-color:#c79d9d"| -23 || 412 || 0.00% ||  +0 || 170,254 || style="background-color:#c79d9d"| -54
+|-
+| hno || {{#language:hno|en}} || {{#language:hno}}
+| 105 || 8.94% ||  +0 || 4 || 3.40% ||  +0 || 6 ||  +0
+|-
+| ho || {{#language:ho|en}} || {{#language:ho}}
+| 473,640 || 0.40% || style="background-color:#9dc79d"| +372 || 7 || 5.96% ||  +0 || 174,073 || style="background-color:#c79d9d"| -43
+|-
+| hr || {{#language:hr|en}} || {{#language:hr}}
+| 1,973,056 || 1.68% || style="background-color:#9dc79d"| +1,542 || 9,774,911 || 8.32% || style="background-color:#9dc79d"| +31,658 || 215,760 || style="background-color:#9dc79d"| +109
+|-
+| hrx || {{#language:hrx|en}} || {{#language:hrx}}
+| 430,064 || 0.36% || style="background-color:#9dc79d"| +19 || 1 || 8.51% ||  +0 || 170,273 || style="background-color:#c79d9d"| -50
+|-
+| hsb || {{#language:hsb|en}} || {{#language:hsb}}
+| 775,737 || 0.66% || style="background-color:#9dc79d"| +388 || 5,359,044 || 4.56% || style="background-color:#9dc79d"| +5,215 || 182,346 || style="background-color:#c79d9d"| -45
+|-
+| hsn || {{#language:hsn|en}} || {{#language:hsn}}
+| 8 || 6.81% ||  +0 || 3 || 2.55% ||  +0 || 1 ||  +0
+|-
+| ht || {{#language:ht|en}} || {{#language:ht}}
+| 556,210 || 0.47% || style="background-color:#9dc79d"| +424 || 290,377 || 0.24% || style="background-color:#9dc79d"| +5,884 || 176,228 || style="background-color:#c79d9d"| -40
+|-
+| hu || {{#language:hu|en}} || {{#language:hu}}
+| 2,663,842 || 2.26% || style="background-color:#9dc79d"| +1,444 || 37,767,167 || 32.1% || style="background-color:#9dc79d"| +17,563 || 313,351 || style="background-color:#9dc79d"| +204
+|-
+| hu-formal || {{#language:hu-formal|en}} || {{#language:hu-formal}}
+| 153,110 || 0.13% || style="background-color:#c79d9d"| -3 || 3 || 2.55% ||  +0 || 150,812 || style="background-color:#c79d9d"| -3
+|-
+| hy || {{#language:hy|en}} || {{#language:hy}}
+| 1,050,143 || 0.89% || style="background-color:#9dc79d"| +990 || 34,448,148 || 29.3% || style="background-color:#9dc79d"| +11,247 || 651,444 || style="background-color:#9dc79d"| +52
+|-
+| hyw || {{#language:hyw|en}} || {{#language:hyw}}
+| 183,407 || 0.15% || style="background-color:#9dc79d"| +140 || 3,006,133 || 2.56% || style="background-color:#9dc79d"| +45 || 174,283 || style="background-color:#9dc79d"| +8
+|-
+| hz || {{#language:hz|en}} || {{#language:hz}}
+| 472,084 || 0.40% || style="background-color:#9dc79d"| +413 || 4 || 3.40% ||  +0 || 174,064 || style="background-color:#c79d9d"| -44
+|-
+| ia || {{#language:ia|en}} || {{#language:ia}}
+| 5,010,595 || 4.26% || style="background-color:#9dc79d"| +374 || 5,971,798 || 5.08% || style="background-color:#9dc79d"| +4,846 || 187,297 || style="background-color:#c79d9d"| -41
+|-
+| iba || {{#language:iba|en}} || {{#language:iba}}
+| 2,738 || 0.00% || style="background-color:#9dc79d"| +44 || 216 || 0.00% || style="background-color:#9dc79d"| +3 || 90 ||  +0
+|-
+| ibb || {{#language:ibb|en}} || {{#language:ibb}}
+| 92 || 7.83% ||  +0 || 7 || 5.96% ||  +0 || 3 ||  +0
+|-
+| id || {{#language:id|en}} || {{#language:id}}
+| 3,480,472 || 2.96% || style="background-color:#9dc79d"| +15,854 || 38,998,199 || 33.2% || style="background-color:#9dc79d"| +20,443 || 600,404 || style="background-color:#9dc79d"| +4,492
+|-
+| ie || {{#language:ie|en}} || {{#language:ie}}
+| 4,960,834 || 4.22% || style="background-color:#9dc79d"| +387 || 211,559 || 0.18% || style="background-color:#9dc79d"| +5,946 || 185,794 || style="background-color:#c79d9d"| -41
+|-
+| ig || {{#language:ig|en}} || {{#language:ig}}
+| 927,651 || 0.79% || style="background-color:#9dc79d"| +7,293 || 1,037,248 || 0.88% || style="background-color:#9dc79d"| +71,255 || 192,188 || style="background-color:#9dc79d"| +378
+|-
+| igl || {{#language:igl|en}} || {{#language:igl}}
+| 5,499 || 0.00% || style="background-color:#9dc79d"| +15 || 3,978 || 0.00% || style="background-color:#9dc79d"| +8 || 1,158 || style="background-color:#9dc79d"| +2
+|-
+| ii || {{#language:ii|en}} || {{#language:ii}}
+| 154,583 || 0.13% ||  +0 || 9 || 7.66% ||  +0 || 425,473 || style="background-color:#c79d9d"| -18
+|-
+| ik || {{#language:ik|en}} || {{#language:ik}}
+| 473,500 || 0.40% || style="background-color:#9dc79d"| +414 || 18 || 1.53% ||  +0 || 182,779 || style="background-color:#9dc79d"| +89
+|-
+| ike-cans || {{#language:ike-cans|en}} || {{#language:ike-cans}}
+| 156,586 || 0.13% || style="background-color:#9dc79d"| +1 || 2 || 1.70% ||  +0 || 426,355 || style="background-color:#c79d9d"| -19
+|-
+| ike-latn || {{#language:ike-latn|en}} || {{#language:ike-latn}}
+| 466,471 || 0.39% || style="background-color:#9dc79d"| +417 || 1 || 8.51% ||  +0 || 172,588 || style="background-color:#c79d9d"| -43
+|-
+| ilo || {{#language:ilo|en}} || {{#language:ilo}}
+| 522,859 || 0.44% || style="background-color:#9dc79d"| +375 || 6,645,322 || 5.65% || style="background-color:#9dc79d"| +8,307 || 175,893 || style="background-color:#c79d9d"| -50
+|-
+| inh || {{#language:inh|en}} || {{#language:inh}}
+| 163,950 || 0.13% || style="background-color:#9dc79d"| +4 || 7,378 || 0.00% ||  +0 || 421,831 || style="background-color:#c79d9d"| -17
+|-
+| io || {{#language:io|en}} || {{#language:io}}
+| 5,318,381 || 4.52% || style="background-color:#9dc79d"| +1,328 || 4,284,191 || 3.64% || style="background-color:#9dc79d"| +6,012 || 188,497 || style="background-color:#c79d9d"| -27
+|-
+| is || {{#language:is|en}} || {{#language:is}}
+| 1,566,409 || 1.33% || style="background-color:#9dc79d"| +447 || 2,448,872 || 2.08% || style="background-color:#9dc79d"| +8,611 || 192,011 || style="background-color:#c79d9d"| -40
+|-
+| isu || {{#language:isu|en}} || {{#language:isu}}
+| 86 || 7.32% ||  +0 || 3 || 2.55% ||  +0 || 1 ||  +0
+|-
+| isv-cyrl || {{#language:isv-cyrl|en}} || {{#language:isv-cyrl}}
+| 7 || 5.96% ||  +0 || 5 || 4.25% ||  +0 || 0 ||  +0
+|-
+| isv-latn || {{#language:isv-latn|en}} || {{#language:isv-latn}}
+| 20 || 1.70% ||  +0 || 13 || 1.10% ||  +0 || 12 ||  +0
+|-
+| it || {{#language:it|en}} || {{#language:it}}
+| 11,825,703 || 10.0% || style="background-color:#9dc79d"| +4,310 || 48,632,091 || 41.4% || style="background-color:#9dc79d"| +23,396 || 779,887 || style="background-color:#9dc79d"| +1,135
+|-
+| iu || {{#language:iu|en}} || {{#language:iu}}
+| 198,692 || 0.16% || style="background-color:#9dc79d"| +395 || 27,690 || 0.02% ||  +0 || 451,047 || style="background-color:#c79d9d"| -13
+|-
+| ja || {{#language:ja|en}} || {{#language:ja}}
+| 3,662,529 || 3.11% || style="background-color:#9dc79d"| +4,443 || 43,237,161 || 36.8% || style="background-color:#9dc79d"| +20,258 || 1,237,599 || style="background-color:#9dc79d"| +909
+|-
+| jam || {{#language:jam|en}} || {{#language:jam}}
+| 615,805 || 0.52% || style="background-color:#9dc79d"| +367 || 106,879 || 0.09% ||  +0 || 176,735 || style="background-color:#c79d9d"| -40
+|-
+| jbo || {{#language:jbo|en}} || {{#language:jbo}}
+| 502,280 || 0.42% || style="background-color:#9dc79d"| +422 || 137,798 || 0.11% || style="background-color:#c79d9d"| -2 || 173,010 || style="background-color:#c79d9d"| -44
+|-
+| jut || {{#language:jut|en}} || {{#language:jut}}
+| 669,824 || 0.57% || style="background-color:#9dc79d"| +7 || 550,539 || 0.46% || style="background-color:#9dc79d"| +137 || 170,127 || style="background-color:#c79d9d"| -48
+|-
+| jv || {{#language:jv|en}} || {{#language:jv}}
+| 899,163 || 0.76% || style="background-color:#9dc79d"| +436 || 6,728,626 || 5.73% || style="background-color:#9dc79d"| +4,824 || 187,920 || style="background-color:#9dc79d"| +16
+|-
+| ka || {{#language:ka|en}} || {{#language:ka}}
+| 481,242 || 0.40% || style="background-color:#9dc79d"| +1,026 || 35,373,365 || 30.1% || style="background-color:#9dc79d"| +12,339 || 631,650 || style="background-color:#9dc79d"| +56
+|-
+| kaa || {{#language:kaa|en}} || {{#language:kaa}}
+| 490,025 || 0.41% || style="background-color:#9dc79d"| +2,773 || 291,681 || 0.24% || style="background-color:#9dc79d"| +6,525 || 174,802 || style="background-color:#9dc79d"| +122
+|-
+| kab || {{#language:kab|en}} || {{#language:kab}}
+| 601,955 || 0.51% || style="background-color:#9dc79d"| +406 || 107,241 || 0.09% || style="background-color:#c79d9d"| -1 || 176,943 || style="background-color:#c79d9d"| -43
+|-
+| kai || {{#language:kai|en}} || {{#language:kai}}
+| 35 || 2.98% ||  +0 || 3 || 2.55% ||  +0 || 0 ||  +0
+|-
+| kbd || {{#language:kbd|en}} || {{#language:kbd}}
+| 158,781 || 0.13% || style="background-color:#c79d9d"| -1 || 68 || 5.79% || style="background-color:#c79d9d"| -3 || 425,888 || style="background-color:#c79d9d"| -19
+|-
+| kbd-cyrl || {{#language:kbd-cyrl|en}} || {{#language:kbd-cyrl}}
+| 158,329 || 0.13% || style="background-color:#9dc79d"| +1 || 1 || 8.51% ||  +0 || 421,732 || style="background-color:#c79d9d"| -17
+|-
+| kbp || {{#language:kbp|en}} || {{#language:kbp}}
+| 427,049 || 0.36% || style="background-color:#9dc79d"| +19 || 74 || 6.30% || style="background-color:#c79d9d"| -2 || 169,625 || style="background-color:#c79d9d"| -52
+|-
+| kcg || {{#language:kcg|en}} || {{#language:kcg}}
+| 3,060 || 0.00% || style="background-color:#9dc79d"| +2 || 2,178 || 0.00% || style="background-color:#9dc79d"| +1 || 1,188 ||  +0
+|-
+| kea || {{#language:kea|en}} || {{#language:kea}}
+| 428,223 || 0.36% || style="background-color:#9dc79d"| +20 || 100 || 8.51% ||  +0 || 169,753 || style="background-color:#c79d9d"| -48
+|-
+| ker || {{#language:ker|en}} || {{#language:ker}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| kg || {{#language:kg|en}} || {{#language:kg}}
+| 1,247,358 || 1.06% || style="background-color:#9dc79d"| +341 || 144,747 || 0.12% || style="background-color:#c79d9d"| -19 || 184,098 || style="background-color:#c79d9d"| -41
+|-
+| kge || {{#language:kge|en}} || {{#language:kge}}
+| 3,379 || 0.00% || style="background-color:#9dc79d"| +150 || 183 || 0.00% ||  +0 || 103 ||  +0
+|-
+| khw || {{#language:khw|en}} || {{#language:khw}}
+| 154,174 || 0.13% ||  +0 || 2 || 1.70% ||  +0 || 425,143 || style="background-color:#c79d9d"| -19
+|-
+| ki || {{#language:ki|en}} || {{#language:ki}}
+| 476,031 || 0.40% || style="background-color:#9dc79d"| +421 || 144,311 || 0.12% || style="background-color:#c79d9d"| -20 || 174,117 || style="background-color:#c79d9d"| -44
+|-
+| kiu || {{#language:kiu|en}} || {{#language:kiu}}
+| 155,900 || 0.13% || style="background-color:#9dc79d"| +1 || 2 || 1.70% || style="background-color:#9dc79d"| +1 || 426,322 || style="background-color:#c79d9d"| -19
+|-
+| kj || {{#language:kj|en}} || {{#language:kj}}
+| 470,181 || 0.40% || style="background-color:#9dc79d"| +413 || 15 || 1.27% ||  +0 || 173,907 || style="background-color:#c79d9d"| -44
+|-
+| kjh || {{#language:kjh|en}} || {{#language:kjh}}
+| 5 || 4.25% ||  +0 || 1 || 8.51% ||  +0 || 2 ||  +0
+|-
+| kjp || {{#language:kjp|en}} || {{#language:kjp}}
+| 249,508 || 0.21% ||  +0 || 2 || 1.70% ||  +0 || 150,867 ||  +0
+|-
+| kk || {{#language:kk|en}} || {{#language:kk}}
+| 446,491 || 0.38% || style="background-color:#9dc79d"| +441 || 1,015,387 || 0.86% || style="background-color:#9dc79d"| +6,635 || 641,263 || style="background-color:#9dc79d"| +37
+|-
+| kk-arab || {{#language:kk-arab|en}} || {{#language:kk-arab}}
+| 220,692 || 0.18% ||  +0 || 27,673 || 0.02% ||  +0 || 446,850 || style="background-color:#c79d9d"| -18
+|-
+| kk-cn || {{#language:kk-cn|en}} || {{#language:kk-cn}}
+| 165,393 || 0.14% || style="background-color:#9dc79d"| +1 || 27,665 || 0.02% ||  +0 || 447,114 || style="background-color:#c79d9d"| -17
+|-
+| kk-cyrl || {{#language:kk-cyrl|en}} || {{#language:kk-cyrl}}
+| 226,712 || 0.19% || style="background-color:#9dc79d"| +2 || 552,369 || 0.47% || style="background-color:#9dc79d"| +140 || 613,943 || style="background-color:#c79d9d"| -26
+|-
+| kk-kz || {{#language:kk-kz|en}} || {{#language:kk-kz}}
+| 170,456 || 0.14% || style="background-color:#9dc79d"| +2 || 551,502 || 0.46% || style="background-color:#9dc79d"| +139 || 613,452 || style="background-color:#c79d9d"| -26
+|-
+| kk-latn || {{#language:kk-latn|en}} || {{#language:kk-latn}}
+| 728,961 || 0.62% || style="background-color:#9dc79d"| +407 || 551,688 || 0.46% || style="background-color:#9dc79d"| +138 || 174,558 || style="background-color:#c79d9d"| -44
+|-
+| kk-tr || {{#language:kk-tr|en}} || {{#language:kk-tr}}
+| 668,314 || 0.56% || style="background-color:#9dc79d"| +409 || 551,620 || 0.46% || style="background-color:#9dc79d"| +137 || 172,380 || style="background-color:#c79d9d"| -44
+|-
+| kl || {{#language:kl|en}} || {{#language:kl}}
+| 544,658 || 0.46% || style="background-color:#9dc79d"| +421 || 154,215 || 0.13% || style="background-color:#9dc79d"| +5,947 || 174,783 || style="background-color:#c79d9d"| -42
+|-
+| km || {{#language:km|en}} || {{#language:km}}
+| 269,864 || 0.22% || style="background-color:#9dc79d"| +30 || 356,079 || 0.30% || style="background-color:#9dc79d"| +5,872 || 426,515 || style="background-color:#c79d9d"| -17
+|-
+| kn || {{#language:kn|en}} || {{#language:kn}}
+| 530,243 || 0.45% || style="background-color:#9dc79d"| +34 || 1,766,461 || 1.50% || style="background-color:#9dc79d"| +5,788 || 434,046 || style="background-color:#c79d9d"| -14
+|-
+| knc || {{#language:knc|en}} || {{#language:knc}}
+| 34,206 || 0.02% || style="background-color:#9dc79d"| +599 || 137 || 0.00% || style="background-color:#9dc79d"| +3 || 691 || style="background-color:#9dc79d"| +10
+|-
+| ko || {{#language:ko|en}} || {{#language:ko}}
+| 1,897,327 || 1.61% || style="background-color:#9dc79d"| +5,430 || 41,292,781 || 35.1% || style="background-color:#9dc79d"| +37,758 || 788,369 || style="background-color:#9dc79d"| +866
+|-
+| ko-kp || {{#language:ko-kp|en}} || {{#language:ko-kp}}
+| 161,082 || 0.13% || style="background-color:#9dc79d"| +3 || 825 || 0.00% ||  +0 || 429,583 || style="background-color:#c79d9d"| -19
+|-
+| koi || {{#language:koi|en}} || {{#language:koi}}
+| 166,771 || 0.14% || style="background-color:#9dc79d"| +3 || 152,982 || 0.13% || style="background-color:#9dc79d"| +5,880 || 423,654 || style="background-color:#c79d9d"| -17
+|-
+| kr || {{#language:kr|en}} || {{#language:kr}}
+| 437,412 || 0.37% || style="background-color:#c79d9d"| -25 || 234 || 0.00% || style="background-color:#c79d9d"| -3 || 172,875 || style="background-color:#c79d9d"| -64
+|-
+| krc || {{#language:krc|en}} || {{#language:krc}}
+| 160,485 || 0.13% || style="background-color:#9dc79d"| +33 || 108,173 || 0.09% || style="background-color:#c79d9d"| -2 || 425,761 || style="background-color:#c79d9d"| -19
+|-
+| kri || {{#language:kri|en}} || {{#language:kri}}
+| 424,964 || 0.36% || style="background-color:#9dc79d"| +20 || 4 || 3.40% ||  +0 || 169,516 || style="background-color:#c79d9d"| -50
+|-
+| krj || {{#language:krj|en}} || {{#language:krj}}
+| 471,467 || 0.40% || style="background-color:#9dc79d"| +370 || 683 || 0.00% ||  +0 || 174,587 || style="background-color:#c79d9d"| -49
+|-
+| krl || {{#language:krl|en}} || {{#language:krl}}
+| 424,702 || 0.36% || style="background-color:#9dc79d"| +20 || 2 || 1.70% ||  +0 || 169,514 || style="background-color:#c79d9d"| -50
+|-
+| ks || {{#language:ks|en}} || {{#language:ks}}
+| 166,072 || 0.14% || style="background-color:#9dc79d"| +169 || 391,156 || 0.33% || style="background-color:#9dc79d"| +5,884 || 428,707 || style="background-color:#c79d9d"| -11
+|-
+| ks-arab || {{#language:ks-arab|en}} || {{#language:ks-arab}}
+| 154,230 || 0.13% || style="background-color:#9dc79d"| +1 || 11 || 9.36% ||  +0 || 425,148 || style="background-color:#c79d9d"| -19
+|-
+| ks-deva || {{#language:ks-deva|en}} || {{#language:ks-deva}}
+| 250,523 || 0.21% || style="background-color:#9dc79d"| +1 || 5 || 4.25% ||  +0 || 425,202 || style="background-color:#c79d9d"| -19
+|-
+| ksf || {{#language:ksf|en}} || {{#language:ksf}}
+| 3 || 2.55% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| ksh || {{#language:ksh|en}} || {{#language:ksh}}
+| 687,876 || 0.58% || style="background-color:#9dc79d"| +417 || 861,827 || 0.73% || style="background-color:#9dc79d"| +129 || 176,737 || style="background-color:#c79d9d"| -45
+|-
+| ksw || {{#language:ksw|en}} || {{#language:ksw}}
+| 2 || 1.70% ||  +0 || 1 || 8.51% ||  +0 || 2 ||  +0
+|-
+| ku || {{#language:ku|en}} || {{#language:ku}}
+| 387,109 || 0.32% || style="background-color:#9dc79d"| +765 || 5,108,614 || 4.35% || style="background-color:#9dc79d"| +4,710 || 435,252 || style="background-color:#c79d9d"| -8
+|-
+| ku-arab || {{#language:ku-arab|en}} || {{#language:ku-arab}}
+| 160,259 || 0.13% ||  +0 || 48 || 4.08% || style="background-color:#c79d9d"| -1 || 425,183 || style="background-color:#c79d9d"| -20
+|-
+| ku-latn || {{#language:ku-latn|en}} || {{#language:ku-latn}}
+| 519,873 || 0.44% || style="background-color:#9dc79d"| +427 || 1,178,599 || 1.00% || style="background-color:#9dc79d"| +5,815 || 173,762 || style="background-color:#c79d9d"| -41
+|-
+| kum || {{#language:kum|en}} || {{#language:kum}}
+| 153,154 || 0.13% || style="background-color:#9dc79d"| +2 || 2 || 1.70% ||  +0 || 150,866 ||  +0
+|-
+| kus || {{#language:kus|en}} || {{#language:kus}}
+| 1,689 || 0.00% || style="background-color:#9dc79d"| +23 || 744 || 0.00% || style="background-color:#9dc79d"| +1 || 436 || style="background-color:#9dc79d"| +6
+|-
+| kv || {{#language:kv|en}} || {{#language:kv}}
+| 169,818 || 0.14% || style="background-color:#9dc79d"| +7 || 645 || 0.00% ||  +0 || 422,683 || style="background-color:#c79d9d"| -17
+|-
+| kw || {{#language:kw|en}} || {{#language:kw}}
+| 691,822 || 0.58% || style="background-color:#9dc79d"| +408 || 5,461,486 || 4.65% || style="background-color:#9dc79d"| +4,593 || 175,667 || style="background-color:#c79d9d"| -41
+|-
+| ky || {{#language:ky|en}} || {{#language:ky}}
+| 249,147 || 0.21% || style="background-color:#9dc79d"| +114 || 6,931,584 || 5.90% || style="background-color:#9dc79d"| +8,550 || 450,644 || style="background-color:#9dc79d"| +31
+|-
+| la || {{#language:la|en}} || {{#language:la}}
+| 4,904,235 || 4.17% || style="background-color:#9dc79d"| +738 || 8,739,154 || 7.44% || style="background-color:#9dc79d"| +26,330 || 216,584 || style="background-color:#9dc79d"| +28
+|-
+| lad || {{#language:lad|en}} || {{#language:lad}}
+| 683,556 || 0.58% || style="background-color:#9dc79d"| +419 || 704,762 || 0.60% || style="background-color:#9dc79d"| +6,015 || 175,398 || style="background-color:#c79d9d"| -43
+|-
+| lb || {{#language:lb|en}} || {{#language:lb}}
+| 1,694,705 || 1.44% || style="background-color:#9dc79d"| +781 || 9,995,222 || 8.51% || style="background-color:#9dc79d"| +11,249 || 199,630 || style="background-color:#9dc79d"| +307
+|-
+| lbe || {{#language:lbe|en}} || {{#language:lbe}}
+| 160,305 || 0.13% || style="background-color:#9dc79d"| +2 || 81 || 6.89% ||  +0 || 422,068 || style="background-color:#c79d9d"| -17
+|-
+| lem || {{#language:lem|en}} || {{#language:lem}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| lez || {{#language:lez|en}} || {{#language:lez}}
+| 166,676 || 0.14% || style="background-color:#9dc79d"| +2 || 108,317 || 0.09% || style="background-color:#c79d9d"| -2 || 422,167 || style="background-color:#c79d9d"| -17
+|-
+| lfn || {{#language:lfn|en}} || {{#language:lfn}}
+| 504,657 || 0.42% || style="background-color:#9dc79d"| +431 || 219,311 || 0.18% || style="background-color:#c79d9d"| -3 || 175,199 || style="background-color:#c79d9d"| -35
+|-
+| lg || {{#language:lg|en}} || {{#language:lg}}
+| 477,551 || 0.40% || style="background-color:#9dc79d"| +463 || 4,943 || 0.00% || style="background-color:#9dc79d"| +56 || 176,648 || style="background-color:#c79d9d"| -51
+|-
+| li || {{#language:li|en}} || {{#language:li}}
+| 1,315,997 || 1.12% || style="background-color:#9dc79d"| +380 || 8,198,069 || 6.98% || style="background-color:#9dc79d"| +10,581 || 189,698 || style="background-color:#c79d9d"| -40
+|-
+| lij || {{#language:lij|en}} || {{#language:lij}}
+| 1,281,662 || 1.09% || style="background-color:#9dc79d"| +369 || 15,731 || 0.01% || style="background-color:#9dc79d"| +148 || 185,542 || style="background-color:#c79d9d"| -39
+|-
+| liv || {{#language:liv|en}} || {{#language:liv}}
+| 421,502 || 0.35% || style="background-color:#9dc79d"| +22 || 1 || 8.51% ||  +0 || 168,638 || style="background-color:#c79d9d"| -50
+|-
+| ljp || {{#language:ljp|en}} || {{#language:ljp}}
+| 1 || 8.51% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| lki || {{#language:lki|en}} || {{#language:lki}}
+| 252,749 || 0.21% || style="background-color:#9dc79d"| +1 || 1 || 8.51% ||  +0 || 426,284 || style="background-color:#c79d9d"| -19
+|-
+| lld || {{#language:lld|en}} || {{#language:lld}}
+| 221,157 || 0.18% || style="background-color:#9dc79d"| +2,189 || 133,652 || 0.11% ||  +0 || 541 ||  +0
+|-
+| lmo || {{#language:lmo|en}} || {{#language:lmo}}
+| 616,494 || 0.52% || style="background-color:#9dc79d"| +645 || 270,666 || 0.23% || style="background-color:#9dc79d"| +5,979 || 182,656 || style="background-color:#c79d9d"| -26
+|-
+| ln || {{#language:ln|en}} || {{#language:ln}}
+| 477,524 || 0.40% || style="background-color:#9dc79d"| +419 || 155,145 || 0.13% || style="background-color:#9dc79d"| +5,946 || 174,724 || style="background-color:#c79d9d"| -44
+|-
+| lns || {{#language:lns|en}} || {{#language:lns}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| lo || {{#language:lo|en}} || {{#language:lo}}
+| 273,102 || 0.23% || style="background-color:#9dc79d"| +389 || 261,614 || 0.22% || style="background-color:#9dc79d"| +5,878 || 429,442 || style="background-color:#c79d9d"| -18
+|-
+| loz || {{#language:loz|en}} || {{#language:loz}}
+| 461,601 || 0.39% || style="background-color:#9dc79d"| +415 || 2 || 1.70% ||  +0 || 171,750 || style="background-color:#c79d9d"| -44
+|-
+| lrc || {{#language:lrc|en}} || {{#language:lrc}}
+| 252,373 || 0.21% || style="background-color:#9dc79d"| +1 || 7 || 5.96% ||  +0 || 425,183 || style="background-color:#c79d9d"| -19
+|-
+| lt || {{#language:lt|en}} || {{#language:lt}}
+| 1,324,106 || 1.12% || style="background-color:#9dc79d"| +690 || 16,125,812 || 13.7% || style="background-color:#9dc79d"| +9,774 || 220,803 || style="background-color:#c79d9d"| -29
+|-
+| ltg || {{#language:ltg|en}} || {{#language:ltg}}
+| 467,040 || 0.39% || style="background-color:#9dc79d"| +416 || 122 || 0.00% ||  +0 || 172,637 || style="background-color:#c79d9d"| -46
+|-
+| lua || {{#language:lua|en}} || {{#language:lua}}
+| 60 || 5.11% || style="background-color:#9dc79d"| +1 || 3 || 2.55% ||  +0 || 5 ||  +0
+|-
+| lus || {{#language:lus|en}} || {{#language:lus}}
+| 461,620 || 0.39% || style="background-color:#9dc79d"| +415 || 1 || 8.51% ||  +0 || 171,743 || style="background-color:#c79d9d"| -44
+|-
+| luz || {{#language:luz|en}} || {{#language:luz}}
+| 289,980 || 0.24% || style="background-color:#9dc79d"| +394 || 0 || 0% ||  +0 || 428,826 || style="background-color:#c79d9d"| -13
+|-
+| lv || {{#language:lv|en}} || {{#language:lv}}
+| 968,074 || 0.82% || style="background-color:#9dc79d"| +793 || 10,463,796 || 8.91% || style="background-color:#9dc79d"| +10,901 || 412,597 || style="background-color:#9dc79d"| +114
+|-
+| lzh || {{#language:lzh|en}} || {{#language:lzh}}
+| 705,249 || 0.60% || style="background-color:#9dc79d"| +23 || 1,201,890 || 1.02% || style="background-color:#9dc79d"| +6,086 || 697,837 || style="background-color:#c79d9d"| -27
+|-
+| lzz || {{#language:lzz|en}} || {{#language:lzz}}
+| 199,041 || 0.16% || style="background-color:#9dc79d"| +394 || 6 || 5.11% ||  +0 || 429,973 || style="background-color:#c79d9d"| -14
+|-
+| mad || {{#language:mad|en}} || {{#language:mad}}
+| 57,039 || 0.04% || style="background-color:#9dc79d"| +11,854 || 35,098 || 0.02% || style="background-color:#9dc79d"| +7,770 || 3,100 || style="background-color:#9dc79d"| +6
+|-
+| mag || {{#language:mag|en}} || {{#language:mag}}
+| 3,774 || 0.00% || style="background-color:#9dc79d"| +211 || 3,711 || 0.00% || style="background-color:#9dc79d"| +208 || 431 || style="background-color:#9dc79d"| +46
+|-
+| mai || {{#language:mai|en}} || {{#language:mai}}
+| 271,347 || 0.23% || style="background-color:#9dc79d"| +38 || 98,032 || 0.08% || style="background-color:#9dc79d"| +350 || 425,472 || style="background-color:#c79d9d"| -12
+|-
+| map-bms || {{#language:map-bms|en}} || {{#language:map-bms}}
+| 557,959 || 0.47% || style="background-color:#9dc79d"| +372 || 4,952,727 || 4.21% || style="background-color:#9dc79d"| +4,524 || 175,409 || style="background-color:#c79d9d"| -47
+|-
+| mcn || {{#language:mcn|en}} || {{#language:mcn}}
+| 731 || 0.00% ||  +0 || 15 || 1.27% ||  +0 || 86 ||  +0
+|-
+| mcp || {{#language:mcp|en}} || {{#language:mcp}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 2 ||  +0
+|-
+| mdf || {{#language:mdf|en}} || {{#language:mdf}}
+| 174,347 || 0.14% || style="background-color:#9dc79d"| +4 || 190,123 || 0.16% || style="background-color:#9dc79d"| +5,879 || 422,335 || style="background-color:#c79d9d"| -16
+|-
+| mg || {{#language:mg|en}} || {{#language:mg}}
+| 1,330,429 || 1.13% || style="background-color:#9dc79d"| +427 || 155,670 || 0.13% || style="background-color:#9dc79d"| +5,959 || 193,548 || style="background-color:#c79d9d"| -26
+|-
+| mh || {{#language:mh|en}} || {{#language:mh}}
+| 467,482 || 0.39% || style="background-color:#9dc79d"| +412 || 1 || 8.51% ||  +0 || 173,818 || style="background-color:#c79d9d"| -44
+|-
+| mhr || {{#language:mhr|en}} || {{#language:mhr}}
+| 177,490 || 0.15% || style="background-color:#c79d9d"| -11 || 707,510 || 0.60% || style="background-color:#9dc79d"| +6,014 || 614,712 || style="background-color:#c79d9d"| -26
+|-
+| mi || {{#language:mi|en}} || {{#language:mi}}
+| 703,920 || 0.59% || style="background-color:#9dc79d"| +425 || 723,604 || 0.61% || style="background-color:#9dc79d"| +116 || 175,531 || style="background-color:#c79d9d"| -33
+|-
+| min || {{#language:min|en}} || {{#language:min}}
+| 1,584,524 || 1.34% || style="background-color:#9dc79d"| +11,846 || 7,066,185 || 6.01% || style="background-color:#9dc79d"| +14,201 || 402,330 || style="background-color:#9dc79d"| +51
+|-
+| mk || {{#language:mk|en}} || {{#language:mk}}
+| 624,553 || 0.53% || style="background-color:#9dc79d"| +594 || 10,519,587 || 8.95% || style="background-color:#9dc79d"| +10,957 || 640,985 || style="background-color:#9dc79d"| +70
+|-
+| ml || {{#language:ml|en}} || {{#language:ml}}
+| 2,747,988 || 2.34% || style="background-color:#9dc79d"| +76 || 8,791,971 || 7.48% || style="background-color:#9dc79d"| +4,585 || 662,434 || style="background-color:#9dc79d"| +24
+|-
+| mn || {{#language:mn|en}} || {{#language:mn}}
+| 246,156 || 0.20% || style="background-color:#9dc79d"| +385 || 6,358,473 || 5.41% || style="background-color:#9dc79d"| +4,619 || 620,097 || style="background-color:#9dc79d"| +27
+|-
+| mnc || {{#language:mnc|en}} || {{#language:mnc}}
+| 4,216 || 0.00% || style="background-color:#9dc79d"| +2 || 696 || 0.00% ||  +0 || 1,203 || style="background-color:#9dc79d"| +33
+|-
+| mnc-latn || {{#language:mnc-latn|en}} || {{#language:mnc-latn}}
+| 8 || 6.81% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| mnc-mong || {{#language:mnc-mong|en}} || {{#language:mnc-mong}}
+| 2 || 1.70% ||  +0 || 2 || 1.70% ||  +0 || 1 ||  +0
+|-
+| mni || {{#language:mni|en}} || {{#language:mni}}
+| 254,759 || 0.21% || style="background-color:#9dc79d"| +4 || 584,329 || 0.49% ||  +0 || 151,302 ||  +0
+|-
+| mnw || {{#language:mnw|en}} || {{#language:mnw}}
+| 274,087 || 0.23% || style="background-color:#9dc79d"| +73 || 163 || 0.00% || style="background-color:#c79d9d"| -2 || 151,052 || style="background-color:#9dc79d"| +2
+|-
+| mo || {{#language:mo|en}} || {{#language:mo}}
+| 199,633 || 0.17% || style="background-color:#9dc79d"| +393 || 27 || 2.29% || style="background-color:#c79d9d"| -5 || 430,293 || style="background-color:#c79d9d"| -15
+|-
+| mos || {{#language:mos|en}} || {{#language:mos}}
+| 2,851 || 0.00% || style="background-color:#9dc79d"| +29 || 72,631 || 0.06% || style="background-color:#9dc79d"| +1 || 728 || style="background-color:#9dc79d"| +8
+|-
+| mr || {{#language:mr|en}} || {{#language:mr}}
+| 557,374 || 0.47% || style="background-color:#9dc79d"| +277 || 7,312,247 || 6.22% || style="background-color:#9dc79d"| +4,618 || 459,159 || style="background-color:#9dc79d"| +30
+|-
+| mrh || {{#language:mrh|en}} || {{#language:mrh}}
+| 9 || 7.66% ||  +0 || 8 || 6.81% ||  +0 || 3 ||  +0
+|-
+| mrj || {{#language:mrj|en}} || {{#language:mrj}}
+| 172,710 || 0.14% || style="background-color:#9dc79d"| +2 || 63 || 5.36% || style="background-color:#c79d9d"| -2 || 423,873 || style="background-color:#c79d9d"| -18
+|-
+| ms || {{#language:ms|en}} || {{#language:ms}}
+| 1,965,120 || 1.67% || style="background-color:#9dc79d"| +11,346 || 8,755,029 || 7.45% || style="background-color:#9dc79d"| +7,152 || 221,331 || style="background-color:#9dc79d"| +75
+|-
+| ms-arab || {{#language:ms-arab|en}} || {{#language:ms-arab}}
+| 8,677 || 0.00% || style="background-color:#9dc79d"| +3 || 66,988 || 0.05% || style="background-color:#9dc79d"| +479 || 41,030 || style="background-color:#9dc79d"| +121
+|-
+| mt || {{#language:mt|en}} || {{#language:mt}}
+| 747,306 || 0.63% || style="background-color:#9dc79d"| +426 || 844,099 || 0.71% || style="background-color:#9dc79d"| +6,099 || 177,573 || style="background-color:#c79d9d"| -39
+|-
+| mua || {{#language:mua|en}} || {{#language:mua}}
+| 150 || 0.00% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| mui || {{#language:mui|en}} || {{#language:mui}}
+| 5 || 4.25% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| mul || {{#language:mul|en}} || {{#language:mul}}
+| 15,597,317 || 13.2% || style="background-color:#9dc79d"| +226,945 || 0 || 0% ||  +0 || 307,707 || style="background-color:#9dc79d"| +11,725
+|-
+| mus || {{#language:mus|en}} || {{#language:mus}}
+| 480,018 || 0.40% || style="background-color:#9dc79d"| +411 || 1 || 8.51% ||  +0 || 174,543 || style="background-color:#c79d9d"| -44
+|-
+| mwl || {{#language:mwl|en}} || {{#language:mwl}}
+| 492,572 || 0.41% || style="background-color:#9dc79d"| +414 || 312,141 || 0.26% || style="background-color:#9dc79d"| +5,957 || 174,920 || style="background-color:#c79d9d"| -44
+|-
+| my || {{#language:my|en}} || {{#language:my}}
+| 380,268 || 0.32% || style="background-color:#9dc79d"| +2,953 || 5,165,265 || 4.39% || style="background-color:#9dc79d"| +4,483 || 431,055 || style="background-color:#9dc79d"| +3
+|-
+| myv || {{#language:myv|en}} || {{#language:myv}}
+| 176,166 || 0.15% ||  +0 || 33,482 || 0.02% || style="background-color:#9dc79d"| +1 || 444,433 || style="background-color:#c79d9d"| -17
+|-
+| mzn || {{#language:mzn|en}} || {{#language:mzn}}
+| 514,778 || 0.43% || style="background-color:#9dc79d"| +4,926 || 354,944 || 0.30% || style="background-color:#9dc79d"| +5,871 || 426,874 || style="background-color:#c79d9d"| -17
+|-
+| na || {{#language:na|en}} || {{#language:na}}
+| 477,826 || 0.40% || style="background-color:#9dc79d"| +371 || 16 || 1.36% ||  +0 || 174,215 || style="background-color:#c79d9d"| -44
+|-
+| nah || {{#language:nah|en}} || {{#language:nah}}
+| 487,223 || 0.41% || style="background-color:#9dc79d"| +380 || 10,393 || 0.00% || style="background-color:#c79d9d"| -2 || 175,072 || style="background-color:#c79d9d"| -45
+|-
+| nan || {{#language:nan|en}} || {{#language:nan}}
+| 917,970 || 0.78% || style="background-color:#9dc79d"| +36 || 29,808,688 || 25.3% || style="background-color:#9dc79d"| +8,413 || 453,005 || style="background-color:#c79d9d"| -8
+|-
+| nan-hani || {{#language:nan-hani|en}} || {{#language:nan-hani}}
+| 1,899 || 0.00% || style="background-color:#9dc79d"| +4 || 1,804 || 0.00% || style="background-color:#9dc79d"| +3 || 232 || style="background-color:#9dc79d"| +1
+|-
+| nan-hant || {{#language:nan-hant|en}} || {{#language:nan-hant}}
+| 1,937 || 0.00% || style="background-color:#9dc79d"| +52 || 1,780 || 0.00% || style="background-color:#9dc79d"| +41 || 230 || style="background-color:#9dc79d"| +7
+|-
+| nan-latn-pehoeji || {{#language:nan-latn-pehoeji|en}} || {{#language:nan-latn-pehoeji}}
+| 883 || 0.00% || style="background-color:#9dc79d"| +3 || 872 || 0.00% || style="background-color:#9dc79d"| +3 || 51 ||  +0
+|-
+| nan-latn-tailo || {{#language:nan-latn-tailo|en}} || {{#language:nan-latn-tailo}}
+| 808 || 0.00% || style="background-color:#9dc79d"| +4 || 631 || 0.00% || style="background-color:#9dc79d"| +3 || 43 ||  +0
+|-
+| nap || {{#language:nap|en}} || {{#language:nap}}
+| 1,282,794 || 1.09% || style="background-color:#9dc79d"| +362 || 5,662,619 || 4.82% || style="background-color:#9dc79d"| +2,571 || 184,846 || style="background-color:#c79d9d"| -41
+|-
+| nb || {{#language:nb|en}} || {{#language:nb}}
+| 4,299,080 || 3.66% || style="background-color:#9dc79d"| +1,478 || 43,214,544 || 36.8% || style="background-color:#9dc79d"| +18,515 || 472,528 || style="background-color:#9dc79d"| +128
+|-
+| nds || {{#language:nds|en}} || {{#language:nds}}
+| 1,792,716 || 1.52% || style="background-color:#9dc79d"| +519 || 8,840,936 || 7.52% || style="background-color:#9dc79d"| +10,869 || 201,986 || style="background-color:#c79d9d"| -23
+|-
+| nds-nl || {{#language:nds-nl|en}} || {{#language:nds-nl}}
+| 1,327,771 || 1.13% || style="background-color:#9dc79d"| +356 || 5,872,131 || 5.00% || style="background-color:#9dc79d"| +5,830 || 185,937 || style="background-color:#c79d9d"| -43
+|-
+| ne || {{#language:ne|en}} || {{#language:ne}}
+| 307,928 || 0.26% || style="background-color:#9dc79d"| +240 || 7,291,258 || 6.20% || style="background-color:#9dc79d"| +6,526 || 617,923 || style="background-color:#9dc79d"| +20
+|-
+| new || {{#language:new|en}} || {{#language:new}}
+| 336,900 || 0.28% || style="background-color:#9dc79d"| +7 || 709,144 || 0.60% || style="background-color:#9dc79d"| +6,014 || 629,858 || style="background-color:#c79d9d"| -29
+|-
+| ng || {{#language:ng|en}} || {{#language:ng}}
+| 469,988 || 0.40% || style="background-color:#9dc79d"| +412 || 4 || 3.40% ||  +0 || 173,951 || style="background-color:#c79d9d"| -44
+|-
+| nge || {{#language:nge|en}} || {{#language:nge}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| nia || {{#language:nia|en}} || {{#language:nia}}
+| 1,925 || 0.00% ||  +0 || 175 || 0.00% ||  +0 || 75 || style="background-color:#9dc79d"| +1
+|-
+| nit || {{#language:nit|en}} || {{#language:nit}}
+| 1 || 8.51% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| niu || {{#language:niu|en}} || {{#language:niu}}
+| 425,714 || 0.36% || style="background-color:#9dc79d"| +18 || 3 || 2.55% ||  +0 || 169,564 || style="background-color:#c79d9d"| -50
+|-
+| nl || {{#language:nl|en}} || {{#language:nl}}
+| 56,159,051 || 47.8% || style="background-color:#9dc79d"| +1,093 || 82,729,251 || 70.4% || style="background-color:#9dc79d"| +18,275 || 1,448,000 || style="background-color:#9dc79d"| +1,129
+|-
+| nl-informal || {{#language:nl-informal|en}} || {{#language:nl-informal}}
+| 150,965 || 0.12% || style="background-color:#c79d9d"| -3 || 3 || 2.55% || style="background-color:#c79d9d"| -1 || 150,810 || style="background-color:#c79d9d"| -3
+|-
+| nla || {{#language:nla|en}} || {{#language:nla}}
+| 62 || 5.28% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| nmg || {{#language:nmg|en}} || {{#language:nmg}}
+| 82 || 6.98% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| nmz || {{#language:nmz|en}} || {{#language:nmz}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| nn || {{#language:nn|en}} || {{#language:nn}}
+| 3,070,923 || 2.61% || style="background-color:#9dc79d"| +471 || 42,795,424 || 36.4% || style="background-color:#9dc79d"| +17,904 || 278,242 || style="background-color:#9dc79d"| +10
+|-
+| nnh || {{#language:nnh|en}} || {{#language:nnh}}
+| 82 || 6.98% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| nnz || {{#language:nnz|en}} || {{#language:nnz}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| no || {{#language:no|en}} || {{#language:no}}
+| 175,899 || 0.14% || style="background-color:#9dc79d"| +27,707 || 141,264 || 0.12% || style="background-color:#9dc79d"| +442 || 1,015 || style="background-color:#9dc79d"| +1
+|-
+| nod || {{#language:nod|en}} || {{#language:nod}}
+| 155,967 || 0.13% || style="background-color:#9dc79d"| +28 || 37 || 3.15% ||  +0 || 426,365 || style="background-color:#c79d9d"| -18
+|-
+| nog || {{#language:nog|en}} || {{#language:nog}}
+| 3 || 2.55% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| nov || {{#language:nov|en}} || {{#language:nov}}
+| 481,235 || 0.40% || style="background-color:#9dc79d"| +418 || 143,380 || 0.12% || style="background-color:#9dc79d"| +92 || 174,289 || style="background-color:#c79d9d"| -43
+|-
+| nqo || {{#language:nqo|en}} || {{#language:nqo}}
+| 253,350 || 0.21% || style="background-color:#9dc79d"| +4 || 33,718 || 0.02% || style="background-color:#c79d9d"| -2 || 173,720 ||  +0
+|-
+| nr || {{#language:nr|en}} || {{#language:nr}}
+| 219 || 0.00% || style="background-color:#9dc79d"| +6 || 41 || 3.49% ||  +0 || 37 ||  +0
+|-
+| nrm || {{#language:nrm|en}} || {{#language:nrm}}
+| 1,258,568 || 1.07% || style="background-color:#9dc79d"| +372 || 37,384 || 0.03% || style="background-color:#c79d9d"| -2 || 184,805 || style="background-color:#c79d9d"| -40
+|-
+| nso || {{#language:nso|en}} || {{#language:nso}}
+| 480,057 || 0.40% || style="background-color:#9dc79d"| +419 || 144,282 || 0.12% || style="background-color:#c79d9d"| -19 || 174,032 || style="background-color:#c79d9d"| -41
+|-
+| nup || {{#language:nup|en}} || {{#language:nup}}
+| 702 || 0.00% || style="background-color:#9dc79d"| +27 || 0 || 0% ||  +0 || 50 || style="background-color:#9dc79d"| +4
+|-
+| nv || {{#language:nv|en}} || {{#language:nv}}
+| 495,764 || 0.42% || style="background-color:#9dc79d"| +417 || 15 || 1.27% ||  +0 || 175,237 || style="background-color:#c79d9d"| -44
+|-
+| ny || {{#language:ny|en}} || {{#language:ny}}
+| 473,575 || 0.40% || style="background-color:#9dc79d"| +413 || 278 || 0.00% ||  +0 || 173,989 || style="background-color:#c79d9d"| -44
+|-
+| nyn || {{#language:nyn|en}} || {{#language:nyn}}
+| 73 || 6.21% || style="background-color:#9dc79d"| +16 || 35 || 2.98% || style="background-color:#9dc79d"| +26 || 11 ||  +0
+|-
+| nyo || {{#language:nyo|en}} || {{#language:nyo}}
+| 1 || 8.51% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| nys || {{#language:nys|en}} || {{#language:nys}}
+| 433,329 || 0.36% || style="background-color:#9dc79d"| +20 || 11 || 9.36% ||  +0 || 171,831 || style="background-color:#c79d9d"| -51
+|-
+| oc || {{#language:oc|en}} || {{#language:oc}}
+| 5,461,926 || 4.65% || style="background-color:#9dc79d"| +409 || 31,410,218 || 26.7% || style="background-color:#9dc79d"| +12,350 || 197,888 || style="background-color:#c79d9d"| -35
+|-
+| ojb || {{#language:ojb|en}} || {{#language:ojb}}
+| 3 || 2.55% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| olo || {{#language:olo|en}} || {{#language:olo}}
+| 442,897 || 0.37% || style="background-color:#9dc79d"| +34 || 97 || 8.26% ||  +0 || 170,843 || style="background-color:#c79d9d"| -49
+|-
+| om || {{#language:om|en}} || {{#language:om}}
+| 205,685 || 0.17% || style="background-color:#9dc79d"| +358 || 144,649 || 0.12% || style="background-color:#c79d9d"| -19 || 430,841 || style="background-color:#c79d9d"| -13
+|-
+| or || {{#language:or|en}} || {{#language:or}}
+| 492,210 || 0.41% || style="background-color:#9dc79d"| +101 || 4,355,584 || 3.70% || style="background-color:#9dc79d"| +9,871 || 625,721 || style="background-color:#c79d9d"| -11
+|-
+| os || {{#language:os|en}} || {{#language:os}}
+| 208,448 || 0.17% || style="background-color:#9dc79d"| +193 || 846,750 || 0.72% || style="background-color:#9dc79d"| +6,085 || 616,460 || style="background-color:#c79d9d"| -13
+|-
+| osa-latn || {{#language:osa-latn|en}} || {{#language:osa-latn}}
+| 3 || 2.55% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| ota || {{#language:ota|en}} || {{#language:ota}}
+| 252,362 || 0.21% || style="background-color:#9dc79d"| +31 || 60 || 5.11% || style="background-color:#9dc79d"| +3 || 426,101 || style="background-color:#c79d9d"| -16
+|-
+| pa || {{#language:pa|en}} || {{#language:pa}}
+| 536,213 || 0.45% || style="background-color:#9dc79d"| +167 || 1,264,900 || 1.07% || style="background-color:#9dc79d"| +7,920 || 430,631 || style="background-color:#9dc79d"| +33
+|-
+| pag || {{#language:pag|en}} || {{#language:pag}}
+| 474,178 || 0.40% || style="background-color:#9dc79d"| +368 || 145,833 || 0.12% || style="background-color:#c79d9d"| -20 || 174,315 || style="background-color:#c79d9d"| -52
+|-
+| pam || {{#language:pam|en}} || {{#language:pam}}
+| 516,895 || 0.44% || style="background-color:#9dc79d"| +369 || 5,812,223 || 4.95% || style="background-color:#9dc79d"| +5,853 || 175,864 || style="background-color:#c79d9d"| -49
+|-
+| pap || {{#language:pap|en}} || {{#language:pap}}
+| 1,499,682 || 1.27% || style="background-color:#9dc79d"| +344 || 1,930,789 || 1.64% || style="background-color:#c79d9d"| -149 || 181,420 || style="background-color:#c79d9d"| -19
+|-
+| pap-aw || {{#language:pap-aw|en}} || {{#language:pap-aw}}
+| 605 || 0.00% || style="background-color:#9dc79d"| +6 || 500 || 0.00% || style="background-color:#c79d9d"| -2 || 42 || style="background-color:#c79d9d"| -1
+|-
+| pcd || {{#language:pcd|en}} || {{#language:pcd}}
+| 1,277,997 || 1.08% || style="background-color:#9dc79d"| +376 || 158,117 || 0.13% ||  +0 || 186,435 || style="background-color:#c79d9d"| -39
+|-
+| pcm || {{#language:pcm|en}} || {{#language:pcm}}
+| 5,827 || 0.00% || style="background-color:#9dc79d"| +25 || 3,169 || 0.00% || style="background-color:#9dc79d"| +10 || 1,183 || style="background-color:#9dc79d"| +13
+|-
+| pdc || {{#language:pdc|en}} || {{#language:pdc}}
+| 492,332 || 0.41% || style="background-color:#9dc79d"| +416 || 497 || 0.00% || style="background-color:#9dc79d"| +1 || 175,825 || style="background-color:#c79d9d"| -43
+|-
+| pdt || {{#language:pdt|en}} || {{#language:pdt}}
+| 480,786 || 0.40% || style="background-color:#9dc79d"| +412 || 5 || 4.25% ||  +0 || 174,651 || style="background-color:#c79d9d"| -44
+|-
+| pfl || {{#language:pfl|en}} || {{#language:pfl}}
+| 517,007 || 0.44% || style="background-color:#9dc79d"| +393 || 141,865 || 0.12% || style="background-color:#9dc79d"| +11 || 175,695 || style="background-color:#c79d9d"| -48
+|-
+| pi || {{#language:pi|en}} || {{#language:pi}}
+| 259,736 || 0.22% || style="background-color:#9dc79d"| +3 || 152,472 || 0.12% || style="background-color:#9dc79d"| +5,879 || 426,516 || style="background-color:#c79d9d"| -19
+|-
+| pih || {{#language:pih|en}} || {{#language:pih}}
+| 476,557 || 0.40% || style="background-color:#9dc79d"| +412 || 152 || 0.00% || style="background-color:#c79d9d"| -2 || 174,569 || style="background-color:#c79d9d"| -45
+|-
+| pl || {{#language:pl|en}} || {{#language:pl}}
+| 8,643,174 || 7.36% || style="background-color:#9dc79d"| +4,706 || 42,497,570 || 36.1% || style="background-color:#9dc79d"| +35,041 || 540,282 || style="background-color:#9dc79d"| +525
+|-
+| pms || {{#language:pms|en}} || {{#language:pms}}
+| 1,562,262 || 1.33% || style="background-color:#9dc79d"| +371 || 678,203 || 0.57% || style="background-color:#9dc79d"| +139 || 186,771 || style="background-color:#c79d9d"| -39
+|-
+| pnb || {{#language:pnb|en}} || {{#language:pnb}}
+| 455,503 || 0.38% || style="background-color:#9dc79d"| +98 || 266,632 || 0.22% || style="background-color:#9dc79d"| +5,949 || 426,778 || style="background-color:#c79d9d"| -18
+|-
+| pnt || {{#language:pnt|en}} || {{#language:pnt}}
+| 158,670 || 0.13% || style="background-color:#9dc79d"| +4 || 153,897 || 0.13% || style="background-color:#9dc79d"| +5,947 || 425,868 || style="background-color:#c79d9d"| -19
+|-
+| prg || {{#language:prg|en}} || {{#language:prg}}
+| 587,897 || 0.50% || style="background-color:#9dc79d"| +408 || 60 || 5.11% ||  +0 || 176,543 || style="background-color:#c79d9d"| -43
+|-
+| ps || {{#language:ps|en}} || {{#language:ps}}
+| 279,079 || 0.23% || style="background-color:#9dc79d"| +25 || 6,127,011 || 5.21% || style="background-color:#9dc79d"| +4,393 || 426,597 || style="background-color:#c79d9d"| -7
+|-
+| pt || {{#language:pt|en}} || {{#language:pt}}
+| 10,429,165 || 8.88% || style="background-color:#9dc79d"| +5,554 || 46,784,673 || 39.8% || style="background-color:#9dc79d"| +27,092 || 578,531 || style="background-color:#9dc79d"| +551
+|-
+| pt-br || {{#language:pt-br|en}} || {{#language:pt-br}}
+| 7,993,093 || 6.80% || style="background-color:#9dc79d"| +2,368 || 40,330,394 || 34.3% || style="background-color:#9dc79d"| +20,625 || 263,701 || style="background-color:#9dc79d"| +337
+|-
+| pwn || {{#language:pwn|en}} || {{#language:pwn}}
+| 2,164 || 0.00% || style="background-color:#c79d9d"| -41 || 277 || 0.00% ||  +0 || 123 ||  +0
+|-
+| qu || {{#language:qu|en}} || {{#language:qu}}
+| 507,285 || 0.43% || style="background-color:#9dc79d"| +445 || 161,779 || 0.13% || style="background-color:#9dc79d"| +5,882 || 182,444 || style="background-color:#c79d9d"| -46
+|-
+| quc || {{#language:quc|en}} || {{#language:quc}}
+| 22 || 1.87% ||  +0 || 6 || 5.11% ||  +0 || 4 ||  +0
+|-
+| qug || {{#language:qug|en}} || {{#language:qug}}
+| 468,224 || 0.39% || style="background-color:#9dc79d"| +411 || 20 || 1.70% || style="background-color:#c79d9d"| -1 || 173,608 || style="background-color:#c79d9d"| -45
+|-
+| rgn || {{#language:rgn|en}} || {{#language:rgn}}
+| 545,918 || 0.46% || style="background-color:#9dc79d"| +14 || 125,471 || 0.10% ||  +0 || 172,566 || style="background-color:#c79d9d"| -49
+|-
+| rif || {{#language:rif|en}} || {{#language:rif}}
+| 467,789 || 0.39% || style="background-color:#9dc79d"| +412 || 5 || 4.25% ||  +0 || 173,351 || style="background-color:#c79d9d"| -44
+|-
+| rki || {{#language:rki|en}} || {{#language:rki}}
+| 852 || 0.00% || style="background-color:#9dc79d"| +15 || 29 || 2.46% || style="background-color:#9dc79d"| +2 || 82 || style="background-color:#9dc79d"| +2
+|-
+| rm || {{#language:rm|en}} || {{#language:rm}}
+| 1,338,205 || 1.13% || style="background-color:#9dc79d"| +365 || 155,571 || 0.13% || style="background-color:#9dc79d"| +5,888 || 185,421 || style="background-color:#c79d9d"| -39
+|-
+| rmc || {{#language:rmc|en}} || {{#language:rmc}}
+| 49 || 4.17% ||  +0 || 5 || 4.25% ||  +0 || 9 ||  +0
+|-
+| rmf || {{#language:rmf|en}} || {{#language:rmf}}
+| 157,165 || 0.13% || style="background-color:#c79d9d"| -14 || 1 || 8.51% ||  +0 || 151,794 || style="background-color:#c79d9d"| -2
+|-
+| rmy || {{#language:rmy|en}} || {{#language:rmy}}
+| 213,473 || 0.18% || style="background-color:#9dc79d"| +394 || 4,938,068 || 4.20% || style="background-color:#9dc79d"| +4,459 || 431,279 || style="background-color:#c79d9d"| -11
+|-
+| rn || {{#language:rn|en}} || {{#language:rn}}
+| 472,027 || 0.40% || style="background-color:#9dc79d"| +413 || 342 || 0.00% ||  +0 || 174,119 || style="background-color:#c79d9d"| -44
+|-
+| ro || {{#language:ro|en}} || {{#language:ro}}
+| 6,685,913 || 5.69% || style="background-color:#9dc79d"| +1,741 || 45,201,266 || 38.4% || style="background-color:#9dc79d"| +36,849 || 307,356 || style="background-color:#9dc79d"| +372
+|-
+| roa-rup || {{#language:roa-rup|en}} || {{#language:roa-rup}}
+| 4 || 3.40% || style="background-color:#c79d9d"| -3 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| roa-tara || {{#language:roa-tara|en}} || {{#language:roa-tara}}
+| 491,682 || 0.41% || style="background-color:#9dc79d"| +413 || 44,722 || 0.03% || style="background-color:#c79d9d"| -2 || 174,736 || style="background-color:#c79d9d"| -44
+|-
+| rsk || {{#language:rsk|en}} || {{#language:rsk}}
+| 963 || 0.00% || style="background-color:#9dc79d"| +29 || 78 || 6.64% ||  +0 || 60 ||  +0
+|-
+| ru || {{#language:ru|en}} || {{#language:ru}}
+| 9,264,350 || 7.89% || style="background-color:#9dc79d"| +7,626 || 49,227,880 || 41.9% || style="background-color:#9dc79d"| +22,481 || 1,860,004 || style="background-color:#9dc79d"| +2,971
+|-
+| rue || {{#language:rue|en}} || {{#language:rue}}
+| 173,212 || 0.14% || style="background-color:#9dc79d"| +22 || 813,737 || 0.69% || style="background-color:#9dc79d"| +6,083 || 614,168 || style="background-color:#c79d9d"| -22
+|-
+| rup || {{#language:rup|en}} || {{#language:rup}}
+| 493,557 || 0.42% || style="background-color:#9dc79d"| +417 || 144,251 || 0.12% || style="background-color:#c79d9d"| -20 || 174,624 || style="background-color:#c79d9d"| -44
+|-
+| ruq || {{#language:ruq|en}} || {{#language:ruq}}
+| 157,321 || 0.13% || style="background-color:#9dc79d"| +1 || 3 || 2.55% ||  +0 || 426,607 || style="background-color:#c79d9d"| -19
+|-
+| ruq-cyrl || {{#language:ruq-cyrl|en}} || {{#language:ruq-cyrl}}
+| 160,012 || 0.13% || style="background-color:#9dc79d"| +1 || 2 || 1.70% ||  +0 || 422,596 || style="background-color:#c79d9d"| -17
+|-
+| ruq-latn || {{#language:ruq-latn|en}} || {{#language:ruq-latn}}
+| 464,627 || 0.39% || style="background-color:#9dc79d"| +416 || 1 || 8.51% ||  +0 || 172,495 || style="background-color:#c79d9d"| -44
+|-
+| rut || {{#language:rut|en}} || {{#language:rut}}
+| 6 || 5.11% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| rw || {{#language:rw|en}} || {{#language:rw}}
+| 479,629 || 0.40% || style="background-color:#9dc79d"| +458 || 5,593 || 0.00% || style="background-color:#9dc79d"| +18 || 174,534 || style="background-color:#c79d9d"| -41
+|-
+| rwr || {{#language:rwr|en}} || {{#language:rwr}}
+| 252,068 || 0.21% || style="background-color:#9dc79d"| +1 || 0 || 0% ||  +0 || 426,344 || style="background-color:#c79d9d"| -19
+|-
+| ryu || {{#language:ryu|en}} || {{#language:ryu}}
+| 2,457 || 0.00% || style="background-color:#9dc79d"| +2 || 2,517,886 || 2.14% || style="background-color:#9dc79d"| +125 || 411 ||  +0
+|-
+| sa || {{#language:sa|en}} || {{#language:sa}}
+| 465,546 || 0.39% || style="background-color:#9dc79d"| +27 || 341,826 || 0.29% || style="background-color:#9dc79d"| +5,858 || 448,610 || style="background-color:#c79d9d"| -12
+|-
+| sah || {{#language:sah|en}} || {{#language:sah}}
+| 185,736 || 0.15% || style="background-color:#9dc79d"| +55 || 261,145 || 0.22% || style="background-color:#9dc79d"| +5,890 || 423,360 || style="background-color:#c79d9d"| -16
+|-
+| sat || {{#language:sat|en}} || {{#language:sat}}
+| 321,700 || 0.27% || style="background-color:#9dc79d"| +480 || 252,176 || 0.21% || style="background-color:#9dc79d"| +143 || 431,329 || style="background-color:#c79d9d"| -3
+|-
+| sc || {{#language:sc|en}} || {{#language:sc}}
+| 1,410,950 || 1.20% || style="background-color:#9dc79d"| +365 || 165,213 || 0.14% || style="background-color:#c79d9d"| -12 || 186,901 || style="background-color:#c79d9d"| -36
+|-
+| scn || {{#language:scn|en}} || {{#language:scn}}
+| 1,314,324 || 1.11% || style="background-color:#9dc79d"| +448 || 5,818,681 || 4.95% || style="background-color:#9dc79d"| +216 || 189,934 || style="background-color:#c79d9d"| -42
+|-
+| sco || {{#language:sco|en}} || {{#language:sco}}
+| 1,696,936 || 1.44% || style="background-color:#9dc79d"| +309 || 9,251,687 || 7.87% || style="background-color:#9dc79d"| +10,782 || 192,262 || style="background-color:#c79d9d"| -38
+|-
+| sd || {{#language:sd|en}} || {{#language:sd}}
+| 398,784 || 0.33% || style="background-color:#9dc79d"| +71 || 4,965,331 || 4.22% || style="background-color:#9dc79d"| +4,472 || 447,981 || style="background-color:#c79d9d"| -15
+|-
+| sdc || {{#language:sdc|en}} || {{#language:sdc}}
+| 478,537 || 0.40% || style="background-color:#9dc79d"| +412 || 1,278 || 0.00% ||  +0 || 173,930 || style="background-color:#c79d9d"| -44
+|-
+| sdh || {{#language:sdh|en}} || {{#language:sdh}}
+| 251,844 || 0.21% || style="background-color:#9dc79d"| +1 || 10 || 8.51% ||  +0 || 425,165 || style="background-color:#c79d9d"| -19
+|-
+| se || {{#language:se|en}} || {{#language:se}}
+| 834,241 || 0.71% || style="background-color:#9dc79d"| +508 || 6,842,755 || 5.82% || style="background-color:#9dc79d"| +8,553 || 193,427 || style="background-color:#9dc79d"| +7
+|-
+| se-fi || {{#language:se-fi|en}} || {{#language:se-fi}}
+| 13 || 1.10% || style="background-color:#9dc79d"| +1 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| se-no || {{#language:se-no|en}} || {{#language:se-no}}
+| 15 || 1.27% || style="background-color:#9dc79d"| +1 || 1 || 8.51% ||  +0 || 4 || style="background-color:#9dc79d"| +1
+|-
+| se-se || {{#language:se-se|en}} || {{#language:se-se}}
+| 5 || 4.25% || style="background-color:#c79d9d"| -1 || 1 || 8.51% || style="background-color:#c79d9d"| -1 || 0 ||  +0
+|-
+| sei || {{#language:sei|en}} || {{#language:sei}}
+| 470,735 || 0.40% || style="background-color:#9dc79d"| +414 || 75 || 6.38% ||  +0 || 172,340 || style="background-color:#c79d9d"| -44
+|-
+| ses || {{#language:ses|en}} || {{#language:ses}}
+| 155,771 || 0.13% || style="background-color:#9dc79d"| +1 || 2 || 1.70% ||  +0 || 426,340 || style="background-color:#c79d9d"| -20
+|-
+| sg || {{#language:sg|en}} || {{#language:sg}}
+| 471,158 || 0.40% || style="background-color:#9dc79d"| +414 || 152,377 || 0.12% || style="background-color:#9dc79d"| +5,879 || 173,972 || style="background-color:#c79d9d"| -44
+|-
+| sgs || {{#language:sgs|en}} || {{#language:sgs}}
+| 523,176 || 0.44% || style="background-color:#9dc79d"| +422 || 301,358 || 0.25% || style="background-color:#9dc79d"| +5,888 || 175,902 || style="background-color:#c79d9d"| -44
+|-
+| sh || {{#language:sh|en}} || {{#language:sh}}
+| 975,117 || 0.83% || style="background-color:#9dc79d"| +502 || 6,047,287 || 5.15% || style="background-color:#9dc79d"| +4,735 || 643,913 || style="background-color:#9dc79d"| +27
+|-
+| sh-cyrl || {{#language:sh-cyrl|en}} || {{#language:sh-cyrl}}
+| 113 || 9.62% || style="background-color:#9dc79d"| +13 || 82 || 6.98% || style="background-color:#9dc79d"| +9 || 20 || style="background-color:#9dc79d"| +14
+|-
+| sh-latn || {{#language:sh-latn|en}} || {{#language:sh-latn}}
+| 33 || 2.81% || style="background-color:#9dc79d"| +1 || 8 || 6.81% ||  +0 || 6 || style="background-color:#9dc79d"| +1
+|-
+| shi || {{#language:shi|en}} || {{#language:shi}}
+| 157,410 || 0.13% || style="background-color:#9dc79d"| +4 || 5,604 || 0.00% || style="background-color:#9dc79d"| +1 || 425,753 || style="background-color:#c79d9d"| -20
+|-
+| shi-latn || {{#language:shi-latn|en}} || {{#language:shi-latn}}
+| 464,575 || 0.39% || style="background-color:#9dc79d"| +416 || 2 || 1.70% ||  +0 || 172,474 || style="background-color:#c79d9d"| -44
+|-
+| shi-tfng || {{#language:shi-tfng|en}} || {{#language:shi-tfng}}
+| 154,175 || 0.13% || style="background-color:#9dc79d"| +1 || 2 || 1.70% ||  +0 || 425,455 || style="background-color:#c79d9d"| -19
+|-
+| shn || {{#language:shn|en}} || {{#language:shn}}
+| 281,711 || 0.23% || style="background-color:#9dc79d"| +41 || 11,006 || 0.00% || style="background-color:#9dc79d"| +3 || 426,551 || style="background-color:#c79d9d"| -18
+|-
+| shy || {{#language:shy|en}} || {{#language:shy}}
+| 45 || 3.83% ||  +0 || 4 || 3.40% ||  +0 || 2 ||  +0
+|-
+| shy-latn || {{#language:shy-latn|en}} || {{#language:shy-latn}}
+| 153,236 || 0.13% ||  +0 || 15 || 1.27% ||  +0 || 150,871 ||  +0
+|-
+| si || {{#language:si|en}} || {{#language:si}}
+| 217,453 || 0.18% || style="background-color:#9dc79d"| +79 || 5,429,717 || 4.62% || style="background-color:#9dc79d"| +4,778 || 427,529 || style="background-color:#c79d9d"| -17
+|-
+| simple || {{#language:simple|en}} || {{#language:simple}}
+| 206,413 || 0.17% || style="background-color:#9dc79d"| +26,938 || 35,208 || 0.02% || style="background-color:#9dc79d"| +338 || 716 || style="background-color:#9dc79d"| +9
+|-
+| sjd || {{#language:sjd|en}} || {{#language:sjd}}
+| 155,100 || 0.13% || style="background-color:#9dc79d"| +17 || 79 || 6.72% || style="background-color:#9dc79d"| +1 || 151,450 || style="background-color:#9dc79d"| +2
+|-
+| sje || {{#language:sje|en}} || {{#language:sje}}
+| 690,252 || 0.58% || style="background-color:#9dc79d"| +154 || 557,237 || 0.47% || style="background-color:#9dc79d"| +137 || 170,947 || style="background-color:#c79d9d"| -35
+|-
+| sju || {{#language:sju|en}} || {{#language:sju}}
+| 157,239 || 0.13% || style="background-color:#c79d9d"| -14 || 110 || 9.36% ||  +0 || 151,786 || style="background-color:#c79d9d"| -2
+|-
+| sk || {{#language:sk|en}} || {{#language:sk}}
+| 2,622,568 || 2.23% || style="background-color:#9dc79d"| +1,179 || 40,532,853 || 34.5% || style="background-color:#9dc79d"| +17,957 || 236,730 || style="background-color:#9dc79d"| +44
+|-
+| skr || {{#language:skr|en}} || {{#language:skr}}
+| 162,086 || 0.13% || style="background-color:#9dc79d"| +14 || 142 || 0.00% || style="background-color:#9dc79d"| +7 || 150,919 ||  +0
+|-
+| skr-arab || {{#language:skr-arab|en}} || {{#language:skr-arab}}
+| 250,958 || 0.21% ||  +0 || 7 || 5.96% ||  +0 || 150,867 ||  +0
+|-
+| sl || {{#language:sl|en}} || {{#language:sl}}
+| 5,238,476 || 4.46% || style="background-color:#9dc79d"| +2,229 || 18,756,981 || 15.9% || style="background-color:#9dc79d"| +23,226 || 364,774 || style="background-color:#9dc79d"| +699
+|-
+| sli || {{#language:sli|en}} || {{#language:sli}}
+| 478,494 || 0.40% || style="background-color:#9dc79d"| +424 || 8 || 6.81% ||  +0 || 174,185 || style="background-color:#c79d9d"| -43
+|-
+| sm || {{#language:sm|en}} || {{#language:sm}}
+| 475,566 || 0.40% || style="background-color:#9dc79d"| +417 || 62 || 5.28% || style="background-color:#c79d9d"| -2 || 174,197 || style="background-color:#c79d9d"| -34
+|-
+| sma || {{#language:sma|en}} || {{#language:sma}}
+| 690,614 || 0.58% || style="background-color:#9dc79d"| +463 || 557,668 || 0.47% || style="background-color:#9dc79d"| +138 || 175,580 || style="background-color:#c79d9d"| -36
+|-
+| smj || {{#language:smj|en}} || {{#language:smj}}
+| 647,666 || 0.55% || style="background-color:#9dc79d"| +88 || 557,375 || 0.47% || style="background-color:#9dc79d"| +149 || 172,290 || style="background-color:#c79d9d"| -43
+|-
+| smn || {{#language:smn|en}} || {{#language:smn}}
+| 391,341 || 0.33% || style="background-color:#9dc79d"| +239 || 413,976 || 0.35% || style="background-color:#9dc79d"| +14,077 || 154,353 || style="background-color:#9dc79d"| +23
+|-
+| sms || {{#language:sms|en}} || {{#language:sms}}
+| 193,974 || 0.16% || style="background-color:#9dc79d"| +72 || 40,481 || 0.03% || style="background-color:#9dc79d"| +12 || 154,225 || style="background-color:#9dc79d"| +17
+|-
+| sn || {{#language:sn|en}} || {{#language:sn}}
+| 674,970 || 0.57% || style="background-color:#9dc79d"| +426 || 550,939 || 0.46% || style="background-color:#9dc79d"| +140 || 174,371 || style="background-color:#c79d9d"| -43
+|-
+| so || {{#language:so|en}} || {{#language:so}}
+| 503,287 || 0.42% || style="background-color:#9dc79d"| +422 || 145,544 || 0.12% || style="background-color:#c79d9d"| -20 || 174,456 || style="background-color:#c79d9d"| -42
+|-
+| sq || {{#language:sq|en}} || {{#language:sq}}
+| 11,330,421 || 9.64% || style="background-color:#9dc79d"| +537 || 46,140,369 || 39.2% || style="background-color:#9dc79d"| +19,724 || 248,473 || style="background-color:#9dc79d"| +82
+|-
+| sr || {{#language:sr|en}} || {{#language:sr}}
+| 1,281,922 || 1.09% || style="background-color:#9dc79d"| +1,269 || 39,835,148 || 33.9% || style="background-color:#9dc79d"| +18,738 || 692,519 || style="background-color:#9dc79d"| +110
+|-
+| sr-ec || {{#language:sr-ec|en}} || {{#language:sr-ec}}
+| 368,929 || 0.31% || style="background-color:#9dc79d"| +8 || 30,772,844 || 26.2% || style="background-color:#9dc79d"| +11,901 || 615,800 || style="background-color:#c79d9d"| -25
+|-
+| sr-el || {{#language:sr-el|en}} || {{#language:sr-el}}
+| 1,482,313 || 1.26% || style="background-color:#9dc79d"| +380 || 28,185,238 || 24.0% || style="background-color:#9dc79d"| +6,184 || 184,254 || style="background-color:#c79d9d"| -37
+|-
+| srn || {{#language:srn|en}} || {{#language:srn}}
+| 687,584 || 0.58% || style="background-color:#9dc79d"| +414 || 328,921 || 0.28% || style="background-color:#9dc79d"| +5,879 || 174,302 || style="background-color:#c79d9d"| -43
+|-
+| sro || {{#language:sro|en}} || {{#language:sro}}
+| 3 || 2.55% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| srq || {{#language:srq|en}} || {{#language:srq}}
+| 424,890 || 0.36% || style="background-color:#9dc79d"| +19 || 0 || 0% ||  +0 || 169,533 || style="background-color:#c79d9d"| -50
+|-
+| ss || {{#language:ss|en}} || {{#language:ss}}
+| 469,482 || 0.39% || style="background-color:#9dc79d"| +417 || 276 || 0.00% ||  +0 || 173,896 || style="background-color:#c79d9d"| -44
+|-
+| st || {{#language:st|en}} || {{#language:st}}
+| 472,742 || 0.40% || style="background-color:#9dc79d"| +422 || 133,452 || 0.11% || style="background-color:#9dc79d"| +26 || 174,054 || style="background-color:#c79d9d"| -44
+|-
+| stq || {{#language:stq|en}} || {{#language:stq}}
+| 494,184 || 0.42% || style="background-color:#9dc79d"| +412 || 5,709,233 || 4.86% || style="background-color:#9dc79d"| +4,305 || 175,902 || style="background-color:#c79d9d"| -41
+|-
+| sty || {{#language:sty|en}} || {{#language:sty}}
+| 153,200 || 0.13% ||  +0 || 17 || 1.44% ||  +0 || 150,867 ||  +0
+|-
+| su || {{#language:su|en}} || {{#language:su}}
+| 721,196 || 0.61% || style="background-color:#9dc79d"| +10,962 || 5,270,032 || 4.48% || style="background-color:#9dc79d"| +5,984 || 182,147 || style="background-color:#c79d9d"| -39
+|-
+| sv || {{#language:sv|en}} || {{#language:sv}}
+| 9,164,739 || 7.80% || style="background-color:#9dc79d"| +2,750 || 43,686,250 || 37.2% || style="background-color:#9dc79d"| +23,000 || 575,331 || style="background-color:#9dc79d"| +848
+|-
+| sw || {{#language:sw|en}} || {{#language:sw}}
+| 1,631,002 || 1.38% || style="background-color:#9dc79d"| +762 || 7,819,441 || 6.65% || style="background-color:#9dc79d"| +11,119 || 201,660 || style="background-color:#9dc79d"| +2
+|-
+| syl || {{#language:syl|en}} || {{#language:syl}}
+| 2,494 || 0.00% || style="background-color:#9dc79d"| +14 || 22,626 || 0.01% || style="background-color:#9dc79d"| +2 || 496 || style="background-color:#9dc79d"| +1
+|-
+| szl || {{#language:szl|en}} || {{#language:szl}}
+| 549,891 || 0.46% || style="background-color:#9dc79d"| +511 || 52,514 || 0.04% || style="background-color:#9dc79d"| +19 || 175,692 || style="background-color:#c79d9d"| -34
+|-
+| szy || {{#language:szy|en}} || {{#language:szy}}
+| 157,921 || 0.13% || style="background-color:#c79d9d"| -41 || 291 || 0.00% ||  +0 || 150,994 ||  +0
+|-
+| ta || {{#language:ta|en}} || {{#language:ta}}
+| 601,468 || 0.51% || style="background-color:#9dc79d"| +495 || 8,716,405 || 7.42% || style="background-color:#9dc79d"| +5,239 || 647,618 || style="background-color:#9dc79d"| +58
+|-
+| tay || {{#language:tay|en}} || {{#language:tay}}
+| 157,415 || 0.13% ||  +0 || 227 || 0.00% ||  +0 || 151,006 ||  +0
+|-
+| tcy || {{#language:tcy|en}} || {{#language:tcy}}
+| 254,278 || 0.21% || style="background-color:#c79d9d"| -6 || 17,278 || 0.01% || style="background-color:#9dc79d"| +1 || 425,638 || style="background-color:#c79d9d"| -19
+|-
+| tdd || {{#language:tdd|en}} || {{#language:tdd}}
+| 804 || 0.00% ||  +0 || 23 || 1.95% ||  +0 || 32 ||  +0
+|-
+| te || {{#language:te|en}} || {{#language:te}}
+| 624,676 || 0.53% || style="background-color:#9dc79d"| +433 || 3,389,442 || 2.88% || style="background-color:#9dc79d"| +5,944 || 633,645 || style="background-color:#9dc79d"| +50
+|-
+| tet || {{#language:tet|en}} || {{#language:tet}}
+| 502,710 || 0.42% || style="background-color:#9dc79d"| +368 || 2,871 || 0.00% || style="background-color:#9dc79d"| +348 || 176,648 || style="background-color:#c79d9d"| -45
+|-
+| tg || {{#language:tg|en}} || {{#language:tg}}
+| 337,675 || 0.28% || style="background-color:#9dc79d"| +465 || 17,757,111 || 15.1% || style="background-color:#9dc79d"| +11,291 || 622,210 || style="background-color:#9dc79d"| +31
+|-
+| tg-cyrl || {{#language:tg-cyrl|en}} || {{#language:tg-cyrl}}
+| 160,463 || 0.13% || style="background-color:#9dc79d"| +3 || 38,015,004 || 32.3% || style="background-color:#9dc79d"| +17,261 || 612,849 || style="background-color:#c79d9d"| -25
+|-
+| tg-latn || {{#language:tg-latn|en}} || {{#language:tg-latn}}
+| 663,793 || 0.56% || style="background-color:#9dc79d"| +431 || 15,493,376 || 13.1% || style="background-color:#9dc79d"| +15,542 || 172,656 || style="background-color:#c79d9d"| -45
+|-
+| th || {{#language:th|en}} || {{#language:th}}
+| 655,185 || 0.55% || style="background-color:#9dc79d"| +9,890 || 34,429,304 || 29.3% || style="background-color:#9dc79d"| +12,156 || 666,381 || style="background-color:#9dc79d"| +114
+|-
+| ti || {{#language:ti|en}} || {{#language:ti}}
+| 155,707 || 0.13% || style="background-color:#9dc79d"| +15 || 149 || 0.00% ||  +0 || 425,560 || style="background-color:#c79d9d"| -19
+|-
+| tig || {{#language:tig|en}} || {{#language:tig}}
+| 133 || 0.00% || style="background-color:#9dc79d"| +3 || 7 || 5.96% ||  +0 || 6 ||  +0
+|-
+| tk || {{#language:tk|en}} || {{#language:tk}}
+| 213,943 || 0.18% || style="background-color:#9dc79d"| +446 || 259,716 || 0.22% || style="background-color:#9dc79d"| +5,879 || 430,618 || style="background-color:#c79d9d"| -6
+|-
+| tl || {{#language:tl|en}} || {{#language:tl}}
+| 516,980 || 0.44% || style="background-color:#9dc79d"| +807 || 33,459,483 || 28.4% || style="background-color:#9dc79d"| +12,333 || 635,247 || style="background-color:#9dc79d"| +20
+|-
+| tly || {{#language:tly|en}} || {{#language:tly}}
+| 165,654 || 0.14% || style="background-color:#9dc79d"| +206 || 157 || 0.00% || style="background-color:#9dc79d"| +3 || 425,544 || style="background-color:#c79d9d"| -20
+|-
+| tly-cyrl || {{#language:tly-cyrl|en}} || {{#language:tly-cyrl}}
+| 2 || 1.70% ||  +0 || 1 || 8.51% ||  +0 || 2 ||  +0
+|-
+| tn || {{#language:tn|en}} || {{#language:tn}}
+| 474,010 || 0.40% || style="background-color:#9dc79d"| +427 || 145,254 || 0.12% || style="background-color:#c79d9d"| -20 || 174,352 || style="background-color:#c79d9d"| -43
+|-
+| to || {{#language:to|en}} || {{#language:to}}
+| 473,065 || 0.40% || style="background-color:#9dc79d"| +412 || 129 || 0.00% ||  +0 || 174,312 || style="background-color:#c79d9d"| -44
+|-
+| tok || {{#language:tok|en}} || {{#language:tok}}
+| 2,417 || 0.00% || style="background-color:#9dc79d"| +3 || 1,664 || 0.00% || style="background-color:#9dc79d"| +2 || 707 || style="background-color:#9dc79d"| +2
+|-
+| tpi || {{#language:tpi|en}} || {{#language:tpi}}
+| 485,916 || 0.41% || style="background-color:#9dc79d"| +375 || 190,872 || 0.16% || style="background-color:#9dc79d"| +5,946 || 174,721 || style="background-color:#c79d9d"| -44
+|-
+| tpv || {{#language:tpv|en}} || {{#language:tpv}}
+| 1 || 8.51% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| tr || {{#language:tr|en}} || {{#language:tr}}
+| 3,938,797 || 3.35% || style="background-color:#9dc79d"| +11,064 || 43,089,822 || 36.6% || style="background-color:#9dc79d"| +21,436 || 563,978 || style="background-color:#c79d9d"| -10,380
+|-
+| tru || {{#language:tru|en}} || {{#language:tru}}
+| 198,876 || 0.16% || style="background-color:#9dc79d"| +394 || 2 || 1.70% ||  +0 || 430,127 || style="background-color:#c79d9d"| -13
+|-
+| trv || {{#language:trv|en}} || {{#language:trv}}
+| 3,904 || 0.00% || style="background-color:#c79d9d"| -1 || 31 || 2.64% ||  +0 || 107 ||  +0
+|-
+| ts || {{#language:ts|en}} || {{#language:ts}}
+| 471,992 || 0.40% || style="background-color:#9dc79d"| +415 || 153,168 || 0.13% || style="background-color:#9dc79d"| +5,947 || 174,051 || style="background-color:#c79d9d"| -44
+|-
+| tt || {{#language:tt|en}} || {{#language:tt}}
+| 744,208 || 0.63% || style="background-color:#9dc79d"| +64,950 || 6,489,498 || 5.52% || style="background-color:#9dc79d"| +6,814 || 463,579 || style="background-color:#9dc79d"| +283
+|-
+| tt-cyrl || {{#language:tt-cyrl|en}} || {{#language:tt-cyrl}}
+| 168,313 || 0.14% ||  +0 || 5,826,381 || 4.96% || style="background-color:#9dc79d"| +155 || 445,796 || style="background-color:#c79d9d"| -18
+|-
+| tt-latn || {{#language:tt-latn|en}} || {{#language:tt-latn}}
+| 470,336 || 0.40% || style="background-color:#9dc79d"| +433 || 5,482,028 || 4.66% || style="background-color:#9dc79d"| +154 || 174,270 || style="background-color:#c79d9d"| -44
+|-
+| ttj || {{#language:ttj|en}} || {{#language:ttj}}
+| 1 || 8.51% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| tum || {{#language:tum|en}} || {{#language:tum}}
+| 477,637 || 0.40% || style="background-color:#9dc79d"| +446 || 609 || 0.00% ||  +0 || 174,170 || style="background-color:#c79d9d"| -44
+|-
+| tvu || {{#language:tvu|en}} || {{#language:tvu}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| tw || {{#language:tw|en}} || {{#language:tw}}
+| 478,059 || 0.40% || style="background-color:#9dc79d"| +522 || 281,307 || 0.23% || style="background-color:#c79d9d"| -17 || 175,424 || style="background-color:#9dc79d"| +5
+|-
+| ty || {{#language:ty|en}} || {{#language:ty}}
+| 593,423 || 0.50% || style="background-color:#9dc79d"| +371 || 273 || 0.00% ||  +0 || 180,551 || style="background-color:#c79d9d"| -43
+|-
+| tyv || {{#language:tyv|en}} || {{#language:tyv}}
+| 159,378 || 0.13% || style="background-color:#9dc79d"| +37 || 106,810 || 0.09% ||  +0 || 425,567 || style="background-color:#c79d9d"| -19
+|-
+| tzm || {{#language:tzm|en}} || {{#language:tzm}}
+| 153,180 || 0.13% ||  +0 || 1,493 || 0.00% ||  +0 || 150,872 ||  +0
+|-
+| udm || {{#language:udm|en}} || {{#language:udm}}
+| 194,786 || 0.16% || style="background-color:#9dc79d"| +22 || 25,377 || 0.02% || style="background-color:#9dc79d"| +2 || 423,906 || style="background-color:#c79d9d"| -9
+|-
+| ug || {{#language:ug|en}} || {{#language:ug}}
+| 273,969 || 0.23% || style="background-color:#9dc79d"| +20 || 239,185 || 0.20% || style="background-color:#9dc79d"| +5,881 || 426,058 || style="background-color:#c79d9d"| -18
+|-
+| ug-arab || {{#language:ug-arab|en}} || {{#language:ug-arab}}
+| 154,390 || 0.13% || style="background-color:#9dc79d"| +1 || 7 || 5.96% ||  +0 || 425,163 || style="background-color:#c79d9d"| -19
+|-
+| ug-latn || {{#language:ug-latn|en}} || {{#language:ug-latn}}
+| 464,678 || 0.39% || style="background-color:#9dc79d"| +416 || 3 || 2.55% ||  +0 || 172,484 || style="background-color:#c79d9d"| -44
+|-
+| uk || {{#language:uk|en}} || {{#language:uk}}
+| 6,328,850 || 5.39% || style="background-color:#9dc79d"| +4,485 || 82,169,278 || 69.9% || style="background-color:#9dc79d"| +17,919 || 1,008,967 || style="background-color:#9dc79d"| +346
+|-
+| ur || {{#language:ur|en}} || {{#language:ur}}
+| 1,239,329 || 1.05% || style="background-color:#9dc79d"| +7,797 || 13,888,140 || 11.8% || style="background-color:#9dc79d"| +5,008 || 459,154 || style="background-color:#9dc79d"| +28
+|-
+| uz || {{#language:uz|en}} || {{#language:uz}}
+| 678,089 || 0.57% || style="background-color:#9dc79d"| +3,698 || 1,186,863 || 1.01% || style="background-color:#9dc79d"| +6,942 || 665,729 || style="background-color:#9dc79d"| +83
+|-
+| uz-cyrl || {{#language:uz-cyrl|en}} || {{#language:uz-cyrl}}
+| 153,843 || 0.13% || style="background-color:#9dc79d"| +1 || 186 || 0.00% ||  +0 || 150,935 ||  +0
+|-
+| uz-latn || {{#language:uz-latn|en}} || {{#language:uz-latn}}
+| 153,174 || 0.13% ||  +0 || 7 || 5.96% ||  +0 || 150,869 ||  +0
+|-
+| ve || {{#language:ve|en}} || {{#language:ve}}
+| 580,113 || 0.49% || style="background-color:#9dc79d"| +415 || 108,430 || 0.09% || style="background-color:#c79d9d"| -1 || 174,086 || style="background-color:#c79d9d"| -44
+|-
+| vec || {{#language:vec|en}} || {{#language:vec}}
+| 2,368,210 || 2.01% || style="background-color:#9dc79d"| +402 || 669,301 || 0.57% || style="background-color:#9dc79d"| +135 || 191,366 || style="background-color:#c79d9d"| -36
+|-
+| vep || {{#language:vep|en}} || {{#language:vep}}
+| 354,057 || 0.30% || style="background-color:#9dc79d"| +403 || 143,611 || 0.12% || style="background-color:#9dc79d"| +15 || 424,126 || style="background-color:#c79d9d"| -6
+|-
+| vi || {{#language:vi|en}} || {{#language:vi}}
+| 6,418,234 || 5.46% || style="background-color:#9dc79d"| +1,786 || 40,633,668 || 34.6% || style="background-color:#9dc79d"| +17,907 || 286,792 || style="background-color:#9dc79d"| +94
+|-
+| vls || {{#language:vls|en}} || {{#language:vls}}
+| 1,406,238 || 1.19% || style="background-color:#9dc79d"| +387 || 215,382 || 0.18% ||  +0 || 186,778 || style="background-color:#c79d9d"| -42
+|-
+| vmf || {{#language:vmf|en}} || {{#language:vmf}}
+| 604,994 || 0.51% || style="background-color:#9dc79d"| +408 || 749 || 0.00% ||  +0 || 178,110 || style="background-color:#c79d9d"| -44
+|-
+| vmw || {{#language:vmw|en}} || {{#language:vmw}}
+| 4 || 3.40% ||  +0 || 2 || 1.70% ||  +0 || 0 ||  +0
+|-
+| vo || {{#language:vo|en}} || {{#language:vo}}
+| 5,150,895 || 4.38% || style="background-color:#9dc79d"| +587 || 365,328 || 0.31% || style="background-color:#9dc79d"| +348 || 192,817 || style="background-color:#c79d9d"| -42
+|-
+| vot || {{#language:vot|en}} || {{#language:vot}}
+| 201,802 || 0.17% || style="background-color:#9dc79d"| +395 || 1 || 8.51% ||  +0 || 430,896 || style="background-color:#c79d9d"| -13
+|-
+| vro || {{#language:vro|en}} || {{#language:vro}}
+| 747,526 || 0.63% || style="background-color:#9dc79d"| +14 || 467,303 || 0.39% || style="background-color:#9dc79d"| +6,069 || 171,163 || style="background-color:#c79d9d"| -51
+|-
+| vut || {{#language:vut|en}} || {{#language:vut}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| wa || {{#language:wa|en}} || {{#language:wa}}
+| 1,611,744 || 1.37% || style="background-color:#9dc79d"| +400 || 839,265 || 0.71% || style="background-color:#9dc79d"| +6,099 || 188,437 || style="background-color:#c79d9d"| -41
+|-
+| wal || {{#language:wal|en}} || {{#language:wal}}
+| 84 || 7.15% ||  +0 || 72 || 6.13% ||  +0 || 9 ||  +0
+|-
+| war || {{#language:war|en}} || {{#language:war}}
+| 4,893,655 || 4.16% || style="background-color:#9dc79d"| +337 || 907,977 || 0.77% || style="background-color:#9dc79d"| +6,084 || 194,386 || style="background-color:#c79d9d"| -57
+|-
+| wes || {{#language:wes|en}} || {{#language:wes}}
+| 84 || 7.15% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| wls || {{#language:wls|en}} || {{#language:wls}}
+| 583 || 0.00% || style="background-color:#9dc79d"| +4 || 49 || 4.17% ||  +0 || 11 ||  +0
+|-
+| wlx || {{#language:wlx|en}} || {{#language:wlx}}
+| 389 || 0.00% || style="background-color:#9dc79d"| +15 || 303 || 0.00% || style="background-color:#9dc79d"| +3 || 182 || style="background-color:#9dc79d"| +9
+|-
+| wo || {{#language:wo|en}} || {{#language:wo}}
+| 1,354,714 || 1.15% || style="background-color:#9dc79d"| +374 || 108,605 || 0.09% || style="background-color:#c79d9d"| -2 || 184,315 || style="background-color:#c79d9d"| -42
+|-
+| wuu || {{#language:wuu|en}} || {{#language:wuu}}
+| 1,252,306 || 1.06% || style="background-color:#9dc79d"| +273 || 29,978,247 || 25.5% || style="background-color:#9dc79d"| +12,492 || 449,801 || style="background-color:#c79d9d"| -17
+|-
+| wuu-hans || {{#language:wuu-hans|en}} || {{#language:wuu-hans}}
+| 45 || 3.83% ||  +0 || 2 || 1.70% ||  +0 || 16 ||  +0
+|-
+| wuu-hant || {{#language:wuu-hant|en}} || {{#language:wuu-hant}}
+| 75 || 6.38% ||  +0 || 11 || 9.36% ||  +0 || 16 ||  +0
+|-
+| wya || {{#language:wya|en}} || {{#language:wya}}
+| 2 || 1.70% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| xal || {{#language:xal|en}} || {{#language:xal}}
+| 267,094 || 0.22% || style="background-color:#9dc79d"| +1 || 238,524 || 0.20% || style="background-color:#9dc79d"| +5,879 || 425,653 || style="background-color:#c79d9d"| -19
+|-
+| xh || {{#language:xh|en}} || {{#language:xh}}
+| 786,060 || 0.66% || style="background-color:#9dc79d"| +373 || 659,120 || 0.56% || style="background-color:#9dc79d"| +135 || 174,673 || style="background-color:#c79d9d"| -45
+|-
+| xmf || {{#language:xmf|en}} || {{#language:xmf}}
+| 293,064 || 0.24% || style="background-color:#9dc79d"| +27 || 449,004 || 0.38% || style="background-color:#9dc79d"| +5,877 || 426,048 || style="background-color:#c79d9d"| -19
+|-
+| xsy || {{#language:xsy|en}} || {{#language:xsy}}
+| 153,481 || 0.13% ||  +0 || 2 || 1.70% ||  +0 || 150,867 ||  +0
+|-
+| yas || {{#language:yas|en}} || {{#language:yas}}
+| 83 || 7.06% ||  +0 || 1 || 8.51% ||  +0 || 1 ||  +0
+|-
+| yat || {{#language:yat|en}} || {{#language:yat}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| yav || {{#language:yav|en}} || {{#language:yav}}
+| 82 || 6.98% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| ybb || {{#language:ybb|en}} || {{#language:ybb}}
+| 183 || 0.00% ||  +0 || 0 || 0% ||  +0 || 0 ||  +0
+|-
+| yi || {{#language:yi|en}} || {{#language:yi}}
+| 289,856 || 0.24% || style="background-color:#9dc79d"| +29 || 3,593,700 || 3.06% || style="background-color:#9dc79d"| +12,596 || 620,349 || style="background-color:#c79d9d"| -27
+|-
+| yo || {{#language:yo|en}} || {{#language:yo}}
+| 986,314 || 0.84% || style="background-color:#9dc79d"| +549 || 8,424,078 || 7.17% || style="background-color:#9dc79d"| +10,631 || 182,443 || style="background-color:#9dc79d"| +9
+|-
+| yrl || {{#language:yrl|en}} || {{#language:yrl}}
+| 60 || 5.11% || style="background-color:#9dc79d"| +2 || 25 || 2.12% || style="background-color:#9dc79d"| +1 || 21 || style="background-color:#9dc79d"| +1
+|-
+| yua || {{#language:yua|en}} || {{#language:yua}}
+| 175 || 0.00% || style="background-color:#9dc79d"| +83 || 7 || 5.96% || style="background-color:#9dc79d"| +1 || 5 ||  +0
+|-
+| yue || {{#language:yue|en}} || {{#language:yue}}
+| 671,309 || 0.57% || style="background-color:#9dc79d"| +461 || 38,276,829 || 32.5% || style="background-color:#9dc79d"| +17,567 || 628,550 || style="background-color:#9dc79d"| +16
+|-
+| yue-hans || {{#language:yue-hans|en}} || {{#language:yue-hans}}
+| 37 || 3.15% || style="background-color:#9dc79d"| +4 || 5 || 4.25% ||  +0 || 3 ||  +0
+|-
+| yue-hant || {{#language:yue-hant|en}} || {{#language:yue-hant}}
+| 29 || 2.46% || style="background-color:#9dc79d"| +1 || 7 || 5.96% ||  +0 || 9 ||  +0
+|-
+| za || {{#language:za|en}} || {{#language:za}}
+| 529,942 || 0.45% || style="background-color:#9dc79d"| +394 || 267,740 || 0.22% || style="background-color:#9dc79d"| +5,947 || 430,411 || style="background-color:#c79d9d"| -12
+|-
+| zea || {{#language:zea|en}} || {{#language:zea}}
+| 608,770 || 0.51% || style="background-color:#9dc79d"| +542 || 8,233,302 || 7.01% || style="background-color:#9dc79d"| +10,581 || 175,869 || style="background-color:#c79d9d"| -46
+|-
+| zgh || {{#language:zgh|en}} || {{#language:zgh}}
+| 156,134 || 0.13% || style="background-color:#9dc79d"| +15 || 915 || 0.00% || style="background-color:#9dc79d"| +3 || 151,371 || style="background-color:#9dc79d"| +5
+|-
+| zgh-latn || {{#language:zgh-latn|en}} || {{#language:zgh-latn}}
+| 2 || 1.70% ||  +0 || 1 || 8.51% ||  +0 || 0 ||  +0
+|-
+| zh || {{#language:zh|en}} || {{#language:zh}}
+| 10,049,188 || 8.55% || style="background-color:#9dc79d"| +10,003 || 44,357,920 || 37.7% || style="background-color:#9dc79d"| +38,181 || 1,249,498 || style="background-color:#9dc79d"| +416
+|-
+| zh-classical || {{#language:zh-classical|en}} || {{#language:zh-classical}}
+| 1 || 8.51% || style="background-color:#9dc79d"| +1 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| zh-cn || {{#language:zh-cn|en}} || {{#language:zh-cn}}
+| 1,495,235 || 1.27% || style="background-color:#9dc79d"| +1,885 || 35,297,568 || 30.0% || style="background-color:#c79d9d"| -1,690 || 647,055 || style="background-color:#9dc79d"| +101
+|-
+| zh-hans || {{#language:zh-hans|en}} || {{#language:zh-hans}}
+| 2,233,224 || 1.90% || style="background-color:#9dc79d"| +406 || 41,503,802 || 35.3% || style="background-color:#9dc79d"| +34,885 || 662,451 || style="background-color:#9dc79d"| +123
+|-
+| zh-hant || {{#language:zh-hant|en}} || {{#language:zh-hant}}
+| 1,881,847 || 1.60% || style="background-color:#9dc79d"| +1,066 || 41,494,859 || 35.3% || style="background-color:#9dc79d"| +35,580 || 769,235 || style="background-color:#9dc79d"| +167
+|-
+| zh-hk || {{#language:zh-hk|en}} || {{#language:zh-hk}}
+| 598,018 || 0.50% || style="background-color:#9dc79d"| +38 || 35,228,424 || 30.0% || style="background-color:#c79d9d"| -1,773 || 624,448 || style="background-color:#c79d9d"| -13
+|-
+| zh-min-nan || {{#language:zh-min-nan|en}} || {{#language:zh-min-nan}}
+| 0 || 0% ||  +0 || 0 || 0% ||  +0 || 1 ||  +0
+|-
+| zh-mo || {{#language:zh-mo|en}} || {{#language:zh-mo}}
+| 344,946 || 0.29% || style="background-color:#9dc79d"| +23 || 34,199,368 || 29.1% || style="background-color:#c79d9d"| -1,594 || 619,662 || style="background-color:#c79d9d"| -19
+|-
+| zh-my || {{#language:zh-my|en}} || {{#language:zh-my}}
+| 1,048,047 || 0.89% || style="background-color:#9dc79d"| +65 || 33,916,975 || 28.8% || style="background-color:#c79d9d"| -1,598 || 620,518 || style="background-color:#c79d9d"| -5
+|-
+| zh-sg || {{#language:zh-sg|en}} || {{#language:zh-sg}}
+| 1,115,448 || 0.94% || style="background-color:#9dc79d"| +55 || 34,419,085 || 29.3% || style="background-color:#c79d9d"| -1,565 || 621,439 || style="background-color:#c79d9d"| -4
+|-
+| zh-tw || {{#language:zh-tw|en}} || {{#language:zh-tw}}
+| 774,397 || 0.65% || style="background-color:#9dc79d"| +2,504 || 35,238,867 || 30.0% || style="background-color:#c79d9d"| -1,080 || 656,732 || style="background-color:#9dc79d"| +128
+|-
+| zh-yue || {{#language:zh-yue|en}} || {{#language:zh-yue}}
+| 1 || 8.51% || style="background-color:#9dc79d"| +1 || 1,185 || 0.00% || style="background-color:#9dc79d"| +1 || 1 ||  +0
+|-
+| zu || {{#language:zu|en}} || {{#language:zu}}
+| 1,564,356 || 1.33% || style="background-color:#9dc79d"| +448 || 789,581 || 0.67% || style="background-color:#9dc79d"| +228 || 184,706 || style="background-color:#9dc79d"| +6
+|}
+[[Category:Wikidata statistics|Language statistics]]

@@ -32,3 +32,5 @@ results/**/*.txt
 /qlever_dumps/props/dumps/qids_by_prop
 qlever_dumps/props/dumps/qids_old.json
 !qlever_dumps/props/dumps/texts/*.txt
+!qlever_dumps/langs/dumps/texts/*.txt
+!qlever_dumps/sitelinks/dumps/texts/*.txt
