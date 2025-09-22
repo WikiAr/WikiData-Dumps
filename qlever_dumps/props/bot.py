@@ -137,6 +137,9 @@ def get_prop_infos(p, p_old):
     if not p_data or not p_data.get("items_use_it"):
         p_data = one_prop(p, first_100=p_data.get("qids", {}))
     # ---
+    if not p_old.get("qids", {}):
+        p_old["qids"] = qids_olds.get(p, {})
+    # ---
     prop_infos = {
         "len_prop_claims": p_data.get("len_prop_claims", 0),
         "len_of_qids": p_data.get("len_of_qids", 0),
@@ -237,6 +240,10 @@ def render(old_data, file_date):
         }
     }
     # ---
+    for p, p_data in props_data["properties"].items():
+        if not p_data.get("old", {}).get("qids", {}):
+            p_data["old"]["qids"] = qids_olds.get(p, {})
+    # ---
     to_save_data.update({x: v for x, v in props_data.items() if x not in ["properties", "old"]})
     # ---
     to_save_data["properties"] = {
@@ -251,10 +258,6 @@ def render(old_data, file_date):
         print(f"save {len(to_save_data)} to {str(file2)}")
     # ---
     text_file = texts_dir / "properties.txt"
-    # ---
-    for p, p_data in props_data["properties"].items():
-        if not p_data.get("old", {}).get("qids", {}):
-            p_data["old"]["qids"] = qids_olds.get(p, {})
     # ---
     text = make_text(props_data, props_data.get("old", {}))
     # ---
