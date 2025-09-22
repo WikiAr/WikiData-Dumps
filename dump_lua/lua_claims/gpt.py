@@ -3,12 +3,14 @@
 
 import json
 
+
 def format_diff(new_val, old_val):
     diff = new_val - old_val
     if diff == 0:
         return "-"
     sign = "+" if diff > 0 else ""
     return f"{sign}{diff}"
+
 
 def main():
     # Load JSON data
@@ -108,6 +110,7 @@ def main():
     # --- Write to file ---
     with open("gpt.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
+
 
 if __name__ == "__main__":
     main()
