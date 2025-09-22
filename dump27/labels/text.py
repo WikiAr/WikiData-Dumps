@@ -81,7 +81,8 @@ def facts(n_tab, Old):
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
     # ---
-    diff = n_tab["All_items"] - last_total
+    # diff = n_tab["All_items"] - last_total
+    diff = min_it(n_tab["All_items"], last_total, add_plus=True)
     # ---
     new_data["last_total"] = int(n_tab["All_items"])
     # ---
@@ -327,6 +328,12 @@ def get_old_data():
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
         Old = {}
+    # ---
+    if not Old:
+        old_file = Path(__file__).parent / "old.json"
+        if old_file.exists():
+            with open(old_file, "r", encoding="utf-8") as infile:
+                Old = json.load(infile)
     # ---
     return Old
 

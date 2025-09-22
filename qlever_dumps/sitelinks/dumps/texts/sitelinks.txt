@@ -1,0 +1,1968 @@
+Update: <onlyinclude>2025-09-03</onlyinclude>.
+
+--~~~~
+
+{| class="wikitable sortable"
+! Title !! Number !! Diff 
+|-
+| Total items last update || 117,416,494 || 0 
+|-
+| Total items || 117,464,316  || +47,822 
+|-
+| Items without sitelinks || 83,915,952 || +25,096 
+|}
+
+== others / {{int:wikibase-sitelinks-special}} ==
+* Total number of links: 6,715,145
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:c:|commonswiki]] || {{int:project-localized-name-commonswiki}} || 5,688,320 || style="background-color:#c79d9d"| -34 
+|-
+| 2 || [[:species:|specieswiki]] || {{int:project-localized-name-specieswiki}} || 999,332 || style="background-color:#c79d9d"| -2 
+|-
+| 3 || [[:mw:|mediawikiwiki]] || {{int:project-localized-name-mediawikiwiki}} || 7,637 ||  0 
+|-
+| 4 || [[d:|wikidatawiki]] || {{int:project-localized-name-wikidatawiki}} || 7,116 ||  0 
+|-
+| 5 || [[:m:|metawiki]] || {{int:project-localized-name-metawiki}} || 6,882 ||  0 
+|-
+| 6 || sourceswiki || {{int:project-localized-name-sourceswiki}} || 2,750 ||  0 
+|-
+| 7 || [[:wikifunctions:|wikifunctionswiki]] || {{int:project-localized-name-wikifunctionswiki}} || 1,690 ||  0 
+|-
+| 8 || [[:outreachwiki:|outreachwiki]] || {{int:project-localized-name-outreachwiki}} || 797 ||  0 
+|-
+| 9 || [[:wikimania:|wikimaniawiki]] || {{int:project-localized-name-wikimaniawiki}} || 371 ||  0 
+|-
+| 10 || [[:foundation:|foundationwiki]] || {{int:project-localized-name-foundationwiki}} || 250 ||  0 
+|}
+
+
+== sitelinks per family ==
+
+
+=== wikipedia / {{int:Wikibase-otherprojects-wikipedia}} ===
+* Total number of links: 84,074,909
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:w:en:|enwiki]] || {{int:project-localized-name-enwiki}} || 10,060,909 || style="background-color:#c79d9d"| -31 
+|-
+| 2 || [[:w:ceb:|cebwiki]] || {{int:project-localized-name-cebwiki}} || 5,734,812 || style="background-color:#c79d9d"| -9 
+|-
+| 3 || [[:w:de:|dewiki]] || {{int:project-localized-name-dewiki}} || 3,685,474 || style="background-color:#c79d9d"| -10 
+|-
+| 4 || [[:w:fr:|frwiki]] || {{int:project-localized-name-frwiki}} || 3,405,108 || style="background-color:#c79d9d"| -24 
+|-
+| 5 || [[:w:sv:|svwiki]] || {{int:project-localized-name-svwiki}} || 3,033,809 || style="background-color:#c79d9d"| -9 
+|-
+| 6 || [[:w:ru:|ruwiki]] || {{int:project-localized-name-ruwiki}} || 2,874,213 || style="background-color:#c79d9d"| -12 
+|-
+| 7 || [[:w:es:|eswiki]] || {{int:project-localized-name-eswiki}} || 2,562,487 || style="background-color:#c79d9d"| -10 
+|-
+| 8 || [[:w:it:|itwiki]] || {{int:project-localized-name-itwiki}} || 2,453,332 || style="background-color:#c79d9d"| -7 
+|-
+| 9 || [[:w:ar:|arwiki]] || {{int:project-localized-name-arwiki}} || 2,385,348 || style="background-color:#c79d9d"| -13 
+|-
+| 10 || [[:w:nl:|nlwiki]] || {{int:project-localized-name-nlwiki}} || 2,374,155 ||  0 
+|-
+| 11 || [[:w:zh:|zhwiki]] || {{int:project-localized-name-zhwiki}} || 2,075,320 || style="background-color:#c79d9d"| -2 
+|-
+| 12 || [[:w:pl:|plwiki]] || {{int:project-localized-name-plwiki}} || 2,004,585 || style="background-color:#c79d9d"| -6 
+|-
+| 13 || [[:w:uk:|ukwiki]] || {{int:project-localized-name-ukwiki}} || 1,836,427 || style="background-color:#c79d9d"| -4 
+|-
+| 14 || [[:w:fa:|fawiki]] || {{int:project-localized-name-fawiki}} || 1,829,677 || style="background-color:#c79d9d"| -7 
+|-
+| 15 || [[:w:ja:|jawiki]] || {{int:project-localized-name-jawiki}} || 1,823,246 || style="background-color:#c79d9d"| -8 
+|-
+| 16 || [[:w:vi:|viwiki]] || {{int:project-localized-name-viwiki}} || 1,671,053 || style="background-color:#c79d9d"| -2 
+|-
+| 17 || [[:w:arz:|arzwiki]] || {{int:project-localized-name-arzwiki}} || 1,654,037 ||  0 
+|-
+| 18 || [[:w:pt:|ptwiki]] || {{int:project-localized-name-ptwiki}} || 1,650,956 || style="background-color:#c79d9d"| -5 
+|-
+| 19 || [[:w:war:|warwiki]] || {{int:project-localized-name-warwiki}} || 1,419,786 ||  0 
+|-
+| 20 || [[:w:ko:|kowiki]] || {{int:project-localized-name-kowiki}} || 1,147,606 || style="background-color:#c79d9d"| -3 
+|-
+| 21 || [[:w:tr:|trwiki]] || {{int:project-localized-name-trwiki}} || 1,065,739 || style="background-color:#c79d9d"| -1 
+|-
+| 22 || [[:w:id:|idwiki]] || {{int:project-localized-name-idwiki}} || 930,044 || style="background-color:#c79d9d"| -5 
+|-
+| 23 || [[:w:ca:|cawiki]] || {{int:project-localized-name-cawiki}} || 929,359 || style="background-color:#c79d9d"| -20 
+|-
+| 24 || [[:w:sr:|srwiki]] || {{int:project-localized-name-srwiki}} || 920,142 || style="background-color:#c79d9d"| -1 
+|-
+| 25 || [[:w:no:|nowiki]] || {{int:project-localized-name-nowiki}} || 870,404 || style="background-color:#c79d9d"| -2 
+|-
+| 26 || [[:w:ur:|urwiki]] || {{int:project-localized-name-urwiki}} || 843,201 || style="background-color:#c79d9d"| -7 
+|-
+| 27 || [[:w:cs:|cswiki]] || {{int:project-localized-name-cswiki}} || 834,905 || style="background-color:#c79d9d"| -18 
+|-
+| 28 || [[:w:fi:|fiwiki]] || {{int:project-localized-name-fiwiki}} || 712,484 ||  0 
+|-
+| 29 || [[:w:ro:|rowiki]] || {{int:project-localized-name-rowiki}} || 695,397 || style="background-color:#c79d9d"| -2 
+|-
+| 30 || [[:w:hu:|huwiki]] || {{int:project-localized-name-huwiki}} || 661,401 || style="background-color:#c79d9d"| -1 
+|-
+| 31 || [[:w:ce:|cewiki]] || {{int:project-localized-name-cewiki}} || 631,482 ||  0 
+|-
+| 32 || [[:w:eu:|euwiki]] || {{int:project-localized-name-euwiki}} || 572,183 || style="background-color:#c79d9d"| -1 
+|-
+| 33 || [[:w:tt:|ttwiki]] || {{int:project-localized-name-ttwiki}} || 537,055 ||  0 
+|-
+| 34 || [[:w:sh:|shwiki]] || {{int:project-localized-name-shwiki}} || 533,860 ||  0 
+|-
+| 35 || [[:w:he:|hewiki]] || {{int:project-localized-name-hewiki}} || 513,161 || style="background-color:#c79d9d"| -8 
+|-
+| 36 || [[:w:eo:|eowiki]] || {{int:project-localized-name-eowiki}} || 503,078 || style="background-color:#c79d9d"| -1 
+|-
+| 37 || [[:w:ms:|mswiki]] || {{int:project-localized-name-mswiki}} || 485,963 || style="background-color:#c79d9d"| -1 
+|-
+| 38 || [[:w:nan:|nanwiki]] || {{int:project-localized-name-nanwiki}} || 478,775 || style="background-color:#9dc79d"| +478,775 
+|-
+| 39 || [[:w:hy:|hywiki]] || {{int:project-localized-name-hywiki}} || 475,650 ||  0 
+|-
+| 40 || [[:w:bn:|bnwiki]] || {{int:project-localized-name-bnwiki}} || 451,054 || style="background-color:#9dc79d"| +4 
+|-
+| 41 || [[:w:bg:|bgwiki]] || {{int:project-localized-name-bgwiki}} || 404,355 || style="background-color:#c79d9d"| -1 
+|-
+| 42 || [[:w:da:|dawiki]] || {{int:project-localized-name-dawiki}} || 403,556 || style="background-color:#c79d9d"| -2 
+|-
+| 43 || [[:w:be:|bewiki]] || {{int:project-localized-name-bewiki}} || 393,971 || style="background-color:#c79d9d"| -2 
+|-
+| 44 || [[:w:simple:|simplewiki]] || {{int:project-localized-name-simplewiki}} || 386,234 || style="background-color:#9dc79d"| +3 
+|-
+| 45 || [[:w:azb:|azbwiki]] || {{int:project-localized-name-azbwiki}} || 376,373 || style="background-color:#c79d9d"| -4 
+|-
+| 46 || [[:w:sk:|skwiki]] || {{int:project-localized-name-skwiki}} || 358,152 || style="background-color:#c79d9d"| -1 
+|-
+| 47 || [[:w:cy:|cywiki]] || {{int:project-localized-name-cywiki}} || 356,118 || style="background-color:#c79d9d"| -4 
+|-
+| 48 || [[:w:az:|azwiki]] || {{int:project-localized-name-azwiki}} || 349,267 ||  0 
+|-
+| 49 || [[:w:el:|elwiki]] || {{int:project-localized-name-elwiki}} || 347,042 || style="background-color:#c79d9d"| -1 
+|-
+| 50 || [[:w:uz:|uzwiki]] || {{int:project-localized-name-uzwiki}} || 340,911 ||  0 
+|-
+| 51 || [[:w:gl:|glwiki]] || {{int:project-localized-name-glwiki}} || 318,169 ||  0 
+|-
+| 52 || [[:w:th:|thwiki]] || {{int:project-localized-name-thwiki}} || 292,255 || style="background-color:#c79d9d"| -2 
+|-
+| 53 || [[:w:et:|etwiki]] || {{int:project-localized-name-etwiki}} || 289,781 || style="background-color:#c79d9d"| -1 
+|-
+| 54 || [[:w:sl:|slwiki]] || {{int:project-localized-name-slwiki}} || 284,548 ||  0 
+|-
+| 55 || [[:w:kk:|kkwiki]] || {{int:project-localized-name-kkwiki}} || 282,306 || style="background-color:#c79d9d"| -1 
+|-
+| 56 || [[:w:ka:|kawiki]] || {{int:project-localized-name-kawiki}} || 265,705 ||  0 
+|-
+| 57 || [[:w:lt:|ltwiki]] || {{int:project-localized-name-ltwiki}} || 262,389 ||  0 
+|-
+| 58 || [[:w:nn:|nnwiki]] || {{int:project-localized-name-nnwiki}} || 260,762 ||  0 
+|-
+| 59 || [[:w:hr:|hrwiki]] || {{int:project-localized-name-hrwiki}} || 251,737 || style="background-color:#c79d9d"| -1 
+|-
+| 60 || [[:w:mk:|mkwiki]] || {{int:project-localized-name-mkwiki}} || 249,848 ||  0 
+|-
+| 61 || [[:w:min:|minwiki]] || {{int:project-localized-name-minwiki}} || 231,560 ||  0 
+|-
+| 62 || [[:w:hi:|hiwiki]] || {{int:project-localized-name-hiwiki}} || 212,587 || style="background-color:#c79d9d"| -1 
+|-
+| 63 || [[:w:ta:|tawiki]] || {{int:project-localized-name-tawiki}} || 211,844 || style="background-color:#c79d9d"| -1 
+|-
+| 64 || [[:w:af:|afwiki]] || {{int:project-localized-name-afwiki}} || 195,156 || style="background-color:#c79d9d"| -1 
+|-
+| 65 || [[:w:la:|lawiki]] || {{int:project-localized-name-lawiki}} || 187,097 ||  0 
+|-
+| 66 || [[:w:yue:|yuewiki]] || {{int:project-localized-name-yuewiki}} || 185,927 || style="background-color:#9dc79d"| +185,927 
+|-
+| 67 || [[:w:lv:|lvwiki]] || {{int:project-localized-name-lvwiki}} || 182,779 || style="background-color:#c79d9d"| -2 
+|-
+| 68 || [[:w:lld:|lldwiki]] || {{int:project-localized-name-lldwiki}} || 178,126 ||  0 
+|-
+| 69 || [[:w:be-tarask:|be-taraskwiki]] || {{int:project-localized-name-be-taraskwiki}} || 177,663 || style="background-color:#c79d9d"| -1 
+|-
+| 70 || [[:w:bs:|bswiki]] || {{int:project-localized-name-bswiki}} || 175,940 ||  0 
+|-
+| 71 || [[:w:ast:|astwiki]] || {{int:project-localized-name-astwiki}} || 171,862 ||  0 
+|-
+| 72 || [[:w:tg:|tgwiki]] || {{int:project-localized-name-tgwiki}} || 148,835 ||  0 
+|-
+| 73 || [[:w:sq:|sqwiki]] || {{int:project-localized-name-sqwiki}} || 138,363 ||  0 
+|-
+| 74 || [[:w:ml:|mlwiki]] || {{int:project-localized-name-mlwiki}} || 136,059 ||  0 
+|-
+| 75 || [[:w:te:|tewiki]] || {{int:project-localized-name-tewiki}} || 133,703 || style="background-color:#c79d9d"| -1 
+|-
+| 76 || [[:w:ckb:|ckbwiki]] || {{int:project-localized-name-ckbwiki}} || 131,488 ||  0 
+|-
+| 77 || [[:w:ku:|kuwiki]] || {{int:project-localized-name-kuwiki}} || 129,569 ||  0 
+|-
+| 78 || [[:w:oc:|ocwiki]] || {{int:project-localized-name-ocwiki}} || 116,002 ||  0 
+|-
+| 79 || [[:w:sw:|swwiki]] || {{int:project-localized-name-swwiki}} || 114,813 ||  0 
+|-
+| 80 || [[:w:br:|brwiki]] || {{int:project-localized-name-brwiki}} || 113,865 ||  0 
+|-
+| 81 || [[:w:ba:|bawiki]] || {{int:project-localized-name-bawiki}} || 113,283 || style="background-color:#c79d9d"| -2 
+|-
+| 82 || [[:w:fy:|fywiki]] || {{int:project-localized-name-fywiki}} || 110,237 ||  0 
+|-
+| 83 || [[:w:mg:|mgwiki]] || {{int:project-localized-name-mgwiki}} || 104,643 || style="background-color:#9dc79d"| +1 
+|-
+| 84 || [[:w:lb:|lbwiki]] || {{int:project-localized-name-lbwiki}} || 100,533 ||  0 
+|-
+| 85 || [[:w:mr:|mrwiki]] || {{int:project-localized-name-mrwiki}} || 100,482 || style="background-color:#c79d9d"| -1 
+|-
+| 86 || [[:w:jv:|jvwiki]] || {{int:project-localized-name-jvwiki}} || 100,360 ||  0 
+|-
+| 87 || [[:w:my:|mywiki]] || {{int:project-localized-name-mywiki}} || 99,192 || style="background-color:#9dc79d"| +1 
+|-
+| 88 || [[:w:nds:|ndswiki]] || {{int:project-localized-name-ndswiki}} || 92,470 ||  0 
+|-
+| 89 || [[:w:an:|anwiki]] || {{int:project-localized-name-anwiki}} || 90,192 ||  0 
+|-
+| 90 || [[:w:tl:|tlwiki]] || {{int:project-localized-name-tlwiki}} || 90,083 ||  0 
+|-
+| 91 || [[:w:lmo:|lmowiki]] || {{int:project-localized-name-lmowiki}} || 89,656 ||  0 
+|-
+| 92 || [[:w:sco:|scowiki]] || {{int:project-localized-name-scowiki}} || 88,609 ||  0 
+|-
+| 93 || [[:w:cv:|cvwiki]] || {{int:project-localized-name-cvwiki}} || 86,526 || style="background-color:#c79d9d"| -1 
+|-
+| 94 || [[:w:pnb:|pnbwiki]] || {{int:project-localized-name-pnbwiki}} || 84,879 ||  0 
+|-
+| 95 || [[:w:ky:|kywiki]] || {{int:project-localized-name-kywiki}} || 83,544 ||  0 
+|-
+| 96 || [[:w:mn:|mnwiki]] || {{int:project-localized-name-mnwiki}} || 83,110 || style="background-color:#c79d9d"| -3 
+|-
+| 97 || [[:w:is:|iswiki]] || {{int:project-localized-name-iswiki}} || 80,662 ||  0 
+|-
+| 98 || [[:w:vec:|vecwiki]] || {{int:project-localized-name-vecwiki}} || 78,038 ||  0 
+|-
+| 99 || [[:w:new:|newwiki]] || {{int:project-localized-name-newwiki}} || 77,029 ||  0 
+|-
+| 100 || [[:w:ht:|htwiki]] || {{int:project-localized-name-htwiki}} || 76,999 ||  0 
+|-
+| 101 || [[:w:pms:|pmswiki]] || {{int:project-localized-name-pmswiki}} || 76,925 ||  0 
+|-
+| 102 || [[:w:ga:|gawiki]] || {{int:project-localized-name-gawiki}} || 75,533 || style="background-color:#9dc79d"| +1 
+|-
+| 103 || [[:w:su:|suwiki]] || {{int:project-localized-name-suwiki}} || 73,875 ||  0 
+|-
+| 104 || [[:w:pa:|pawiki]] || {{int:project-localized-name-pawiki}} || 73,028 ||  0 
+|-
+| 105 || [[:w:mzn:|mznwiki]] || {{int:project-localized-name-mznwiki}} || 71,886 || style="background-color:#c79d9d"| -1 
+|-
+| 106 || [[:w:ha:|hawiki]] || {{int:project-localized-name-hawiki}} || 70,691 || style="background-color:#c79d9d"| -2 
+|-
+| 107 || [[:w:io:|iowiki]] || {{int:project-localized-name-iowiki}} || 68,348 ||  0 
+|-
+| 108 || [[:w:szl:|szlwiki]] || {{int:project-localized-name-szlwiki}} || 65,658 ||  0 
+|-
+| 109 || [[:w:wuu:|wuuwiki]] || {{int:project-localized-name-wuuwiki}} || 54,388 ||  0 
+|-
+| 110 || [[:w:ig:|igwiki]] || {{int:project-localized-name-igwiki}} || 50,847 || style="background-color:#9dc79d"| +1 
+|-
+| 111 || [[:w:ban:|banwiki]] || {{int:project-localized-name-banwiki}} || 50,306 ||  0 
+|-
+| 112 || [[:w:vo:|vowiki]] || {{int:project-localized-name-vowiki}} || 50,088 ||  0 
+|-
+| 113 || [[:w:diq:|diqwiki]] || {{int:project-localized-name-diqwiki}} || 49,266 ||  0 
+|-
+| 114 || [[:w:si:|siwiki]] || {{int:project-localized-name-siwiki}} || 47,738 || style="background-color:#c79d9d"| -1 
+|-
+| 115 || [[:w:glk:|glkwiki]] || {{int:project-localized-name-glkwiki}} || 46,965 ||  0 
+|-
+| 116 || [[:w:ne:|newiki]] || {{int:project-localized-name-newiki}} || 42,746 ||  0 
+|-
+| 117 || [[:w:als:|alswiki]] || {{int:project-localized-name-alswiki}} || 42,157 ||  0 
+|-
+| 118 || [[:w:kn:|knwiki]] || {{int:project-localized-name-knwiki}} || 40,982 ||  0 
+|-
+| 119 || [[:w:yo:|yowiki]] || {{int:project-localized-name-yowiki}} || 40,917 ||  0 
+|-
+| 120 || [[:w:bar:|barwiki]] || {{int:project-localized-name-barwiki}} || 39,649 ||  0 
+|-
+| 121 || [[:w:os:|oswiki]] || {{int:project-localized-name-oswiki}} || 37,312 ||  0 
+|-
+| 122 || [[:w:ary:|arywiki]] || {{int:project-localized-name-arywiki}} || 37,156 || style="background-color:#9dc79d"| +1 
+|-
+| 123 || [[:w:gu:|guwiki]] || {{int:project-localized-name-guwiki}} || 36,243 ||  0 
+|-
+| 124 || [[:w:ia:|iawiki]] || {{int:project-localized-name-iawiki}} || 34,526 ||  0 
+|-
+| 125 || [[:w:crh-Latn:|crh-Latnwiki]] || {{int:project-localized-name-crh-Latnwiki}} || 33,375 ||  0 
+|-
+| 126 || [[:w:ilo:|ilowiki]] || {{int:project-localized-name-ilowiki}} || 33,337 || style="background-color:#c79d9d"| -1 
+|-
+| 127 || [[:w:sd:|sdwiki]] || {{int:project-localized-name-sdwiki}} || 33,297 ||  0 
+|-
+| 128 || [[:w:bpy:|bpywiki]] || {{int:project-localized-name-bpywiki}} || 33,286 ||  0 
+|-
+| 129 || [[:w:qu:|quwiki]] || {{int:project-localized-name-quwiki}} || 32,836 || style="background-color:#9dc79d"| +1 
+|-
+| 130 || [[:w:xmf:|xmfwiki]] || {{int:project-localized-name-xmfwiki}} || 29,873 ||  0 
+|-
+| 131 || [[:w:or:|orwiki]] || {{int:project-localized-name-orwiki}} || 29,559 ||  0 
+|-
+| 132 || [[:w:scn:|scnwiki]] || {{int:project-localized-name-scnwiki}} || 29,514 ||  0 
+|-
+| 133 || [[:w:avk:|avkwiki]] || {{int:project-localized-name-avkwiki}} || 27,611 || style="background-color:#c79d9d"| -1 
+|-
+| 134 || [[:w:as:|aswiki]] || {{int:project-localized-name-aswiki}} || 27,116 ||  0 
+|-
+| 135 || [[:w:frr:|frrwiki]] || {{int:project-localized-name-frrwiki}} || 27,018 ||  0 
+|-
+| 136 || [[:w:cdo:|cdowiki]] || {{int:project-localized-name-cdowiki}} || 26,720 ||  0 
+|-
+| 137 || [[:w:ps:|pswiki]] || {{int:project-localized-name-pswiki}} || 26,708 ||  0 
+|-
+| 138 || [[:w:gv:|gvwiki]] || {{int:project-localized-name-gvwiki}} || 25,841 || style="background-color:#c79d9d"| -2 
+|-
+| 139 || [[:w:bho:|bhowiki]] || {{int:project-localized-name-bhowiki}} || 25,453 ||  0 
+|-
+| 140 || [[:w:ab:|abwiki]] || {{int:project-localized-name-abwiki}} || 25,298 || style="background-color:#c79d9d"| -1 
+|-
+| 141 || [[:w:shn:|shnwiki]] || {{int:project-localized-name-shnwiki}} || 25,243 ||  0 
+|-
+| 142 || [[:w:nv:|nvwiki]] || {{int:project-localized-name-nvwiki}} || 25,059 ||  0 
+|-
+| 143 || [[:w:sah:|sahwiki]] || {{int:project-localized-name-sahwiki}} || 24,862 ||  0 
+|-
+| 144 || [[:w:hsb:|hsbwiki]] || {{int:project-localized-name-hsbwiki}} || 24,528 ||  0 
+|-
+| 145 || [[:w:smn:|smnwiki]] || {{int:project-localized-name-smnwiki}} || 23,874 ||  0 
+|-
+| 146 || [[:w:fo:|fowiki]] || {{int:project-localized-name-fowiki}} || 23,268 ||  0 
+|-
+| 147 || [[:w:bcl:|bclwiki]] || {{int:project-localized-name-bclwiki}} || 23,142 ||  0 
+|-
+| 148 || [[:w:lzh:|lzhwiki]] || {{int:project-localized-name-lzhwiki}} || 22,621 || style="background-color:#9dc79d"| +22,621 
+|-
+| 149 || [[:w:sa:|sawiki]] || {{int:project-localized-name-sawiki}} || 22,198 ||  0 
+|-
+| 150 || [[:w:jv-x-bms:|jv-x-bmswiki]] || {{int:project-localized-name-jv-x-bmswiki}} || 21,568 ||  0 
+|-
+| 151 || [[:w:yi:|yiwiki]] || {{int:project-localized-name-yiwiki}} || 20,314 ||  0 
+|-
+| 152 || [[:w:bat-smg:|bat-smgwiki]] || {{int:project-localized-name-bat-smgwiki}} || 19,449 ||  0 
+|-
+| 153 || [[:w:mai:|maiwiki]] || {{int:project-localized-name-maiwiki}} || 19,440 ||  0 
+|-
+| 154 || [[:w:li:|liwiki]] || {{int:project-localized-name-liwiki}} || 19,054 || style="background-color:#c79d9d"| -1 
+|-
+| 155 || [[:w:gd:|gdwiki]] || {{int:project-localized-name-gdwiki}} || 18,559 ||  0 
+|-
+| 156 || [[:w:hyw:|hywwiki]] || {{int:project-localized-name-hywwiki}} || 17,486 ||  0 
+|-
+| 157 || [[:w:gor:|gorwiki]] || {{int:project-localized-name-gorwiki}} || 17,353 ||  0 
+|-
+| 158 || [[:w:am:|amwiki]] || {{int:project-localized-name-amwiki}} || 17,300 ||  0 
+|-
+| 159 || [[:w:nap:|napwiki]] || {{int:project-localized-name-napwiki}} || 17,188 ||  0 
+|-
+| 160 || [[:w:mhr:|mhrwiki]] || {{int:project-localized-name-mhrwiki}} || 16,939 ||  0 
+|-
+| 161 || [[:w:bug:|bugwiki]] || {{int:project-localized-name-bugwiki}} || 16,450 ||  0 
+|-
+| 162 || [[:w:km:|kmwiki]] || {{int:project-localized-name-kmwiki}} || 16,419 ||  0 
+|-
+| 163 || [[:w:sat:|satwiki]] || {{int:project-localized-name-satwiki}} || 16,364 || style="background-color:#c79d9d"| -1 
+|-
+| 164 || [[:w:gan:|ganwiki]] || {{int:project-localized-name-ganwiki}} || 15,850 ||  0 
+|-
+| 165 || [[:w:vep:|vepwiki]] || {{int:project-localized-name-vepwiki}} || 15,354 ||  0 
+|-
+| 166 || [[:w:lij:|lijwiki]] || {{int:project-localized-name-lijwiki}} || 14,913 ||  0 
+|-
+| 167 || [[:w:hif:|hifwiki]] || {{int:project-localized-name-hifwiki}} || 14,866 || style="background-color:#c79d9d"| -13 
+|-
+| 168 || [[:w:eml:|emlwiki]] || {{int:project-localized-name-emlwiki}} || 14,861 ||  0 
+|-
+| 169 || [[:w:ff:|ffwiki]] || {{int:project-localized-name-ffwiki}} || 14,756 ||  0 
+|-
+| 170 || [[:w:ie:|iewiki]] || {{int:project-localized-name-iewiki}} || 14,517 ||  0 
+|-
+| 171 || [[:w:rue:|ruewiki]] || {{int:project-localized-name-ruewiki}} || 14,475 ||  0 
+|-
+| 172 || [[:w:se:|sewiki]] || {{int:project-localized-name-sewiki}} || 14,361 ||  0 
+|-
+| 173 || [[:w:ace:|acewiki]] || {{int:project-localized-name-acewiki}} || 14,287 ||  0 
+|-
+| 174 || [[:w:wa:|wawiki]] || {{int:project-localized-name-wawiki}} || 14,260 ||  0 
+|-
+| 175 || [[:w:mt:|mtwiki]] || {{int:project-localized-name-mtwiki}} || 13,965 ||  0 
+|-
+| 176 || [[:w:bo:|bowiki]] || {{int:project-localized-name-bowiki}} || 13,901 ||  0 
+|-
+| 177 || [[:w:bjn:|bjnwiki]] || {{int:project-localized-name-bjnwiki}} || 13,672 ||  0 
+|-
+| 178 || [[:w:pam:|pamwiki]] || {{int:project-localized-name-pamwiki}} || 13,533 ||  0 
+|-
+| 179 || [[:w:zu:|zuwiki]] || {{int:project-localized-name-zuwiki}} || 13,511 || style="background-color:#c79d9d"| -1 
+|-
+| 180 || [[:w:mdf:|mdfwiki]] || {{int:project-localized-name-mdfwiki}} || 13,385 ||  0 
+|-
+| 181 || [[:w:hak:|hakwiki]] || {{int:project-localized-name-hakwiki}} || 13,262 ||  0 
+|-
+| 182 || [[:w:myv:|myvwiki]] || {{int:project-localized-name-myvwiki}} || 13,152 ||  0 
+|-
+| 183 || [[:w:kaa:|kaawiki]] || {{int:project-localized-name-kaawiki}} || 13,079 ||  0 
+|-
+| 184 || [[:w:mrj:|mrjwiki]] || {{int:project-localized-name-mrjwiki}} || 12,509 ||  0 
+|-
+| 185 || [[:w:it-x-tara:|it-x-tarawiki]] || {{int:project-localized-name-it-x-tarawiki}} || 12,156 ||  0 
+|-
+| 186 || [[:w:vls:|vlswiki]] || {{int:project-localized-name-vlswiki}} || 11,868 ||  0 
+|-
+| 187 || [[:w:zgh:|zghwiki]] || {{int:project-localized-name-zghwiki}} || 11,611 ||  0 
+|-
+| 188 || [[:w:tly:|tlywiki]] || {{int:project-localized-name-tlywiki}} || 11,567 ||  0 
+|-
+| 189 || [[:w:so:|sowiki]] || {{int:project-localized-name-sowiki}} || 11,186 ||  0 
+|-
+| 190 || [[:w:tk:|tkwiki]] || {{int:project-localized-name-tkwiki}} || 10,971 ||  0 
+|-
+| 191 || [[:w:shi:|shiwiki]] || {{int:project-localized-name-shiwiki}} || 10,948 ||  0 
+|-
+| 192 || [[:w:co:|cowiki]] || {{int:project-localized-name-cowiki}} || 10,722 ||  0 
+|-
+| 193 || [[:w:dag:|dagwiki]] || {{int:project-localized-name-dagwiki}} || 10,609 ||  0 
+|-
+| 194 || [[:w:nds-NL:|nds-NLwiki]] || {{int:project-localized-name-nds-NLwiki}} || 10,522 ||  0 
+|-
+| 195 || [[:w:ug:|ugwiki]] || {{int:project-localized-name-ugwiki}} || 10,193 ||  0 
+|-
+| 196 || [[:w:kw:|kwwiki]] || {{int:project-localized-name-kwwiki}} || 10,155 ||  0 
+|-
+| 197 || [[:w:sc:|scwiki]] || {{int:project-localized-name-scwiki}} || 10,103 ||  0 
+|-
+| 198 || [[:w:mi:|miwiki]] || {{int:project-localized-name-miwiki}} || 9,473 ||  0 
+|-
+| 199 || [[:w:kab:|kabwiki]] || {{int:project-localized-name-kabwiki}} || 9,379 ||  0 
+|-
+| 200 || [[:w:kv:|kvwiki]] || {{int:project-localized-name-kvwiki}} || 9,329 ||  0 
+|-
+| 201 || [[:w:nso:|nsowiki]] || {{int:project-localized-name-nsowiki}} || 9,327 ||  0 
+|-
+| 202 || [[:w:frp:|frpwiki]] || {{int:project-localized-name-frpwiki}} || 8,842 ||  0 
+|-
+| 203 || [[:w:udm:|udmwiki]] || {{int:project-localized-name-udmwiki}} || 8,634 ||  0 
+|-
+| 204 || [[:w:skr:|skrwiki]] || {{int:project-localized-name-skrwiki}} || 8,610 ||  0 
+|-
+| 205 || [[:w:fiu-vro:|fiu-vrowiki]] || {{int:project-localized-name-fiu-vrowiki}} || 8,506 ||  0 
+|-
+| 206 || [[:w:zea:|zeawiki]] || {{int:project-localized-name-zeawiki}} || 8,482 ||  0 
+|-
+| 207 || [[:w:ang:|angwiki]] || {{int:project-localized-name-angwiki}} || 8,416 ||  0 
+|-
+| 208 || [[:w:sn:|snwiki]] || {{int:project-localized-name-snwiki}} || 8,346 ||  0 
+|-
+| 209 || [[:w:dsb:|dsbwiki]] || {{int:project-localized-name-dsbwiki}} || 8,178 ||  0 
+|-
+| 210 || [[:w:mwl:|mwlwiki]] || {{int:project-localized-name-mwlwiki}} || 7,921 ||  0 
+|-
+| 211 || [[:w:lo:|lowiki]] || {{int:project-localized-name-lowiki}} || 7,901 ||  0 
+|-
+| 212 || [[:w:gn:|gnwiki]] || {{int:project-localized-name-gnwiki}} || 7,824 ||  0 
+|-
+| 213 || [[:w:mni:|mniwiki]] || {{int:project-localized-name-mniwiki}} || 7,772 || style="background-color:#c79d9d"| -1 
+|-
+| 214 || [[:w:ks:|kswiki]] || {{int:project-localized-name-kswiki}} || 7,644 ||  0 
+|-
+| 215 || [[:w:av:|avwiki]] || {{int:project-localized-name-avwiki}} || 7,595 ||  0 
+|-
+| 216 || [[:w:lez:|lezwiki]] || {{int:project-localized-name-lezwiki}} || 7,511 ||  0 
+|-
+| 217 || [[:w:tum:|tumwiki]] || {{int:project-localized-name-tumwiki}} || 7,346 ||  0 
+|-
+| 218 || [[:w:rw:|rwwiki]] || {{int:project-localized-name-rwwiki}} || 7,203 ||  0 
+|-
+| 219 || [[:w:pcd:|pcdwiki]] || {{int:project-localized-name-pcdwiki}} || 7,117 ||  0 
+|-
+| 220 || [[:w:lad:|ladwiki]] || {{int:project-localized-name-ladwiki}} || 6,881 ||  0 
+|-
+| 221 || [[:w:olo:|olowiki]] || {{int:project-localized-name-olowiki}} || 6,594 ||  0 
+|-
+| 222 || [[:w:csb:|csbwiki]] || {{int:project-localized-name-csbwiki}} || 6,439 ||  0 
+|-
+| 223 || [[:w:ay:|aywiki]] || {{int:project-localized-name-aywiki}} || 6,436 ||  0 
+|-
+| 224 || [[:w:ln:|lnwiki]] || {{int:project-localized-name-lnwiki}} || 6,347 ||  0 
+|-
+| 225 || [[:w:fur:|furwiki]] || {{int:project-localized-name-furwiki}} || 6,297 ||  0 
+|-
+| 226 || [[:w:krc:|krcwiki]] || {{int:project-localized-name-krcwiki}} || 6,221 ||  0 
+|-
+| 227 || [[:w:pap:|papwiki]] || {{int:project-localized-name-papwiki}} || 6,180 ||  0 
+|-
+| 228 || [[:w:fr-x-nrm:|fr-x-nrmwiki]] || {{int:project-localized-name-fr-x-nrmwiki}} || 6,041 ||  0 
+|-
+| 229 || [[:w:lfn:|lfnwiki]] || {{int:project-localized-name-lfnwiki}} || 5,945 ||  0 
+|-
+| 230 || [[:w:bxr:|bxrwiki]] || {{int:project-localized-name-bxrwiki}} || 5,881 ||  0 
+|-
+| 231 || [[:w:nah:|nahwiki]] || {{int:project-localized-name-nahwiki}} || 5,791 ||  0 
+|-
+| 232 || [[:w:lg:|lgwiki]] || {{int:project-localized-name-lgwiki}} || 5,478 ||  0 
+|-
+| 233 || [[:w:dv:|dvwiki]] || {{int:project-localized-name-dvwiki}} || 5,471 ||  0 
+|-
+| 234 || [[:w:stq:|stqwiki]] || {{int:project-localized-name-stqwiki}} || 5,303 ||  0 
+|-
+| 235 || [[:w:rm:|rmwiki]] || {{int:project-localized-name-rmwiki}} || 5,267 ||  0 
+|-
+| 236 || [[:w:tyv:|tyvwiki]] || {{int:project-localized-name-tyvwiki}} || 5,152 ||  0 
+|-
+| 237 || [[:w:inh:|inhwiki]] || {{int:project-localized-name-inhwiki}} || 5,112 ||  0 
+|-
+| 238 || [[:w:ext:|extwiki]] || {{int:project-localized-name-extwiki}} || 4,987 ||  0 
+|-
+| 239 || [[:w:gom:|gomwiki]] || {{int:project-localized-name-gomwiki}} || 4,965 ||  0 
+|-
+| 240 || [[:w:dty:|dtywiki]] || {{int:project-localized-name-dtywiki}} || 4,959 ||  0 
+|-
+| 241 || [[:w:gpe:|gpewiki]] || {{int:project-localized-name-gpewiki}} || 4,859 || style="background-color:#c79d9d"| -1 
+|-
+| 242 || [[:w:koi:|koiwiki]] || {{int:project-localized-name-koiwiki}} || 4,691 ||  0 
+|-
+| 243 || [[:w:gag:|gagwiki]] || {{int:project-localized-name-gagwiki}} || 4,568 ||  0 
+|-
+| 244 || [[:w:cbk-x-zam:|cbk-x-zamwiki]] || {{int:project-localized-name-cbk-x-zamwiki}} || 4,364 ||  0 
+|-
+| 245 || [[:w:ksh:|kshwiki]] || {{int:project-localized-name-kshwiki}} || 4,175 ||  0 
+|-
+| 246 || [[:w:tw:|twwiki]] || {{int:project-localized-name-twwiki}} || 4,153 ||  0 
+|-
+| 247 || [[:w:kbd:|kbdwiki]] || {{int:project-localized-name-kbdwiki}} || 4,153 ||  0 
+|-
+| 248 || [[:w:pfl:|pflwiki]] || {{int:project-localized-name-pflwiki}} || 4,020 ||  0 
+|-
+| 249 || [[:w:haw:|hawwiki]] || {{int:project-localized-name-hawwiki}} || 3,899 ||  0 
+|-
+| 250 || [[:w:bew:|bewwiki]] || {{int:project-localized-name-bewwiki}} || 3,801 ||  0 
+|-
+| 251 || [[:w:za:|zawiki]] || {{int:project-localized-name-zawiki}} || 3,698 ||  0 
+|-
+| 252 || [[:w:dtp:|dtpwiki]] || {{int:project-localized-name-dtpwiki}} || 3,658 ||  0 
+|-
+| 253 || [[:w:kge:|kgewiki]] || {{int:project-localized-name-kgewiki}} || 3,458 ||  0 
+|-
+| 254 || [[:w:pdc:|pdcwiki]] || {{int:project-localized-name-pdcwiki}} || 3,363 ||  0 
+|-
+| 255 || [[:w:alt:|altwiki]] || {{int:project-localized-name-altwiki}} || 3,362 ||  0 
+|-
+| 256 || [[:w:pi:|piwiki]] || {{int:project-localized-name-piwiki}} || 3,319 ||  0 
+|-
+| 257 || [[:w:xh:|xhwiki]] || {{int:project-localized-name-xhwiki}} || 3,310 ||  0 
+|-
+| 258 || [[:w:pag:|pagwiki]] || {{int:project-localized-name-pagwiki}} || 3,308 ||  0 
+|-
+| 259 || [[:w:tcy:|tcywiki]] || {{int:project-localized-name-tcywiki}} || 3,297 ||  0 
+|-
+| 260 || [[:w:blk:|blkwiki]] || {{int:project-localized-name-blkwiki}} || 3,248 ||  0 
+|-
+| 261 || [[:w:nov:|novwiki]] || {{int:project-localized-name-novwiki}} || 3,019 ||  0 
+|-
+| 262 || [[:w:szy:|szywiki]] || {{int:project-localized-name-szywiki}} || 2,978 ||  0 
+|-
+| 263 || [[:w:awa:|awawiki]] || {{int:project-localized-name-awawiki}} || 2,932 ||  0 
+|-
+| 264 || [[:w:iba:|ibawiki]] || {{int:project-localized-name-ibawiki}} || 2,851 ||  0 
+|-
+| 265 || [[:w:wo:|wowiki]] || {{int:project-localized-name-wowiki}} || 2,840 ||  0 
+|-
+| 266 || [[:w:arc:|arcwiki]] || {{int:project-localized-name-arcwiki}} || 2,742 ||  0 
+|-
+| 267 || [[:w:mad:|madwiki]] || {{int:project-localized-name-madwiki}} || 2,718 ||  0 
+|-
+| 268 || [[:w:tn:|tnwiki]] || {{int:project-localized-name-tnwiki}} || 2,704 ||  0 
+|-
+| 269 || [[:w:mnw:|mnwwiki]] || {{int:project-localized-name-mnwwiki}} || 2,634 ||  0 
+|-
+| 270 || [[:w:om:|omwiki]] || {{int:project-localized-name-omwiki}} || 2,598 ||  0 
+|-
+| 271 || [[:w:fj:|fjwiki]] || {{int:project-localized-name-fjwiki}} || 2,528 ||  0 
+|-
+| 272 || [[:w:gcr:|gcrwiki]] || {{int:project-localized-name-gcrwiki}} || 2,498 ||  0 
+|-
+| 273 || [[:w:cu:|cuwiki]] || {{int:project-localized-name-cuwiki}} || 2,488 ||  0 
+|-
+| 274 || [[:w:tpi:|tpiwiki]] || {{int:project-localized-name-tpiwiki}} || 2,457 ||  0 
+|-
+| 275 || [[:w:ki:|kiwiki]] || {{int:project-localized-name-kiwiki}} || 2,454 ||  0 
+|-
+| 276 || [[:w:to:|towiki]] || {{int:project-localized-name-towiki}} || 2,450 ||  0 
+|-
+| 277 || [[:w:kbp:|kbpwiki]] || {{int:project-localized-name-kbpwiki}} || 2,267 ||  0 
+|-
+| 278 || [[:w:jbo:|jbowiki]] || {{int:project-localized-name-jbowiki}} || 2,266 ||  0 
+|-
+| 279 || [[:w:ltg:|ltgwiki]] || {{int:project-localized-name-ltgwiki}} || 2,234 ||  0 
+|-
+| 280 || [[:w:xal:|xalwiki]] || {{int:project-localized-name-xalwiki}} || 2,207 ||  0 
+|-
+| 281 || [[:w:jam:|jamwiki]] || {{int:project-localized-name-jamwiki}} || 2,172 ||  0 
+|-
+| 282 || [[:w:kcg:|kcgwiki]] || {{int:project-localized-name-kcgwiki}} || 2,163 ||  0 
+|-
+| 283 || [[:w:tay:|taywiki]] || {{int:project-localized-name-taywiki}} || 2,090 ||  0 
+|-
+| 284 || [[:w:tet:|tetwiki]] || {{int:project-localized-name-tetwiki}} || 2,064 ||  0 
+|-
+| 285 || [[:w:fon:|fonwiki]] || {{int:project-localized-name-fonwiki}} || 2,050 ||  0 
+|-
+| 286 || [[:w:st:|stwiki]] || {{int:project-localized-name-stwiki}} || 2,046 ||  0 
+|-
+| 287 || [[:w:kg:|kgwiki]] || {{int:project-localized-name-kgwiki}} || 2,039 ||  0 
+|-
+| 288 || [[:w:ny:|nywiki]] || {{int:project-localized-name-nywiki}} || 1,998 ||  0 
+|-
+| 289 || [[:w:ee:|eewiki]] || {{int:project-localized-name-eewiki}} || 1,990 || style="background-color:#9dc79d"| +1 
+|-
+| 290 || [[:w:bi:|biwiki]] || {{int:project-localized-name-biwiki}} || 1,965 ||  0 
+|-
+| 291 || [[:w:atj:|atjwiki]] || {{int:project-localized-name-atjwiki}} || 1,958 ||  0 
+|-
+| 292 || [[:w:guw:|guwwiki]] || {{int:project-localized-name-guwwiki}} || 1,958 ||  0 
+|-
+| 293 || [[:w:dga:|dgawiki]] || {{int:project-localized-name-dgawiki}} || 1,954 ||  0 
+|-
+| 294 || [[:w:rup:|rupwiki]] || {{int:project-localized-name-rupwiki}} || 1,927 ||  0 
+|-
+| 295 || [[:w:anp:|anpwiki]] || {{int:project-localized-name-anpwiki}} || 1,905 ||  0 
+|-
+| 296 || [[:w:lbe:|lbewiki]] || {{int:project-localized-name-lbewiki}} || 1,881 ||  0 
+|-
+| 297 || [[:w:nia:|niawiki]] || {{int:project-localized-name-niawiki}} || 1,848 ||  0 
+|-
+| 298 || [[:w:knc:|kncwiki]] || {{int:project-localized-name-kncwiki}} || 1,820 ||  0 
+|-
+| 299 || [[:w:pcm:|pcmwiki]] || {{int:project-localized-name-pcmwiki}} || 1,812 ||  0 
+|-
+| 300 || [[:w:syl:|sylwiki]] || {{int:project-localized-name-sylwiki}} || 1,770 ||  0 
+|-
+| 301 || [[:w:nqo:|nqowiki]] || {{int:project-localized-name-nqowiki}} || 1,738 ||  0 
+|-
+| 302 || [[:w:ty:|tywiki]] || {{int:project-localized-name-tywiki}} || 1,678 ||  0 
+|-
+| 303 || [[:w:bm:|bmwiki]] || {{int:project-localized-name-bmwiki}} || 1,661 ||  0 
+|-
+| 304 || [[:w:got:|gotwiki]] || {{int:project-localized-name-gotwiki}} || 1,645 ||  0 
+|-
+| 305 || [[:w:ss:|sswiki]] || {{int:project-localized-name-sswiki}} || 1,638 ||  0 
+|-
+| 306 || [[:w:ts:|tswiki]] || {{int:project-localized-name-tswiki}} || 1,628 ||  0 
+|-
+| 307 || [[:w:chr:|chrwiki]] || {{int:project-localized-name-chrwiki}} || 1,594 ||  0 
+|-
+| 308 || [[:w:sm:|smwiki]] || {{int:project-localized-name-smwiki}} || 1,582 ||  0 
+|-
+| 309 || [[:w:mos:|moswiki]] || {{int:project-localized-name-moswiki}} || 1,561 ||  0 
+|-
+| 310 || [[:w:srn:|srnwiki]] || {{int:project-localized-name-srnwiki}} || 1,526 ||  0 
+|-
+| 311 || [[:w:rki:|rkiwiki]] || {{int:project-localized-name-rkiwiki}} || 1,523 ||  0 
+|-
+| 312 || [[:w:ami:|amiwiki]] || {{int:project-localized-name-amiwiki}} || 1,453 ||  0 
+|-
+| 313 || [[:w:rn:|rnwiki]] || {{int:project-localized-name-rnwiki}} || 1,444 ||  0 
+|-
+| 314 || [[:w:ik:|ikwiki]] || {{int:project-localized-name-ikwiki}} || 1,345 ||  0 
+|-
+| 315 || [[:w:btm:|btmwiki]] || {{int:project-localized-name-btmwiki}} || 1,335 ||  0 
+|-
+| 316 || [[:w:ti:|tiwiki]] || {{int:project-localized-name-tiwiki}} || 1,311 ||  0 
+|-
+| 317 || [[:w:bbc:|bbcwiki]] || {{int:project-localized-name-bbcwiki}} || 1,294 ||  0 
+|-
+| 318 || [[:w:rmy:|rmywiki]] || {{int:project-localized-name-rmywiki}} || 1,194 ||  0 
+|-
+| 319 || [[:w:ve:|vewiki]] || {{int:project-localized-name-vewiki}} || 1,181 ||  0 
+|-
+| 320 || [[:w:fat:|fatwiki]] || {{int:project-localized-name-fatwiki}} || 1,171 ||  0 
+|-
+| 321 || [[:w:chy:|chywiki]] || {{int:project-localized-name-chywiki}} || 1,166 ||  0 
+|-
+| 322 || [[:w:trv:|trvwiki]] || {{int:project-localized-name-trvwiki}} || 1,092 ||  0 
+|-
+| 323 || [[:w:gur:|gurwiki]] || {{int:project-localized-name-gurwiki}} || 1,079 ||  0 
+|-
+| 324 || [[:w:rsk:|rskwiki]] || {{int:project-localized-name-rskwiki}} || 956 ||  0 
+|-
+| 325 || [[:w:ch:|chwiki]] || {{int:project-localized-name-chwiki}} || 927 ||  0 
+|-
+| 326 || [[:w:dz:|dzwiki]] || {{int:project-localized-name-dzwiki}} || 913 ||  0 
+|-
+| 327 || [[:w:pnt:|pntwiki]] || {{int:project-localized-name-pntwiki}} || 897 ||  0 
+|-
+| 328 || [[:w:ady:|adywiki]] || {{int:project-localized-name-adywiki}} || 889 ||  0 
+|-
+| 329 || [[:w:sg:|sgwiki]] || {{int:project-localized-name-sgwiki}} || 826 ||  0 
+|-
+| 330 || [[:w:tdd:|tddwiki]] || {{int:project-localized-name-tddwiki}} || 813 ||  0 
+|-
+| 331 || [[:w:nup:|nupwiki]] || {{int:project-localized-name-nupwiki}} || 801 ||  0 
+|-
+| 332 || [[:w:iu:|iuwiki]] || {{int:project-localized-name-iuwiki}} || 783 ||  0 
+|-
+| 333 || [[:w:kus:|kuswiki]] || {{int:project-localized-name-kuswiki}} || 771 ||  0 
+|-
+| 334 || [[:w:din:|dinwiki]] || {{int:project-localized-name-dinwiki}} || 769 ||  0 
+|-
+| 335 || [[:w:igl:|iglwiki]] || {{int:project-localized-name-iglwiki}} || 720 ||  0 
+|-
+| 336 || [[:w:kl:|klwiki]] || {{int:project-localized-name-klwiki}} || 689 ||  0 
+|-
+| 337 || [[:w:guc:|gucwiki]] || {{int:project-localized-name-gucwiki}} || 652 ||  0 
+|-
+| 338 || [[:w:bdr:|bdrwiki]] || {{int:project-localized-name-bdrwiki}} || 455 ||  0 
+|-
+| 339 || [[:w:pwn:|pwnwiki]] || {{int:project-localized-name-pwnwiki}} || 444 ||  0 
+|-
+| 340 || [[:w:ann:|annwiki]] || {{int:project-localized-name-annwiki}} || 433 ||  0 
+|-
+| 341 || [[:w:cr:|crwiki]] || {{int:project-localized-name-crwiki}} || 382 ||  0 
+|-
+| 342 || [[:w:ak:|akwiki]] || {{int:project-localized-name-akwiki}} || 293 ||  0 
+|-
+| 343 || [[:w:na:|nawiki]] || {{int:project-localized-name-nawiki}} || 270 ||  0 
+|-
+| 344 || [[:w:nr:|nrwiki]] || {{int:project-localized-name-nrwiki}} || 236 ||  0 
+|-
+| 345 || [[:w:tig:|tigwiki]] || {{int:project-localized-name-tigwiki}} || 56 ||  0 
+|-
+| 346 || [[:w:aa:|aawiki]] || {{int:project-localized-name-aawiki}} || 54 ||  0 
+|-
+| 347 || [[:w:ng:|ngwiki]] || {{int:project-localized-name-ngwiki}} || 52 ||  0 
+|-
+| 348 || [[:w:cho:|chowiki]] || {{int:project-localized-name-chowiki}} || 29 ||  0 
+|-
+| 349 || [[:w:mh:|mhwiki]] || {{int:project-localized-name-mhwiki}} || 28 ||  0 
+|-
+| 350 || [[:w:ii:|iiwiki]] || {{int:project-localized-name-iiwiki}} || 19 ||  0 
+|-
+| 351 || [[:w:hz:|hzwiki]] || {{int:project-localized-name-hzwiki}} || 15 ||  0 
+|-
+| 352 || [[:w:kj:|kjwiki]] || {{int:project-localized-name-kjwiki}} || 15 ||  0 
+|-
+| 353 || [[:w:mus:|muswiki]] || {{int:project-localized-name-muswiki}} || 13 ||  0 
+|-
+| 354 || [[:w:ho:|howiki]] || {{int:project-localized-name-howiki}} || 13 ||  0 
+|-
+| 355 || [[:w:kr:|krwiki]] || {{int:project-localized-name-krwiki}} || 12 ||  0 
+|-
+| 356 || [[:w:pih:|pihwiki]] || {{int:project-localized-name-pihwiki}} || 8 ||  0 
+|-
+| 357 || [[:w:lrc:|lrcwiki]] || {{int:project-localized-name-lrcwiki}} || 4 ||  0 
+|}
+
+
+=== wiktionary / {{int:Wikibase-otherprojects-wiktionary}} ===
+* Total number of links: 1,496,147
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:wikt:en:|enwiktionary]] || {{int:project-localized-name-enwiktionary}} || 450,777 || style="background-color:#9dc79d"| +1 
+|-
+| 2 || [[:wikt:zh:|zhwiktionary]] || {{int:project-localized-name-zhwiktionary}} || 405,007 ||  0 
+|-
+| 3 || [[:wikt:fr:|frwiktionary]] || {{int:project-localized-name-frwiktionary}} || 99,426 ||  0 
+|-
+| 4 || [[:wikt:ku:|kuwiktionary]] || {{int:project-localized-name-kuwiktionary}} || 50,789 ||  0 
+|-
+| 5 || [[:wikt:cs:|cswiktionary]] || {{int:project-localized-name-cswiktionary}} || 43,528 ||  0 
+|-
+| 6 || [[:wikt:ru:|ruwiktionary]] || {{int:project-localized-name-ruwiktionary}} || 35,110 ||  0 
+|-
+| 7 || [[:wikt:ja:|jawiktionary]] || {{int:project-localized-name-jawiktionary}} || 33,997 ||  0 
+|-
+| 8 || [[:wikt:ko:|kowiktionary]] || {{int:project-localized-name-kowiktionary}} || 28,907 ||  0 
+|-
+| 9 || [[:wikt:th:|thwiktionary]] || {{int:project-localized-name-thwiktionary}} || 25,410 ||  0 
+|-
+| 10 || [[:wikt:mnw:|mnwwiktionary]] || {{int:project-localized-name-mnwwiktionary}} || 22,241 ||  0 
+|-
+| 11 || [[:wikt:pt:|ptwiktionary]] || {{int:project-localized-name-ptwiktionary}} || 20,907 ||  0 
+|-
+| 12 || [[:wikt:tr:|trwiktionary]] || {{int:project-localized-name-trwiktionary}} || 20,206 ||  0 
+|-
+| 13 || [[:wikt:es:|eswiktionary]] || {{int:project-localized-name-eswiktionary}} || 14,069 ||  0 
+|-
+| 14 || [[:wikt:sv:|svwiktionary]] || {{int:project-localized-name-svwiktionary}} || 13,353 ||  0 
+|-
+| 15 || [[:wikt:lt:|ltwiktionary]] || {{int:project-localized-name-ltwiktionary}} || 13,223 ||  0 
+|-
+| 16 || [[:wikt:vi:|viwiktionary]] || {{int:project-localized-name-viwiktionary}} || 12,422 ||  0 
+|-
+| 17 || [[:wikt:ca:|cawiktionary]] || {{int:project-localized-name-cawiktionary}} || 12,259 ||  0 
+|-
+| 18 || [[:wikt:nl:|nlwiktionary]] || {{int:project-localized-name-nlwiktionary}} || 11,868 ||  0 
+|-
+| 19 || [[:wikt:ar:|arwiktionary]] || {{int:project-localized-name-arwiktionary}} || 11,027 ||  0 
+|-
+| 20 || [[:wikt:fi:|fiwiktionary]] || {{int:project-localized-name-fiwiktionary}} || 8,917 ||  0 
+|-
+| 21 || [[:wikt:it:|itwiktionary]] || {{int:project-localized-name-itwiktionary}} || 8,337 ||  0 
+|-
+| 22 || [[:wikt:de:|dewiktionary]] || {{int:project-localized-name-dewiktionary}} || 8,141 ||  0 
+|-
+| 23 || [[:wikt:el:|elwiktionary]] || {{int:project-localized-name-elwiktionary}} || 7,096 ||  0 
+|-
+| 24 || [[:wikt:ro:|rowiktionary]] || {{int:project-localized-name-rowiktionary}} || 6,780 ||  0 
+|-
+| 25 || [[:wikt:gl:|glwiktionary]] || {{int:project-localized-name-glwiktionary}} || 6,230 ||  0 
+|-
+| 26 || [[:wikt:sr:|srwiktionary]] || {{int:project-localized-name-srwiktionary}} || 5,694 ||  0 
+|-
+| 27 || [[:wikt:bn:|bnwiktionary]] || {{int:project-localized-name-bnwiktionary}} || 4,631 ||  0 
+|-
+| 28 || [[:wikt:si:|siwiktionary]] || {{int:project-localized-name-siwiktionary}} || 4,538 ||  0 
+|-
+| 29 || [[:wikt:hu:|huwiktionary]] || {{int:project-localized-name-huwiktionary}} || 4,530 ||  0 
+|-
+| 30 || [[:wikt:da:|dawiktionary]] || {{int:project-localized-name-dawiktionary}} || 4,279 ||  0 
+|-
+| 31 || [[:wikt:no:|nowiktionary]] || {{int:project-localized-name-nowiktionary}} || 4,247 ||  0 
+|-
+| 32 || [[:wikt:nds:|ndswiktionary]] || {{int:project-localized-name-ndswiktionary}} || 4,231 ||  0 
+|-
+| 33 || [[:wikt:uk:|ukwiktionary]] || {{int:project-localized-name-ukwiktionary}} || 3,803 ||  0 
+|-
+| 34 || [[:wikt:eo:|eowiktionary]] || {{int:project-localized-name-eowiktionary}} || 3,786 ||  0 
+|-
+| 35 || [[:wikt:eu:|euwiktionary]] || {{int:project-localized-name-euwiktionary}} || 3,749 ||  0 
+|-
+| 36 || [[:wikt:ms:|mswiktionary]] || {{int:project-localized-name-mswiktionary}} || 3,652 ||  0 
+|-
+| 37 || [[:wikt:az:|azwiktionary]] || {{int:project-localized-name-azwiktionary}} || 3,458 ||  0 
+|-
+| 38 || [[:wikt:my:|mywiktionary]] || {{int:project-localized-name-mywiktionary}} || 3,189 ||  0 
+|-
+| 39 || [[:wikt:hr:|hrwiktionary]] || {{int:project-localized-name-hrwiktionary}} || 2,907 ||  0 
+|-
+| 40 || [[:wikt:pl:|plwiktionary]] || {{int:project-localized-name-plwiktionary}} || 2,758 ||  0 
+|-
+| 41 || [[:wikt:lb:|lbwiktionary]] || {{int:project-localized-name-lbwiktionary}} || 2,652 ||  0 
+|-
+| 42 || [[:wikt:fy:|fywiktionary]] || {{int:project-localized-name-fywiktionary}} || 2,336 ||  0 
+|-
+| 43 || [[:wikt:shn:|shnwiktionary]] || {{int:project-localized-name-shnwiktionary}} || 2,282 ||  0 
+|-
+| 44 || [[:wikt:br:|brwiktionary]] || {{int:project-localized-name-brwiktionary}} || 2,166 ||  0 
+|-
+| 45 || [[:wikt:uz:|uzwiktionary]] || {{int:project-localized-name-uzwiktionary}} || 2,130 ||  0 
+|-
+| 46 || [[:wikt:oc:|ocwiktionary]] || {{int:project-localized-name-ocwiktionary}} || 2,117 ||  0 
+|-
+| 47 || [[:wikt:tg:|tgwiktionary]] || {{int:project-localized-name-tgwiktionary}} || 2,114 ||  0 
+|-
+| 48 || [[:wikt:simple:|simplewiktionary]] || {{int:project-localized-name-simplewiktionary}} || 1,931 ||  0 
+|-
+| 49 || [[:wikt:id:|idwiktionary]] || {{int:project-localized-name-idwiktionary}} || 1,824 ||  0 
+|-
+| 50 || [[:wikt:mg:|mgwiktionary]] || {{int:project-localized-name-mgwiktionary}} || 1,749 ||  0 
+|-
+| 51 || [[:wikt:ckb:|ckbwiktionary]] || {{int:project-localized-name-ckbwiktionary}} || 1,743 ||  0 
+|-
+| 52 || [[:wikt:et:|etwiktionary]] || {{int:project-localized-name-etwiktionary}} || 1,697 ||  0 
+|-
+| 53 || [[:wikt:sk:|skwiktionary]] || {{int:project-localized-name-skwiktionary}} || 1,696 ||  0 
+|-
+| 54 || [[:wikt:tl:|tlwiktionary]] || {{int:project-localized-name-tlwiktionary}} || 1,666 ||  0 
+|-
+| 55 || [[:wikt:is:|iswiktionary]] || {{int:project-localized-name-iswiktionary}} || 1,657 ||  0 
+|-
+| 56 || [[:wikt:af:|afwiktionary]] || {{int:project-localized-name-afwiktionary}} || 1,372 ||  0 
+|-
+| 57 || [[:wikt:ast:|astwiktionary]] || {{int:project-localized-name-astwiktionary}} || 1,313 ||  0 
+|-
+| 58 || [[:wikt:wa:|wawiktionary]] || {{int:project-localized-name-wawiktionary}} || 1,143 ||  0 
+|-
+| 59 || [[:wikt:km:|kmwiktionary]] || {{int:project-localized-name-kmwiktionary}} || 1,093 ||  0 
+|-
+| 60 || [[:wikt:blk:|blkwiktionary]] || {{int:project-localized-name-blkwiktionary}} || 1,047 ||  0 
+|-
+| 61 || [[:wikt:la:|lawiktionary]] || {{int:project-localized-name-lawiktionary}} || 1,026 ||  0 
+|-
+| 62 || [[:wikt:vo:|vowiktionary]] || {{int:project-localized-name-vowiktionary}} || 1,010 ||  0 
+|-
+| 63 || [[:wikt:hi:|hiwiktionary]] || {{int:project-localized-name-hiwiktionary}} || 898 ||  0 
+|-
+| 64 || [[:wikt:mt:|mtwiktionary]] || {{int:project-localized-name-mtwiktionary}} || 891 ||  0 
+|-
+| 65 || [[:wikt:sh:|shwiktionary]] || {{int:project-localized-name-shwiktionary}} || 827 ||  0 
+|-
+| 66 || [[:wikt:sl:|slwiktionary]] || {{int:project-localized-name-slwiktionary}} || 823 ||  0 
+|-
+| 67 || [[:wikt:gd:|gdwiktionary]] || {{int:project-localized-name-gdwiktionary}} || 805 ||  0 
+|-
+| 68 || [[:wikt:ks:|kswiktionary]] || {{int:project-localized-name-kswiktionary}} || 794 ||  0 
+|-
+| 69 || [[:wikt:lv:|lvwiktionary]] || {{int:project-localized-name-lvwiktionary}} || 781 ||  0 
+|-
+| 70 || [[:wikt:nn:|nnwiktionary]] || {{int:project-localized-name-nnwiktionary}} || 777 ||  0 
+|-
+| 71 || [[:wikt:hsb:|hsbwiktionary]] || {{int:project-localized-name-hsbwiktionary}} || 697 ||  0 
+|-
+| 72 || [[:wikt:he:|hewiktionary]] || {{int:project-localized-name-hewiktionary}} || 693 || style="background-color:#c79d9d"| -1 
+|-
+| 73 || [[:wikt:cy:|cywiktionary]] || {{int:project-localized-name-cywiktionary}} || 683 ||  0 
+|-
+| 74 || [[:wikt:be:|bewiktionary]] || {{int:project-localized-name-bewiktionary}} || 668 ||  0 
+|-
+| 75 || [[:wikt:nan:|nanwiktionary]] || {{int:project-localized-name-nanwiktionary}} || 664 || style="background-color:#9dc79d"| +664 
+|-
+| 76 || [[:wikt:scn:|scnwiktionary]] || {{int:project-localized-name-scnwiktionary}} || 654 ||  0 
+|-
+| 77 || [[:wikt:yue:|yuewiktionary]] || {{int:project-localized-name-yuewiktionary}} || 643 || style="background-color:#9dc79d"| +643 
+|-
+| 78 || [[:wikt:li:|liwiktionary]] || {{int:project-localized-name-liwiktionary}} || 642 ||  0 
+|-
+| 79 || [[:wikt:ky:|kywiktionary]] || {{int:project-localized-name-kywiktionary}} || 633 ||  0 
+|-
+| 80 || [[:wikt:ka:|kawiktionary]] || {{int:project-localized-name-kawiktionary}} || 630 ||  0 
+|-
+| 81 || [[:wikt:fa:|fawiktionary]] || {{int:project-localized-name-fawiktionary}} || 616 ||  0 
+|-
+| 82 || [[:wikt:hy:|hywiktionary]] || {{int:project-localized-name-hywiktionary}} || 587 ||  0 
+|-
+| 83 || [[:wikt:ga:|gawiktionary]] || {{int:project-localized-name-gawiktionary}} || 582 ||  0 
+|-
+| 84 || [[:wikt:mn:|mnwiktionary]] || {{int:project-localized-name-mnwiktionary}} || 556 ||  0 
+|-
+| 85 || [[:wikt:fo:|fowiktionary]] || {{int:project-localized-name-fowiktionary}} || 555 ||  0 
+|-
+| 86 || [[:wikt:ta:|tawiktionary]] || {{int:project-localized-name-tawiktionary}} || 549 ||  0 
+|-
+| 87 || [[:wikt:vec:|vecwiktionary]] || {{int:project-localized-name-vecwiktionary}} || 546 ||  0 
+|-
+| 88 || [[:wikt:lo:|lowiktionary]] || {{int:project-localized-name-lowiktionary}} || 478 ||  0 
+|-
+| 89 || [[:wikt:co:|cowiktionary]] || {{int:project-localized-name-cowiktionary}} || 458 ||  0 
+|-
+| 90 || [[:wikt:bg:|bgwiktionary]] || {{int:project-localized-name-bgwiktionary}} || 420 ||  0 
+|-
+| 91 || [[:wikt:an:|anwiktionary]] || {{int:project-localized-name-anwiktionary}} || 416 ||  0 
+|-
+| 92 || [[:wikt:ur:|urwiktionary]] || {{int:project-localized-name-urwiktionary}} || 383 ||  0 
+|-
+| 93 || [[:wikt:ia:|iawiktionary]] || {{int:project-localized-name-iawiktionary}} || 350 ||  0 
+|-
+| 94 || [[:wikt:ml:|mlwiktionary]] || {{int:project-localized-name-mlwiktionary}} || 346 ||  0 
+|-
+| 95 || [[:wikt:mi:|miwiktionary]] || {{int:project-localized-name-miwiktionary}} || 339 ||  0 
+|-
+| 96 || [[:wikt:tt:|ttwiktionary]] || {{int:project-localized-name-ttwiktionary}} || 325 ||  0 
+|-
+| 97 || [[:wikt:te:|tewiktionary]] || {{int:project-localized-name-tewiktionary}} || 312 ||  0 
+|-
+| 98 || [[:wikt:nah:|nahwiktionary]] || {{int:project-localized-name-nahwiktionary}} || 308 ||  0 
+|-
+| 99 || [[:wikt:gu:|guwiktionary]] || {{int:project-localized-name-guwiktionary}} || 278 ||  0 
+|-
+| 100 || [[:wikt:sq:|sqwiktionary]] || {{int:project-localized-name-sqwiktionary}} || 275 ||  0 
+|-
+| 101 || [[:wikt:io:|iowiktionary]] || {{int:project-localized-name-iowiktionary}} || 266 ||  0 
+|-
+| 102 || [[:wikt:mk:|mkwiktionary]] || {{int:project-localized-name-mkwiktionary}} || 258 ||  0 
+|-
+| 103 || [[:wikt:jv:|jvwiktionary]] || {{int:project-localized-name-jvwiktionary}} || 244 ||  0 
+|-
+| 104 || [[:wikt:tk:|tkwiktionary]] || {{int:project-localized-name-tkwiktionary}} || 238 ||  0 
+|-
+| 105 || [[:wikt:tpi:|tpiwiktionary]] || {{int:project-localized-name-tpiwiktionary}} || 230 ||  0 
+|-
+| 106 || [[:wikt:diq:|diqwiktionary]] || {{int:project-localized-name-diqwiktionary}} || 216 ||  0 
+|-
+| 107 || [[:wikt:csb:|csbwiktionary]] || {{int:project-localized-name-csbwiktionary}} || 203 ||  0 
+|-
+| 108 || [[:wikt:sd:|sdwiktionary]] || {{int:project-localized-name-sdwiktionary}} || 203 ||  0 
+|-
+| 109 || [[:wikt:ss:|sswiktionary]] || {{int:project-localized-name-sswiktionary}} || 194 ||  0 
+|-
+| 110 || [[:wikt:bs:|bswiktionary]] || {{int:project-localized-name-bswiktionary}} || 193 ||  0 
+|-
+| 111 || [[:wikt:yi:|yiwiktionary]] || {{int:project-localized-name-yiwiktionary}} || 166 ||  0 
+|-
+| 112 || [[:wikt:kl:|klwiktionary]] || {{int:project-localized-name-klwiktionary}} || 155 ||  0 
+|-
+| 113 || [[:wikt:so:|sowiktionary]] || {{int:project-localized-name-sowiktionary}} || 150 ||  0 
+|-
+| 114 || [[:wikt:pa:|pawiktionary]] || {{int:project-localized-name-pawiktionary}} || 140 ||  0 
+|-
+| 115 || [[:wikt:ug:|ugwiktionary]] || {{int:project-localized-name-ugwiktionary}} || 137 ||  0 
+|-
+| 116 || [[:wikt:kcg:|kcgwiktionary]] || {{int:project-localized-name-kcgwiktionary}} || 135 ||  0 
+|-
+| 117 || [[:wikt:kn:|knwiktionary]] || {{int:project-localized-name-knwiktionary}} || 133 ||  0 
+|-
+| 118 || [[:wikt:dv:|dvwiktionary]] || {{int:project-localized-name-dvwiktionary}} || 131 ||  0 
+|-
+| 119 || [[:wikt:ang:|angwiktionary]] || {{int:project-localized-name-angwiktionary}} || 130 ||  0 
+|-
+| 120 || [[:wikt:fj:|fjwiktionary]] || {{int:project-localized-name-fjwiktionary}} || 127 ||  0 
+|-
+| 121 || [[:wikt:na:|nawiktionary]] || {{int:project-localized-name-nawiktionary}} || 123 ||  0 
+|-
+| 122 || [[:wikt:kk:|kkwiktionary]] || {{int:project-localized-name-kkwiktionary}} || 123 ||  0 
+|-
+| 123 || [[:wikt:mr:|mrwiktionary]] || {{int:project-localized-name-mrwiktionary}} || 101 ||  0 
+|-
+| 124 || [[:wikt:bjn:|bjnwiktionary]] || {{int:project-localized-name-bjnwiktionary}} || 101 ||  0 
+|-
+| 125 || [[:wikt:sw:|swwiktionary]] || {{int:project-localized-name-swwiktionary}} || 100 ||  0 
+|-
+| 126 || [[:wikt:ie:|iewiktionary]] || {{int:project-localized-name-iewiktionary}} || 99 ||  0 
+|-
+| 127 || [[:wikt:sm:|smwiktionary]] || {{int:project-localized-name-smwiktionary}} || 94 ||  0 
+|-
+| 128 || [[:wikt:gv:|gvwiktionary]] || {{int:project-localized-name-gvwiktionary}} || 93 ||  0 
+|-
+| 129 || [[:wikt:chr:|chrwiktionary]] || {{int:project-localized-name-chrwiktionary}} || 93 ||  0 
+|-
+| 130 || [[:wikt:ne:|newiktionary]] || {{int:project-localized-name-newiktionary}} || 92 ||  0 
+|-
+| 131 || [[:wikt:gor:|gorwiktionary]] || {{int:project-localized-name-gorwiktionary}} || 92 ||  0 
+|-
+| 132 || [[:wikt:mni:|mniwiktionary]] || {{int:project-localized-name-mniwiktionary}} || 89 ||  0 
+|-
+| 133 || [[:wikt:am:|amwiktionary]] || {{int:project-localized-name-amwiktionary}} || 88 ||  0 
+|-
+| 134 || [[:wikt:ps:|pswiktionary]] || {{int:project-localized-name-pswiktionary}} || 88 ||  0 
+|-
+| 135 || [[:wikt:mad:|madwiktionary]] || {{int:project-localized-name-madwiktionary}} || 85 ||  0 
+|-
+| 136 || [[:wikt:kw:|kwwiktionary]] || {{int:project-localized-name-kwwiktionary}} || 82 ||  0 
+|-
+| 137 || [[:wikt:lmo:|lmowiktionary]] || {{int:project-localized-name-lmowiktionary}} || 78 ||  0 
+|-
+| 138 || [[:wikt:qu:|quwiktionary]] || {{int:project-localized-name-quwiktionary}} || 74 ||  0 
+|-
+| 139 || [[:wikt:rw:|rwwiktionary]] || {{int:project-localized-name-rwwiktionary}} || 70 ||  0 
+|-
+| 140 || [[:wikt:tn:|tnwiktionary]] || {{int:project-localized-name-tnwiktionary}} || 68 ||  0 
+|-
+| 141 || [[:wikt:zu:|zuwiktionary]] || {{int:project-localized-name-zuwiktionary}} || 67 ||  0 
+|-
+| 142 || [[:wikt:jbo:|jbowiktionary]] || {{int:project-localized-name-jbowiktionary}} || 64 ||  0 
+|-
+| 143 || [[:wikt:bcl:|bclwiktionary]] || {{int:project-localized-name-bclwiktionary}} || 62 ||  0 
+|-
+| 144 || [[:wikt:om:|omwiktionary]] || {{int:project-localized-name-omwiktionary}} || 60 ||  0 
+|-
+| 145 || [[:wikt:or:|orwiktionary]] || {{int:project-localized-name-orwiktionary}} || 60 ||  0 
+|-
+| 146 || [[:wikt:rup:|rupwiktionary]] || {{int:project-localized-name-rupwiktionary}} || 60 ||  0 
+|-
+| 147 || [[:wikt:hif:|hifwiktionary]] || {{int:project-localized-name-hifwiktionary}} || 54 ||  0 
+|-
+| 148 || [[:wikt:sa:|sawiktionary]] || {{int:project-localized-name-sawiktionary}} || 54 ||  0 
+|-
+| 149 || [[:wikt:iu:|iuwiktionary]] || {{int:project-localized-name-iuwiktionary}} || 53 ||  0 
+|-
+| 150 || [[:wikt:pnb:|pnbwiktionary]] || {{int:project-localized-name-pnbwiktionary}} || 52 ||  0 
+|-
+| 151 || [[:wikt:su:|suwiktionary]] || {{int:project-localized-name-suwiktionary}} || 51 ||  0 
+|-
+| 152 || [[:wikt:ti:|tiwiktionary]] || {{int:project-localized-name-tiwiktionary}} || 50 ||  0 
+|-
+| 153 || [[:wikt:guw:|guwwiktionary]] || {{int:project-localized-name-guwwiktionary}} || 49 ||  0 
+|-
+| 154 || [[:wikt:min:|minwiktionary]] || {{int:project-localized-name-minwiktionary}} || 47 ||  0 
+|-
+| 155 || [[:wikt:sg:|sgwiktionary]] || {{int:project-localized-name-sgwiktionary}} || 42 ||  0 
+|-
+| 156 || [[:wikt:ha:|hawiktionary]] || {{int:project-localized-name-hawiktionary}} || 40 ||  0 
+|-
+| 157 || [[:wikt:gom:|gomwiktionary]] || {{int:project-localized-name-gomwiktionary}} || 40 ||  0 
+|-
+| 158 || [[:wikt:wo:|wowiktionary]] || {{int:project-localized-name-wowiktionary}} || 39 ||  0 
+|-
+| 159 || [[:wikt:ay:|aywiktionary]] || {{int:project-localized-name-aywiktionary}} || 39 ||  0 
+|-
+| 160 || [[:wikt:kaa:|kaawiktionary]] || {{int:project-localized-name-kaawiktionary}} || 38 ||  0 
+|-
+| 161 || [[:wikt:zgh:|zghwiktionary]] || {{int:project-localized-name-zghwiktionary}} || 37 ||  0 
+|-
+| 162 || [[:wikt:ts:|tswiktionary]] || {{int:project-localized-name-tswiktionary}} || 35 ||  0 
+|-
+| 163 || [[:wikt:sat:|satwiktionary]] || {{int:project-localized-name-satwiktionary}} || 35 ||  0 
+|-
+| 164 || [[:wikt:ln:|lnwiktionary]] || {{int:project-localized-name-lnwiktionary}} || 35 ||  0 
+|-
+| 165 || [[:wikt:gn:|gnwiktionary]] || {{int:project-localized-name-gnwiktionary}} || 30 ||  0 
+|-
+| 166 || [[:wikt:st:|stwiktionary]] || {{int:project-localized-name-stwiktionary}} || 28 ||  0 
+|-
+| 167 || [[:wikt:shy:|shywiktionary]] || {{int:project-localized-name-shywiktionary}} || 19 ||  0 
+|-
+| 168 || [[:wikt:tcy:|tcywiktionary]] || {{int:project-localized-name-tcywiktionary}} || 19 ||  0 
+|-
+| 169 || [[:wikt:ik:|ikwiktionary]] || {{int:project-localized-name-ikwiktionary}} || 16 ||  0 
+|-
+| 170 || [[:wikt:nia:|niawiktionary]] || {{int:project-localized-name-niawiktionary}} || 16 ||  0 
+|-
+| 171 || [[:wikt:za:|zawiktionary]] || {{int:project-localized-name-zawiktionary}} || 15 ||  0 
+|-
+| 172 || [[:wikt:skr:|skrwiktionary]] || {{int:project-localized-name-skrwiktionary}} || 14 ||  0 
+|-
+| 173 || [[:wikt:btm:|btmwiktionary]] || {{int:project-localized-name-btmwiktionary}} || 14 ||  0 
+|-
+| 174 || [[:wikt:bew:|bewwiktionary]] || {{int:project-localized-name-bewwiktionary}} || 13 ||  0 
+|-
+| 175 || [[:wikt:as:|aswiktionary]] || {{int:project-localized-name-aswiktionary}} || 11 ||  0 
+|-
+| 176 || [[:wikt:bi:|biwiktionary]] || {{int:project-localized-name-biwiktionary}} || 10 ||  0 
+|-
+| 177 || [[:wikt:bho:|bhowiktionary]] || {{int:project-localized-name-bhowiktionary}} || 10 ||  0 
+|-
+| 178 || [[:wikt:ak:|akwiktionary]] || {{int:project-localized-name-akwiktionary}} || 10 ||  0 
+|-
+| 179 || [[:wikt:xh:|xhwiktionary]] || {{int:project-localized-name-xhwiktionary}} || 10 ||  0 
+|-
+| 180 || [[:wikt:yo:|yowiktionary]] || {{int:project-localized-name-yowiktionary}} || 10 ||  0 
+|-
+| 181 || [[:wikt:sn:|snwiktionary]] || {{int:project-localized-name-snwiktionary}} || 9 ||  0 
+|-
+| 182 || [[:wikt:mh:|mhwiktionary]] || {{int:project-localized-name-mhwiktionary}} || 9 ||  0 
+|-
+| 183 || [[:wikt:dz:|dzwiktionary]] || {{int:project-localized-name-dzwiktionary}} || 8 ||  0 
+|-
+| 184 || [[:wikt:rm:|rmwiktionary]] || {{int:project-localized-name-rmwiktionary}} || 8 ||  0 
+|-
+| 185 || [[:wikt:tw:|twwiktionary]] || {{int:project-localized-name-twwiktionary}} || 8 ||  0 
+|-
+| 186 || [[:wikt:rn:|rnwiktionary]] || {{int:project-localized-name-rnwiktionary}} || 8 ||  0 
+|-
+| 187 || [[:wikt:sc:|scwiktionary]] || {{int:project-localized-name-scwiktionary}} || 8 ||  0 
+|-
+| 188 || [[:wikt:to:|towiktionary]] || {{int:project-localized-name-towiktionary}} || 8 ||  0 
+|-
+| 189 || [[:wikt:kbd:|kbdwiktionary]] || {{int:project-localized-name-kbdwiktionary}} || 8 ||  0 
+|-
+| 190 || [[:wikt:aa:|aawiktionary]] || {{int:project-localized-name-aawiktionary}} || 8 ||  0 
+|-
+| 191 || [[:wikt:cr:|crwiktionary]] || {{int:project-localized-name-crwiktionary}} || 8 ||  0 
+|-
+| 192 || [[:wikt:bo:|bowiktionary]] || {{int:project-localized-name-bowiktionary}} || 8 ||  0 
+|-
+| 193 || [[:wikt:pi:|piwiktionary]] || {{int:project-localized-name-piwiktionary}} || 8 ||  0 
+|-
+| 194 || [[:wikt:ch:|chwiktionary]] || {{int:project-localized-name-chwiktionary}} || 7 ||  0 
+|-
+| 195 || [[:wikt:ig:|igwiktionary]] || {{int:project-localized-name-igwiktionary}} || 6 ||  0 
+|-
+| 196 || [[:wikt:av:|avwiktionary]] || {{int:project-localized-name-avwiktionary}} || 5 ||  0 
+|-
+| 197 || [[:wikt:ab:|abwiktionary]] || {{int:project-localized-name-abwiktionary}} || 5 ||  0 
+|-
+| 198 || [[:wikt:bm:|bmwiktionary]] || {{int:project-localized-name-bmwiktionary}} || 3 ||  0 
+|}
+
+
+=== wikibooks / {{int:Wikibase-otherprojects-wikibooks}} ===
+* Total number of links: 81,380
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:b:en:|enwikibooks]] || {{int:project-localized-name-enwikibooks}} || 15,715 || style="background-color:#9dc79d"| +1 
+|-
+| 2 || [[:b:ja:|jawikibooks]] || {{int:project-localized-name-jawikibooks}} || 6,939 ||  0 
+|-
+| 3 || [[:b:de:|dewikibooks]] || {{int:project-localized-name-dewikibooks}} || 6,771 ||  0 
+|-
+| 4 || [[:b:it:|itwikibooks]] || {{int:project-localized-name-itwikibooks}} || 3,754 ||  0 
+|-
+| 5 || [[:b:zh:|zhwikibooks]] || {{int:project-localized-name-zhwikibooks}} || 3,509 ||  0 
+|-
+| 6 || [[:b:az:|azwikibooks]] || {{int:project-localized-name-azwikibooks}} || 3,455 ||  0 
+|-
+| 7 || [[:b:ru:|ruwikibooks]] || {{int:project-localized-name-ruwikibooks}} || 3,125 ||  0 
+|-
+| 8 || [[:b:fr:|frwikibooks]] || {{int:project-localized-name-frwikibooks}} || 2,833 ||  0 
+|-
+| 9 || [[:b:nl:|nlwikibooks]] || {{int:project-localized-name-nlwikibooks}} || 2,768 ||  0 
+|-
+| 10 || [[:b:bn:|bnwikibooks]] || {{int:project-localized-name-bnwikibooks}} || 2,624 ||  0 
+|-
+| 11 || [[:b:shn:|shnwikibooks]] || {{int:project-localized-name-shnwikibooks}} || 1,794 ||  0 
+|-
+| 12 || [[:b:ar:|arwikibooks]] || {{int:project-localized-name-arwikibooks}} || 1,774 ||  0 
+|-
+| 13 || [[:b:vi:|viwikibooks]] || {{int:project-localized-name-viwikibooks}} || 1,687 ||  0 
+|-
+| 14 || [[:b:es:|eswikibooks]] || {{int:project-localized-name-eswikibooks}} || 1,505 ||  0 
+|-
+| 15 || [[:b:pt:|ptwikibooks]] || {{int:project-localized-name-ptwikibooks}} || 1,381 ||  0 
+|-
+| 16 || [[:b:eu:|euwikibooks]] || {{int:project-localized-name-euwikibooks}} || 1,218 ||  0 
+|-
+| 17 || [[:b:th:|thwikibooks]] || {{int:project-localized-name-thwikibooks}} || 1,129 ||  0 
+|-
+| 18 || [[:b:cs:|cswikibooks]] || {{int:project-localized-name-cswikibooks}} || 1,123 ||  0 
+|-
+| 19 || [[:b:uk:|ukwikibooks]] || {{int:project-localized-name-ukwikibooks}} || 1,119 ||  0 
+|-
+| 20 || [[:b:pl:|plwikibooks]] || {{int:project-localized-name-plwikibooks}} || 1,023 ||  0 
+|-
+| 21 || [[:b:id:|idwikibooks]] || {{int:project-localized-name-idwikibooks}} || 988 ||  0 
+|-
+| 22 || [[:b:hi:|hiwikibooks]] || {{int:project-localized-name-hiwikibooks}} || 953 ||  0 
+|-
+| 23 || [[:b:tr:|trwikibooks]] || {{int:project-localized-name-trwikibooks}} || 914 ||  0 
+|-
+| 24 || [[:b:si:|siwikibooks]] || {{int:project-localized-name-siwikibooks}} || 867 ||  0 
+|-
+| 25 || [[:b:fa:|fawikibooks]] || {{int:project-localized-name-fawikibooks}} || 791 ||  0 
+|-
+| 26 || [[:b:ko:|kowikibooks]] || {{int:project-localized-name-kowikibooks}} || 746 ||  0 
+|-
+| 27 || [[:b:ms:|mswikibooks]] || {{int:project-localized-name-mswikibooks}} || 726 ||  0 
+|-
+| 28 || [[:b:hu:|huwikibooks]] || {{int:project-localized-name-huwikibooks}} || 686 ||  0 
+|-
+| 29 || [[:b:fi:|fiwikibooks]] || {{int:project-localized-name-fiwikibooks}} || 681 ||  0 
+|-
+| 30 || [[:b:he:|hewikibooks]] || {{int:project-localized-name-hewikibooks}} || 518 ||  0 
+|-
+| 31 || [[:b:eo:|eowikibooks]] || {{int:project-localized-name-eowikibooks}} || 495 ||  0 
+|-
+| 32 || [[:b:be:|bewikibooks]] || {{int:project-localized-name-bewikibooks}} || 457 ||  0 
+|-
+| 33 || [[:b:ca:|cawikibooks]] || {{int:project-localized-name-cawikibooks}} || 449 ||  0 
+|-
+| 34 || [[:b:sv:|svwikibooks]] || {{int:project-localized-name-svwikibooks}} || 443 ||  0 
+|-
+| 35 || [[:b:ro:|rowikibooks]] || {{int:project-localized-name-rowikibooks}} || 401 ||  0 
+|-
+| 36 || [[:b:no:|nowikibooks]] || {{int:project-localized-name-nowikibooks}} || 330 ||  0 
+|-
+| 37 || [[:b:pa:|pawikibooks]] || {{int:project-localized-name-pawikibooks}} || 325 ||  0 
+|-
+| 38 || [[:b:da:|dawikibooks]] || {{int:project-localized-name-dawikibooks}} || 303 ||  0 
+|-
+| 39 || [[:b:sk:|skwikibooks]] || {{int:project-localized-name-skwikibooks}} || 296 ||  0 
+|-
+| 40 || [[:b:el:|elwikibooks]] || {{int:project-localized-name-elwikibooks}} || 267 ||  0 
+|-
+| 41 || [[:b:la:|lawikibooks]] || {{int:project-localized-name-lawikibooks}} || 263 ||  0 
+|-
+| 42 || [[:b:ta:|tawikibooks]] || {{int:project-localized-name-tawikibooks}} || 232 ||  0 
+|-
+| 43 || [[:b:ka:|kawikibooks]] || {{int:project-localized-name-kawikibooks}} || 232 ||  0 
+|-
+| 44 || [[:b:sq:|sqwikibooks]] || {{int:project-localized-name-sqwikibooks}} || 226 ||  0 
+|-
+| 45 || [[:b:ml:|mlwikibooks]] || {{int:project-localized-name-mlwikibooks}} || 218 ||  0 
+|-
+| 46 || [[:b:is:|iswikibooks]] || {{int:project-localized-name-iswikibooks}} || 209 ||  0 
+|-
+| 47 || [[:b:hr:|hrwikibooks]] || {{int:project-localized-name-hrwikibooks}} || 208 ||  0 
+|-
+| 48 || [[:b:lt:|ltwikibooks]] || {{int:project-localized-name-ltwikibooks}} || 193 ||  0 
+|-
+| 49 || [[:b:sr:|srwikibooks]] || {{int:project-localized-name-srwikibooks}} || 176 ||  0 
+|-
+| 50 || [[:b:tt:|ttwikibooks]] || {{int:project-localized-name-ttwikibooks}} || 162 ||  0 
+|-
+| 51 || [[:b:min:|minwikibooks]] || {{int:project-localized-name-minwikibooks}} || 151 ||  0 
+|-
+| 52 || [[:b:kk:|kkwikibooks]] || {{int:project-localized-name-kkwikibooks}} || 140 ||  0 
+|-
+| 53 || [[:b:tl:|tlwikibooks]] || {{int:project-localized-name-tlwikibooks}} || 132 ||  0 
+|-
+| 54 || [[:b:tg:|tgwikibooks]] || {{int:project-localized-name-tgwikibooks}} || 132 ||  0 
+|-
+| 55 || [[:b:gl:|glwikibooks]] || {{int:project-localized-name-glwikibooks}} || 132 ||  0 
+|-
+| 56 || [[:b:ne:|newikibooks]] || {{int:project-localized-name-newikibooks}} || 132 ||  0 
+|-
+| 57 || [[:b:hy:|hywikibooks]] || {{int:project-localized-name-hywikibooks}} || 129 ||  0 
+|-
+| 58 || [[:b:sl:|slwikibooks]] || {{int:project-localized-name-slwikibooks}} || 110 ||  0 
+|-
+| 59 || [[:b:mk:|mkwikibooks]] || {{int:project-localized-name-mkwikibooks}} || 106 ||  0 
+|-
+| 60 || [[:b:bg:|bgwikibooks]] || {{int:project-localized-name-bgwikibooks}} || 106 ||  0 
+|-
+| 61 || [[:b:mr:|mrwikibooks]] || {{int:project-localized-name-mrwikibooks}} || 75 ||  0 
+|-
+| 62 || [[:b:ba:|bawikibooks]] || {{int:project-localized-name-bawikibooks}} || 73 ||  0 
+|-
+| 63 || [[:b:oc:|ocwikibooks]] || {{int:project-localized-name-ocwikibooks}} || 57 ||  0 
+|-
+| 64 || [[:b:et:|etwikibooks]] || {{int:project-localized-name-etwikibooks}} || 55 ||  0 
+|-
+| 65 || [[:b:simple:|simplewikibooks]] || {{int:project-localized-name-simplewikibooks}} || 55 ||  0 
+|-
+| 66 || [[:b:af:|afwikibooks]] || {{int:project-localized-name-afwikibooks}} || 54 ||  0 
+|-
+| 67 || [[:b:ur:|urwikibooks]] || {{int:project-localized-name-urwikibooks}} || 49 ||  0 
+|-
+| 68 || [[:b:cy:|cywikibooks]] || {{int:project-localized-name-cywikibooks}} || 47 ||  0 
+|-
+| 69 || [[:b:li:|liwikibooks]] || {{int:project-localized-name-liwikibooks}} || 46 ||  0 
+|-
+| 70 || [[:b:te:|tewikibooks]] || {{int:project-localized-name-tewikibooks}} || 41 ||  0 
+|-
+| 71 || [[:b:bs:|bswikibooks]] || {{int:project-localized-name-bswikibooks}} || 36 ||  0 
+|-
+| 72 || [[:b:fy:|fywikibooks]] || {{int:project-localized-name-fywikibooks}} || 33 ||  0 
+|-
+| 73 || [[:b:ia:|iawikibooks]] || {{int:project-localized-name-iawikibooks}} || 29 ||  0 
+|-
+| 74 || [[:b:sa:|sawikibooks]] || {{int:project-localized-name-sawikibooks}} || 28 ||  0 
+|-
+| 75 || [[:b:cv:|cvwikibooks]] || {{int:project-localized-name-cvwikibooks}} || 25 ||  0 
+|-
+| 76 || [[:b:ku:|kuwikibooks]] || {{int:project-localized-name-kuwikibooks}} || 22 ||  0 
+|-
+| 77 || [[:b:km:|kmwikibooks]] || {{int:project-localized-name-kmwikibooks}} || 21 ||  0 
+|-
+| 78 || [[:b:ang:|angwikibooks]] || {{int:project-localized-name-angwikibooks}} || 19 ||  0 
+|-
+| 79 || [[:b:mg:|mgwikibooks]] || {{int:project-localized-name-mgwikibooks}} || 16 ||  0 
+|-
+| 80 || [[:b:ky:|kywikibooks]] || {{int:project-localized-name-kywikibooks}} || 16 ||  0 
+|-
+| 81 || [[:b:ie:|iewikibooks]] || {{int:project-localized-name-iewikibooks}} || 12 ||  0 
+|-
+| 82 || [[:b:co:|cowikibooks]] || {{int:project-localized-name-cowikibooks}} || 11 ||  0 
+|-
+| 83 || [[:b:na:|nawikibooks]] || {{int:project-localized-name-nawikibooks}} || 11 ||  0 
+|-
+| 84 || [[:b:su:|suwikibooks]] || {{int:project-localized-name-suwikibooks}} || 11 ||  0 
+|-
+| 85 || [[:b:lv:|lvwikibooks]] || {{int:project-localized-name-lvwikibooks}} || 10 ||  0 
+|-
+| 86 || [[:b:uz:|uzwikibooks]] || {{int:project-localized-name-uzwikibooks}} || 10 ||  0 
+|-
+| 87 || [[:b:aa:|aawikibooks]] || {{int:project-localized-name-aawikibooks}} || 10 ||  0 
+|-
+| 88 || [[:b:kn:|knwikibooks]] || {{int:project-localized-name-knwikibooks}} || 9 ||  0 
+|-
+| 89 || [[:b:as:|aswikibooks]] || {{int:project-localized-name-aswikibooks}} || 9 ||  0 
+|-
+| 90 || [[:b:vo:|vowikibooks]] || {{int:project-localized-name-vowikibooks}} || 9 ||  0 
+|-
+| 91 || [[:b:zu:|zuwikibooks]] || {{int:project-localized-name-zuwikibooks}} || 9 ||  0 
+|-
+| 92 || [[:b:ps:|pswikibooks]] || {{int:project-localized-name-pswikibooks}} || 9 ||  0 
+|-
+| 93 || [[:b:se:|sewikibooks]] || {{int:project-localized-name-sewikibooks}} || 9 ||  0 
+|-
+| 94 || [[:b:ak:|akwikibooks]] || {{int:project-localized-name-akwikibooks}} || 9 ||  0 
+|-
+| 95 || [[:b:bo:|bowikibooks]] || {{int:project-localized-name-bowikibooks}} || 9 ||  0 
+|-
+| 96 || [[:b:bi:|biwikibooks]] || {{int:project-localized-name-biwikibooks}} || 9 ||  0 
+|-
+| 97 || [[:b:xh:|xhwikibooks]] || {{int:project-localized-name-xhwikibooks}} || 9 ||  0 
+|-
+| 98 || [[:b:sw:|swwikibooks]] || {{int:project-localized-name-swwikibooks}} || 9 ||  0 
+|-
+| 99 || [[:b:tk:|tkwikibooks]] || {{int:project-localized-name-tkwikibooks}} || 9 ||  0 
+|-
+| 100 || [[:b:gu:|guwikibooks]] || {{int:project-localized-name-guwikibooks}} || 8 ||  0 
+|-
+| 101 || [[:b:rm:|rmwikibooks]] || {{int:project-localized-name-rmwikibooks}} || 8 ||  0 
+|-
+| 102 || [[:b:mn:|mnwikibooks]] || {{int:project-localized-name-mnwikibooks}} || 8 ||  0 
+|-
+| 103 || [[:b:mi:|miwikibooks]] || {{int:project-localized-name-miwikibooks}} || 8 ||  0 
+|-
+| 104 || [[:b:ug:|ugwikibooks]] || {{int:project-localized-name-ugwikibooks}} || 8 ||  0 
+|-
+| 105 || [[:b:yo:|yowikibooks]] || {{int:project-localized-name-yowikibooks}} || 8 ||  0 
+|-
+| 106 || [[:b:ks:|kswikibooks]] || {{int:project-localized-name-kswikibooks}} || 8 ||  0 
+|-
+| 107 || [[:b:ga:|gawikibooks]] || {{int:project-localized-name-gawikibooks}} || 8 ||  0 
+|-
+| 108 || [[:b:ch:|chwikibooks]] || {{int:project-localized-name-chwikibooks}} || 8 ||  0 
+|-
+| 109 || [[:b:my:|mywikibooks]] || {{int:project-localized-name-mywikibooks}} || 8 ||  0 
+|-
+| 110 || [[:b:got:|gotwikibooks]] || {{int:project-localized-name-gotwikibooks}} || 7 ||  0 
+|-
+| 111 || [[:b:nan:|nanwikibooks]] || {{int:project-localized-name-nanwikibooks}} || 7 || style="background-color:#9dc79d"| +7 
+|-
+| 112 || [[:b:ast:|astwikibooks]] || {{int:project-localized-name-astwikibooks}} || 6 ||  0 
+|-
+| 113 || [[:b:nds:|ndswikibooks]] || {{int:project-localized-name-ndswikibooks}} || 5 ||  0 
+|-
+| 114 || [[:b:lb:|lbwikibooks]] || {{int:project-localized-name-lbwikibooks}} || 3 ||  0 
+|-
+| 115 || [[:b:za:|zawikibooks]] || {{int:project-localized-name-zawikibooks}} || 3 ||  0 
+|-
+| 116 || [[:b:nah:|nahwikibooks]] || {{int:project-localized-name-nahwikibooks}} || 3 ||  0 
+|-
+| 117 || [[:b:ay:|aywikibooks]] || {{int:project-localized-name-aywikibooks}} || 3 ||  0 
+|-
+| 118 || [[:b:gn:|gnwikibooks]] || {{int:project-localized-name-gnwikibooks}} || 3 ||  0 
+|-
+| 119 || [[:b:wa:|wawikibooks]] || {{int:project-localized-name-wawikibooks}} || 3 ||  0 
+|-
+| 120 || [[:b:ln:|lnwikibooks]] || {{int:project-localized-name-lnwikibooks}} || 2 ||  0 
+|-
+| 121 || [[:b:bm:|bmwikibooks]] || {{int:project-localized-name-bmwikibooks}} || 2 ||  0 
+|-
+| 122 || [[:b:qu:|quwikibooks]] || {{int:project-localized-name-quwikibooks}} || 2 ||  0 
+|}
+
+
+=== wikinews / {{int:Wikibase-otherprojects-wikinews}} ===
+* Total number of links: 624,215
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:n:ru:|ruwikinews]] || {{int:project-localized-name-ruwikinews}} || 146,351 || style="background-color:#9dc79d"| +1 
+|-
+| 2 || [[:n:sr:|srwikinews]] || {{int:project-localized-name-srwikinews}} || 69,656 ||  0 
+|-
+| 3 || [[:n:fr:|frwikinews]] || {{int:project-localized-name-frwikinews}} || 43,410 ||  0 
+|-
+| 4 || [[:n:en:|enwikinews]] || {{int:project-localized-name-enwikinews}} || 36,094 ||  0 
+|-
+| 5 || [[:n:pl:|plwikinews]] || {{int:project-localized-name-plwikinews}} || 35,845 ||  0 
+|-
+| 6 || [[:n:de:|dewikinews]] || {{int:project-localized-name-dewikinews}} || 31,442 ||  0 
+|-
+| 7 || [[:n:ar:|arwikinews]] || {{int:project-localized-name-arwikinews}} || 30,905 ||  0 
+|-
+| 8 || [[:n:pt:|ptwikinews]] || {{int:project-localized-name-ptwikinews}} || 29,794 ||  0 
+|-
+| 9 || [[:n:zh:|zhwikinews]] || {{int:project-localized-name-zhwikinews}} || 29,109 ||  0 
+|-
+| 10 || [[:n:it:|itwikinews]] || {{int:project-localized-name-itwikinews}} || 20,432 ||  0 
+|-
+| 11 || [[:n:es:|eswikinews]] || {{int:project-localized-name-eswikinews}} || 20,194 ||  0 
+|-
+| 12 || [[:n:ja:|jawikinews]] || {{int:project-localized-name-jawikinews}} || 17,098 ||  0 
+|-
+| 13 || [[:n:cs:|cswikinews]] || {{int:project-localized-name-cswikinews}} || 16,316 ||  0 
+|-
+| 14 || [[:n:ta:|tawikinews]] || {{int:project-localized-name-tawikinews}} || 12,967 ||  0 
+|-
+| 15 || [[:n:ca:|cawikinews]] || {{int:project-localized-name-cawikinews}} || 11,780 || style="background-color:#c79d9d"| -1 
+|-
+| 16 || [[:n:nl:|nlwikinews]] || {{int:project-localized-name-nlwikinews}} || 10,571 ||  0 
+|-
+| 17 || [[:n:tr:|trwikinews]] || {{int:project-localized-name-trwikinews}} || 8,029 ||  0 
+|-
+| 18 || [[:n:el:|elwikinews]] || {{int:project-localized-name-elwikinews}} || 7,677 ||  0 
+|-
+| 19 || [[:n:eo:|eowikinews]] || {{int:project-localized-name-eowikinews}} || 6,874 ||  0 
+|-
+| 20 || [[:n:fa:|fawikinews]] || {{int:project-localized-name-fawikinews}} || 6,852 ||  0 
+|-
+| 21 || [[:n:sv:|svwikinews]] || {{int:project-localized-name-svwikinews}} || 6,013 ||  0 
+|-
+| 22 || [[:n:uk:|ukwikinews]] || {{int:project-localized-name-ukwikinews}} || 4,422 ||  0 
+|-
+| 23 || [[:n:bs:|bswikinews]] || {{int:project-localized-name-bswikinews}} || 3,949 ||  0 
+|-
+| 24 || [[:n:fi:|fiwikinews]] || {{int:project-localized-name-fiwikinews}} || 3,016 ||  0 
+|-
+| 25 || [[:n:ro:|rowikinews]] || {{int:project-localized-name-rowikinews}} || 3,014 ||  0 
+|-
+| 26 || [[:n:he:|hewikinews]] || {{int:project-localized-name-hewikinews}} || 2,665 || style="background-color:#c79d9d"| -1 
+|-
+| 27 || [[:n:ko:|kowikinews]] || {{int:project-localized-name-kowikinews}} || 2,272 ||  0 
+|-
+| 28 || [[:n:no:|nowikinews]] || {{int:project-localized-name-nowikinews}} || 1,914 ||  0 
+|-
+| 29 || [[:n:sq:|sqwikinews]] || {{int:project-localized-name-sqwikinews}} || 1,577 ||  0 
+|-
+| 30 || [[:n:bg:|bgwikinews]] || {{int:project-localized-name-bgwikinews}} || 1,545 ||  0 
+|-
+| 31 || [[:n:hu:|huwikinews]] || {{int:project-localized-name-huwikinews}} || 1,405 ||  0 
+|-
+| 32 || [[:n:li:|liwikinews]] || {{int:project-localized-name-liwikinews}} || 354 ||  0 
+|-
+| 33 || [[:n:th:|thwikinews]] || {{int:project-localized-name-thwikinews}} || 342 ||  0 
+|-
+| 34 || [[:n:shn:|shnwikinews]] || {{int:project-localized-name-shnwikinews}} || 307 ||  0 
+|-
+| 35 || [[:n:guw:|guwwikinews]] || {{int:project-localized-name-guwwikinews}} || 14 ||  0 
+|-
+| 36 || [[:n:sd:|sdwikinews]] || {{int:project-localized-name-sdwikinews}} || 10 ||  0 
+|}
+
+
+=== wikiquote / {{int:Wikibase-otherprojects-wikiquote}} ===
+* Total number of links: 455,971
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:q:en:|enwikiquote]] || {{int:project-localized-name-enwikiquote}} || 73,942 ||  0 
+|-
+| 2 || [[:q:it:|itwikiquote]] || {{int:project-localized-name-itwikiquote}} || 62,922 ||  0 
+|-
+| 3 || [[:q:pl:|plwikiquote]] || {{int:project-localized-name-plwikiquote}} || 37,401 ||  0 
+|-
+| 4 || [[:q:ru:|ruwikiquote]] || {{int:project-localized-name-ruwikiquote}} || 20,894 ||  0 
+|-
+| 5 || [[:q:fr:|frwikiquote]] || {{int:project-localized-name-frwikiquote}} || 17,432 || style="background-color:#9dc79d"| +2 
+|-
+| 6 || [[:q:uk:|ukwikiquote]] || {{int:project-localized-name-ukwikiquote}} || 17,260 ||  0 
+|-
+| 7 || [[:q:cs:|cswikiquote]] || {{int:project-localized-name-cswikiquote}} || 15,787 ||  0 
+|-
+| 8 || [[:q:pt:|ptwikiquote]] || {{int:project-localized-name-ptwikiquote}} || 14,655 ||  0 
+|-
+| 9 || [[:q:fa:|fawikiquote]] || {{int:project-localized-name-fawikiquote}} || 14,251 ||  0 
+|-
+| 10 || [[:q:et:|etwikiquote]] || {{int:project-localized-name-etwikiquote}} || 11,102 || style="background-color:#c79d9d"| -1 
+|-
+| 11 || [[:q:sr:|srwikiquote]] || {{int:project-localized-name-srwikiquote}} || 11,007 ||  0 
+|-
+| 12 || [[:q:he:|hewikiquote]] || {{int:project-localized-name-hewikiquote}} || 10,832 ||  0 
+|-
+| 13 || [[:q:es:|eswikiquote]] || {{int:project-localized-name-eswikiquote}} || 10,100 ||  0 
+|-
+| 14 || [[:q:ar:|arwikiquote]] || {{int:project-localized-name-arwikiquote}} || 9,157 ||  0 
+|-
+| 15 || [[:q:de:|dewikiquote]] || {{int:project-localized-name-dewikiquote}} || 9,119 ||  0 
+|-
+| 16 || [[:q:zh:|zhwikiquote]] || {{int:project-localized-name-zhwikiquote}} || 8,617 ||  0 
+|-
+| 17 || [[:q:tr:|trwikiquote]] || {{int:project-localized-name-trwikiquote}} || 8,423 ||  0 
+|-
+| 18 || [[:q:az:|azwikiquote]] || {{int:project-localized-name-azwikiquote}} || 7,534 ||  0 
+|-
+| 19 || [[:q:eo:|eowikiquote]] || {{int:project-localized-name-eowikiquote}} || 7,112 ||  0 
+|-
+| 20 || [[:q:bn:|bnwikiquote]] || {{int:project-localized-name-bnwikiquote}} || 6,299 ||  0 
+|-
+| 21 || [[:q:ca:|cawikiquote]] || {{int:project-localized-name-cawikiquote}} || 5,998 ||  0 
+|-
+| 22 || [[:q:sk:|skwikiquote]] || {{int:project-localized-name-skwikiquote}} || 5,416 ||  0 
+|-
+| 23 || [[:q:sl:|slwikiquote]] || {{int:project-localized-name-slwikiquote}} || 5,016 ||  0 
+|-
+| 24 || [[:q:bg:|bgwikiquote]] || {{int:project-localized-name-bgwikiquote}} || 4,873 ||  0 
+|-
+| 25 || [[:q:ig:|igwikiquote]] || {{int:project-localized-name-igwikiquote}} || 4,488 ||  0 
+|-
+| 26 || [[:q:bs:|bswikiquote]] || {{int:project-localized-name-bswikiquote}} || 4,403 ||  0 
+|-
+| 27 || [[:q:hy:|hywikiquote]] || {{int:project-localized-name-hywikiquote}} || 3,787 ||  0 
+|-
+| 28 || [[:q:lt:|ltwikiquote]] || {{int:project-localized-name-ltwikiquote}} || 3,002 ||  0 
+|-
+| 29 || [[:q:fi:|fiwikiquote]] || {{int:project-localized-name-fiwikiquote}} || 2,737 ||  0 
+|-
+| 30 || [[:q:vi:|viwikiquote]] || {{int:project-localized-name-viwikiquote}} || 2,624 ||  0 
+|-
+| 31 || [[:q:hr:|hrwikiquote]] || {{int:project-localized-name-hrwikiquote}} || 2,328 ||  0 
+|-
+| 32 || [[:q:hu:|huwikiquote]] || {{int:project-localized-name-huwikiquote}} || 2,306 ||  0 
+|-
+| 33 || [[:q:ko:|kowikiquote]] || {{int:project-localized-name-kowikiquote}} || 2,192 ||  0 
+|-
+| 34 || [[:q:sv:|svwikiquote]] || {{int:project-localized-name-svwikiquote}} || 2,185 ||  0 
+|-
+| 35 || [[:q:ja:|jawikiquote]] || {{int:project-localized-name-jawikiquote}} || 2,159 ||  0 
+|-
+| 36 || [[:q:uz:|uzwikiquote]] || {{int:project-localized-name-uzwikiquote}} || 1,857 ||  0 
+|-
+| 37 || [[:q:nl:|nlwikiquote]] || {{int:project-localized-name-nlwikiquote}} || 1,677 ||  0 
+|-
+| 38 || [[:q:ta:|tawikiquote]] || {{int:project-localized-name-tawikiquote}} || 1,650 ||  0 
+|-
+| 39 || [[:q:id:|idwikiquote]] || {{int:project-localized-name-idwikiquote}} || 1,513 ||  0 
+|-
+| 40 || [[:q:el:|elwikiquote]] || {{int:project-localized-name-elwikiquote}} || 1,462 ||  0 
+|-
+| 41 || [[:q:be:|bewikiquote]] || {{int:project-localized-name-bewikiquote}} || 1,459 ||  0 
+|-
+| 42 || [[:q:ur:|urwikiquote]] || {{int:project-localized-name-urwikiquote}} || 1,369 ||  0 
+|-
+| 43 || [[:q:nn:|nnwikiquote]] || {{int:project-localized-name-nnwikiquote}} || 1,344 ||  0 
+|-
+| 44 || [[:q:no:|nowikiquote]] || {{int:project-localized-name-nowikiquote}} || 1,256 ||  0 
+|-
+| 45 || [[:q:li:|liwikiquote]] || {{int:project-localized-name-liwikiquote}} || 1,093 ||  0 
+|-
+| 46 || [[:q:as:|aswikiquote]] || {{int:project-localized-name-aswikiquote}} || 1,059 ||  0 
+|-
+| 47 || [[:q:th:|thwikiquote]] || {{int:project-localized-name-thwikiquote}} || 1,004 ||  0 
+|-
+| 48 || [[:q:hi:|hiwikiquote]] || {{int:project-localized-name-hiwikiquote}} || 979 ||  0 
+|-
+| 49 || [[:q:ro:|rowikiquote]] || {{int:project-localized-name-rowikiquote}} || 909 ||  0 
+|-
+| 50 || [[:q:te:|tewikiquote]] || {{int:project-localized-name-tewikiquote}} || 872 ||  0 
+|-
+| 51 || [[:q:ka:|kawikiquote]] || {{int:project-localized-name-kawikiquote}} || 839 ||  0 
+|-
+| 52 || [[:q:guw:|guwwikiquote]] || {{int:project-localized-name-guwwikiquote}} || 833 ||  0 
+|-
+| 53 || [[:q:gl:|glwikiquote]] || {{int:project-localized-name-glwikiquote}} || 774 ||  0 
+|-
+| 54 || [[:q:da:|dawikiquote]] || {{int:project-localized-name-dawikiquote}} || 696 ||  0 
+|-
+| 55 || [[:q:la:|lawikiquote]] || {{int:project-localized-name-lawikiquote}} || 604 ||  0 
+|-
+| 56 || [[:q:cy:|cywikiquote]] || {{int:project-localized-name-cywikiquote}} || 562 ||  0 
+|-
+| 57 || [[:q:simple:|simplewikiquote]] || {{int:project-localized-name-simplewikiquote}} || 509 ||  0 
+|-
+| 58 || [[:q:eu:|euwikiquote]] || {{int:project-localized-name-euwikiquote}} || 502 ||  0 
+|-
+| 59 || [[:q:gor:|gorwikiquote]] || {{int:project-localized-name-gorwikiquote}} || 399 ||  0 
+|-
+| 60 || [[:q:sq:|sqwikiquote]] || {{int:project-localized-name-sqwikiquote}} || 396 ||  0 
+|-
+| 61 || [[:q:is:|iswikiquote]] || {{int:project-localized-name-iswikiquote}} || 388 ||  0 
+|-
+| 62 || [[:q:ml:|mlwikiquote]] || {{int:project-localized-name-mlwikiquote}} || 356 ||  0 
+|-
+| 63 || [[:q:ku:|kuwikiquote]] || {{int:project-localized-name-kuwikiquote}} || 315 ||  0 
+|-
+| 64 || [[:q:af:|afwikiquote]] || {{int:project-localized-name-afwikiquote}} || 281 ||  0 
+|-
+| 65 || [[:q:su:|suwikiquote]] || {{int:project-localized-name-suwikiquote}} || 270 ||  0 
+|-
+| 66 || [[:q:bjn:|bjnwikiquote]] || {{int:project-localized-name-bjnwikiquote}} || 240 ||  0 
+|-
+| 67 || [[:q:kn:|knwikiquote]] || {{int:project-localized-name-knwikiquote}} || 240 ||  0 
+|-
+| 68 || [[:q:br:|brwikiquote]] || {{int:project-localized-name-brwikiquote}} || 231 ||  0 
+|-
+| 69 || [[:q:gu:|guwikiquote]] || {{int:project-localized-name-guwikiquote}} || 97 ||  0 
+|-
+| 70 || [[:q:bcl:|bclwikiquote]] || {{int:project-localized-name-bclwikiquote}} || 86 ||  0 
+|-
+| 71 || [[:q:tl:|tlwikiquote]] || {{int:project-localized-name-tlwikiquote}} || 65 ||  0 
+|-
+| 72 || [[:q:mr:|mrwikiquote]] || {{int:project-localized-name-mrwikiquote}} || 56 ||  0 
+|-
+| 73 || [[:q:sa:|sawikiquote]] || {{int:project-localized-name-sawikiquote}} || 53 ||  0 
+|-
+| 74 || [[:q:ang:|angwikiquote]] || {{int:project-localized-name-angwikiquote}} || 42 ||  0 
+|-
+| 75 || [[:q:nan:|nanwikiquote]] || {{int:project-localized-name-nanwikiquote}} || 33 || style="background-color:#9dc79d"| +33 
+|-
+| 76 || [[:q:sah:|sahwikiquote]] || {{int:project-localized-name-sahwikiquote}} || 33 ||  0 
+|-
+| 77 || [[:q:ky:|kywikiquote]] || {{int:project-localized-name-kywikiquote}} || 27 ||  0 
+|-
+| 78 || [[:q:wo:|wowikiquote]] || {{int:project-localized-name-wowikiquote}} || 26 ||  0 
+|-
+| 79 || [[:q:lb:|lbwikiquote]] || {{int:project-localized-name-lbwikiquote}} || 17 ||  0 
+|-
+| 80 || [[:q:co:|cowikiquote]] || {{int:project-localized-name-cowikiquote}} || 12 ||  0 
+|-
+| 81 || [[:q:kw:|kwwikiquote]] || {{int:project-localized-name-kwwikiquote}} || 12 ||  0 
+|-
+| 82 || [[:q:am:|amwikiquote]] || {{int:project-localized-name-amwikiquote}} || 12 ||  0 
+|-
+| 83 || [[:q:cr:|crwikiquote]] || {{int:project-localized-name-crwikiquote}} || 11 ||  0 
+|-
+| 84 || [[:q:ga:|gawikiquote]] || {{int:project-localized-name-gawikiquote}} || 11 ||  0 
+|-
+| 85 || [[:q:vo:|vowikiquote]] || {{int:project-localized-name-vowikiquote}} || 9 ||  0 
+|-
+| 86 || [[:q:kr:|krwikiquote]] || {{int:project-localized-name-krwikiquote}} || 9 ||  0 
+|-
+| 87 || [[:q:ug:|ugwikiquote]] || {{int:project-localized-name-ugwikiquote}} || 9 ||  0 
+|-
+| 88 || [[:q:tk:|tkwikiquote]] || {{int:project-localized-name-tkwikiquote}} || 9 ||  0 
+|-
+| 89 || [[:q:ks:|kswikiquote]] || {{int:project-localized-name-kswikiquote}} || 8 ||  0 
+|-
+| 90 || [[:q:na:|nawikiquote]] || {{int:project-localized-name-nawikiquote}} || 8 ||  0 
+|-
+| 91 || [[:q:kk:|kkwikiquote]] || {{int:project-localized-name-kkwikiquote}} || 7 ||  0 
+|-
+| 92 || [[:q:ast:|astwikiquote]] || {{int:project-localized-name-astwikiquote}} || 7 ||  0 
+|-
+| 93 || [[:q:tt:|ttwikiquote]] || {{int:project-localized-name-ttwikiquote}} || 4 ||  0 
+|-
+| 94 || [[:q:bm:|bmwikiquote]] || {{int:project-localized-name-bmwikiquote}} || 3 ||  0 
+|-
+| 95 || [[:q:qu:|quwikiquote]] || {{int:project-localized-name-quwikiquote}} || 3 ||  0 
+|-
+| 96 || [[:q:za:|zawikiquote]] || {{int:project-localized-name-zawikiquote}} || 2 ||  0 
+|-
+| 97 || [[:q:nds:|ndswikiquote]] || {{int:project-localized-name-ndswikiquote}} || 2 ||  0 
+|}
+
+
+=== wikisource / {{int:Wikibase-otherprojects-wikisource}} ===
+* Total number of links: 2,018,772
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:s:ru:|ruwikisource]] || {{int:project-localized-name-ruwikisource}} || 368,885 ||  0 
+|-
+| 2 || [[:s:en:|enwikisource]] || {{int:project-localized-name-enwikisource}} || 356,718 ||  0 
+|-
+| 3 || [[:s:zh:|zhwikisource]] || {{int:project-localized-name-zhwikisource}} || 354,076 ||  0 
+|-
+| 4 || [[:s:de:|dewikisource]] || {{int:project-localized-name-dewikisource}} || 242,934 ||  0 
+|-
+| 5 || [[:s:pl:|plwikisource]] || {{int:project-localized-name-plwikisource}} || 217,869 ||  0 
+|-
+| 6 || [[:s:fr:|frwikisource]] || {{int:project-localized-name-frwikisource}} || 87,209 ||  0 
+|-
+| 7 || [[:s:ar:|arwikisource]] || {{int:project-localized-name-arwikisource}} || 62,186 ||  0 
+|-
+| 8 || [[:s:cs:|cswikisource]] || {{int:project-localized-name-cswikisource}} || 59,356 ||  0 
+|-
+| 9 || [[:s:it:|itwikisource]] || {{int:project-localized-name-itwikisource}} || 46,015 ||  0 
+|-
+| 10 || [[:s:uk:|ukwikisource]] || {{int:project-localized-name-ukwikisource}} || 37,637 ||  0 
+|-
+| 11 || [[:s:es:|eswikisource]] || {{int:project-localized-name-eswikisource}} || 31,702 ||  0 
+|-
+| 12 || [[:s:pt:|ptwikisource]] || {{int:project-localized-name-ptwikisource}} || 22,100 ||  0 
+|-
+| 13 || [[:s:bn:|bnwikisource]] || {{int:project-localized-name-bnwikisource}} || 12,831 ||  0 
+|-
+| 14 || [[:s:ja:|jawikisource]] || {{int:project-localized-name-jawikisource}} || 7,802 ||  0 
+|-
+| 15 || [[:s:sv:|svwikisource]] || {{int:project-localized-name-svwikisource}} || 7,664 ||  0 
+|-
+| 16 || [[:s:be:|bewikisource]] || {{int:project-localized-name-bewikisource}} || 7,235 ||  0 
+|-
+| 17 || [[:s:ko:|kowikisource]] || {{int:project-localized-name-kowikisource}} || 6,946 ||  0 
+|-
+| 18 || [[:s:fa:|fawikisource]] || {{int:project-localized-name-fawikisource}} || 6,093 ||  0 
+|-
+| 19 || [[:s:az:|azwikisource]] || {{int:project-localized-name-azwikisource}} || 5,921 ||  0 
+|-
+| 20 || [[:s:sl:|slwikisource]] || {{int:project-localized-name-slwikisource}} || 5,762 ||  0 
+|-
+| 21 || [[:s:he:|hewikisource]] || {{int:project-localized-name-hewikisource}} || 5,686 ||  0 
+|-
+| 22 || [[:s:la:|lawikisource]] || {{int:project-localized-name-lawikisource}} || 4,439 ||  0 
+|-
+| 23 || [[:s:hy:|hywikisource]] || {{int:project-localized-name-hywikisource}} || 4,339 ||  0 
+|-
+| 24 || [[:s:hu:|huwikisource]] || {{int:project-localized-name-huwikisource}} || 4,279 ||  0 
+|-
+| 25 || [[:s:vi:|viwikisource]] || {{int:project-localized-name-viwikisource}} || 3,803 ||  0 
+|-
+| 26 || [[:s:ca:|cawikisource]] || {{int:project-localized-name-cawikisource}} || 3,318 ||  0 
+|-
+| 27 || [[:s:ro:|rowikisource]] || {{int:project-localized-name-rowikisource}} || 3,277 ||  0 
+|-
+| 28 || [[:s:fi:|fiwikisource]] || {{int:project-localized-name-fiwikisource}} || 2,927 ||  0 
+|-
+| 29 || [[:s:ta:|tawikisource]] || {{int:project-localized-name-tawikisource}} || 2,664 ||  0 
+|-
+| 30 || [[:s:el:|elwikisource]] || {{int:project-localized-name-elwikisource}} || 2,557 ||  0 
+|-
+| 31 || [[:s:eo:|eowikisource]] || {{int:project-localized-name-eowikisource}} || 2,116 ||  0 
+|-
+| 32 || [[:s:tr:|trwikisource]] || {{int:project-localized-name-trwikisource}} || 2,070 ||  0 
+|-
+| 33 || [[:s:th:|thwikisource]] || {{int:project-localized-name-thwikisource}} || 2,065 ||  0 
+|-
+| 34 || [[:s:id:|idwikisource]] || {{int:project-localized-name-idwikisource}} || 1,966 ||  0 
+|-
+| 35 || [[:s:te:|tewikisource]] || {{int:project-localized-name-tewikisource}} || 1,808 ||  0 
+|-
+| 36 || [[:s:nl:|nlwikisource]] || {{int:project-localized-name-nlwikisource}} || 1,748 ||  0 
+|-
+| 37 || [[:s:no:|nowikisource]] || {{int:project-localized-name-nowikisource}} || 1,691 ||  0 
+|-
+| 38 || [[:s:sr:|srwikisource]] || {{int:project-localized-name-srwikisource}} || 1,418 ||  0 
+|-
+| 39 || [[:s:pa:|pawikisource]] || {{int:project-localized-name-pawikisource}} || 1,384 ||  0 
+|-
+| 40 || [[:s:gu:|guwikisource]] || {{int:project-localized-name-guwikisource}} || 1,369 ||  0 
+|-
+| 41 || [[:s:da:|dawikisource]] || {{int:project-localized-name-dawikisource}} || 1,115 ||  0 
+|-
+| 42 || [[:s:gl:|glwikisource]] || {{int:project-localized-name-glwikisource}} || 1,045 ||  0 
+|-
+| 43 || [[:s:as:|aswikisource]] || {{int:project-localized-name-aswikisource}} || 1,018 ||  0 
+|-
+| 44 || [[:s:ml:|mlwikisource]] || {{int:project-localized-name-mlwikisource}} || 975 ||  0 
+|-
+| 45 || [[:s:br:|brwikisource]] || {{int:project-localized-name-brwikisource}} || 899 ||  0 
+|-
+| 46 || [[:s:pms:|pmswikisource]] || {{int:project-localized-name-pmswikisource}} || 816 ||  0 
+|-
+| 47 || [[:s:hi:|hiwikisource]] || {{int:project-localized-name-hiwikisource}} || 788 ||  0 
+|-
+| 48 || [[:s:wa:|wawikisource]] || {{int:project-localized-name-wawikisource}} || 754 ||  0 
+|-
+| 49 || [[:s:ka:|kawikisource]] || {{int:project-localized-name-kawikisource}} || 746 ||  0 
+|-
+| 50 || [[:s:hr:|hrwikisource]] || {{int:project-localized-name-hrwikisource}} || 735 ||  0 
+|-
+| 51 || [[:s:sk:|skwikisource]] || {{int:project-localized-name-skwikisource}} || 694 ||  0 
+|-
+| 52 || [[:s:bg:|bgwikisource]] || {{int:project-localized-name-bgwikisource}} || 669 ||  0 
+|-
+| 53 || [[:s:ms:|mswikisource]] || {{int:project-localized-name-mswikisource}} || 599 ||  0 
+|-
+| 54 || [[:s:or:|orwikisource]] || {{int:project-localized-name-orwikisource}} || 489 ||  0 
+|-
+| 55 || [[:s:eu:|euwikisource]] || {{int:project-localized-name-euwikisource}} || 470 ||  0 
+|-
+| 56 || [[:s:mr:|mrwikisource]] || {{int:project-localized-name-mrwikisource}} || 418 ||  0 
+|-
+| 57 || [[:s:et:|etwikisource]] || {{int:project-localized-name-etwikisource}} || 410 ||  0 
+|-
+| 58 || [[:s:cy:|cywikisource]] || {{int:project-localized-name-cywikisource}} || 407 ||  0 
+|-
+| 59 || [[:s:ban:|banwikisource]] || {{int:project-localized-name-banwikisource}} || 383 ||  0 
+|-
+| 60 || [[:s:vec:|vecwikisource]] || {{int:project-localized-name-vecwikisource}} || 354 ||  0 
+|-
+| 61 || [[:s:mk:|mkwikisource]] || {{int:project-localized-name-mkwikisource}} || 316 ||  0 
+|-
+| 62 || [[:s:jv:|jvwikisource]] || {{int:project-localized-name-jvwikisource}} || 304 ||  0 
+|-
+| 63 || [[:s:sa:|sawikisource]] || {{int:project-localized-name-sawikisource}} || 280 ||  0 
+|-
+| 64 || [[:s:kn:|knwikisource]] || {{int:project-localized-name-knwikisource}} || 280 ||  0 
+|-
+| 65 || [[:s:nap:|napwikisource]] || {{int:project-localized-name-napwikisource}} || 269 ||  0 
+|-
+| 66 || [[:s:bs:|bswikisource]] || {{int:project-localized-name-bswikisource}} || 254 ||  0 
+|-
+| 67 || [[:s:my:|mywikisource]] || {{int:project-localized-name-mywikisource}} || 242 ||  0 
+|-
+| 68 || [[:s:lt:|ltwikisource]] || {{int:project-localized-name-ltwikisource}} || 236 ||  0 
+|-
+| 69 || [[:s:lij:|lijwikisource]] || {{int:project-localized-name-lijwikisource}} || 184 ||  0 
+|-
+| 70 || [[:s:nan:|nanwikisource]] || {{int:project-localized-name-nanwikisource}} || 174 || style="background-color:#9dc79d"| +174 
+|-
+| 71 || [[:s:is:|iswikisource]] || {{int:project-localized-name-iswikisource}} || 172 ||  0 
+|-
+| 72 || [[:s:su:|suwikisource]] || {{int:project-localized-name-suwikisource}} || 130 ||  0 
+|-
+| 73 || [[:s:li:|liwikisource]] || {{int:project-localized-name-liwikisource}} || 100 ||  0 
+|-
+| 74 || [[:s:yi:|yiwikisource]] || {{int:project-localized-name-yiwikisource}} || 71 ||  0 
+|-
+| 75 || [[:s:sah:|sahwikisource]] || {{int:project-localized-name-sahwikisource}} || 36 ||  0 
+|-
+| 76 || [[:s:fo:|fowikisource]] || {{int:project-localized-name-fowikisource}} || 30 ||  0 
+|-
+| 77 || [[:s:tcy:|tcywikisource]] || {{int:project-localized-name-tcywikisource}} || 20 ||  0 
+|-
+| 78 || [[:s:ang:|angwikisource]] || {{int:project-localized-name-angwikisource}} || 11 ||  0 
+|-
+| 79 || [[:s:bcl:|bclwikisource]] || {{int:project-localized-name-bclwikisource}} || 10 ||  0 
+|-
+| 80 || [[:s:ht:|htwikisource]] || {{int:project-localized-name-htwikisource}} || 4 ||  0 
+|}
+
+
+=== wikiversity / {{int:Wikibase-otherprojects-wikiversity}} ===
+* Total number of links: 65,011
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:v:de:|dewikiversity]] || {{int:project-localized-name-dewikiversity}} || 29,163 ||  0 
+|-
+| 2 || [[:v:en:|enwikiversity]] || {{int:project-localized-name-enwikiversity}} || 13,963 ||  0 
+|-
+| 3 || [[:v:ar:|arwikiversity]] || {{int:project-localized-name-arwikiversity}} || 5,330 ||  0 
+|-
+| 4 || [[:v:zh:|zhwikiversity]] || {{int:project-localized-name-zhwikiversity}} || 3,779 ||  0 
+|-
+| 5 || [[:v:fr:|frwikiversity]] || {{int:project-localized-name-frwikiversity}} || 3,082 ||  0 
+|-
+| 6 || [[:v:it:|itwikiversity]] || {{int:project-localized-name-itwikiversity}} || 2,623 ||  0 
+|-
+| 7 || [[:v:cs:|cswikiversity]] || {{int:project-localized-name-cswikiversity}} || 2,371 ||  0 
+|-
+| 8 || [[:v:ru:|ruwikiversity]] || {{int:project-localized-name-ruwikiversity}} || 948 ||  0 
+|-
+| 9 || [[:v:ja:|jawikiversity]] || {{int:project-localized-name-jawikiversity}} || 852 ||  0 
+|-
+| 10 || [[:v:es:|eswikiversity]] || {{int:project-localized-name-eswikiversity}} || 762 ||  0 
+|-
+| 11 || [[:v:pt:|ptwikiversity]] || {{int:project-localized-name-ptwikiversity}} || 625 ||  0 
+|-
+| 12 || [[:v:el:|elwikiversity]] || {{int:project-localized-name-elwikiversity}} || 454 ||  0 
+|-
+| 13 || [[:v:ko:|kowikiversity]] || {{int:project-localized-name-kowikiversity}} || 371 ||  0 
+|-
+| 14 || [[:v:hi:|hiwikiversity]] || {{int:project-localized-name-hiwikiversity}} || 252 ||  0 
+|-
+| 15 || [[:v:sl:|slwikiversity]] || {{int:project-localized-name-slwikiversity}} || 165 ||  0 
+|-
+| 16 || [[:v:sv:|svwikiversity]] || {{int:project-localized-name-svwikiversity}} || 148 ||  0 
+|-
+| 17 || [[:v:fi:|fiwikiversity]] || {{int:project-localized-name-fiwikiversity}} || 123 ||  0 
+|}
+
+
+=== wikivoyage / {{int:Wikibase-otherprojects-wikivoyage}} ===
+* Total number of links: 176,798
+{| class="wikitable sortable"
+! # !! Code !! Name !! Number of links !! New 
+|-
+| 1 || [[:voy:en:|enwikivoyage]] || {{int:project-localized-name-enwikivoyage}} || 40,136 ||  0 
+|-
+| 2 || [[:voy:de:|dewikivoyage]] || {{int:project-localized-name-dewikivoyage}} || 27,562 ||  0 
+|-
+| 3 || [[:voy:it:|itwikivoyage]] || {{int:project-localized-name-itwikivoyage}} || 16,618 ||  0 
+|-
+| 4 || [[:voy:pl:|plwikivoyage]] || {{int:project-localized-name-plwikivoyage}} || 14,048 ||  0 
+|-
+| 5 || [[:voy:fr:|frwikivoyage]] || {{int:project-localized-name-frwikivoyage}} || 11,404 ||  0 
+|-
+| 6 || [[:voy:fa:|fawikivoyage]] || {{int:project-localized-name-fawikivoyage}} || 8,919 ||  0 
+|-
+| 7 || [[:voy:zh:|zhwikivoyage]] || {{int:project-localized-name-zhwikivoyage}} || 7,960 ||  0 
+|-
+| 8 || [[:voy:ru:|ruwikivoyage]] || {{int:project-localized-name-ruwikivoyage}} || 7,364 ||  0 
+|-
+| 9 || [[:voy:es:|eswikivoyage]] || {{int:project-localized-name-eswikivoyage}} || 5,290 ||  0 
+|-
+| 10 || [[:voy:nl:|nlwikivoyage]] || {{int:project-localized-name-nlwikivoyage}} || 5,133 ||  0 
+|-
+| 11 || [[:voy:pt:|ptwikivoyage]] || {{int:project-localized-name-ptwikivoyage}} || 4,512 ||  0 
+|-
+| 12 || [[:voy:he:|hewikivoyage]] || {{int:project-localized-name-hewikivoyage}} || 3,485 || style="background-color:#c79d9d"| -1 
+|-
+| 13 || [[:voy:bn:|bnwikivoyage]] || {{int:project-localized-name-bnwikivoyage}} || 2,887 || style="background-color:#c79d9d"| -2 
+|-
+| 14 || [[:voy:sv:|svwikivoyage]] || {{int:project-localized-name-svwikivoyage}} || 2,683 ||  0 
+|-
+| 15 || [[:voy:ja:|jawikivoyage]] || {{int:project-localized-name-jawikivoyage}} || 2,668 ||  0 
+|-
+| 16 || [[:voy:vi:|viwikivoyage]] || {{int:project-localized-name-viwikivoyage}} || 2,349 ||  0 
+|-
+| 17 || [[:voy:id:|idwikivoyage]] || {{int:project-localized-name-idwikivoyage}} || 2,307 ||  0 
+|-
+| 18 || [[:voy:fi:|fiwikivoyage]] || {{int:project-localized-name-fiwikivoyage}} || 2,255 ||  0 
+|-
+| 19 || [[:voy:eo:|eowikivoyage]] || {{int:project-localized-name-eowikivoyage}} || 1,887 ||  0 
+|-
+| 20 || [[:voy:el:|elwikivoyage]] || {{int:project-localized-name-elwikivoyage}} || 1,699 ||  0 
+|-
+| 21 || [[:voy:uk:|ukwikivoyage]] || {{int:project-localized-name-ukwikivoyage}} || 1,449 ||  0 
+|-
+| 22 || [[:voy:tr:|trwikivoyage]] || {{int:project-localized-name-trwikivoyage}} || 1,068 ||  0 
+|-
+| 23 || [[:voy:ro:|rowikivoyage]] || {{int:project-localized-name-rowikivoyage}} || 925 ||  0 
+|-
+| 24 || [[:voy:cs:|cswikivoyage]] || {{int:project-localized-name-cswikivoyage}} || 898 ||  0 
+|-
+| 25 || [[:voy:shn:|shnwikivoyage]] || {{int:project-localized-name-shnwikivoyage}} || 826 ||  0 
+|-
+| 26 || [[:voy:hi:|hiwikivoyage]] || {{int:project-localized-name-hiwikivoyage}} || 324 ||  0 
+|-
+| 27 || [[:voy:ps:|pswikivoyage]] || {{int:project-localized-name-pswikivoyage}} || 142 ||  0 
+|}
+
+[[Category:Wikidata statistics|Sitelinks]]
