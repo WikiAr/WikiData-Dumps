@@ -61,10 +61,10 @@ tab = {
     "delta": 0,
     "done": 0,
     "file_date": "",
-    "len_all_props": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "items_no_P31": 0,
+    "total_properties_count": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "items_missing_P31": 0,
     "All_items": 0,
     "all_claims_2020": 0,
     "properties": {},
@@ -110,14 +110,14 @@ def do_line(entity_dict):
     claims_length = len(claims)
 
     if claims_length == 0:
-        tab["items_0_claims"] += 1
+        tab["items_with_0_claims"] += 1
     elif claims_length == 1:
-        tab["items_1_claims"] += 1
+        tab["items_with_1_claim"] += 1
 
     _claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
 
     if "P31" not in claims:
-        tab["items_no_P31"] += 1
+        tab["items_missing_P31"] += 1
 
     # json1 = {"qid": "Q31", "labels": ["el", "ay"], "descriptions": ["cy", "sk", "mk", "vls"], "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"], "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]}}
 
@@ -134,12 +134,12 @@ def do_line(entity_dict):
                 properties_p = {
                     "qids": {"others": 0},
                     "lenth_of_usage": 0,
-                    "total_claims_count": 0,
+                    "property_claims_count": 0,
                 }
                 tab["properties"][p] = properties_p
 
             properties_p["lenth_of_usage"] += 1
-            properties_p["total_claims_count"] += len(p_qids)
+            properties_p["property_claims_count"] += len(p_qids)
 
             for claim in p_qids:
                 datavalue = claim.get("mainsnak", {}).get("datavalue", {})
@@ -229,7 +229,7 @@ def read_file():
         tab["properties"][p] = {
             "qids": {"others": 0},
             "lenth_of_usage": 0,
-            "total_claims_count": 0,
+            "property_claims_count": 0,
         }
     # ---
     print(f"read_file: read file: {filename}")
@@ -255,7 +255,7 @@ def read_file():
     for x, xx in tab["properties"].items():
         tab["properties"][x]["unique_qids_count"] = len(xx["qids"])
     # ---
-    tab["len_all_props"] = len(tab["properties"])
+    tab["total_properties_count"] = len(tab["properties"])
     # ---
     end = time.perf_counter()
     # ---

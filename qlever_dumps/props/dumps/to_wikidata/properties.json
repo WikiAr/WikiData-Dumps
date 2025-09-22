@@ -1,14 +1,14 @@
 {
     "date": "2025-09-03",
     "all_items": 117416494,
-    "items_no_P31": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "total_claims": 0,
-    "len_all_props": 0,
+    "items_missing_P31": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "total_claims_count": 0,
+    "total_properties_count": 0,
     "properties": {
         "P31": {
-            "total_claims_count": 120307873,
+            "property_claims_count": 120307873,
             "unique_qids_count": 107839,
             "items_with_property": 115057279,
             "qids_others": 20126806,
@@ -117,7 +117,7 @@
             }
         },
         "P1433": {
-            "total_claims_count": 46222400,
+            "property_claims_count": 46222400,
             "unique_qids_count": 136875,
             "items_with_property": 46109823,
             "qids_others": 39954791,
@@ -226,7 +226,7 @@
             }
         },
         "P50": {
-            "total_claims_count": 34728045,
+            "property_claims_count": 34728045,
             "unique_qids_count": 2520597,
             "items_with_property": 14581769,
             "qids_others": 34408407,
@@ -335,7 +335,7 @@
             }
         },
         "P921": {
-            "total_claims_count": 33757001,
+            "property_claims_count": 33757001,
             "unique_qids_count": 1246861,
             "items_with_property": 20616475,
             "qids_others": 28941283,
@@ -444,7 +444,7 @@
             }
         },
         "P407": {
-            "total_claims_count": 28480136,
+            "property_claims_count": 28480136,
             "unique_qids_count": 11296,
             "items_with_property": 27846929,
             "qids_others": 466510,
@@ -553,7 +553,7 @@
             }
         },
         "P17": {
-            "total_claims_count": 19240784,
+            "property_claims_count": 19240784,
             "unique_qids_count": 4623,
             "items_with_property": 18975160,
             "qids_others": 786220,
@@ -662,7 +662,7 @@
             }
         },
         "P131": {
-            "total_claims_count": 14203837,
+            "property_claims_count": 14203837,
             "unique_qids_count": 452523,
             "items_with_property": 13369757,
             "qids_others": 13027740,
@@ -771,7 +771,7 @@
             }
         },
         "P106": {
-            "total_claims_count": 12347324,
+            "property_claims_count": 12347324,
             "unique_qids_count": 22091,
             "items_with_property": 8863218,
             "qids_others": 3164954,
@@ -880,7 +880,7 @@
             }
         },
         "P21": {
-            "total_claims_count": 10264384,
+            "property_claims_count": 10264384,
             "unique_qids_count": 2106,
             "items_with_property": 10261884,
             "qids_others": 3790,
@@ -942,7 +942,7 @@
             }
         },
         "P735": {
-            "total_claims_count": 8289829,
+            "property_claims_count": 8289829,
             "unique_qids_count": 167985,
             "items_with_property": 7764335,
             "qids_others": 5886349,
@@ -1051,7 +1051,7 @@
             }
         },
         "P6259": {
-            "total_claims_count": 8174084,
+            "property_claims_count": 8174084,
             "unique_qids_count": 2527,
             "items_with_property": 8174074,
             "qids_others": 3128,
@@ -1160,7 +1160,7 @@
             }
         },
         "P59": {
-            "total_claims_count": 7370930,
+            "property_claims_count": 7370930,
             "unique_qids_count": 88,
             "items_with_property": 7370641,
             "qids_others": 0,
@@ -1257,7 +1257,7 @@
             }
         },
         "P27": {
-            "total_claims_count": 5823713,
+            "property_claims_count": 5823713,
             "unique_qids_count": 5211,
             "items_with_property": 5354695,
             "qids_others": 408782,
@@ -1366,7 +1366,7 @@
             }
         },
         "P734": {
-            "total_claims_count": 5774887,
+            "property_claims_count": 5774887,
             "unique_qids_count": 517232,
             "items_with_property": 5590680,
             "qids_others": 5082243,
@@ -1475,7 +1475,7 @@
             }
         },
         "P361": {
-            "total_claims_count": 5226634,
+            "property_claims_count": 5226634,
             "unique_qids_count": 567658,
             "items_with_property": 3807902,
             "qids_others": 4012242,
@@ -1584,7 +1584,7 @@
             }
         },
         "P279": {
-            "total_claims_count": 5143728,
+            "property_claims_count": 5143728,
             "unique_qids_count": 288971,
             "items_with_property": 4399095,
             "qids_others": 1334644,
@@ -1693,7 +1693,7 @@
             }
         },
         "P452": {
-            "total_claims_count": 692765,
+            "property_claims_count": 692765,
             "unique_qids_count": 9056,
             "items_with_property": 667740,
             "qids_others": 218298,
@@ -1802,7 +1802,7 @@
             }
         },
         "P7937": {
-            "total_claims_count": 664427,
+            "property_claims_count": 664427,
             "unique_qids_count": 945,
             "items_with_property": 646287,
             "qids_others": 7773,
@@ -1911,7 +1911,7 @@
             }
         },
         "P140": {
-            "total_claims_count": 640578,
+            "property_claims_count": 640578,
             "unique_qids_count": 2337,
             "items_with_property": 628694,
             "qids_others": 18521,
@@ -2020,7 +2020,7 @@
             }
         },
         "P175": {
-            "total_claims_count": 617944,
+            "property_claims_count": 617944,
             "unique_qids_count": 104124,
             "items_with_property": 565034,
             "qids_others": 570497,
@@ -2129,7 +2129,7 @@
             }
         },
         "P102": {
-            "total_claims_count": 613015,
+            "property_claims_count": 613015,
             "unique_qids_count": 12504,
             "items_with_property": 553419,
             "qids_others": 257162,
@@ -2238,7 +2238,7 @@
             }
         },
         "P4510": {
-            "total_claims_count": 592689,
+            "property_claims_count": 592689,
             "unique_qids_count": 47185,
             "items_with_property": 477448,
             "qids_others": 94110,
@@ -2347,7 +2347,7 @@
             }
         },
         "P138": {
-            "total_claims_count": 566728,
+            "property_claims_count": 566728,
             "unique_qids_count": 237777,
             "items_with_property": 536346,
             "qids_others": 493528,
@@ -2456,7 +2456,7 @@
             }
         },
         "P937": {
-            "total_claims_count": 531107,
+            "property_claims_count": 531107,
             "unique_qids_count": 40698,
             "items_with_property": 420712,
             "qids_others": 219255,
@@ -2565,7 +2565,7 @@
             }
         },
         "P3373": {
-            "total_claims_count": 523168,
+            "property_claims_count": 523168,
             "unique_qids_count": 251974,
             "items_with_property": 248969,
             "qids_others": 511968,
@@ -2674,7 +2674,7 @@
             }
         },
         "P437": {
-            "total_claims_count": 521258,
+            "property_claims_count": 521258,
             "unique_qids_count": 832,
             "items_with_property": 454426,
             "qids_others": 3132,
@@ -2783,7 +2783,7 @@
             }
         },
         "P6379": {
-            "total_claims_count": 472852,
+            "property_claims_count": 472852,
             "unique_qids_count": 10180,
             "items_with_property": 193926,
             "qids_others": 212641,
@@ -2892,7 +2892,7 @@
             }
         },
         "P7763": {
-            "total_claims_count": 447547,
+            "property_claims_count": 447547,
             "unique_qids_count": 9,
             "items_with_property": 447372,
             "qids_others": 1,
@@ -2909,7 +2909,7 @@
             }
         },
         "P413": {
-            "total_claims_count": 435642,
+            "property_claims_count": 435642,
             "unique_qids_count": 410,
             "items_with_property": 423702,
             "qids_others": 2717,
@@ -3018,7 +3018,7 @@
             }
         },
         "P7228": {
-            "total_claims_count": 433490,
+            "property_claims_count": 433490,
             "unique_qids_count": 20,
             "items_with_property": 433176,
             "qids_others": 0,
@@ -3047,7 +3047,7 @@
             }
         },
         "P364": {
-            "total_claims_count": 429547,
+            "property_claims_count": 429547,
             "unique_qids_count": 771,
             "items_with_property": 415181,
             "qids_others": 3214,
@@ -3156,7 +3156,7 @@
             }
         },
         "P5185": {
-            "total_claims_count": 33,
+            "property_claims_count": 33,
             "unique_qids_count": 5,
             "items_with_property": 30,
             "qids_others": 0,

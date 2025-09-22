@@ -71,7 +71,7 @@ class ClaimsProcessor():
             qids = x.get("qids")
             # ---
             if qids.get("qids"):
-                # {"pid":"P6216","qids":{"qids":{"Q19652":244},"items_use_it":243,"len_of_usage":243,"total_claims_count":256}}
+                # {"pid":"P6216","qids":{"qids":{"Q19652":244},"items_with_property":243,"len_of_usage":243,"property_claims_count":256}}
                 qids = qids.get("qids")
                 tab = x.get("qids")
             # ---
@@ -183,7 +183,7 @@ if __name__ == "__main__":
         # ---
         gc.collect()
     # ---
-    properties_infos = dict(sorted(properties_infos.items(), key=lambda x: x[1]["items_use_it"], reverse=True))
+    properties_infos = dict(sorted(properties_infos.items(), key=lambda x: x[1]["items_with_property"], reverse=True))
     # ---
     delta = int(time.time() - start_time)
     # ---

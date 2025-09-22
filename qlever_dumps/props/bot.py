@@ -169,7 +169,7 @@ def get_prop_infos(p, p_old, n):
         return {}
     # ---
     prop_infos = {
-        "total_claims_count": p_data.get("total_claims_count", 0),
+        "property_claims_count": p_data.get("property_claims_count", 0),
         "unique_qids_count": p_data.get("unique_qids_count", 0),
         "items_with_property": p_data.get("items_with_property", 0),
 
@@ -201,8 +201,8 @@ def props_ren(old_data):
         "properties": {}
     }
     # ---
-    # sort old_properties by p['total_claims_count']
-    old_properties = dict(sorted(old_properties.items(), key=lambda item: item[1].get("total_claims_count", 0), reverse=REVERSE_PROPS))
+    # sort old_properties by p['property_claims_count']
+    old_properties = dict(sorted(old_properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=REVERSE_PROPS))
     # ---
     for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
         # ---
@@ -295,15 +295,15 @@ def render(old_data, file_date):
     to_save_data = {
         "date": file_date,
         "all_items": all_items,
-        "items_no_P31": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "total_claims": 0,
-        "len_all_props": 0,
+        "items_missing_P31": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "total_claims_count": 0,
+        "total_properties_count": 0,
         "properties": {
             "P31": {
                 "items_with_property": 0,
-                "total_claims_count": 0,
+                "property_claims_count": 0,
                 "unique_qids_count": 0
             }
         }
@@ -320,8 +320,8 @@ def render(old_data, file_date):
         in props_data["properties"].items()
     }
     # ---
-    # sort properties by p['total_claims_count']
-    properties = dict(sorted(properties.items(), key=lambda item: item[1].get("total_claims_count", 0), reverse=True))
+    # sort properties by p['property_claims_count']
+    properties = dict(sorted(properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True))
     # ---
     to_save_data["properties"] = properties
     # ---

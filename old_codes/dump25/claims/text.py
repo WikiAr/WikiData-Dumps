@@ -54,7 +54,7 @@ def make_section(property_id, table, max_n=51):
     texts = f"== {{{{P|{property_id}}}}} ==\n"
     texts += f"* Total items using this property: {total_usage:,}\n"
 
-    if claims_count := table.get("total_claims_count"):
+    if claims_count := table.get("property_claims_count"):
         texts += f"* Total number of claims with this property: {claims_count:,}\n"
 
     if unique_qids := table.get("unique_qids_count"):
@@ -139,11 +139,11 @@ def make_text(data):
     # ---
     metadata = f"<onlyinclude>;dump date {data.get('file_date', 'latest')}</onlyinclude>.\n"
     metadata += f"* Total items: {data['All_items']:,}\n"
-    metadata += f"* Items without P31: {data['items_no_P31']:,}\n"
-    metadata += f"* Items without claims: {data['items_0_claims']:,}\n"
-    metadata += f"* Items with 1 claim only: {data['items_1_claims']:,}\n"
-    metadata += f"* Total number of claims: {data['total_claims']:,}\n"
-    metadata += f"* Number of properties in the report: {data['len_all_props']:,}\n"
+    metadata += f"* Items without P31: {data['items_missing_P31']:,}\n"
+    metadata += f"* Items without claims: {data['items_with_0_claims']:,}\n"
+    metadata += f"* Items with 1 claim only: {data['items_with_1_claim']:,}\n"
+    metadata += f"* Total number of claims: {data['total_claims_count']:,}\n"
+    metadata += f"* Number of properties in the report: {data['total_properties_count']:,}\n"
     # ---
     final = time.time()
     delta = data.get("delta") or int(final - time_start)
@@ -162,12 +162,12 @@ def main():
     data_defaults = {
         "delta": 0,
         "done": 0,
-        "len_all_props": len(data.get("properties", {})),
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": len(data.get("properties", {})),
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
         "langs": {},
     }

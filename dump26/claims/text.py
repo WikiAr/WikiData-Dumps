@@ -19,11 +19,11 @@ new_data_file = Path(__file__).parent / "jsons/claims_new_data.json"
 new_data = {
     "date": "",
     "All_items": 0,
-    "items_no_P31": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "total_claims": 0,
-    "len_all_props": 0,
+    "items_missing_P31": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "total_claims_count": 0,
+    "total_properties_count": 0,
     "properties": {},
 }
 
@@ -74,18 +74,18 @@ def make_section(pid, table, old_data, max_n=51):
         return ""
     # ---
     new_data["properties"][pid] = {
-        "items_use_it": 0,
+        "items_with_property": 0,
         # "lenth_of_usage": 0,
-        "total_claims_count": 0,
+        "property_claims_count": 0,
         "unique_qids_count": 0,
         "qids": {
             "others": 0,
         },
     }
     # ---
-    total_usage = table.get("items_use_it", table.get("lenth_of_usage", 0))
+    total_usage = table.get("items_with_property", table.get("lenth_of_usage", 0))
     # ---
-    old_usage = old_data.get("items_use_it", old_data.get("lenth_of_usage", 0))
+    old_usage = old_data.get("items_with_property", old_data.get("lenth_of_usage", 0))
     # ---
     claims_count = 0
     unique_qids = table.get("unique_qids_count", 0)
@@ -143,7 +143,7 @@ def make_section(pid, table, old_data, max_n=51):
     texts += f"* Total items using this property: {total_usage:,} ({diff})\n"
 
     if claims_count:
-        diff2 = min_it(claims_count, old_data.get("total_claims_count", 0), add_plus=True)
+        diff2 = min_it(claims_count, old_data.get("property_claims_count", 0), add_plus=True)
         texts += f"* Total number of claims with this property: {claims_count:,} ({diff2})\n"
 
     if unique_qids:
@@ -151,9 +151,9 @@ def make_section(pid, table, old_data, max_n=51):
         texts += f"* Number of unique QIDs: {unique_qids:,} ({diff3})\n"
 
     # new_data["properties"][pid]["lenth_of_usage"] = total_usage
-    new_data["properties"][pid]["items_use_it"] = total_usage
+    new_data["properties"][pid]["items_with_property"] = total_usage
     # ---
-    new_data["properties"][pid]["total_claims_count"] = claims_count
+    new_data["properties"][pid]["property_claims_count"] = claims_count
     new_data["properties"][pid]["unique_qids_count"] = unique_qids
 
     section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-'
@@ -190,7 +190,7 @@ def make_numbers_section(p_list, Old_props, data):
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
+            old_usage = old_prop.get("items_with_property") or old_prop.get("lenth_of_usage", 0)
             # ---
             print(f"{prop=}, {usage=}, {old_usage=}")
             # ---
@@ -204,7 +204,7 @@ def make_numbers_section(p_list, Old_props, data):
     # ---
     oo_others = Old_props.get("others", {})
     # ---
-    o_old_usage = oo_others.get("items_use_it") or oo_others.get("lenth_of_usage", 0)
+    o_old_usage = oo_others.get("items_with_property") or oo_others.get("lenth_of_usage", 0)
     o_diff = min_it(other_count, o_old_usage, add_plus=True)
     # ---
     rows.append(f"! {idx+1} \n! others || {other_count:,} || {o_diff}")
@@ -255,11 +255,11 @@ def facts(n_tab, Old):
     # ---
     texts = {
         "All_items": "Total items",
-        "items_no_P31": "Items without P31",
-        "items_0_claims": "Items without claims",
-        "items_1_claims": "Items with 1 claim only",
-        "total_claims": "Total number of claims",
-        "len_all_props": "Number of properties in the report",
+        "items_missing_P31": "Items without P31",
+        "items_with_0_claims": "Items without claims",
+        "items_with_1_claim": "Items with 1 claim only",
+        "total_claims_count": "Total number of claims",
+        "total_properties_count": "Number of properties in the report",
     }
     # ---
     text += f"|-\n| Total items last update || {last_total:,} || 0 \n"
@@ -276,7 +276,7 @@ def facts(n_tab, Old):
 
 
 def make_text(data, Old):
-    p_list = [(prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0))]
+    p_list = [(prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0))]
     p_list.sort(reverse=True)
 
     if not data.get("file_date"):
@@ -352,12 +352,12 @@ def main():
     data_defaults = {
         "delta": 0,
         "done": 0,
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
         "langs": {},
     }

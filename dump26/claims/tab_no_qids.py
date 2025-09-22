@@ -37,12 +37,12 @@ class ClaimsProcessor():
             "delta": 0,
             "done": 0,
             "file_date": "",
-            "len_all_props": 0,
-            "items_0_claims": 0,
-            "items_1_claims": 0,
-            "items_no_P31": 0,
+            "total_properties_count": 0,
+            "items_with_0_claims": 0,
+            "items_with_1_claim": 0,
+            "items_missing_P31": 0,
             "All_items": 0,
-            "total_claims": 0,
+            "total_claims_count": 0,
             "properties": {},
         }
 
@@ -76,7 +76,7 @@ class ClaimsProcessor():
 
     def _update_counters(self, json1) -> None:
         """Update basic counters from JSON data."""
-        for field in ["All_items", "items_0_claims", "items_1_claims", "items_no_P31", "total_claims"]:
+        for field in ["All_items", "items_with_0_claims", "items_with_1_claim", "items_missing_P31", "total_claims_count"]:
             self.tab[field] += json1.get(field, 0)
         self.tab["done"] += json1.get("All_items", 0)
 
@@ -85,24 +85,24 @@ class ClaimsProcessor():
         if prop not in self.tab["properties"]:
             self.tab["properties"][prop] = {
                 "qids": {"others": 0},
-                "items_use_it": 0,
+                "items_with_property": 0,
                 "lenth_of_usage": 0,
                 "unique_qids_count": 0,
-                "total_claims_count": 0,
+                "property_claims_count": 0,
             }
 
     def _update_property_stats(self, prop, prop_tab) -> None:
         """Update statistics for a single property."""
         p_qids = prop_tab.get("qids")  # or prop_tab
 
-        self.tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
+        self.tab["properties"][prop]["items_with_property"] += prop_tab.get("items_with_property", 0)
         self.tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
         # ---
-        self.tab["properties"][prop]["total_claims_count"] += len(p_qids)
+        self.tab["properties"][prop]["property_claims_count"] += len(p_qids)
         self.tab["properties"][prop]["unique_qids_count"] += len(p_qids)
 
         len_values = sum(p_qids.values())
-        self.tab["total_claims"] += len_values
+        self.tab["total_claims_count"] += len_values
         self.tab["properties"][prop]["qids"]["others"]+= len_values
 
     def do_line(self, json1):
@@ -119,7 +119,7 @@ class ClaimsProcessor():
             gc.collect()
 
     def tab_changes(self):
-        self.tab["len_all_props"] = len(self.tab["properties"])
+        self.tab["total_properties_count"] = len(self.tab["properties"])
 
     def get_lines(self, items_file):
         with open(items_file, "r", encoding="utf-8") as f:

@@ -19,11 +19,11 @@ new_data_file = Path(__file__).parent / "jsons/claims_new_data.json"
 new_data = {
     "date": "",
     "All_items": 0,
-    "items_no_P31": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "total_claims": 0,
-    "len_all_props": 0,
+    "items_missing_P31": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "total_claims_count": 0,
+    "total_properties_count": 0,
     "properties": {},
 }
 
@@ -79,11 +79,11 @@ def facts(n_tab, Old):
     # ---
     texts = {
         "All_items": "Total items",
-        "items_no_P31": "Items without P31",
-        "items_0_claims": "Items without claims",
-        "items_1_claims": "Items with 1 claim only",
-        "total_claims": "Total number of claims",
-        "len_all_props": "Number of properties in the report",
+        "items_missing_P31": "Items without P31",
+        "items_with_0_claims": "Items without claims",
+        "items_with_1_claim": "Items with 1 claim only",
+        "total_claims_count": "Total number of claims",
+        "total_properties_count": "Number of properties in the report",
     }
     # ---
     text += f"|-\n| Total items last update || {last_total:,} || 0 \n"
@@ -99,14 +99,14 @@ def facts(n_tab, Old):
 
 def pid_section_facts(table, old_data):
     # ---
-    old_data["items_use_it"] = old_data.get("items_use_it") or old_data.get("lenth_of_usage", 0)
+    old_data["items_with_property"] = old_data.get("items_with_property") or old_data.get("lenth_of_usage", 0)
     # ---
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
     # ---
     texts_tab = {
-        "items_use_it": "Total items using this property",
-        "total_claims_count": "Total number of claims with this property:",
+        "items_with_property": "Total items using this property",
+        "property_claims_count": "Total number of claims with this property:",
         "unique_qids_count": "Number of unique QIDs",
     }
     # ---
@@ -129,9 +129,9 @@ def make_section(pid, table, old_data, max_n=51):
     new_data_qids = table.get("qids") or {"others": 0}
     # ---
     new_data["properties"][pid] = {
-        "items_use_it": table.get("items_use_it", 0),
+        "items_with_property": table.get("items_with_property", 0),
         # "lenth_of_usage": table.get("lenth_of_usage", 0),
-        "total_claims_count": table.get("total_claims_count", 0),
+        "property_claims_count": table.get("property_claims_count", 0),
         "unique_qids_count": table.get("unique_qids_count", 0),
         "qids": new_data_qids
     }
@@ -197,7 +197,7 @@ def make_numbers_section(p_list, Old):
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
+            old_usage = old_prop.get("items_with_property") or old_prop.get("lenth_of_usage", 0)
             # ---
             # print(f"{prop=}, {usage=}, {old_usage=}")
             # ---
@@ -231,7 +231,7 @@ def make_numbers_section(p_list, Old):
 
 
 def make_text(data, Old):
-    p_list = [(prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0))]
+    p_list = [(prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0))]
     p_list.sort(reverse=True)
 
     if not data.get("file_date"):
@@ -342,12 +342,12 @@ def get_split_tab():
     data_defaults = {
         "delta": 0,
         "done": 0,
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
         "langs": {},
     }
@@ -364,9 +364,9 @@ def get_split_tab():
 
     for pid, tab in split_tab["properties"].copy().items():
         # ---
-        items_use_it = tab.get("items_use_it") or tab.get("lenth_of_usage", 0)
+        items_with_property = tab.get("items_with_property") or tab.get("lenth_of_usage", 0)
         # ---
-        split_tab["properties"][pid]["items_use_it"] = items_use_it
+        split_tab["properties"][pid]["items_with_property"] = items_with_property
         split_tab["properties"][pid]["qids"] = split_tab["properties"][pid].get("qids", {})
     # ---
     return split_tab

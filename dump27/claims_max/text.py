@@ -19,11 +19,11 @@ from dir_handler import pids_qids_dir, most_props_path, claims_results_dir, dump
 new_data = {
     "date": "",
     "All_items": 0,
-    "items_no_P31": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "total_claims": 0,
-    "len_all_props": 0,
+    "items_missing_P31": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "total_claims_count": 0,
+    "total_properties_count": 0,
     "properties": {},
 }
 
@@ -75,11 +75,11 @@ def facts(n_tab, Old):
     # ---
     texts = {
         "All_items": "Total items",
-        "items_no_P31": "Items without P31",
-        "items_0_claims": "Items without claims",
-        "items_1_claims": "Items with 1 claim only",
-        "total_claims": "Total number of claims",
-        "len_all_props": "Number of properties in the report",
+        "items_missing_P31": "Items without P31",
+        "items_with_0_claims": "Items without claims",
+        "items_with_1_claim": "Items with 1 claim only",
+        "total_claims_count": "Total number of claims",
+        "total_properties_count": "Number of properties in the report",
     }
     # ---
     report_date = n_tab.get('file_date') or n_tab.get('date') or "latest"
@@ -99,15 +99,15 @@ def facts(n_tab, Old):
 
 def pid_section_facts(table, old_data):
     # ---
-    table["items_use_it"] = table.get("items_use_it") or table.get("len_of_usage", 0)
-    old_data["items_use_it"] = old_data.get("items_use_it") or old_data.get("len_of_usage", 0)
+    table["items_with_property"] = table.get("items_with_property") or table.get("len_of_usage", 0)
+    old_data["items_with_property"] = old_data.get("items_with_property") or old_data.get("len_of_usage", 0)
     # ---
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
     # ---
     texts_tab_x = {
-        # "items_use_it": "Total items using this property",
-        "total_claims_count": "Total number of claims:",
+        # "items_with_property": "Total items using this property",
+        "property_claims_count": "Total number of claims:",
         # "unique_qids_count": "Number of unique QIDs",
     }
     # ---
@@ -168,9 +168,9 @@ def load_qids(pid, table):
         return {}
     # ---
     new_data["properties"][pid] = {
-        "items_use_it": table.get("items_use_it", 0),
+        "items_with_property": table.get("items_with_property", 0),
         # "len_of_usage": table.get("len_of_usage", 0),
-        "total_claims_count": table.get("total_claims_count", 0),
+        "property_claims_count": table.get("property_claims_count", 0),
         "unique_qids_count": table.get("unique_qids_count", 0),
         # "qids": new_data_qids
     }
@@ -262,22 +262,22 @@ def make_numbers_section(properties_infos, Old):
         # ---
         if len(rows) < max_v:
             # ---
-            # usage = prop_tab.get("items_use_it", 0)
-            usage = prop_tab.get("total_claims_count", 0)
+            # usage = prop_tab.get("items_with_property", 0)
+            usage = prop_tab.get("property_claims_count", 0)
             # ---
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("total_claims_count")
+            old_usage = old_prop.get("property_claims_count")
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
             value_in_most_props = most_props.get(prop, 0)
             # ---
             line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} <!-- {value_in_most_props:,} -->|| {diff}"
             # ---
-            # total_claims_count = prop_tab.get("total_claims_count", 0)
-            # diff2 = min_it_tab(prop_tab, old_prop, "total_claims_count", add_plus=True)
+            # property_claims_count = prop_tab.get("property_claims_count", 0)
+            # diff2 = min_it_tab(prop_tab, old_prop, "property_claims_count", add_plus=True)
             # # ---
-            # line += f" || {total_claims_count:,}  || {diff2}"
+            # line += f" || {property_claims_count:,}  || {diff2}"
             # ---
             rows.append(line)
         else:
@@ -311,7 +311,7 @@ def make_numbers_section(properties_infos, Old):
 
 def make_text(data, Old):
     # ---
-    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("total_claims_count", 0), reverse=True))
+    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("property_claims_count", 0), reverse=True))
     # ---
     print(f"{len(properties_infos)=}")
     # ---
@@ -397,18 +397,18 @@ def get_old_data():
 def get_split_tab():
     split_file = dump_files_dir / "claims_stats.json"
     # ---
-    # { "len_all_props": 0, "items_0_claims": 1482902, "items_1_claims": 8972766, "items_no_P31": 937647, "All_items": 115641305, "total_claims": 790665159 }
+    # { "total_properties_count": 0, "items_with_0_claims": 1482902, "items_with_1_claim": 8972766, "items_missing_P31": 937647, "All_items": 115641305, "total_claims_count": 790665159 }
     with open(split_file, "r", encoding="utf-8") as file:
         claims_stats = json.load(file)
     # ---
     data_defaults = {
         "date": "",
         "All_items": 0,
-        "items_no_P31": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "total_claims": 0,
-        "len_all_props": 0,
+        "items_missing_P31": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "total_claims_count": 0,
+        "total_properties_count": 0,
         "properties": {},
     }
     # ---
@@ -428,12 +428,12 @@ def get_split_tab():
         if pid_data.get("qids"):
             del pid_data["qids"]
         # ---
-        pid_data["items_use_it"] = pid_data.get("items_use_it") or pid_data.get("len_of_usage") or 0
+        pid_data["items_with_property"] = pid_data.get("items_with_property") or pid_data.get("len_of_usage") or 0
         # ---
         claims_stats["properties"][pid] = pid_data
     # ---
-    if not claims_stats.get("len_all_props"):
-        claims_stats["len_all_props"] = len(claims_stats["properties"])
+    if not claims_stats.get("total_properties_count"):
+        claims_stats["total_properties_count"] = len(claims_stats["properties"])
     # ---
     print(f"len of claims_stats properties: {len(claims_stats['properties'])}")
     # ---

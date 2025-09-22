@@ -167,7 +167,7 @@ def one_prop_count_all(prop_main):
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
         PREFIX wikibase: <http://wikiba.se/ontology#>
 
-        SELECT DISTINCT (COUNT(?value) AS ?total_claims_count) (COUNT(DISTINCT ?value) AS ?unique_values) (COUNT(DISTINCT ?item) AS ?items_with_property)
+        SELECT DISTINCT (COUNT(?value) AS ?property_claims_count) (COUNT(DISTINCT ?value) AS ?unique_values) (COUNT(DISTINCT ?item) AS ?items_with_property)
         WHERE {{
             VALUES ?prop {{ wdt:{prop_main} }}
             ?item a wikibase:Item .
@@ -178,14 +178,14 @@ def one_prop_count_all(prop_main):
     result = query_qlever(sparql, limit=10)
 
     data = {
-        "total_claims_count": 0,
+        "property_claims_count": 0,
         "unique_qids_count": 0,
         "items_with_property": 0
     }
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']
 
-        data['total_claims_count'] = int(x[0])
+        data['property_claims_count'] = int(x[0])
         # ---
         # unique_values
         data['unique_qids_count'] = int(x[1])
@@ -207,18 +207,18 @@ def one_prop(prop_main, first_100={}):
     # ---
     count_all_status = one_prop_count_all(prop_main)
     # ---
-    total_claims_count = count_all_status['total_claims_count']
+    property_claims_count = count_all_status['property_claims_count']
     # ---
     data = {
         # "new" : count_all_status,
-        "others": total_claims_count - first_100_sum
+        "others": property_claims_count - first_100_sum
     }
     # ---
     data.update(count_all_status)
     # ---
     data["qids"] = first_100
     # ---
-    print(f"p \t {prop_main} \t claims: {total_claims_count:,} \t others: {data['others']:,}"
+    print(f"p \t {prop_main} \t claims: {property_claims_count:,} \t others: {data['others']:,}"
           f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}")
     # ---
     return data
