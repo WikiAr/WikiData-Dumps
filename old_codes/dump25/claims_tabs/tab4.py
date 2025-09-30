@@ -60,12 +60,12 @@ class ClaimsProcessor:
             "delta": 0,
             "done": 0,
             "file_date": "",
-            "len_all_props": 0,
-            "items_0_claims": 0,
-            "items_1_claims": 0,
-            "items_no_P31": 0,
+            "total_properties_count": 0,
+            "items_with_0_claims": 0,
+            "items_with_1_claim": 0,
+            "items_missing_P31": 0,
             "All_items": 0,
-            "total_claims": 0,
+            "total_claims_count": 0,
             "properties": {},
         }
 
@@ -101,12 +101,12 @@ class ClaimsProcessor:
             "delta": 0,
             "done": 0,
             "file_date": "",
-            "len_all_props": 0,
-            "items_0_claims": 0,
-            "items_1_claims": 0,
-            "items_no_P31": 0,
+            "total_properties_count": 0,
+            "items_with_0_claims": 0,
+            "items_with_1_claim": 0,
+            "items_missing_P31": 0,
             "All_items": 0,
-            "total_claims": 0,
+            "total_claims_count": 0,
             "properties": {},
         }
         gc.collect()
@@ -129,32 +129,32 @@ class ClaimsProcessor:
         claims_length = len(claims)
 
         if claims_length == 0:
-            self.tab["items_0_claims"] += 1
+            self.tab["items_with_0_claims"] += 1
             del claims, json1
             return
 
         if claims_length == 1:
-            self.tab["items_1_claims"] += 1
+            self.tab["items_with_1_claim"] += 1
 
         if "P31" not in claims:
-            self.tab["items_no_P31"] += 1
+            self.tab["items_missing_P31"] += 1
 
         for p, p_qids in claims.items():
             if "P31" in sys.argv and p != "P31":
                 continue
 
-            self.tab["total_claims"] += len(p_qids)
+            self.tab["total_claims_count"] += len(p_qids)
             p_tab = self.tab["properties"].get(
                 p,
                 {
                     "qids": {"others": 0},
                     "lenth_of_usage": 0,
-                    "len_prop_claims": 0,
+                    "property_claims_count": 0,
                 },
             )
 
             p_tab["lenth_of_usage"] += 1
-            p_tab["len_prop_claims"] += len(p_qids)
+            p_tab["property_claims_count"] += len(p_qids)
 
             for qid in p_qids:
                 if qid:

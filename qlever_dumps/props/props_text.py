@@ -45,11 +45,11 @@ def facts(n_tab, Old):
     # ---
     texts = {
         "all_items": "Total items",
-        "items_no_P31": "Items without P31",
-        "items_0_claims": "Items without claims",
-        "items_1_claims": "Items with 1 claim only",
-        "total_claims": "Total number of claims",
-        "len_all_props": "Number of properties in the report",
+        "items_missing_P31": "Items without P31",
+        "items_with_0_claims": "Items without claims",
+        "items_with_1_claim": "Items with 1 claim only",
+        "total_claims_count": "Total number of claims",
+        "total_properties_count": "Number of properties in the report",
     }
     # ---
     report_date = n_tab.get('file_date') or n_tab.get('date') or "latest"
@@ -72,16 +72,16 @@ def facts(n_tab, Old):
 
 def pid_section_facts(table, old_data):
     # ---
-    table["items_use_it"] = table.get("items_use_it") or table.get("len_of_usage", 0)
-    old_data["items_use_it"] = old_data.get("items_use_it") or old_data.get("len_of_usage", 0)
+    table["items_with_property"] = table.get("items_with_property") or table.get("len_of_usage", 0)
+    old_data["items_with_property"] = old_data.get("items_with_property") or old_data.get("len_of_usage", 0)
     # ---
     text = '{| class="wikitable sortable"\n'
     text += "! Title !! Number !! Diff \n"
     # ---
     texts_tab_x = {
-        "items_use_it": "Total items using this property",
-        "len_prop_claims": "Total number of claims:",
-        "len_of_qids": "Number of unique QIDs",
+        "items_with_property": "Total items using this property",
+        "property_claims_count": "Total number of claims:",
+        "unique_qids_count": "Number of unique QIDs",
     }
     # ---
     for key, title in texts_tab_x.items():
@@ -172,12 +172,12 @@ def make_numbers_section(properties_infos, Old):
         # ---
         if len(rows) < max_v:
             # ---
-            # usage = prop_tab.get("items_use_it", 0)
-            usage = prop_tab.get("len_prop_claims", 0)
+            # usage = prop_tab.get("items_with_property", 0)
+            usage = prop_tab.get("property_claims_count", 0)
             # ---
             old_prop = prop_tab.get("old", {})
             # ---
-            old_usage = old_prop.get("len_prop_claims")
+            old_usage = old_prop.get("property_claims_count")
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
             # value_in_most_props = most_props.get(prop, 0)
@@ -185,10 +185,10 @@ def make_numbers_section(properties_infos, Old):
             # ---
             line = f"| {idx} || {{{{P|{prop}}}}} || {usage:,} || {diff}"
             # ---
-            # len_prop_claims = prop_tab.get("len_prop_claims", 0)
-            # diff2 = min_it_tab(prop_tab, old_prop, "len_prop_claims", add_plus=True)
+            # property_claims_count = prop_tab.get("property_claims_count", 0)
+            # diff2 = min_it_tab(prop_tab, old_prop, "property_claims_count", add_plus=True)
             # # ---
-            # line += f" || {len_prop_claims:,}  || {diff2}"
+            # line += f" || {property_claims_count:,}  || {diff2}"
             # ---
             rows.append(line)
         else:
@@ -222,7 +222,7 @@ def make_numbers_section(properties_infos, Old):
 
 def make_text(data, Old):
     # ---
-    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("len_prop_claims", 0), reverse=True))
+    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("property_claims_count", 0), reverse=True))
     # ---
     print(f"{len(properties_infos)=}")
     # ---
@@ -244,3 +244,10 @@ def make_text(data, Old):
             section_done += 1
     # ---
     return metadata + numbers_section + sections
+
+
+def P31_texts_tab():
+    # ---
+    text = f"--~~~~\n\n{texts_tab['P31']}" if "P31" in texts_tab else ""
+    # ---
+    return text

@@ -52,10 +52,10 @@ def make_section(P, table, max_n=51):
     # ---
     print(f"make_section for property:{P}")
     texts += f"\n* Total items use these property:{Len:,}"
-    if lnnn := table.get("len_prop_claims"):
+    if lnnn := table.get("property_claims_count"):
         texts += f"\n* Total number of claims with these property:{lnnn:,}"
-    if len_of_qids := table.get("len_of_qids"):
-        texts += f"\n* Number of unique qids:{len_of_qids:,}"
+    if unique_qids_count := table.get("unique_qids_count"):
+        texts += f"\n* Number of unique qids:{unique_qids_count:,}"
     # ---
     texts += "\n"
     print(texts)
@@ -164,11 +164,11 @@ def make_text(tab, ty=""):
     text = (
         "<onlyinclude>;dump date {file_date}</onlyinclude>.\n"
         "* Total items: {All_items:,}\n"
-        "* Items without P31: {items_no_P31:,} \n"
-        "* Items without claims: {items_0_claims:,}\n"
-        "* Items with 1 claim only: {items_1_claims:,}\n"
-        "* Total number of claims: {total_claims:,}\n"
-        "* Number of properties of the report: {len_all_props:,}\n"
+        "* Items without P31: {items_missing_P31:,} \n"
+        "* Items without claims: {items_with_0_claims:,}\n"
+        "* Items with 1 claim only: {items_with_1_claim:,}\n"
+        "* Total number of claims: {total_claims_count:,}\n"
+        "* Number of properties of the report: {total_properties_count:,}\n"
     ).format_map(tab)
     # ---
     text += f"<!-- bots work done in {delta} secounds --> \n--~~~~~\n"
@@ -205,12 +205,12 @@ if __name__ == "__main__":
     tab = {
         "delta": 0,
         "done": 0,
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
         "langs": {},
     }
@@ -219,8 +219,8 @@ if __name__ == "__main__":
         if x not in data:
             data[x] = g
     # ---
-    if data["len_all_props"] == 0:
-        data["len_all_props"] = len(data["properties"])
+    if data["total_properties_count"] == 0:
+        data["total_properties_count"] = len(data["properties"])
     # ---
     text, text_p31 = make_text(data, ty="")
     # ---

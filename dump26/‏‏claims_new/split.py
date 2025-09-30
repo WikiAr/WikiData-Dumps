@@ -53,12 +53,12 @@ class ClaimsProcessor:
         self.properties_qids = {}
         self.tab = {
             "delta": 0,
-            "len_all_props": 0,
-            "items_0_claims": 0,
-            "items_1_claims": 0,
-            "items_no_P31": 0,
+            "total_properties_count": 0,
+            "items_with_0_claims": 0,
+            "items_with_1_claim": 0,
+            "items_missing_P31": 0,
             "All_items": 0,
-            "total_claims": 0,
+            "total_claims_count": 0,
         }
 
     def _print_progress(self, count: int):
@@ -89,7 +89,7 @@ class ClaimsProcessor:
         print("log_dump done")
 
     def do_line(self, json1):
-        for field in ["All_items", "items_0_claims", "items_1_claims", "items_no_P31", "total_claims"]:
+        for field in ["All_items", "items_with_0_claims", "items_with_1_claim", "items_missing_P31", "total_claims_count"]:
             self.tab[field] += json1.get(field, 0)
 
         claims = json1.get("properties") or json1
@@ -102,17 +102,17 @@ class ClaimsProcessor:
                 self.properties_qids[p] = {}
                 # ---
                 self.properties[p] = {
-                    "items_use_it": 0,
+                    "items_with_property": 0,
                     # "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    "unique_qids_count": 0,
+                    "property_claims_count": 0,
                 }
 
             p_qidsx = p_qids.get("qids") or p_qids
 
             # self.properties[p]["lenth_of_usage"] += p_qids.get("lenth_of_usage", 0)
-            self.properties[p]["items_use_it"] += p_qids.get("items_use_it", 0)
-            self.properties[p]["len_prop_claims"] += p_qids.get("len_prop_claims") or len(p_qidsx)
+            self.properties[p]["items_with_property"] += p_qids.get("items_with_property", 0)
+            self.properties[p]["property_claims_count"] += p_qids.get("property_claims_count") or len(p_qidsx)
 
             # ---
             for qid, count in p_qidsx.items():
@@ -131,17 +131,17 @@ class ClaimsProcessor:
         # ---
         count_total_claims = False
         # ---
-        if self.tab["total_claims"] == 0:
+        if self.tab["total_claims_count"] == 0:
             count_total_claims = True
         # ---
         for x, xx in self.properties.items():
             # ---
             qids_tab = self.properties_qids.get(x, {})
             # ---
-            self.properties[x]["len_of_qids"] += len(qids_tab)
+            self.properties[x]["unique_qids_count"] += len(qids_tab)
             # ---
             if count_total_claims:
-                self.tab["total_claims"] += sum(qids_tab.values())
+                self.tab["total_claims_count"] += sum(qids_tab.values())
             # ---
             # qids_1 = sorted(qids_tab.items(), key=lambda x: x[1], reverse=True)
             # ---
@@ -153,7 +153,7 @@ class ClaimsProcessor:
             # ---
             # self.properties[x]["qids"]["others"] = 0
         # ---
-        self.tab["len_all_props"] = len(self.properties)
+        self.tab["total_properties_count"] = len(self.properties)
 
     def get_lines(self, items_file):
         with open(items_file, "r", encoding="utf-8") as f:
@@ -215,12 +215,12 @@ if __name__ == "__main__":
     print(f"{len(files)=}, {split_by=}, {split_at=}")
     # ---
     tab = {
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
     }
     # ---
@@ -252,20 +252,20 @@ if __name__ == "__main__":
             # ---
             if x == "properties":
                 _prop_tab = {
-                    "items_use_it": 0,
+                    "items_with_property": 0,
                     # "lenth_of_usage": 0,
-                    "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    "unique_qids_count": 0,
+                    "property_claims_count": 0,
                 }
                 # ---
                 for prop, prop_tab in v.items():
                     if prop not in tab["properties"]:
                         tab["properties"][prop] = _prop_tab
                     # ---
-                    tab["properties"][prop]["items_use_it"] += prop_tab.get("items_use_it", 0)
+                    tab["properties"][prop]["items_with_property"] += prop_tab.get("items_with_property", 0)
                     # tab["properties"][prop]["lenth_of_usage"] += prop_tab.get("lenth_of_usage", 0)
-                    tab["properties"][prop]["len_of_qids"] += prop_tab.get("len_of_qids", 0)
-                    tab["properties"][prop]["len_prop_claims"] += prop_tab.get("len_prop_claims", 0)
+                    tab["properties"][prop]["unique_qids_count"] += prop_tab.get("unique_qids_count", 0)
+                    tab["properties"][prop]["property_claims_count"] += prop_tab.get("property_claims_count", 0)
                 # ---
         # ---
         with open(Path(__file__).parent / "split_tab.json", "w", encoding="utf-8") as outfile:

@@ -34,3 +34,6 @@ qlever_dumps/props/dumps/qids_old.json
 !qlever_dumps/props/dumps/texts/*.txt
 !qlever_dumps/langs/dumps/texts/*.txt
 !qlever_dumps/sitelinks/dumps/texts/*.txt
+dump_lua/lua_claims/req.md
+dump_lua/lua_claims/gpt.txt
+/dump_lua/lua_claims/.claude

@@ -66,12 +66,12 @@ def dump_lines_claims(linesc):
     # ---
     tabs_properties = {}
     tabs = {
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         # "properties": {},
     }
     # ---
@@ -90,31 +90,31 @@ def dump_lines_claims(linesc):
             most["q"] = line["qid"]
         # ---
         if claims_length == 0:
-            tabs["items_0_claims"] += 1
+            tabs["items_with_0_claims"] += 1
             continue
 
         if claims_length == 1:
-            tabs["items_1_claims"] += 1
+            tabs["items_with_1_claim"] += 1
 
         if "P31" not in claims:
-            tabs["items_no_P31"] += 1
+            tabs["items_missing_P31"] += 1
         # ---
         for pid, qids in claims.items():
             # ---
-            tabs["total_claims"] += len(qids)
+            tabs["total_claims_count"] += len(qids)
             # ---
             if pid not in tabs_properties:
                 tabs_properties[pid] = {
                     "qids": {},
-                    "items_use_it": 0,
+                    "items_with_property": 0,
                     "len_of_usage": 0,
-                    # "len_of_qids": 0,
-                    "len_prop_claims": 0,
+                    # "unique_qids_count": 0,
+                    "property_claims_count": 0,
                 }
             # ---
-            tabs_properties[pid]["len_prop_claims"] += len(qids)
+            tabs_properties[pid]["property_claims_count"] += len(qids)
             tabs_properties[pid]["len_of_usage"] += 1
-            tabs_properties[pid]["items_use_it"] += 1
+            tabs_properties[pid]["items_with_property"] += 1
             # ---
             for qid in qids:
                 if qid not in tabs_properties[pid]["qids"]:
@@ -341,12 +341,12 @@ def process_data(bz2_file="", url=""):
         data = parse_lines(bz2_file)
     # ---
     claims_stats = {
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
     }
     # ---
     # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):

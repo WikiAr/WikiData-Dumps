@@ -73,12 +73,12 @@ class DumpProcessor:
         most = {"q": "", "count": 0}
 
         tabs = {
-            "len_all_props": 0,
-            "items_0_claims": 0,
-            "items_1_claims": 0,
-            "items_no_P31": 0,
+            "total_properties_count": 0,
+            "items_with_0_claims": 0,
+            "items_with_1_claim": 0,
+            "items_missing_P31": 0,
             "All_items": 0,
-            "total_claims": 0,
+            "total_claims_count": 0,
             "properties": {},
         }
 
@@ -95,29 +95,29 @@ class DumpProcessor:
                 most["q"] = line["qid"]
 
             if claims_length == 0:
-                tabs["items_0_claims"] += 1
+                tabs["items_with_0_claims"] += 1
                 continue
 
             if claims_length == 1:
-                tabs["items_1_claims"] += 1
+                tabs["items_with_1_claim"] += 1
 
             if "P31" not in claims:
-                tabs["items_no_P31"] += 1
+                tabs["items_missing_P31"] += 1
 
             for pid, qids in claims.items():
-                tabs["total_claims"] += len(qids)
+                tabs["total_claims_count"] += len(qids)
 
                 if pid not in tabs["properties"]:
                     tabs["properties"][pid] = {
                         "qids": {},
-                        "items_use_it": 0,
+                        "items_with_property": 0,
                         "lenth_of_usage": 0,
-                        "len_of_qids": 0,
-                        "len_prop_claims": 0,
+                        "unique_qids_count": 0,
+                        "property_claims_count": 0,
                     }
 
                 tabs["properties"][pid]["lenth_of_usage"] += 1
-                tabs["properties"][pid]["items_use_it"] += 1
+                tabs["properties"][pid]["items_with_property"] += 1
 
                 for qid in qids:
                     if qid not in tabs["properties"][pid]["qids"]:

@@ -19,11 +19,11 @@ new_data_file = Path(__file__).parent / "jsons/claims_new_data.json"
 new_data = {
     "date": "",
     "All_items": 0,
-    "items_no_P31": 0,
-    "items_0_claims": 0,
-    "items_1_claims": 0,
-    "total_claims": 0,
-    "len_all_props": 0,
+    "items_missing_P31": 0,
+    "items_with_0_claims": 0,
+    "items_with_1_claim": 0,
+    "total_claims_count": 0,
+    "total_properties_count": 0,
     "properties": {},
 }
 
@@ -74,21 +74,21 @@ def make_section(pid, table, old_data, max_n=51):
         return ""
     # ---
     new_data["properties"][pid] = {
-        "items_use_it": 0,
+        "items_with_property": 0,
         # "lenth_of_usage": 0,
-        "len_prop_claims": 0,
-        "len_of_qids": 0,
+        "property_claims_count": 0,
+        "unique_qids_count": 0,
         "qids": {
             "others": 0,
         },
     }
     # ---
-    total_usage = table.get("items_use_it", table.get("lenth_of_usage", 0))
+    total_usage = table.get("items_with_property", table.get("lenth_of_usage", 0))
     # ---
-    old_usage = old_data.get("items_use_it", old_data.get("lenth_of_usage", 0))
+    old_usage = old_data.get("items_with_property", old_data.get("lenth_of_usage", 0))
     # ---
     claims_count = 0
-    unique_qids = table.get("len_of_qids", 0)
+    unique_qids = table.get("unique_qids_count", 0)
     # ---
     # if not table.get("qids"):
     # print(f"{pid} has no QIDs.")
@@ -143,18 +143,18 @@ def make_section(pid, table, old_data, max_n=51):
     texts += f"* Total items using this property: {total_usage:,} ({diff})\n"
 
     if claims_count:
-        diff2 = min_it(claims_count, old_data.get("len_prop_claims", 0), add_plus=True)
+        diff2 = min_it(claims_count, old_data.get("property_claims_count", 0), add_plus=True)
         texts += f"* Total number of claims with this property: {claims_count:,} ({diff2})\n"
 
     if unique_qids:
-        diff3 = min_it(unique_qids, old_data.get("len_of_qids", 0), add_plus=True)
+        diff3 = min_it(unique_qids, old_data.get("unique_qids_count", 0), add_plus=True)
         texts += f"* Number of unique QIDs: {unique_qids:,} ({diff3})\n"
 
     # new_data["properties"][pid]["lenth_of_usage"] = total_usage
-    new_data["properties"][pid]["items_use_it"] = total_usage
+    new_data["properties"][pid]["items_with_property"] = total_usage
     # ---
-    new_data["properties"][pid]["len_prop_claims"] = claims_count
-    new_data["properties"][pid]["len_of_qids"] = unique_qids
+    new_data["properties"][pid]["property_claims_count"] = claims_count
+    new_data["properties"][pid]["unique_qids_count"] = unique_qids
 
     section_table = '\n{| class="wikitable sortable plainrowheaders"\n|-'
     section_table += '\n! class="sortable" | #'
@@ -190,21 +190,21 @@ def make_numbers_section(p_list, Old_props, data):
         if len(rows) < max_v:
             old_prop = Old_props.get(prop, {})
             # ---
-            old_usage = old_prop.get("items_use_it") or old_prop.get("lenth_of_usage", 0)
+            old_usage = old_prop.get("items_with_property") or old_prop.get("lenth_of_usage", 0)
             # ---
             print(f"{prop=}, {usage=}, {old_usage=}")
             # ---
             diff = min_it(usage, old_usage, add_plus=True)
             # ---
-            # Unique_QIDs = prop_data.get("len_of_qids", 0)
-            # diff2 = min_it(Unique_QIDs, old_prop.get("len_of_qids", 0), add_plus=True)
+            # Unique_QIDs = prop_data.get("unique_qids_count", 0)
+            # diff2 = min_it(Unique_QIDs, old_prop.get("unique_qids_count", 0), add_plus=True)
             # ---
             # rows.append(f"| {idx} || {{{{P|{prop}}}}} || {Unique_QIDs:,}  || {diff2} || {usage:,} || {diff}")
             rows.append(f"| {idx} || {{{{P|{prop}}}}} ||  {usage:,} || {diff}")
     # ---
     oo_others = Old_props.get("others", {})
     # ---
-    o_old_usage = oo_others.get("items_use_it") or oo_others.get("lenth_of_usage", 0)
+    o_old_usage = oo_others.get("items_with_property") or oo_others.get("lenth_of_usage", 0)
     o_diff = min_it(other_count, o_old_usage, add_plus=True)
     # ---
     rows.append(f"! {idx+1} \n! others || {other_count:,} || {o_diff}")
@@ -255,11 +255,11 @@ def facts(n_tab, Old):
     # ---
     texts = {
         "All_items": "Total items",
-        "items_no_P31": "Items without P31",
-        "items_0_claims": "Items without claims",
-        "items_1_claims": "Items with 1 claim only",
-        "total_claims": "Total number of claims",
-        "len_all_props": "Number of properties in the report",
+        "items_missing_P31": "Items without P31",
+        "items_with_0_claims": "Items without claims",
+        "items_with_1_claim": "Items with 1 claim only",
+        "total_claims_count": "Total number of claims",
+        "total_properties_count": "Number of properties in the report",
     }
     # ---
     text += f"|-\n| Total items last update || {last_total:,} || 0 \n"
@@ -276,7 +276,7 @@ def facts(n_tab, Old):
 
 
 def make_text(data, Old):
-    p_list = [(prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_use_it", prop_data.get("lenth_of_usage", 0))]
+    p_list = [(prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)), prop_id) for prop_id, prop_data in data["properties"].items() if prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0))]
     p_list.sort(reverse=True)
 
     if not data.get("file_date"):
@@ -352,642 +352,19 @@ def main():
     data_defaults = {
         "delta": 0,
         "done": 0,
-        "len_all_props": 0,
-        "items_0_claims": 0,
-        "items_1_claims": 0,
-        "items_no_P31": 0,
+        "total_properties_count": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "items_missing_P31": 0,
         "All_items": 0,
-        "total_claims": 0,
+        "total_claims_count": 0,
         "properties": {},
         "langs": {},
     }
     for key, default_value in data_defaults.items():
         data.setdefault(key, default_value)
 
-    # Old = get_old_data()
-    Old = {
-        "date": "09-08-2023",
-        "All_items": 104484150,
-        "items_no_P31": 1860628,
-        "items_0_claims": 929453,
-        "items_1_claims": 6165572,
-        "total_claims": 1491799701,
-        "len_all_props": 10664,
-        "properties": {
-                "P31": {
-                    "lenth_of_usage": 101694069,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1476": {
-                    "lenth_of_usage": 45038885,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P577": {
-                    "lenth_of_usage": 43402998,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1433": {
-                    "lenth_of_usage": 41110384,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2093": {
-                    "lenth_of_usage": 38442859,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P304": {
-                    "lenth_of_usage": 36498420,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P478": {
-                    "lenth_of_usage": 36418656,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P433": {
-                    "lenth_of_usage": 34659375,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P698": {
-                    "lenth_of_usage": 32037483,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P356": {
-                    "lenth_of_usage": 29382748,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P407": {
-                    "lenth_of_usage": 18628085,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P921": {
-                    "lenth_of_usage": 17837365,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P17": {
-                    "lenth_of_usage": 16298472,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P50": {
-                    "lenth_of_usage": 12588269,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P131": {
-                    "lenth_of_usage": 11824895,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2860": {
-                    "lenth_of_usage": 11765314,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P625": {
-                    "lenth_of_usage": 10160420,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P21": {
-                    "lenth_of_usage": 8833336,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P528": {
-                    "lenth_of_usage": 8311370,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6259": {
-                    "lenth_of_usage": 8081306,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6258": {
-                    "lenth_of_usage": 8081290,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6257": {
-                    "lenth_of_usage": 8081288,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P3083": {
-                    "lenth_of_usage": 8076174,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P106": {
-                    "lenth_of_usage": 7849755,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P59": {
-                    "lenth_of_usage": 7376288,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2671": {
-                    "lenth_of_usage": 7373590,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P735": {
-                    "lenth_of_usage": 6996314,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P932": {
-                    "lenth_of_usage": 6576759,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1215": {
-                    "lenth_of_usage": 6299101,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P569": {
-                    "lenth_of_usage": 6077940,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P373": {
-                    "lenth_of_usage": 5078732,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P18": {
-                    "lenth_of_usage": 4752086,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P5875": {
-                    "lenth_of_usage": 4583156,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P734": {
-                    "lenth_of_usage": 4556233,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P27": {
-                    "lenth_of_usage": 4500943,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P646": {
-                    "lenth_of_usage": 4417840,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P10752": {
-                    "lenth_of_usage": 4068835,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P10751": {
-                    "lenth_of_usage": 4068835,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1566": {
-                    "lenth_of_usage": 3753453,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2216": {
-                    "lenth_of_usage": 3721559,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P225": {
-                    "lenth_of_usage": 3706338,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P105": {
-                    "lenth_of_usage": 3705124,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P171": {
-                    "lenth_of_usage": 3702730,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6216": {
-                    "lenth_of_usage": 3692633,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2214": {
-                    "lenth_of_usage": 3668348,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P361": {
-                    "lenth_of_usage": 3375434,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P19": {
-                    "lenth_of_usage": 3292037,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P846": {
-                    "lenth_of_usage": 3243521,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P214": {
-                    "lenth_of_usage": 3216548,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2888": {
-                    "lenth_of_usage": 3193598,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P276": {
-                    "lenth_of_usage": 3168367,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P570": {
-                    "lenth_of_usage": 3090416,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2583": {
-                    "lenth_of_usage": 3014866,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P571": {
-                    "lenth_of_usage": 3010694,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P279": {
-                    "lenth_of_usage": 2956685,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P703": {
-                    "lenth_of_usage": 2555033,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6769": {
-                    "lenth_of_usage": 2429437,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1412": {
-                    "lenth_of_usage": 2389206,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P10585": {
-                    "lenth_of_usage": 2279886,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1435": {
-                    "lenth_of_usage": 2237913,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P953": {
-                    "lenth_of_usage": 2188891,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P195": {
-                    "lenth_of_usage": 2136874,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1813": {
-                    "lenth_of_usage": 2125022,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P275": {
-                    "lenth_of_usage": 2017361,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P641": {
-                    "lenth_of_usage": 2004002,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P69": {
-                    "lenth_of_usage": 1963369,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P7859": {
-                    "lenth_of_usage": 1894041,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1104": {
-                    "lenth_of_usage": 1868262,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P496": {
-                    "lenth_of_usage": 1786356,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P856": {
-                    "lenth_of_usage": 1784840,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P227": {
-                    "lenth_of_usage": 1773861,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P281": {
-                    "lenth_of_usage": 1749549,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6375": {
-                    "lenth_of_usage": 1690595,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P971": {
-                    "lenth_of_usage": 1664755,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P421": {
-                    "lenth_of_usage": 1631341,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P213": {
-                    "lenth_of_usage": 1628102,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P495": {
-                    "lenth_of_usage": 1605396,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P1448": {
-                    "lenth_of_usage": 1603007,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P6179": {
-                    "lenth_of_usage": 1540409,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P244": {
-                    "lenth_of_usage": 1511058,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P217": {
-                    "lenth_of_usage": 1478642,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2326": {
-                    "lenth_of_usage": 1469087,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P136": {
-                    "lenth_of_usage": 1463934,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2044": {
-                    "lenth_of_usage": 1370162,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P5055": {
-                    "lenth_of_usage": 1362787,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P155": {
-                    "lenth_of_usage": 1360667,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P156": {
-                    "lenth_of_usage": 1344821,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P20": {
-                    "lenth_of_usage": 1338278,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P235": {
-                    "lenth_of_usage": 1331178,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P234": {
-                    "lenth_of_usage": 1319335,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P108": {
-                    "lenth_of_usage": 1310503,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P170": {
-                    "lenth_of_usage": 1227290,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2048": {
-                    "lenth_of_usage": 1166445,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P8608": {
-                    "lenth_of_usage": 1157085,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P662": {
-                    "lenth_of_usage": 1155733,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P819": {
-                    "lenth_of_usage": 1138231,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P830": {
-                    "lenth_of_usage": 1098616,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P274": {
-                    "lenth_of_usage": 1074468,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P644": {
-                    "lenth_of_usage": 1059424,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P645": {
-                    "lenth_of_usage": 1059422,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "P2548": {
-                    "lenth_of_usage": 1058111,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                },
-            "others": {
-                    "lenth_of_usage": 165288449,
-                    "len_prop_claims": 0,
-                    "len_of_qids": 0,
-                    "qids": {}
-                }
-        }
-    }
+    Old = get_old_data()
 
     text_output = make_text(data, Old)
 
