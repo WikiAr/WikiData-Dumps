@@ -9,7 +9,6 @@ import time
 from pathlib import Path
 
 from dump3.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
-from API import arAPI
 
 va_dir = Path(__file__).parent
 # ---
@@ -41,7 +40,7 @@ def save_to_wp(text):
     # ---
     print(f"title:{title}")
     # ---
-    arAPI.page_put(oldtext="", newtext=text, summary="Bot - Updating stats", title=title)
+    page_put(oldtext="", newtext=text, summary="Bot - Updating stats", title=title)
 
 
 def mainar():

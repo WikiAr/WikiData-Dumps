@@ -108,13 +108,7 @@ def save_to_wp(text):
     # ---
     print(f"title:{title}")
     # ---
-    from API import arAPI
-
-    arAPI.page_put(oldtext="", newtext=text, summary="Bot - Updating stats", title=title)
-    # ---
-    del text
-    del arAPI
-
+    page_put(oldtext="", newtext=text, summary="Bot - Updating stats", title=title)
 
 def read_data():
     filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
