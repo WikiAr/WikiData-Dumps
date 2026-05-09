@@ -26,8 +26,7 @@ from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 sys.path.append(str(Path(__file__).parent))
 
-from dir_handler import (dump_dir_claims_fixed, dump_files_dir,
-                         dump_parts1_fixed, split_by_pid_dir)
+from dir_handler import dump_dir_claims_fixed, dump_files_dir, dump_parts1_fixed, split_by_pid_dir
 
 time_start = time.time()
 

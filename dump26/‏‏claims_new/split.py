@@ -17,6 +17,7 @@ import time
 from pathlib import Path
 
 import psutil
+
 # import ijson
 import tqdm
 import ujson
