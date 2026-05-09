@@ -16,7 +16,7 @@ headers = {
     # "sec-fetch-dest": "empty",
     # "sec-fetch-mode": "cors",
     # "sec-fetch-site": "same-origin",
-    # "referer": "https://qlever.cs.uni-freiburg.de/wikidata/fUx1c1"
+    # "referer": "https://qlever.dev/wikidata/fUx1c1"
 }
 
 session = requests.session()
@@ -30,7 +30,7 @@ def query_qlever(sparql_query, limit=10_000_000):
 
     # encoded_query = urllib.parse.quote_plus(sparql_query)
 
-    url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
+    url = "https://qlever.dev/api/wikidata"
 
     data = {"query": sparql_query, "send": limit}
 
@@ -100,22 +100,32 @@ def one_lang(lang):
         SELECT ?labels ?descriptions ?aliases WHERE {{
         {{
             SELECT (COUNT(?item) AS ?labels) WHERE {{
-	        ?item rdf:type wikibase:Item.
-            ?item rdfs:label ?label1 FILTER (LANG(?label1) = "{lang}")
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
+
+            ?item rdfs:label ?label1 .
+            FILTER (LANG(?label1) = "{lang}")
             }}
         }}
         {{
             SELECT (COUNT(?item) AS ?descriptions) WHERE {{
-	        ?item rdf:type wikibase:Item.
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
+
             ?item schema:description ?desc .
-                                    FILTER (LANG(?desc) = "{lang}")
+            FILTER (LANG(?desc) = "{lang}")
             }}
         }}
         {{
             SELECT (COUNT(DISTINCT ?item) AS ?aliases) WHERE {{
-	        ?item rdf:type wikibase:Item.
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
+
             ?item skos:altLabel ?alt .
-                                FILTER (LANG(?alt) = "{lang}")
+            FILTER (LANG(?alt) = "{lang}")
             }}
         }}
         }}
@@ -153,18 +163,18 @@ def get_all_items():
         PREFIX wikibase: <http://wikiba.se/ontology#>
         SELECT (COUNT(?item) AS ?all_items)
         WHERE {
-
-        ?item wikibase:sitelinks ?sl.
+            ?item wikibase:sitelinks [] .
         }
     """
     # ---
     sparql = """
-        PREFIX wikibase: <http://wikiba.se/ontology#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-        SELECT (COUNT(?item) AS ?all_items)
-        WHERE {
-            ?item rdf:type wikibase:Item.
+        PREFIX wikibase: <http://wikiba.se/ontology#>
+        PREFIX schema: <http://schema.org/>
+        SELECT (COUNT(?item) AS ?all_items) WHERE {
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER (STRSTARTS(STR(?item),"http://www.wikidata.org/entity/Q"))
         }
     """
     # ---
@@ -198,7 +208,9 @@ def get_all_with(ty):
 
         SELECT (COUNT(DISTINCT ?item) AS ?c) WHERE {{
             # ?item wikibase:sitelinks ?sl.
-            ?item rdf:type wikibase:Item.
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
             FILTER NOT EXISTS {{
                 ?item {ty} ?dd .
             }}
@@ -236,8 +248,10 @@ def get_most(ty):
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
         SELECT ?item (COUNT(?label) AS ?lc) WHERE {{
-            ?item rdf:type wikibase:Item.
             ?item {ty} ?label .
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
         }}
         GROUP BY ?item
         ORDER BY DESC(?lc)
@@ -268,13 +282,21 @@ def get_all_withouts(all_items):
     items_with_descriptions = get_all_with("descriptions")
     items_with_aliases = get_all_with("aliases")
     # ---
-    return {"labels": items_with_labels, "descriptions": items_with_descriptions, "aliases": items_with_aliases}
+    return {
+        "labels": items_with_labels,
+        "descriptions": items_with_descriptions,
+        "aliases": items_with_aliases,
+    }
 
 
 def get_most_status():
     print("get_most_status")
     # ---
-    return {"labels": get_most("labels"), "descriptions": get_most("descriptions"), "aliases": get_most("aliases")}
+    return {
+        "labels": get_most("labels"),
+        "descriptions": get_most("descriptions"),
+        "aliases": get_most("aliases"),
+    }
 
 
 def get_langs_status():
