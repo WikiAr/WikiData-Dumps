@@ -16,24 +16,26 @@ Usage:
     python3 c9/pwb.py dump277/r_28.py test          # stop after 10,000 items
     python3 c9/pwb.py dump277/r_28.py from_url      # stream from wikimedia URL
 """
-import os
-import psutil
-import json
-import ujson
-import time
-import sys
+
 import bz2
-import requests
-import numpy as np
+import json
+import os
+import sys
+import time
 from pathlib import Path
+
+import numpy as np
+import psutil
+import requests
+import ujson
 from humanize import naturalsize
 
 sys.path.append(str(Path(__file__).parent))
 
 from dir_handler import (
-    pids_qids_dir,
     dump_files_dir,
     labels_results_dir,
+    pids_qids_dir,
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -111,6 +113,7 @@ if _most_claims_path.exists():
 # Helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def fix_property(pv: list) -> list:
     """Return list of wikibase-item QID strings from a raw claim statement list."""
     return [
@@ -137,9 +140,7 @@ def _ensure_pid(pid: str):
         idx = len(pid_index)
         pid_index[pid] = idx
         if idx >= pid_stats_arr.shape[0]:
-            pid_stats_arr = np.vstack(
-                [pid_stats_arr, np.zeros((_BLOCK, 3), dtype=np.int64)]
-            )
+            pid_stats_arr = np.vstack([pid_stats_arr, np.zeros((_BLOCK, 3), dtype=np.int64)])
         pid_qids[pid] = {}
 
 
@@ -162,7 +163,7 @@ def process_entity(raw: str):
         return
 
     qid = entity.get("title", "")
-    global_stats[0] += 1   # All_items
+    global_stats[0] += 1  # All_items
 
     # ── labels / sitelinks ───────────────────────────────────────────────────
     for key, col in _TATS:
@@ -195,14 +196,14 @@ def process_entity(raw: str):
     n_props = len(claims)
 
     if n_props == 0:
-        global_stats[1] += 1   # items_with_0_claims
+        global_stats[1] += 1  # items_with_0_claims
         return
 
     if n_props == 1:
-        global_stats[2] += 1   # items_with_1_claim
+        global_stats[2] += 1  # items_with_1_claim
 
     if "P31" not in claims:
-        global_stats[3] += 1   # items_missing_P31
+        global_stats[3] += 1  # items_missing_P31
 
     if n_props > most_claims["count"]:
         most_claims = {"q": qid, "count": n_props}
@@ -213,7 +214,7 @@ def process_entity(raw: str):
     batch_len = []
 
     for pid, qs in claims.items():
-        global_stats[4] += len(qs)   # total_claims_count
+        global_stats[4] += len(qs)  # total_claims_count
         _ensure_pid(pid)
         idx = pid_index[pid]
         batch_idx.append(idx)
@@ -227,14 +228,15 @@ def process_entity(raw: str):
 
     idx_arr = np.array(batch_idx, dtype=np.int32)
     len_arr = np.array(batch_len, dtype=np.int64)
-    np.add.at(pid_stats_arr[:, 0], idx_arr, len_arr)   # property_claims_count
-    np.add.at(pid_stats_arr[:, 1], idx_arr, 1)          # len_of_usage
-    np.add.at(pid_stats_arr[:, 2], idx_arr, 1)          # items_with_property
+    np.add.at(pid_stats_arr[:, 0], idx_arr, len_arr)  # property_claims_count
+    np.add.at(pid_stats_arr[:, 1], idx_arr, 1)  # len_of_usage
+    np.add.at(pid_stats_arr[:, 2], idx_arr, 1)  # items_with_property
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Output writers
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def write_labels_new():
     """
@@ -284,7 +286,7 @@ def write_pids_qids():
 
     Uses np.argsort for the top-N sort (faster than Python sorted on large dicts).
     """
-    global_stats[5] = len(pid_index)   # total_properties_count
+    global_stats[5] = len(pid_index)  # total_properties_count
     n_pids = len(pid_index)
     print(f"  Writing {n_pids:,} PID files -> {pids_qids_dir}")
 
@@ -299,7 +301,7 @@ def write_pids_qids():
         keys_arr = np.array(list(bucket.keys()), dtype=np.int32)
         values_arr = np.array(list(bucket.values()), dtype=np.int32)
 
-        order = np.argsort(values_arr)[::-1]   # descending by count
+        order = np.argsort(values_arr)[::-1]  # descending by count
 
         if len(values_arr) > max_items:
             others_total = int(values_arr[order[max_items:]].sum())
@@ -312,10 +314,7 @@ def write_pids_qids():
         top_values = values_arr[top]
 
         # Convert int keys back to "Q{n}" strings
-        qids_out = {
-            f"Q{int(k)}": int(v)
-            for k, v in zip(top_keys, top_values)
-        }
+        qids_out = {f"Q{int(k)}": int(v) for k, v in zip(top_keys, top_values)}
         if others_total:
             qids_out["others"] = others_total
 
@@ -359,6 +358,7 @@ def write_claims_stats():
 # Stream parsers
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def parse_lines(bz2_file: str):
     with bz2.open(bz2_file, "r") as f:
         for line in f:
@@ -369,9 +369,7 @@ def parse_lines(bz2_file: str):
 
 def parse_lines_from_url(url: str):
     session = requests.session()
-    session.headers.update({
-        "User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"
-    })
+    session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
     with session.get(url, stream=True) as response:
         response.raise_for_status()
         decompressor = bz2.BZ2Decompressor()
@@ -393,14 +391,18 @@ def parse_lines_from_url(url: str):
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def process_data(bz2_file: str = "", url: str = ""):
     _tt[0] = time.time()
 
     is_test = "test" in sys.argv
     from_url = "from_url" in sys.argv
 
-    mem_nu = 1_000 if is_test else 10_000
-    test_limit = 10_000 if is_test else None
+    mem_nu = 5_000 if is_test else 10_000
+    test_limit = 20_000 if is_test else None
+    dump_numbs = 10_000 if "test" in sys.argv else 100_000
+
+    print_frist = True
 
     if from_url:
         print(f"Streaming from URL: {url}")
@@ -414,6 +416,11 @@ def process_data(bz2_file: str = "", url: str = ""):
     print("Starting inline processing (no batch lists) ...")
     i = 0
     for i, raw in enumerate(data, start=1):
+        if print_frist:
+            print_memory(i)
+            print_frist = False
+            print("print_frist = False")
+
         process_entity(raw)
 
         if i % mem_nu == 0:
@@ -427,6 +434,8 @@ def process_data(bz2_file: str = "", url: str = ""):
     print(f"  Raw lines seen : {i:,}")
     print(f"  Items (type=item): {int(global_stats[0]):,}")
     print_memory(i)
+
+    print("Processing completed.")
 
 
 def main():
@@ -447,8 +456,8 @@ def main():
 
     # ── write all outputs ────────────────────────────────────────────────────
     print("\n-- Writing outputs --")
-    write_labels_new()    # -> results/labels/labels_new.json
-    write_pids_qids()     # -> dump_files/pids_qids/{PID}.json
+    write_labels_new()  # -> results/labels/labels_new.json
+    write_pids_qids()  # -> dump_files/pids_qids/{PID}.json
     write_claims_stats()  # -> dump_files/claims_stats.json
 
     _most_claims_path.write_text(json.dumps(most_claims))
