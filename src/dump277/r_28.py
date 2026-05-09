@@ -2,19 +2,19 @@
 Approach 2 rewrite: full in-memory accumulation with NumPy.
 
 Changes from original r_28.py:
-  - No batch lists (lines / lines_claims removed entirely)
-  - No skip/resume mechanism (removed)
-  - All properties always processed (no 'all_props' sys.argv flag needed)
-  - NumPy arrays for all per-PID stats and QID counting
-  - At end, writes outputs directly:
-      results/labels/labels_new.json    replaces labels/tab_fixed.py
-      dump_files/pids_qids/{PID}.json   replaces claims_max/bot.py
-      dump_files/claims_stats.json
+    - No batch lists (lines / lines_claims removed entirely)
+    - No skip/resume mechanism (removed)
+    - All properties always processed (no 'all_props' sys.argv flag needed)
+    - NumPy arrays for all per-PID stats and QID counting
+    - At end, writes outputs directly:
+        results/labels/labels_new.json    replaces labels/tab_fixed.py
+        dump_files/pids_qids/{PID}.json   replaces claims_max/bot.py
+        dump_files/claims_stats.json
 
 Usage:
-  python3 dump27/r_28.py               full run
-  python3 dump27/r_28.py test          stop after 10,000 items
-  python3 dump27/r_28.py from_url      stream from wikimedia URL
+    python3 dump27/r_28.py               full run
+    python3 dump27/r_28.py test          stop after 10,000 items
+    python3 dump27/r_28.py from_url      stream from wikimedia URL
 """
 import os
 import psutil
@@ -423,7 +423,7 @@ def process_data(bz2_file: str = "", url: str = ""):
             print(f"[test] stopping at {i:,} raw lines")
             break
 
-    print(f"\nStream finished.")
+    print("\nStream finished.")
     print(f"  Raw lines seen : {i:,}")
     print(f"  Items (type=item): {int(global_stats[0]):,}")
     print_memory(i)
