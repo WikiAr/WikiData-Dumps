@@ -15,7 +15,8 @@ import tqdm
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-from dir_handler import claims_results_dir, dump_files_dir, most_props_path, pids_qids_dir
+from dir_handler import (claims_results_dir, dump_files_dir, most_props_path,
+                         pids_qids_dir)
 
 # ---
 new_data = {

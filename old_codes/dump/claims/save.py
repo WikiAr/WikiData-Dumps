@@ -4,10 +4,6 @@ python3 core8/pwb.py dump/claims/save
 
 import os
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
 import sys
 
 # ---

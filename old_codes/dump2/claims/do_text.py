@@ -4,12 +4,7 @@ python3 core8/pwb.py dump2/claims/do_text
 
 import json
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
 import sys
-
 # import os
 import time
 

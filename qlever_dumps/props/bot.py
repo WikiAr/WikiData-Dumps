@@ -18,7 +18,8 @@ from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from props_qlever_bot import get_all_props, get_date, get_props_status, one_prop
+from props_qlever_bot import (get_all_props, get_date, get_props_status,
+                              one_prop)
 from props_text import P31_texts_tab, make_text
 
 PROPS_JSON = "props_json" in sys.argv
