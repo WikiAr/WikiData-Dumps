@@ -105,7 +105,12 @@ def render(old_data, file_date):
         all_items = new_data["all_items"]
         withouts = new_data["without"]
         # ---
-        data_new = {"date": file_date, "all_items": all_items, "without": withouts, "langs": lang_data["langs"]}
+        data_new = {
+            "date": file_date,
+            "all_items": all_items,
+            "without": withouts,
+            "langs": lang_data["langs"],
+        }
         # ---
         file1 = dump_dir / "langs.json"
         # ---

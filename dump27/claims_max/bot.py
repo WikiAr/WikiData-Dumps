@@ -185,7 +185,13 @@ if __name__ == "__main__":
         # ---
         gc.collect()
     # ---
-    properties_infos = dict(sorted(properties_infos.items(), key=lambda x: x[1]["items_with_property"], reverse=True))
+    properties_infos = dict(
+        sorted(
+            properties_infos.items(),
+            key=lambda x: x[1]["items_with_property"],
+            reverse=True,
+        )
+    )
     # ---
     delta = int(time.time() - start_time)
     # ---

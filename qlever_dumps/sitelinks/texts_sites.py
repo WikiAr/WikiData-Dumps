@@ -139,7 +139,7 @@ class SitelinksReport:
         families_text = dict(
             sorted(
                 families_text.items(),
-                key=lambda kv: sort_list.index(kv[0]) if kv[0] in sort_list else len(sort_list) + 1,
+                key=lambda kv: (sort_list.index(kv[0]) if kv[0] in sort_list else len(sort_list) + 1),
             )
         )
 

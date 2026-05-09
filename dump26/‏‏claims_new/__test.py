@@ -37,7 +37,14 @@ from pathlib import Path
 # file = Path(__file__).parent / "jsons/claims.json"
 # with open(file, "r", encoding="utf-8") as f: data = json.load(f)
 
-data = {"Q13442814": 500, "Q5": 400, "Q4167836": 300, "Q16521": 200, "Q523": 100, "others": 150}
+data = {
+    "Q13442814": 500,
+    "Q5": 400,
+    "Q4167836": 300,
+    "Q16521": 200,
+    "Q523": 100,
+    "others": 150,
+}
 
 new_data = fix_others("", data, max=2)
 

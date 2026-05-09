@@ -279,7 +279,10 @@ def facts(n_tab, Old):
 
 def make_text(data, Old):
     p_list = [
-        (prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)), prop_id)
+        (
+            prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)),
+            prop_id,
+        )
         for prop_id, prop_data in data["properties"].items()
         if prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0))
     ]
@@ -381,7 +384,10 @@ def main():
 
     if "P31" in data["properties"]:
         text_p31_output = make_section(
-            "P31", data["properties"]["P31"], Old.get("properties", {}).get("P31", {}), max_n=501
+            "P31",
+            data["properties"]["P31"],
+            Old.get("properties", {}).get("P31", {}),
+            max_n=501,
         )
         with open(claims_p31, "w", encoding="utf-8") as file:
             file.write(text_p31_output)

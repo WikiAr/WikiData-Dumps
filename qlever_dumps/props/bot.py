@@ -197,10 +197,18 @@ def props_ren(old_data):
     # ---
     # sort old_properties by p['property_claims_count']
     old_properties = dict(
-        sorted(old_properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=REVERSE_PROPS)
+        sorted(
+            old_properties.items(),
+            key=lambda item: item[1].get("property_claims_count", 0),
+            reverse=REVERSE_PROPS,
+        )
     )
     # ---
-    for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
+    for n, (p, p_old) in tqdm(
+        enumerate(old_properties.items()),
+        desc="Work on props:",
+        total=len(old_properties),
+    ):
         # ---
         p_data = get_prop_infos(p, p_old, n)
         # ---
@@ -267,7 +275,11 @@ def props_new_data(old_data, file_date):
     # ---
     # sort data_dump["properties"] by p['property_claims_count']
     data_dump["properties"] = dict(
-        sorted(data_dump["properties"].items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True)
+        sorted(
+            data_dump["properties"].items(),
+            key=lambda item: item[1].get("property_claims_count", 0),
+            reverse=True,
+        )
     )
     # ---
     with open(props_main_file, "w", encoding="utf-8") as f:
@@ -301,7 +313,13 @@ def render(old_data, file_date):
         "items_with_1_claim": 0,
         "total_claims_count": 0,
         "total_properties_count": 0,
-        "properties": {"P31": {"items_with_property": 0, "property_claims_count": 0, "unique_qids_count": 0}},
+        "properties": {
+            "P31": {
+                "items_with_property": 0,
+                "property_claims_count": 0,
+                "unique_qids_count": 0,
+            }
+        },
     }
     # ---
     for p, p_data in props_data["properties"].items():
@@ -314,7 +332,11 @@ def render(old_data, file_date):
     # ---
     # sort properties by p['property_claims_count']
     properties = dict(
-        sorted(properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True)
+        sorted(
+            properties.items(),
+            key=lambda item: item[1].get("property_claims_count", 0),
+            reverse=True,
+        )
     )
     # ---
     to_save_data["properties"] = properties

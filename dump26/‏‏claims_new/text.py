@@ -234,7 +234,10 @@ def make_numbers_section(p_list, Old):
 
 def make_text(data, Old):
     p_list = [
-        (prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)), prop_id)
+        (
+            prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0)),
+            prop_id,
+        )
         for prop_id, prop_data in data["properties"].items()
         if prop_data.get("items_with_property", prop_data.get("lenth_of_usage", 0))
     ]

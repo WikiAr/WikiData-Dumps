@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
 """
 
 python3 dump1/labels/tab_fixed.py
 
 
 """
+
 import os
 import time
 from pathlib import Path
