@@ -1,6 +1,6 @@
 """
 from dump.claims.most_props import get_data()
-python3 core8/pwb.py dump26/most_props2
+python3 c9/pwb.py dump26/most_props2
 """
 
 import json

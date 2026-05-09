@@ -1,6 +1,6 @@
 """
 
-python3 core8/pwb.py I:/core/bots/dump_core/src/qlever_dumps/props/bot.py oldjson props_json -break:10
+python3 c9/pwb.py I:/core/bots/dump_core/src/qlever_dumps/props/bot.py oldjson props_json -break:10
 python3 bots/dump_core/src/qlever_dumps/props/bot.py
 
 python3 bots/dump_core/src/qlever_dumps/props/bot.py -break:10 props_json
