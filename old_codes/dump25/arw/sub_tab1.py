@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-
-"""
+""" """
 
 stats_tab = {
     "all_items": 0,

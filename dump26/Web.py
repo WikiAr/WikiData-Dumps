@@ -7,6 +7,7 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
+
 import bz2
 import gc
 import json
@@ -219,9 +220,7 @@ class DumpProcessor:
 
     def fix_property(self, pv):
         """Extract property values from claims."""
-        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
-                for claim in pv
-                if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
 
     def parse_lines(self, bz2_file):
         """Parse lines from a bz2 file."""
@@ -263,13 +262,13 @@ class DumpProcessor:
             for chunk in response.iter_content(chunk_size=1024 * 1024):
                 if chunk:
                     buffer += decompressor.decompress(chunk)
-                    while b'\n' in buffer:
-                        line, buffer = buffer.split(b'\n', 1)
-                        line = line.strip().strip(b',')
+                    while b"\n" in buffer:
+                        line, buffer = buffer.split(b"\n", 1)
+                        line = line.strip().strip(b",")
                         if line.startswith(b"{") and line.endswith(b"}"):
-                            yield line.decode('utf-8')
+                            yield line.decode("utf-8")
             if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
-                yield buffer.decode('utf-8')
+                yield buffer.decode("utf-8")
 
     def process_data(self, bz2_file="", url=""):
         """Main processing method."""
@@ -280,8 +279,7 @@ class DumpProcessor:
         skip_to = 0
 
         if "skip" in sys.argv:
-            js_f = [int(x.name.replace(".json", "").replace("items_", ""))
-                    for x in self.dump_parts1_fixed.glob("*.json")]
+            js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in self.dump_parts1_fixed.glob("*.json")]
             maxfile = max(js_f) if js_f else 0
             skip_to = maxfile * dump_numbs
             self.dump_done[1] = maxfile

@@ -10,8 +10,7 @@ import time
 
 # ---
 try:
-    from dump.labels.labels_old_values import \
-        make_old_values  # make_old_values()
+    from dump.labels.labels_old_values import make_old_values  # make_old_values()
 except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---

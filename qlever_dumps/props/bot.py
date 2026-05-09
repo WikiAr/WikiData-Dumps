@@ -6,6 +6,7 @@ python3 bots/dump_core/qlever_dumps/props/bot.py
 python3 bots/dump_core/qlever_dumps/props/bot.py -break:10 props_json
 
 """
+
 import copy
 import json
 import re
@@ -17,8 +18,7 @@ from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from props_qlever_bot import (get_all_props, get_date, get_props_status,
-                              one_prop)
+from props_qlever_bot import get_all_props, get_date, get_props_status, one_prop
 from props_text import P31_texts_tab, make_text
 
 PROPS_JSON = "props_json" in sys.argv
@@ -26,39 +26,35 @@ OLD_FROM_JSON = "oldjson" in sys.argv
 MAIN_FROM_JSON = "fromjson" in sys.argv
 REVERSE_PROPS = "desc" in sys.argv
 
-dump_dir = Path(__file__).parent / 'dumps'
-dump_to_wikidata_dir = dump_dir / 'to_wikidata'
-texts_dir = dump_dir / 'texts'
-qids_dir = dump_dir / 'qids_by_prop'
+dump_dir = Path(__file__).parent / "dumps"
+dump_to_wikidata_dir = dump_dir / "to_wikidata"
+texts_dir = dump_dir / "texts"
+qids_dir = dump_dir / "qids_by_prop"
 # ---
 dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
 qids_dir.mkdir(parents=True, exist_ok=True)
 
-qids_old_file = dump_dir / 'qids_old.json'
+qids_old_file = dump_dir / "qids_old.json"
 props_main_file = dump_dir / "props.json"
 qids_olds = {}
 
 if qids_old_file.exists():
-    with open(qids_old_file, 'r', encoding='utf-8') as f:
+    with open(qids_old_file, "r", encoding="utf-8") as f:
         qids_olds = json.load(f)
 
 breaks = {1: 5_000}
 
 for arg in sys.argv:
-    arg, _, value = arg.partition(':')
+    arg, _, value = arg.partition(":")
     # ---
-    if arg == '-break' and value.isdigit():
+    if arg == "-break" and value.isdigit():
         breaks[1] = int(value)
         print(f"BREAK AT {value}\n" * 3)
 
 
 def print_with_color(text, color):
-    color_table = {
-        "green": 32,
-        "yellow": 33,
-        "red": 31
-    }
+    color_table = {"green": 32, "yellow": 33, "red": 31}
     # ---
     color_m = color_table.get(color, 0)
     # ---
@@ -66,13 +62,13 @@ def print_with_color(text, color):
 
 
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -84,10 +80,10 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
 
@@ -174,10 +170,8 @@ def get_prop_infos(p, p_old, n):
         "property_claims_count": p_data.get("property_claims_count", 0),
         "unique_qids_count": p_data.get("unique_qids_count", 0),
         "items_with_property": p_data.get("items_with_property", 0),
-
         "qids_others": p_data["others"],
         "others": p_data["others"],
-
         "old": p_old,
         "qids": p_data["qids"],
     }
@@ -199,9 +193,7 @@ def props_ren(old_data):
     # ---
     old_properties = old_data.get("properties", {})
     # ---
-    data = {
-        "properties": {}
-    }
+    data = {"properties": {}}
     # ---
     # sort old_properties by p['property_claims_count']
     old_properties = dict(sorted(old_properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=REVERSE_PROPS))
@@ -256,12 +248,7 @@ def props_new_data(old_data, file_date):
         # ---
         all_items = new_data["all_items"]
         # ---
-        data_main = {
-            "date": file_date,
-            "all_items": all_items,
-            "old" : {x: v for x, v in old_data.items() if x != "properties"},
-            "properties": props_data["properties"]
-        }
+        data_main = {"date": file_date, "all_items": all_items, "old": {x: v for x, v in old_data.items() if x != "properties"}, "properties": props_data["properties"]}
     # ---
     data_dump = copy.deepcopy(data_main)
     # ---
@@ -297,22 +284,7 @@ def render(old_data, file_date):
     # ---
     all_items = props_data["all_items"]
     # ---
-    to_save_data = {
-        "date": file_date,
-        "all_items": all_items,
-        "items_missing_P31": 0,
-        "items_with_0_claims": 0,
-        "items_with_1_claim": 0,
-        "total_claims_count": 0,
-        "total_properties_count": 0,
-        "properties": {
-            "P31": {
-                "items_with_property": 0,
-                "property_claims_count": 0,
-                "unique_qids_count": 0
-            }
-        }
-    }
+    to_save_data = {"date": file_date, "all_items": all_items, "items_missing_P31": 0, "items_with_0_claims": 0, "items_with_1_claim": 0, "total_claims_count": 0, "total_properties_count": 0, "properties": {"P31": {"items_with_property": 0, "property_claims_count": 0, "unique_qids_count": 0}}}
     # ---
     for p, p_data in props_data["properties"].items():
         if not p_data.get("old", {}).get("qids", {}):
@@ -320,10 +292,7 @@ def render(old_data, file_date):
     # ---
     to_save_data.update({x: v for x, v in props_data.items() if x not in ["properties", "old"]})
     # ---
-    properties = {
-        x: one_prop_tab(f) for x, f
-        in props_data["properties"].items()
-    }
+    properties = {x: one_prop_tab(f) for x, f in props_data["properties"].items()}
     # ---
     # sort properties by p['property_claims_count']
     properties = dict(sorted(properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True))

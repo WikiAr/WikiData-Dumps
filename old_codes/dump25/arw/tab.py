@@ -62,6 +62,7 @@ def log_dump(tab):
     # ---
     print("log_dump done")
 
+
 def do_line(json1):
     stats_tab["all_items"] += 1
 

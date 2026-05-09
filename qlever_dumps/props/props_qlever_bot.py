@@ -1,27 +1,20 @@
-
 """
 python3 I:/core/bots/wd_dumps/qlever_dumps/props/qlever_bot.py
 
 """
+
 import re
 
 import requests
 
-headers = {
-    "accept": "application/qlever-results+json",
-    "content-type": "application/sparql-query"
-}
+headers = {"accept": "application/qlever-results+json", "content-type": "application/sparql-query"}
 
 session = requests.session()
 session.headers.update(headers)
 
 
 def print_with_color(text, color):
-    color_table = {
-        "green": 32,
-        "yellow": 33,
-        "red": 31
-    }
+    color_table = {"green": 32, "yellow": 33, "red": 31}
     # ---
     color_m = color_table.get(color, 0)
     # ---
@@ -32,10 +25,7 @@ def query_qlever(sparql_query, limit=10_000_000):
 
     url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
 
-    data = {
-        "query": sparql_query,
-        "send": limit
-    }
+    data = {"query": sparql_query, "send": limit}
 
     response = session.get(url, params=data, timeout=50)
 
@@ -45,7 +35,7 @@ def query_qlever(sparql_query, limit=10_000_000):
         print(response.text)
         return []
     # ---
-    res_table = response.json()['res']
+    res_table = response.json()["res"]
     # ---
 
     def fix_it(z):
@@ -55,18 +45,16 @@ def query_qlever(sparql_query, limit=10_000_000):
         if z.startswith('"') and z.endswith('"'):
             z = z[1:-1]
         # ---
-        if z.startswith('<') and z.endswith('>'):
+        if z.startswith("<") and z.endswith(">"):
             z = z[1:-1]
         # ---
         if z.count("/entity/") == 1:
             z = z.split("/").pop()
         # ---
         return z
+
     # ---
-    result = [
-        [fix_it(z) for z in x]
-        for x in res_table
-    ]
+    result = [[fix_it(z) for z in x] for x in res_table]
     # ---
     return result
 
@@ -177,21 +165,17 @@ def one_prop_count_all(prop_main):
 
     result = query_qlever(sparql, limit=10)
 
-    data = {
-        "property_claims_count": 0,
-        "unique_qids_count": 0,
-        "items_with_property": 0
-    }
+    data = {"property_claims_count": 0, "unique_qids_count": 0, "items_with_property": 0}
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']
 
-        data['property_claims_count'] = int(x[0])
+        data["property_claims_count"] = int(x[0])
         # ---
         # unique_values
-        data['unique_qids_count'] = int(x[1])
+        data["unique_qids_count"] = int(x[1])
         # ---
         # items_with_property
-        data['items_with_property'] = int(x[2])
+        data["items_with_property"] = int(x[2])
     # ---
     return data
 
@@ -207,19 +191,19 @@ def one_prop(prop_main, first_100={}):
     # ---
     count_all_status = one_prop_count_all(prop_main)
     # ---
-    property_claims_count = count_all_status['property_claims_count']
+    property_claims_count = count_all_status["property_claims_count"]
     # ---
     data = {
         # "new" : count_all_status,
-        "others": property_claims_count - first_100_sum
+        "others": property_claims_count
+        - first_100_sum
     }
     # ---
     data.update(count_all_status)
     # ---
     data["qids"] = first_100
     # ---
-    print(f"p \t {prop_main} \t claims: {property_claims_count:,} \t others: {data['others']:,}"
-          f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}")
+    print(f"p \t {prop_main} \t claims: {property_claims_count:,} \t others: {data['others']:,}" f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}")
     # ---
     return data
 

@@ -2,6 +2,7 @@
 from dump2.most_props import get_data()
 python3 core8/pwb.py dump2/most_props
 """
+
 import json
 import re
 import sys
@@ -68,14 +69,15 @@ def get_most_usage(text):
 
     return dict(sorted_properties[:500])
 
+
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -87,12 +89,13 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
+
 
 def get_data():
     file_path = Path(__file__).parent / "properties.json"

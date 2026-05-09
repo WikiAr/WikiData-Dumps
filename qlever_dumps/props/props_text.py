@@ -1,6 +1,7 @@
 """
 !
 """
+
 import tqdm
 
 texts_tab = {}
@@ -52,7 +53,7 @@ def facts(n_tab, Old):
         "total_properties_count": "Number of properties in the report",
     }
     # ---
-    report_date = n_tab.get('file_date') or n_tab.get('date') or "latest"
+    report_date = n_tab.get("file_date") or n_tab.get("date") or "latest"
     # ---
     text += f"|-\n| Report date || {report_date} ||  \n"
     text += f"|-\n| Total items last update || {last_total:,} ||  \n"
@@ -144,7 +145,7 @@ def make_section(pid, table):
     section_table += '\n! class="sortable" | value'
     section_table += '\n! class="sortable" | Numbers'
     section_table += '\n! class="sortable" | Diff'
-    section_table += '\n|-\n'
+    section_table += "\n|-\n"
 
     section_table += table_content + "\n|}\n{{clear}}\n"
 
@@ -208,12 +209,12 @@ def make_numbers_section(properties_infos, Old):
     texts = "== Numbers ==\n"
     # ---
     table = '| class="wikitable sortable"\n|-\n'
-    table += '! # !! Property'
+    table += "! # !! Property"
     # table += '!! Items use it !! Diff'
-    table += '!! Claims !! Diff'
-    table += f'\n|-\n{table_content}\n'
+    table += "!! Claims !! Diff"
+    table += f"\n|-\n{table_content}\n"
     # ---
-    table = f'{{{table}|}}\n'
+    table = f"{{{table}|}}\n"
     # ---
     texts += table
     # ---

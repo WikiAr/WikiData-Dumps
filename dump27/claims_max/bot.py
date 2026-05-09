@@ -4,6 +4,7 @@ python I:/core/bots/dump_core/dump26/claims_max/aftter_splits.py
 
 
 """
+
 import gc
 import os
 import sys
@@ -24,7 +25,7 @@ for file in pids_qids_dir.glob("*.json"):
     print(f"deleted {file}")
 
 
-class ClaimsProcessor():
+class ClaimsProcessor:
     def __init__(self):
         self.start_time = time.time()
         self.tt = time.time()

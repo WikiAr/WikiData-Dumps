@@ -4,6 +4,7 @@ python dump1/claims_max/text.py
 python I:/core/bots/dump_core/dump26/claims_max/text.py
 
 """
+
 import json
 import sys
 import time
@@ -14,8 +15,7 @@ import tqdm
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-from dir_handler import (claims_results_dir, dump_files_dir, most_props_path,
-                         pids_qids_dir)
+from dir_handler import claims_results_dir, dump_files_dir, most_props_path, pids_qids_dir
 
 # ---
 new_data = {
@@ -84,7 +84,7 @@ def facts(n_tab, Old):
         "total_properties_count": "Number of properties in the report",
     }
     # ---
-    report_date = n_tab.get('file_date') or n_tab.get('date') or "latest"
+    report_date = n_tab.get("file_date") or n_tab.get("date") or "latest"
     # ---
     text += f"|-\n| Report date || {report_date} ||  \n"
     text += f"|-\n| Total items last update || {last_total:,} ||  \n"
@@ -131,7 +131,7 @@ def fix_others(pid, qids_tab, max=0):
     max_items = 500 if pid == "P31" else 100
     max_items += 2
     # ---
-    if max > 0 :
+    if max > 0:
         max_items = max
     # ---
     if len(qids_tab.items()) > max_items:
@@ -234,7 +234,7 @@ def make_section(pid, table, old_data, max_n=51):
     section_table += '\n! class="sortable" | value'
     section_table += '\n! class="sortable" | Numbers'
     section_table += '\n! class="sortable" | Diff'
-    section_table += '\n|-\n'
+    section_table += "\n|-\n"
 
     section_table += table_content + "\n|}\n{{clear}}\n"
 
@@ -299,12 +299,12 @@ def make_numbers_section(properties_infos, Old):
     texts = "== Numbers ==\n"
     # ---
     table = '| class="wikitable sortable"\n|-\n'
-    table += '! # !! Property'
+    table += "! # !! Property"
     # table += '!! Items use it !! Diff'
-    table += '!! Claims !! Diff'
-    table += f'\n|-\n{table_content}\n'
+    table += "!! Claims !! Diff"
+    table += f"\n|-\n{table_content}\n"
     # ---
-    table = f'{{{table}|}}\n'
+    table = f"{{{table}|}}\n"
     # ---
     texts += table
     # ---
@@ -333,7 +333,7 @@ def make_text(data, Old):
     # ---
     for prop, prop_tab in tqdm.tqdm(properties_infos.items(), desc="def make_section(): "):
         # ---
-        prop_tab['qids'] = load_qids(prop, prop_tab)
+        prop_tab["qids"] = load_qids(prop, prop_tab)
         # ---
         if section_done < 11:
             sections += make_section(prop, prop_tab, Old_props.get(prop, {}))
@@ -344,13 +344,13 @@ def make_text(data, Old):
 
 
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -362,10 +362,10 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
 

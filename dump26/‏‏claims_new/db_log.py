@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-
-"""
+""" """
 import json
 import os
 import sqlite3
@@ -135,7 +133,7 @@ def get_response_status():
     # ---
     result = fetch_all(query, ())
     # ---
-    result = [row['qid'] for row in result]
+    result = [row["qid"] for row in result]
     # ---
     return result
 
@@ -210,7 +208,7 @@ def one_item_qids(pid, qids):
     # print(f"{len(items)=:,}, {batch_size=:,}")
     # ---
     for i in range(0, len(items), batch_size):
-        batch = items[i:i + batch_size]
+        batch = items[i : i + batch_size]
         data = [(pid, qid, counts) for qid, counts in batch]
 
         db_commit(query, data, many=True)
@@ -232,8 +230,9 @@ def write_it():
         for pid, qids in data.items():
             one_item_qids(pid, qids)
 
-
     # ---
+
+
 if __name__ == "__main__":
     # python3 I:\core\bots\dump_core\dump26\claims_new\db_log.py
     init_db()

@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+
 import gc
 import json
 import os
@@ -38,7 +39,7 @@ most_props = json.loads(most_props_path.read_text())
 most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:100]}
 
 
-class ClaimsProcessor():
+class ClaimsProcessor:
     def __init__(self, log_file):
         self.log_file = log_file
         self.memory_check_interval = 80

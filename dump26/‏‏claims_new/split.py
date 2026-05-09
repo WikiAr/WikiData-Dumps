@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+
 import gc
 import json
 import os
@@ -16,6 +17,7 @@ import time
 from pathlib import Path
 
 import psutil
+
 # import ijson
 import tqdm
 import ujson
@@ -25,6 +27,7 @@ sys.path.append(str(Path(__file__).parent))
 import db_log
 
 db_log.init_db()
+
 
 def check_dir(path):
     if not path.exists():

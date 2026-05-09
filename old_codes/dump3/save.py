@@ -3,6 +3,7 @@
 python3 core8/pwb.py dump3/save
 
 """
+
 import logging
 import sys
 from pathlib import Path
@@ -25,12 +26,7 @@ file_to_title = {
     "template.txt": "Template:Tr langcodes counts",
 }
 # ---
-file_lengths = {
-    "claims_new.txt": 100000,
-    "claims_p31.txt": 10000,
-    "labels.txt": 50000,
-    "template.txt": 5000
-}
+file_lengths = {"claims_new.txt": 100000, "claims_p31.txt": 10000, "labels.txt": 50000, "template.txt": 5000}
 # ---
 for file, title in file_to_title.items():
     # ---

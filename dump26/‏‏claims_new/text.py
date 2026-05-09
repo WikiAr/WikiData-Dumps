@@ -6,6 +6,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/text2.py
 
 
 """
+
 import json
 import sys
 import time
@@ -134,7 +135,7 @@ def make_section(pid, table, old_data, max_n=51):
         # "lenth_of_usage": table.get("lenth_of_usage", 0),
         "property_claims_count": table.get("property_claims_count", 0),
         "unique_qids_count": table.get("unique_qids_count", 0),
-        "qids": new_data_qids
+        "qids": new_data_qids,
     }
     # ---
     table_rows = []
@@ -168,7 +169,7 @@ def make_section(pid, table, old_data, max_n=51):
     section_table += '\n! class="sortable" | value'
     section_table += '\n! class="sortable" | Numbers'
     section_table += '\n! class="sortable" | Diff'
-    section_table += '\n|-\n'
+    section_table += "\n|-\n"
 
     section_table += table_content + "\n|}\n{{clear}}\n"
 
@@ -260,13 +261,13 @@ def make_text(data, Old):
 
 
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -278,10 +279,10 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
 
@@ -312,7 +313,7 @@ def fix_others(pid, qids_tab, max=0):
     max_items = 500 if pid == "P31" else 100
     max_items += 2
     # ---
-    if max > 0 :
+    if max > 0:
         max_items = max
     # ---
     if len(qids_tab.items()) > max_items:

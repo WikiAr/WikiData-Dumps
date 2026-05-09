@@ -55,8 +55,8 @@ def generate_table_row(ns, count, nt_labels, nt_descriptions, nt_aliases):
 
 def ns_stats(prefixes):
     texts = """\n== حسب النطاق  ==\n"""
-    xline = ''  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
-    yline = ''  # |y1=718532,564152,46493,4292,1906,850,137,7
+    xline = ""  # |x=مقالة,تصنيف,قالب,بوابة,ويكيبيديا,وحدة,مساعدة,ملف
+    yline = ""  # |y1=718532,564152,46493,4292,1906,850,137,7
     tables = TABLE_TEMPLATE
     # ---
     for ns, nstab in prefixes.items():
@@ -83,15 +83,15 @@ def ns_stats(prefixes):
 
 
 def format_section(section, rows, section_others):
-    tr = '\n|-\n'
+    tr = "\n|-\n"
     section_table = '{| class="wikitable sortable"\n'
-    section_table += '! # !! {{P|P31}} !! الاستخدام'
+    section_table += "! # !! {{P|P31}} !! الاستخدام"
     section_table += tr
 
     section_table += tr.join(rows)
 
-    section_table += f'{tr}! - !! أخرى !! {section_others}\n'
-    section_table += '|}\n'
+    section_table += f"{tr}! - !! أخرى !! {section_others}\n"
+    section_table += "|}\n"
 
     return f"=== {section.replace(':', '')} ===\n{section_table}"
 
@@ -107,7 +107,7 @@ def make_text_p31(p31_main_tab, prefixes):
 
         rows = []
         c = 1
-        threshold = 100 if section != 'مقالة' else 10
+        threshold = 100 if section != "مقالة" else 10
         section_others = 0
 
         for qid, count in sorted_items:
@@ -115,7 +115,7 @@ def make_text_p31(p31_main_tab, prefixes):
                 continue
             if count > threshold and len(rows) < 150:
                 yf = "{{Q|%s}}" % qid
-                rows.append(f'| {c} || {yf} || {count:,} ')
+                rows.append(f"| {c} || {yf} || {count:,} ")
                 c += 1
             else:
                 section_others += count
@@ -125,7 +125,7 @@ def make_text_p31(p31_main_tab, prefixes):
 
         del rows, sorted_items, section_others
     # ---
-    return '\n'.join(formatted_sections)
+    return "\n".join(formatted_sections)
 
 
 def create_p31_table_no(table_no_ar_lab, max_rows=100):
@@ -143,14 +143,14 @@ def create_p31_table_no(table_no_ar_lab, max_rows=100):
         if len(table_no_ar_lab_rows) <= max_rows:
             index += 1
             label_link = "{{Q|%s}}" % qid
-            table_no_ar_lab_rows.append(f'| {index} || {label_link} || {count:,} ')
+            table_no_ar_lab_rows.append(f"| {index} || {label_link} || {count:,} ")
         else:
             other_count += count
     # ---
     # Build the P31 table
-    tr = '\n|-\n'
+    tr = "\n|-\n"
     # ---
-    p31_table_no = '\n== استخدام خاصية P31 بدون وصف عربي ==\n'
+    p31_table_no = "\n== استخدام خاصية P31 بدون وصف عربي ==\n"
     # ---
     p31_table_no += '{| class="wikitable sortable"\n! # !! {{P|P31}} !! الاستخدامات'
     # ---
@@ -158,7 +158,7 @@ def create_p31_table_no(table_no_ar_lab, max_rows=100):
     # ---
     p31_table_no += tr.join(table_no_ar_lab_rows)
     # ---
-    p31_table_no += f'{tr}! - !! أخرى !! {other_count:,}\n'
+    p31_table_no += f"{tr}! - !! أخرى !! {other_count:,}\n"
     # ---
     p31_table_no += "|}\n"
     # ---

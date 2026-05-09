@@ -6,6 +6,7 @@ python3 arw/text.py
 python3 dump/arw/text.py
 
 """
+
 import json
 import time
 from pathlib import Path

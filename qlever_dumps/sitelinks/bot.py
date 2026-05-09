@@ -3,6 +3,7 @@
 python3 core8/pwb.py I:/core/bots/wd_dumps/qlever_dumps/sitelinks/bot.py
 
 """
+
 import json
 import sys
 from pathlib import Path
@@ -21,15 +22,11 @@ new_codes = {
     "egl": "eml",
     "nb": "no",
     "en-simple": "simple",
-
     "vro": "fiu-vro",
-
     "zh-classical": "lzh",
     "zh-min-nan": "nan",
-
     "zh-yue": "yue",
     "sgs": "bat-smg",
-
     "be-tarask": "",
     "cbk-x-zam": "",
     "crh-Latn": "",
@@ -118,24 +115,19 @@ def start(old_data, sitelinks_data):
     # ---
     data["old_data"].update(old_to_up)
     # ---
-    to_save = {
-        "file_date": file_date,
-        "all_items": all_items,
-        "items_without_sitelinks": items_without_sitelinks,
-        "sitelinks": new_dump_to_save
-    }
+    to_save = {"file_date": file_date, "all_items": all_items, "items_without_sitelinks": items_without_sitelinks, "sitelinks": new_dump_to_save}
     # ---
     return data, to_save, bad_codes
 
 
 def GetPageText_new(title):
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -147,10 +139,10 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
 
@@ -184,9 +176,9 @@ def render(old_data, sitelinks_data):
     # ---
     text = make_text(data)
     # ---
-    dump_dir = Path(__file__).parent / 'dumps'
-    dump_to_wikidata_dir = dump_dir / 'to_wikidata'
-    texts_dir = dump_dir / 'texts'
+    dump_dir = Path(__file__).parent / "dumps"
+    dump_to_wikidata_dir = dump_dir / "to_wikidata"
+    texts_dir = dump_dir / "texts"
     # ---
     dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
     texts_dir.mkdir(parents=True, exist_ok=True)

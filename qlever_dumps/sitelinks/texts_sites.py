@@ -101,9 +101,7 @@ class SitelinksReport:
                 row = f"| {idx} || {link} || {name_token} || {new_count:,} || {color_tag} {plus}{delta:,} "
                 rows.append(row)
 
-            self.new_data["sitelinks"][family] = dict(
-                sorted(new_data_family.items(), key=lambda x: x[1], reverse=True)
-            )
+            self.new_data["sitelinks"][family] = dict(sorted(new_data_family.items(), key=lambda x: x[1], reverse=True))
 
             family_name = family
             if self.FAMILIES_NAMES.get(family, family) != family:

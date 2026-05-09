@@ -1,16 +1,13 @@
-
 """
 !
 """
+
 import re
 import urllib.parse
 
 import requests
 
-headers = {
-    "accept": "application/qlever-results+json",
-    "content-type": "application/sparql-query"
-}
+headers = {"accept": "application/qlever-results+json", "content-type": "application/sparql-query"}
 
 session = requests.session()
 session.headers.update(headers)
@@ -20,10 +17,7 @@ def query_qlever(sparql_query, limit=10_000_000):
 
     url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
 
-    data = {
-        "query": sparql_query,
-        "send": limit
-    }
+    data = {"query": sparql_query, "send": limit}
 
     response = session.get(url, params=data, timeout=50)
 
@@ -33,7 +27,7 @@ def query_qlever(sparql_query, limit=10_000_000):
         print(response.text)
         return []
     # ---
-    res_table = response.json()['res']
+    res_table = response.json()["res"]
     # ---
 
     def fix_it(z):
@@ -43,18 +37,16 @@ def query_qlever(sparql_query, limit=10_000_000):
         if z.startswith('"') and z.endswith('"'):
             z = z[1:-1]
         # ---
-        if z.startswith('<') and z.endswith('>'):
+        if z.startswith("<") and z.endswith(">"):
             z = z[1:-1]
         # ---
         if z.count("/entity/") == 1:
             z = z.split("/").pop()
         # ---
         return z
+
     # ---
-    result = [
-        [fix_it(z) for z in x]
-        for x in res_table
-    ]
+    result = [[fix_it(z) for z in x] for x in res_table]
     # ---
     return result
 
@@ -91,18 +83,7 @@ def get_sitelinks():
 
     data = {}
 
-    others = {
-        "commons" : 0,
-        "species" : 0,
-        "mediawiki" : 0,
-        "wikidata" : 0,
-        "meta" : 0,
-        "sources" : 0,
-        "wikifunctions" : 0,
-        "outreach" : 0,
-        "wikimania" : 0,
-        "foundation" : 0
-    }
+    others = {"commons": 0, "species": 0, "mediawiki": 0, "wikidata": 0, "meta": 0, "sources": 0, "wikifunctions": 0, "outreach": 0, "wikimania": 0, "foundation": 0}
 
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']

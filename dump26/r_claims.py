@@ -9,6 +9,7 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
+
 import bz2
 import gc
 import json

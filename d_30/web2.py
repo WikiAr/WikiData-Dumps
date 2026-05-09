@@ -11,6 +11,7 @@ python3 bots/dump_core/d_30/most_props.py
 python3 bots/dump_core/d_30/web2.py
 
 """
+
 import bz2
 import gc
 import json
@@ -200,9 +201,7 @@ class HHH:
 
     def fix_property(self, pv):
         """Extract property values from claims."""
-        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
-                for claim in pv
-                if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
 
     def filter_and_process(self, entity_dict):
         """Filter and process entity dictionary."""
@@ -258,7 +257,7 @@ class HHH:
         return self.most_data
 
 
-class DumpProcessor():
+class DumpProcessor:
     def __init__(self):
         self.time_start = time.time()
         self.Dir = Path(__file__).parent
@@ -329,12 +328,12 @@ class DumpProcessor():
                 if chunk:
                     buffer += decompressor.decompress(chunk)
 
-                    while b'\n' in buffer:
-                        line, buffer = buffer.split(b'\n', 1)
-                        line = line.strip().strip(b',')
+                    while b"\n" in buffer:
+                        line, buffer = buffer.split(b"\n", 1)
+                        line = line.strip().strip(b",")
 
                         if line.startswith(b"{") and line.endswith(b"}"):
-                            yield line.decode('utf-8')
+                            yield line.decode("utf-8")
                             line_count += 1  # Increment the line counter
 
                             # Stop processing if the maximum number of lines is reached
@@ -346,7 +345,7 @@ class DumpProcessor():
 
             # Handle remaining data in buffer
             if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
-                yield buffer.decode('utf-8')
+                yield buffer.decode("utf-8")
                 line_count += 1
 
             print(f"Processed {line_count} lines in total.")
@@ -366,7 +365,7 @@ class DumpProcessor():
 
         # if most["count"] > self.most_data["count"]:
         #     self.most_data = most
-            # self.most_path.write_text(json.dumps(self.most_data))
+        # self.most_path.write_text(json.dumps(self.most_data))
 
     def dump_lines_new_multi(self, data_n):
         data, file = data_n

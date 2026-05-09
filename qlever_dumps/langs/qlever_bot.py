@@ -1,14 +1,14 @@
-
 """
 !
 """
+
 import requests
 
 headers = {
     "accept": "application/qlever-results+json",
     # "accept-language": "ar-EG,ar;q=0.9,en-US;q=0.8,en;q=0.7",
     # "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "content-type": "application/sparql-query"
+    "content-type": "application/sparql-query",
     # "query-id": "760e8f01-4931-47b7-9ee0-9b566272d6a3",
     # "sec-ch-ua": '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     # "sec-ch-ua-mobile": "?0",
@@ -32,10 +32,7 @@ def query_qlever(sparql_query, limit=10_000_000):
 
     url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
 
-    data = {
-        "query": sparql_query,
-        "send": limit
-    }
+    data = {"query": sparql_query, "send": limit}
 
     response = session.get(url, params=data, timeout=50)
 
@@ -45,7 +42,7 @@ def query_qlever(sparql_query, limit=10_000_000):
         print(response.text)
         return []
     # ---
-    res_table = response.json()['res']
+    res_table = response.json()["res"]
     # ---
 
     def fix_it(z):
@@ -55,18 +52,16 @@ def query_qlever(sparql_query, limit=10_000_000):
         if z.startswith('"') and z.endswith('"'):
             z = z[1:-1]
         # ---
-        if z.startswith('<') and z.endswith('>'):
+        if z.startswith("<") and z.endswith(">"):
             z = z[1:-1]
         # ---
         if z.count("/entity/") == 1:
             z = z.split("/").pop()
         # ---
         return z
+
     # ---
-    result = [
-        [fix_it(z) for z in x]
-        for x in res_table
-    ]
+    result = [[fix_it(z) for z in x] for x in res_table]
     # ---
     return result
 
@@ -131,7 +126,7 @@ def one_lang(lang):
     data = {}
 
     data = {
-        "labels" : 0,
+        "labels": 0,
         "descriptions": 0,
         "aliases": 0,
     }
@@ -144,9 +139,9 @@ def one_lang(lang):
 
     # ?labels ?descriptions ?aliases
 
-    data['labels'] = int(x[0])
-    data['descriptions'] = int(x[1])
-    data['aliases'] = int(x[2])
+    data["labels"] = int(x[0])
+    data["descriptions"] = int(x[1])
+    data["aliases"] = int(x[2])
 
     # ---
     return data
@@ -273,21 +268,13 @@ def get_all_withouts(all_items):
     items_with_descriptions = get_all_with("descriptions")
     items_with_aliases = get_all_with("aliases")
     # ---
-    return {
-        "labels": items_with_labels,
-        "descriptions": items_with_descriptions,
-        "aliases": items_with_aliases
-    }
+    return {"labels": items_with_labels, "descriptions": items_with_descriptions, "aliases": items_with_aliases}
 
 
 def get_most_status():
     print("get_most_status")
     # ---
-    return {
-        "labels": get_most("labels"),
-        "descriptions": get_most("descriptions"),
-        "aliases": get_most("aliases")
-    }
+    return {"labels": get_most("labels"), "descriptions": get_most("descriptions"), "aliases": get_most("aliases")}
 
 
 def get_langs_status():
@@ -295,13 +282,10 @@ def get_langs_status():
     # ---
     all_items = get_all_items()
     # ---
-    return {
-        "all_items": all_items,
-        "without": get_all_withouts(all_items)
-    }
+    return {"all_items": all_items, "without": get_all_withouts(all_items)}
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # ---
     # print(get_date())
     print(get_most_status())

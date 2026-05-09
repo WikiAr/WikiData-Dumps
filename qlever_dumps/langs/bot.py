@@ -4,6 +4,7 @@ python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/langs/bot.py fromjson
 python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/langs/bot.py
 
 """
+
 import json
 import sys
 from pathlib import Path
@@ -16,9 +17,9 @@ sys.path.append(str(Path(__file__).parent))
 from langs_text import make_temp_text, make_text
 from qlever_bot import get_date, get_langs_status, one_lang
 
-dump_dir = Path(__file__).parent / 'dumps'
-dump_to_wikidata_dir = dump_dir / 'to_wikidata'
-texts_dir = dump_dir / 'texts'
+dump_dir = Path(__file__).parent / "dumps"
+dump_to_wikidata_dir = dump_dir / "to_wikidata"
+texts_dir = dump_dir / "texts"
 # ---
 dump_to_wikidata_dir.mkdir(parents=True, exist_ok=True)
 texts_dir.mkdir(parents=True, exist_ok=True)
@@ -26,13 +27,13 @@ texts_dir.mkdir(parents=True, exist_ok=True)
 
 def GetPageText_new(title):
     # ---
-    title = title.replace(' ', '_')
+    title = title.replace(" ", "_")
     # ---
-    url = f'https://wikidata.org/wiki/{title}?action=raw'
+    url = f"https://wikidata.org/wiki/{title}?action=raw"
     # ---
     print(f"url: {url}")
     # ---
-    text = ''
+    text = ""
     # ---
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -44,10 +45,10 @@ def GetPageText_new(title):
         text = response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching page text: {e}")
-        return ''
+        return ""
     # ---
     if not text:
-        print(f'no text for {title}')
+        print(f"no text for {title}")
     # ---
     return text
 
@@ -69,9 +70,7 @@ def lang_ren(old_langs):
     # ---
     old_langs_items = old_langs.get("langs", {})
     # ---
-    data = {
-        "langs": {}
-    }
+    data = {"langs": {}}
     # ---
     if "fromjson" in sys.argv:
         with open(dump_dir / "langs.json", "r", encoding="utf-8") as f:
@@ -82,10 +81,7 @@ def lang_ren(old_langs):
             # ---
             p_data = one_lang(lang)
             # ---
-            data["langs"][lang] = {
-                "new": p_data,
-                "old": old_data
-            }
+            data["langs"][lang] = {"new": p_data, "old": old_data}
     # ---
     data["old"] = {
         "all_items": old_langs.get("last_total") or old_langs.get("all_items"),
@@ -109,12 +105,7 @@ def render(old_data, file_date):
         all_items = new_data["all_items"]
         withouts = new_data["without"]
         # ---
-        data_new = {
-            "date": file_date,
-            "all_items": all_items,
-            "without": withouts,
-            "langs": lang_data["langs"]
-        }
+        data_new = {"date": file_date, "all_items": all_items, "without": withouts, "langs": lang_data["langs"]}
         # ---
         file1 = dump_dir / "langs.json"
         # ---

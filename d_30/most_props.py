@@ -2,6 +2,7 @@
 from dump.claims.most_props import get_data()
 python3 core8/pwb.py dump26/most_props2
 """
+
 import json
 import re
 import sys
@@ -80,11 +81,11 @@ class WikidataPropertyAnalyzer:
         """
         Fetches the raw text of a Wikidata page.
         """
-        title = title.replace(' ', '_')
-        url = f'https://wikidata.org/wiki/{title}?action=raw'
+        title = title.replace(" ", "_")
+        url = f"https://wikidata.org/wiki/{title}?action=raw"
 
         print(f"url: {url}")
-        text = ''
+        text = ""
         # ---
         session = requests.session()
         session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
@@ -97,7 +98,7 @@ class WikidataPropertyAnalyzer:
             print(f"Error fetching page text: {e}")
 
         if not text:
-            print(f'no text for {title}')
+            print(f"no text for {title}")
 
         return text
 

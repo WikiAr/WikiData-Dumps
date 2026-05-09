@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+
 import gc
 import json
 import os
@@ -51,7 +52,7 @@ if "P31" in sys.argv:
     check_dir(pids_qids_dir)
 
 
-class ClaimsProcessor():
+class ClaimsProcessor:
     def __init__(self):
         self.memory_check_interval = 80
         self.start_time = time.time()

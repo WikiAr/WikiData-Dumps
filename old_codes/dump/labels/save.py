@@ -1,7 +1,9 @@
 """
 python3 core8/pwb.py dump/labels/save
 """
+
 import os
+
 #
 # (C) Ibrahem Qasim, 2023
 #
@@ -14,21 +16,18 @@ from newapi.page import MainPage
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
-if os.path.exists('I:/core/bots/dumps'):
-    Dump_Dir = 'I:/core/bots/dumps'
+if os.path.exists("I:/core/bots/dumps"):
+    Dump_Dir = "I:/core/bots/dumps"
 # ---
-print(f'Dump_Dir:{Dump_Dir}')
+print(f"Dump_Dir:{Dump_Dir}")
 # ---
 file_to_title = {
-    'labels.txt': 'User:Mr. Ibrahem/Language statistics for items',
-    'template.txt': 'Template:Tr langcodes counts',
+    "labels.txt": "User:Mr. Ibrahem/Language statistics for items",
+    "template.txt": "Template:Tr langcodes counts",
 }
 # ---
-if 'test' in sys.argv:
-    file_to_title = {
-        'labels_test.txt': 'User:Mr. Ibrahem/Language statistics for items/sandbox',
-        'template_test.txt': 'Template:Tr langcodes counts/sandbox'
-    }
+if "test" in sys.argv:
+    file_to_title = {"labels_test.txt": "User:Mr. Ibrahem/Language statistics for items/sandbox", "template_test.txt": "Template:Tr langcodes counts/sandbox"}
 # ---
 for file, title in file_to_title.items():
     if os.path.exists(f"{Dump_Dir}/texts/{file}"):
@@ -37,15 +36,15 @@ for file, title in file_to_title.items():
             text = f.read()
         # ---
         if not text.strip():
-            print(f'file {file} <<lightred>> empty.')
+            print(f"file {file} <<lightred>> empty.")
             continue
         # ---
-        if file == 'labels.txt' and len(text) < 50000:
-            print(f'file {file} <<lightred>> too small.')
+        if file == "labels.txt" and len(text) < 50000:
+            print(f"file {file} <<lightred>> too small.")
             continue
         # ---
-        if file == 'template.txt' and len(text) < 5000:
-            print(f'file {file} <<lightred>> too small.')
+        if file == "template.txt" and len(text) < 5000:
+            print(f"file {file} <<lightred>> too small.")
             continue
         # ---
         page = MainPage(title, "www", family="wikidata")

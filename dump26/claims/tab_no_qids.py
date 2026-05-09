@@ -8,6 +8,7 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+
 import gc
 import json
 import os
@@ -29,7 +30,7 @@ most_props = json.loads(most_props_path.read_text())
 most_props = {k: v for k, v in sorted(most_props.items(), key=lambda item: item[1], reverse=True)[:50]}
 
 
-class ClaimsProcessor():
+class ClaimsProcessor:
     def __init__(self):
         self.memory_check_interval = 80
         self.start_time = time.time()
@@ -104,7 +105,7 @@ class ClaimsProcessor():
 
         len_values = sum(p_qids.values())
         self.tab["total_claims_count"] += len_values
-        self.tab["properties"][prop]["qids"]["others"]+= len_values
+        self.tab["properties"][prop]["qids"]["others"] += len_values
 
     def do_line(self, json1):
         self._update_counters(json1)

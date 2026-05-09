@@ -1,7 +1,9 @@
 """
 python3 core8/pwb.py dump/claims/save
 """
+
 import os
+
 #
 # (C) Ibrahem Qasim, 2023
 #
@@ -14,20 +16,20 @@ from newapi.page import MainPage
 # ---
 Dump_Dir = "/data/project/himo/bots/dumps"
 # ---
-if os.path.exists('I:/core/bots/dumps'):
-    Dump_Dir = 'I:/core/bots/dumps'
+if os.path.exists("I:/core/bots/dumps"):
+    Dump_Dir = "I:/core/bots/dumps"
 # ---
-print(f'Dump_Dir:{Dump_Dir}')
+print(f"Dump_Dir:{Dump_Dir}")
 # ---
 file_to_title = {
-    'claims_new.txt': 'User:Mr. Ibrahem/claims',
-    'claims_p31.txt': 'User:Mr. Ibrahem/p31',
+    "claims_new.txt": "User:Mr. Ibrahem/claims",
+    "claims_p31.txt": "User:Mr. Ibrahem/p31",
 }
 # ---
-if 'test' in sys.argv:
+if "test" in sys.argv:
     file_to_title = {
-        'claims_new_test.txt': 'User:Mr. Ibrahem/claims/sandbox',
-        'claims_p31_test.txt': 'User:Mr. Ibrahem/p31/sandbox',
+        "claims_new_test.txt": "User:Mr. Ibrahem/claims/sandbox",
+        "claims_p31_test.txt": "User:Mr. Ibrahem/p31/sandbox",
     }
 # ---
 for file, title in file_to_title.items():
@@ -37,15 +39,15 @@ for file, title in file_to_title.items():
             text = f.read()
         # ---
         if not text.strip():
-            print(f'file {file} <<lightred>> empty.')
+            print(f"file {file} <<lightred>> empty.")
             continue
         # ---
-        if file == 'claims_new.txt' and len(text) < 100000:
-            print(f'file {file} <<lightred>> too small.')
+        if file == "claims_new.txt" and len(text) < 100000:
+            print(f"file {file} <<lightred>> too small.")
             continue
         # ---
-        if file == 'claims_p31.txt' and len(text) < 10000:
-            print(f'file {file} <<lightred>> too small.')
+        if file == "claims_p31.txt" and len(text) < 10000:
+            print(f"file {file} <<lightred>> too small.")
             continue
         # ---
         page = MainPage(title, "www", family="wikidata")

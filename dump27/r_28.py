@@ -9,6 +9,7 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
+
 # import tqdm
 import bz2
 import gc
@@ -25,8 +26,7 @@ from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 sys.path.append(str(Path(__file__).parent))
 
-from dir_handler import (dump_dir_claims_fixed, dump_files_dir,
-                         dump_parts1_fixed, split_by_pid_dir)
+from dir_handler import dump_dir_claims_fixed, dump_files_dir, dump_parts1_fixed, split_by_pid_dir
 
 time_start = time.time()
 
@@ -279,9 +279,7 @@ def filter_and_process(entity_dict):
         }
         line2 = {
             "qid": entity_dict["title"],
-            "claims": {p: fix_property(pv) for p, pv in claims.items() if (
-                "all_props" in sys.argv  # or p in most_props
-            )},
+            "claims": {p: fix_property(pv) for p, pv in claims.items() if ("all_props" in sys.argv)},  # or p in most_props
         }
         # ---
         if "all_props" not in sys.argv:
@@ -304,13 +302,13 @@ def parse_lines_from_url(url):
         for chunk in response.iter_content(chunk_size=1024 * 1024):
             if chunk:
                 buffer += decompressor.decompress(chunk)
-                while b'\n' in buffer:
-                    line, buffer = buffer.split(b'\n', 1)
-                    line = line.strip().strip(b',')
+                while b"\n" in buffer:
+                    line, buffer = buffer.split(b"\n", 1)
+                    line = line.strip().strip(b",")
                     if line.startswith(b"{") and line.endswith(b"}"):
-                        yield line.decode('utf-8')
+                        yield line.decode("utf-8")
         if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
-            yield buffer.decode('utf-8')
+            yield buffer.decode("utf-8")
 
 
 def process_data(bz2_file="", url=""):

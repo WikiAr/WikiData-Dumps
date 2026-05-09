@@ -78,10 +78,10 @@ def main():
         # qids table
         lines.append('{| class="wikitable sortable plainrowheaders"')
         lines.append("|-")
-        lines.append("! class=\"sortable\" | #")
-        lines.append("! class=\"sortable\" | value")
-        lines.append("! class=\"sortable\" | Numbers")
-        lines.append("! class=\"sortable\" | Diff")
+        lines.append('! class="sortable" | #')
+        lines.append('! class="sortable" | value')
+        lines.append('! class="sortable" | Numbers')
+        lines.append('! class="sortable" | Diff')
 
         # sort qids by number (desc)
         sorted_qids = sorted(pdata["qids"].items(), key=lambda x: x[1], reverse=True)
