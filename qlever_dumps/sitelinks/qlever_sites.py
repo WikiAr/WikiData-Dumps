@@ -7,7 +7,10 @@ import urllib.parse
 
 import requests
 
-headers = {"accept": "application/qlever-results+json", "content-type": "application/sparql-query"}
+headers = {
+    "accept": "application/qlever-results+json",
+    "content-type": "application/sparql-query",
+}
 
 session = requests.session()
 session.headers.update(headers)
@@ -15,7 +18,7 @@ session.headers.update(headers)
 
 def query_qlever(sparql_query, limit=10_000_000):
 
-    url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
+    url = "https://qlever.dev/api/wikidata"
 
     data = {"query": sparql_query, "send": limit}
 

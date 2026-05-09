@@ -7,7 +7,10 @@ import re
 
 import requests
 
-headers = {"accept": "application/qlever-results+json", "content-type": "application/sparql-query"}
+headers = {
+    "accept": "application/qlever-results+json",
+    "content-type": "application/sparql-query",
+}
 
 session = requests.session()
 session.headers.update(headers)
@@ -23,7 +26,7 @@ def print_with_color(text, color):
 
 def query_qlever(sparql_query, limit=10_000_000):
 
-    url = "https://qlever.cs.uni-freiburg.de/api/wikidata"
+    url = "https://qlever.dev/api/wikidata"
 
     data = {"query": sparql_query, "send": limit}
 
@@ -116,8 +119,10 @@ def one_prop_first_100(prop_main):
         SELECT DISTINCT ?value (COUNT(?value) AS ?count)
         WHERE {{
             VALUES ?prop {{ wdt:{prop_main} }}
-            ?item a wikibase:Item .
             ?item ?prop ?value .
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
         }}
         GROUP BY ?value
         ORDER BY DESC(?count)
@@ -158,14 +163,20 @@ def one_prop_count_all(prop_main):
         SELECT DISTINCT (COUNT(?value) AS ?property_claims_count) (COUNT(DISTINCT ?value) AS ?unique_values) (COUNT(DISTINCT ?item) AS ?items_with_property)
         WHERE {{
             VALUES ?prop {{ wdt:{prop_main} }}
-            ?item a wikibase:Item .
             ?item ?prop ?value .
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER(STRSTARTS(STR(?item), "http://www.wikidata.org/entity/Q"))
         }}
     """
 
     result = query_qlever(sparql, limit=10)
 
-    data = {"property_claims_count": 0, "unique_qids_count": 0, "items_with_property": 0}
+    data = {
+        "property_claims_count": 0,
+        "unique_qids_count": 0,
+        "items_with_property": 0,
+    }
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']
 
@@ -217,18 +228,18 @@ def get_all_items():
         PREFIX wikibase: <http://wikiba.se/ontology#>
         SELECT (COUNT(?item) AS ?all_items)
         WHERE {
-
-        ?item wikibase:sitelinks ?sl.
+            ?item wikibase:sitelinks [] .
         }
     """
     # ---
     sparql = """
-        PREFIX wikibase: <http://wikiba.se/ontology#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-        SELECT (COUNT(?item) AS ?all_items)
-        WHERE {
-            ?item rdf:type wikibase:Item.
+        PREFIX wikibase: <http://wikiba.se/ontology#>
+        PREFIX schema: <http://schema.org/>
+        SELECT (COUNT(?item) AS ?all_items) WHERE {
+            # ?item rdf:type wikibase:Item.
+            ?item schema:version ?v .
+            FILTER (STRSTARTS(STR(?item),"http://www.wikidata.org/entity/Q"))
         }
     """
     # ---
