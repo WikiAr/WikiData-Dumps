@@ -7,11 +7,12 @@ python3 dump/arw/tab.py
 
 """
 import os
-import psutil
-import ujson
-import tqdm
 import time
 from pathlib import Path
+
+import psutil
+import tqdm
+import ujson
 
 Dir = Path(__file__).parent.parent
 # ---

@@ -5,15 +5,16 @@ python3 core8/pwb.py I:/core/bots/dump_core/qlever_dumps/langs/bot.py
 
 """
 import json
-import requests
 import sys
 from pathlib import Path
+
+import requests
 from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from qlever_bot import one_lang, get_date, get_langs_status
-from langs_text import make_text, make_temp_text
+from langs_text import make_temp_text, make_text
+from qlever_bot import get_date, get_langs_status, one_lang
 
 dump_dir = Path(__file__).parent / 'dumps'
 dump_to_wikidata_dir = dump_dir / 'to_wikidata'

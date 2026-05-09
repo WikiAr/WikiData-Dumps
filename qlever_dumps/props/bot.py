@@ -6,18 +6,20 @@ python3 bots/dump_core/qlever_dumps/props/bot.py
 python3 bots/dump_core/qlever_dumps/props/bot.py -break:10 props_json
 
 """
+import copy
 import json
 import re
-import copy
-import requests
 import sys
 from pathlib import Path
+
+import requests
 from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from props_qlever_bot import one_prop, get_date, get_all_props, get_props_status
-from props_text import make_text, P31_texts_tab
+from props_qlever_bot import (get_all_props, get_date, get_props_status,
+                              one_prop)
+from props_text import P31_texts_tab, make_text
 
 PROPS_JSON = "props_json" in sys.argv
 OLD_FROM_JSON = "oldjson" in sys.argv

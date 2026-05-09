@@ -1,12 +1,13 @@
+import gc
 import os
+import sys
+import time
+from pathlib import Path
+
+import psutil
 import tqdm
 import ujson
-from pathlib import Path
-import gc
-import sys
 from humanize import naturalsize
-import time
-import psutil
 
 Dir = Path(__file__).parent.parent / "parts_claims"
 

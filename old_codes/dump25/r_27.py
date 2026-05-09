@@ -9,16 +9,16 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
-import os
-import psutil
-import gc
-import json
-import time
-import sys
-
 # import tqdm
 import bz2
+import gc
+import json
+import os
+import sys
+import time
 from pathlib import Path
+
+import psutil
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 # ---

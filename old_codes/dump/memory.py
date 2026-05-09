@@ -1,8 +1,9 @@
 """
 from API.memory import print_memory
 """
-import psutil
 import os
+
+import psutil
 
 _red_ = "\033[91m%s\033[00m"
 _blue_ = "\033[94m%s\033[00m"

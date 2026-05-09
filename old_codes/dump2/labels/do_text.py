@@ -4,14 +4,14 @@ python3 core8/pwb.py dump/labels/do_text
 python3 core8/pwb.py dump/labels/do_text test
 python3 core8/pwb.py dump/labels/do_text test nosave
 """
-import sys
-
 import json
+import sys
 import time
 
 # ---
 try:
-    from dump.labels.labels_old_values import make_old_values  # make_old_values()
+    from dump.labels.labels_old_values import \
+        make_old_values  # make_old_values()
 except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---

@@ -2,12 +2,13 @@
 from dump.claims.most_props import get_data()
 python3 core8/pwb.py dump/claims/most_props
 """
-import re
 import json
-import requests
+import re
 import sys
 from pathlib import Path
-from SPARQLWrapper import SPARQLWrapper, JSON
+
+import requests
+from SPARQLWrapper import JSON, SPARQLWrapper
 
 
 def get_query_result(query):

@@ -6,16 +6,17 @@ python3 /data/project/himo/bots/dump_core/dump/claims/do_tab.py test
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
-import os
-
-# import json
-import ujson
-import sys
 import bz2
+import os
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+# import json
+import ujson
 from qwikidata.json_dump import WikidataJsonDump
+
 # ---
 time_start = time.perf_counter()
 print(f"time_start:{str(time_start)}")

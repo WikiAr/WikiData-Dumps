@@ -1,14 +1,15 @@
 """
 python3 core8/pwb.py dump3/claims/do_text
 """
+import json
 #
 # (C) Ibrahem Qasim, 2023
 #
 #
 import sys
 import time
-import json
 from pathlib import Path
+
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class SitelinksReport:

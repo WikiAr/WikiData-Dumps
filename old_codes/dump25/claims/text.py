@@ -6,9 +6,9 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/text2.py
 
 
 """
+import json
 import sys
 import time
-import json
 from pathlib import Path
 
 sections_done = {"current": 0, "max": 100}

@@ -3,8 +3,9 @@
 !
 """
 import re
-import requests
 import urllib.parse
+
+import requests
 
 headers = {
     "accept": "application/qlever-results+json",

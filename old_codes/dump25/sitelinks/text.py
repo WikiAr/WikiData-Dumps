@@ -5,8 +5,8 @@ python3 dump/sitelinks/text.py
 python3 dump25/sitelinks/text.py
 
 """
-import re
 import json
+import re
 from pathlib import Path
 
 # ---

@@ -4,8 +4,8 @@ python3 dump/labels/text.py
 python3 text.py
 
 """
-import sys
 import json
+import sys
 import time
 from pathlib import Path
 

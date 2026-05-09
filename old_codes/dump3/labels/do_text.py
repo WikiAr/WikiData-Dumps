@@ -6,15 +6,16 @@ python3 core8/pwb.py dump3/labels/do_text test
 python3 core8/pwb.py dump3/labels/do_text test nosave
 
 """
-import sys
 import codecs
 import json
+import sys
 import time
 from pathlib import Path
 
 # ---
 try:
-    from dump3.labels.labels_old_values import make_old_values  # make_old_values()
+    from dump3.labels.labels_old_values import \
+        make_old_values  # make_old_values()
 except ImportError:
     from labels_old_values import make_old_values  # make_old_values()
 # ---

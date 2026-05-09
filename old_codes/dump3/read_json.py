@@ -7,13 +7,14 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2
 
 """
 
-import psutil
 import os
-import ujson
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+import psutil
+import ujson
 from qwikidata.json_dump import WikidataJsonDump
 
 # ---

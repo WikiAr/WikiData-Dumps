@@ -2,12 +2,13 @@
 from dump.claims.most_props import get_data()
 python3 core8/pwb.py dump26/most_props2
 """
-import sys
-import re
 import json
+import re
+import sys
 from pathlib import Path
-from SPARQLWrapper import SPARQLWrapper, JSON
+
 import requests
+from SPARQLWrapper import JSON, SPARQLWrapper
 
 
 class WikidataPropertyAnalyzer:

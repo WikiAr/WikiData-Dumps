@@ -9,22 +9,24 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
-import os
-import psutil
-import gc
-import json
-import ujson
-import time
-import sys
-
 # import tqdm
 import bz2
-import requests
+import gc
+import json
+import os
+import sys
+import time
 from pathlib import Path
+
+import psutil
+import requests
+import ujson
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
+
 sys.path.append(str(Path(__file__).parent))
 
-from dir_handler import split_by_pid_dir, dump_dir_claims_fixed, dump_parts1_fixed, dump_files_dir
+from dir_handler import (dump_dir_claims_fixed, dump_files_dir,
+                         dump_parts1_fixed, split_by_pid_dir)
 
 time_start = time.time()
 

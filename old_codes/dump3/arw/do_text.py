@@ -3,12 +3,12 @@
 python3 core8/pwb.py dump3/arw/do_text
 
 """
-import sys
 import json
+import sys
 import time
 from pathlib import Path
 
-from dump3.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
+from dump3.arw.p31_table import create_p31_table_no, make_text_p31, ns_stats
 
 va_dir = Path(__file__).parent
 # ---

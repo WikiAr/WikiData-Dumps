@@ -4,13 +4,14 @@ python3 dump/labels/text.py
 python3 text.py
 
 """
-import sys
-import requests
-import os
 import json
+import os
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+import requests
 
 sys.path.append(str(Path(__file__).parent.parent))
 

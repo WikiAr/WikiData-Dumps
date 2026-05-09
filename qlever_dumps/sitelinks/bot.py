@@ -4,15 +4,16 @@ python3 core8/pwb.py I:/core/bots/wd_dumps/qlever_dumps/sitelinks/bot.py
 
 """
 import json
-import requests
 import sys
 from pathlib import Path
+
+import requests
 from tqdm import tqdm
 
 sys.path.append(str(Path(__file__).parent))
 
-from texts_sites import make_text
 from qlever_sites import get_sitelinks_data
+from texts_sites import make_text
 
 new_codes = {
     # "bho": "",

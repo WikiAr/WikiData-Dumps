@@ -6,12 +6,13 @@ python3 dump1/labels/tab_fixed.py
 
 """
 import os
-import psutil
-import ujson
-import tqdm
-import time
 import sys
+import time
 from pathlib import Path
+
+import psutil
+import tqdm
+import ujson
 
 sys.path.append(str(Path(__file__).parent.parent))
 

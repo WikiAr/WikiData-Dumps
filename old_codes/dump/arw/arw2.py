@@ -9,14 +9,14 @@ python3 core8/pwb.py dump/arw/arw2 test ask p31
 python3 core8/pwb.py dump/arw/arw2 test ask printline
 python3 core8/pwb.py dump/arw/arw2 test ask limit:5000
 """
-import sys
-import os
 import bz2
 import json
+import os
+import sys
 import time
 
 # ---
-from dump.arw.p31_table import make_text_p31, create_p31_table_no, ns_stats
+from dump.arw.p31_table import create_p31_table_no, make_text_p31, ns_stats
 from dump.memory import print_memory
 
 # ---

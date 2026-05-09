@@ -4,12 +4,13 @@ from dump2.most_props import get_data()
 python3 /data/project/himo/bots/dump_core/dump25/most_props.py
 
 """
-import re
 import json
-import requests
+import re
 import sys
 from pathlib import Path
-from SPARQLWrapper import SPARQLWrapper, JSON
+
+import requests
+from SPARQLWrapper import JSON, SPARQLWrapper
 
 
 def get_query_result(query):

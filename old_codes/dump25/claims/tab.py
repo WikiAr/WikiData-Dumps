@@ -8,13 +8,14 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/tab.py
 https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
+import os
 import sys
 import time
-import psutil
-import os
 from pathlib import Path
-import ujson
+
+import psutil
 import tqdm
+import ujson
 
 
 class ClaimsProcessor:

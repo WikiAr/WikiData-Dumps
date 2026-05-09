@@ -5,17 +5,18 @@ python3 dump/sitelinks/text.py
 python3 dump25/sitelinks/text.py
 
 """
-import sys
-import os
-import requests
-import re
 import json
+import os
+import re
+import sys
 from datetime import datetime
 from pathlib import Path
 
+import requests
+
 sys.path.append(str(Path(__file__).parent.parent))
 
-from dir_handler import sitelinks_results_dir, labels_results_dir
+from dir_handler import labels_results_dir, sitelinks_results_dir
 
 items_file = labels_results_dir / "labels_new.json"
 # ---

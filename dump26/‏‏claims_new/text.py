@@ -6,11 +6,12 @@ python3 /data/project/himo/bots/dump_core/dump25/claims/text2.py
 
 
 """
-import requests
+import json
 import sys
 import time
-import json
 from pathlib import Path
+
+import requests
 
 va_dir = Path(__file__).parent
 # ---

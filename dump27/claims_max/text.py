@@ -4,16 +4,18 @@ python dump1/claims_max/text.py
 python I:/core/bots/dump_core/dump26/claims_max/text.py
 
 """
-import requests
-import sys
-import tqdm
-import time
 import json
+import sys
+import time
 from pathlib import Path
+
+import requests
+import tqdm
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-from dir_handler import pids_qids_dir, most_props_path, claims_results_dir, dump_files_dir
+from dir_handler import (claims_results_dir, dump_files_dir, most_props_path,
+                         pids_qids_dir)
 
 # ---
 new_data = {

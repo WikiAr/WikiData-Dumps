@@ -2,11 +2,12 @@
 """
 
 """
-import os
 import json
-import tqdm
+import os
 import sqlite3
 from pathlib import Path
+
+import tqdm
 
 main_path = Path(__file__).parent
 

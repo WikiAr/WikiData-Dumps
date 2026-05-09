@@ -6,10 +6,11 @@ python3 core8/pwb.py dump2/labels/do_tab test nosave
 
 """
 import os
-import psutil
-import ujson
 import sys
 import time
+
+import psutil
+import ujson
 
 # ---
 time_start = time.time()

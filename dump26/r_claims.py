@@ -9,13 +9,14 @@ current_count: 150000 time: 34.07094955444336
 current_count: 162500 time: 32.720284938812256
 
 """
-import os
-import psutil
+import bz2
 import gc
 import json
+import os
 import time
-import bz2
 from pathlib import Path
+
+import psutil
 from humanize import naturalsize  # naturalsize(file_size, binary=True)
 
 time_start = time.time()

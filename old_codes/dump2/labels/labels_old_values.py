@@ -4,9 +4,10 @@ from dump.labels.labels_old_values import make_old_values# make_old_values()
 python3 core8/pwb.py dump2/labels/labels_old_values
 
 """
-from pathlib import Path
-import sys
 import re
+import sys
+from pathlib import Path
+
 import requests
 
 dir2 = Path(__file__).parent

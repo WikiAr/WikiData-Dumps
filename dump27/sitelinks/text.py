@@ -5,12 +5,13 @@ python3 dump/sitelinks/text.py
 python3 dump25/sitelinks/text.py
 
 """
-import os
-import requests
-import re
 import json
+import os
+import re
 from datetime import datetime
 from pathlib import Path
+
+import requests
 
 # ---
 va_dir = Path(__file__).parent

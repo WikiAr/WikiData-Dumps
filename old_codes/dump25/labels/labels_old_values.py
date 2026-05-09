@@ -1,12 +1,12 @@
 """
 from dump.labels.labels_old_values import make_old_values# make_old_values()
 """
-import os
-from pathlib import Path
 import json
-import sys
-
+import os
 import re
+import sys
+from pathlib import Path
+
 import requests
 
 Session = requests.Session()

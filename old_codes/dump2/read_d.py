@@ -5,12 +5,13 @@ tfj run dump2 --mem 1Gi --image python3.9 --command "$HOME/local/bin/python3 /da
 
 
 """
-import os
-import psutil
 import json
+import os
 import sys
 import time
 from pathlib import Path
+
+import psutil
 from qwikidata.json_dump import WikidataJsonDump
 
 # ---

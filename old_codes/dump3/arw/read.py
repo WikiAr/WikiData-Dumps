@@ -8,13 +8,14 @@ python3 core8/pwb.py dump3/arw/arw2 test ask p31
 python3 core8/pwb.py dump3/arw/arw2 test ask printline
 python3 core8/pwb.py dump3/arw/arw2 test ask limit:5000
 """
-import sys
-import os
 import bz2
-import psutil
 import json
+import os
+import sys
 import time
 from pathlib import Path
+
+import psutil
 
 # ---
 bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"

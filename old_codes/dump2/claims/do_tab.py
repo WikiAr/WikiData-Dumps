@@ -7,10 +7,11 @@ https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2
 
 """
 import os
-import psutil
-import ujson
 import sys
 import time
+
+import psutil
+import ujson
 
 # ---
 jsons_dir = "/data/project/himo/bots/dump_core/dump2/jsons/"

@@ -4,8 +4,8 @@ python3 I:/core/bots/wd_dumps/qlever_dumps/props/qlever_bot.py
 
 """
 import re
-import requests
 
+import requests
 
 headers = {
     "accept": "application/qlever-results+json",

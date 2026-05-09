@@ -11,14 +11,14 @@ read_file: done in 22
 
 
 """
-import os
-import json
-import sys
-
 import bz2
+import json
+import os
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
 # ---
 time_start = time.time()
 print(f"time_start:{str(time_start)}")
@@ -30,6 +30,7 @@ sys.path.append(core_dir)
 print(f'sys.path.append:core_dir: {core_dir}')
 # ---
 from dump.memory import print_memory
+
 va_dir = Path(__file__).parent
 # ---
 filename = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
