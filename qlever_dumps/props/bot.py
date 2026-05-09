@@ -196,7 +196,9 @@ def props_ren(old_data):
     data = {"properties": {}}
     # ---
     # sort old_properties by p['property_claims_count']
-    old_properties = dict(sorted(old_properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=REVERSE_PROPS))
+    old_properties = dict(
+        sorted(old_properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=REVERSE_PROPS)
+    )
     # ---
     for n, (p, p_old) in tqdm(enumerate(old_properties.items()), desc="Work on props:", total=len(old_properties)):
         # ---
@@ -248,7 +250,12 @@ def props_new_data(old_data, file_date):
         # ---
         all_items = new_data["all_items"]
         # ---
-        data_main = {"date": file_date, "all_items": all_items, "old": {x: v for x, v in old_data.items() if x != "properties"}, "properties": props_data["properties"]}
+        data_main = {
+            "date": file_date,
+            "all_items": all_items,
+            "old": {x: v for x, v in old_data.items() if x != "properties"},
+            "properties": props_data["properties"],
+        }
     # ---
     data_dump = copy.deepcopy(data_main)
     # ---
@@ -259,7 +266,9 @@ def props_new_data(old_data, file_date):
             del p_data["old"]["qids"]
     # ---
     # sort data_dump["properties"] by p['property_claims_count']
-    data_dump["properties"] = dict(sorted(data_dump["properties"].items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True))
+    data_dump["properties"] = dict(
+        sorted(data_dump["properties"].items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True)
+    )
     # ---
     with open(props_main_file, "w", encoding="utf-8") as f:
         json.dump(data_dump, f, indent=4)
@@ -284,7 +293,16 @@ def render(old_data, file_date):
     # ---
     all_items = props_data["all_items"]
     # ---
-    to_save_data = {"date": file_date, "all_items": all_items, "items_missing_P31": 0, "items_with_0_claims": 0, "items_with_1_claim": 0, "total_claims_count": 0, "total_properties_count": 0, "properties": {"P31": {"items_with_property": 0, "property_claims_count": 0, "unique_qids_count": 0}}}
+    to_save_data = {
+        "date": file_date,
+        "all_items": all_items,
+        "items_missing_P31": 0,
+        "items_with_0_claims": 0,
+        "items_with_1_claim": 0,
+        "total_claims_count": 0,
+        "total_properties_count": 0,
+        "properties": {"P31": {"items_with_property": 0, "property_claims_count": 0, "unique_qids_count": 0}},
+    }
     # ---
     for p, p_data in props_data["properties"].items():
         if not p_data.get("old", {}).get("qids", {}):
@@ -295,7 +313,9 @@ def render(old_data, file_date):
     properties = {x: one_prop_tab(f) for x, f in props_data["properties"].items()}
     # ---
     # sort properties by p['property_claims_count']
-    properties = dict(sorted(properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True))
+    properties = dict(
+        sorted(properties.items(), key=lambda item: item[1].get("property_claims_count", 0), reverse=True)
+    )
     # ---
     to_save_data["properties"] = properties
     # ---

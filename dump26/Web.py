@@ -220,7 +220,11 @@ class DumpProcessor:
 
     def fix_property(self, pv):
         """Extract property values from claims."""
-        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+        return [
+            claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
+            for claim in pv
+            if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"
+        ]
 
     def parse_lines(self, bz2_file):
         """Parse lines from a bz2 file."""
@@ -279,7 +283,9 @@ class DumpProcessor:
         skip_to = 0
 
         if "skip" in sys.argv:
-            js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in self.dump_parts1_fixed.glob("*.json")]
+            js_f = [
+                int(x.name.replace(".json", "").replace("items_", "")) for x in self.dump_parts1_fixed.glob("*.json")
+            ]
             maxfile = max(js_f) if js_f else 0
             skip_to = maxfile * dump_numbs
             self.dump_done[1] = maxfile

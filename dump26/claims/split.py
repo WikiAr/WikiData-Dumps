@@ -79,7 +79,13 @@ class ClaimsProcessor:
 
     def _update_counters(self, json1) -> None:
         """Update basic counters from JSON data."""
-        for field in ["All_items", "items_with_0_claims", "items_with_1_claim", "items_missing_P31", "total_claims_count"]:
+        for field in [
+            "All_items",
+            "items_with_0_claims",
+            "items_with_1_claim",
+            "items_missing_P31",
+            "total_claims_count",
+        ]:
             self.tab[field] += json1.get(field, 0)
         self.tab["done"] += json1.get("All_items", 0)
 

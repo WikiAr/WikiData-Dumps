@@ -201,7 +201,11 @@ class HHH:
 
     def fix_property(self, pv):
         """Extract property values from claims."""
-        return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+        return [
+            claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
+            for claim in pv
+            if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"
+        ]
 
     def filter_and_process(self, entity_dict):
         """Filter and process entity dictionary."""

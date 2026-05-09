@@ -68,7 +68,11 @@ def print_memory(i):
 
 
 def fix_property(pv):
-    return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+    return [
+        claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
+        for claim in pv
+        if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"
+    ]
 
 
 properties_path = Path(__file__).parent / "properties.json"

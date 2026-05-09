@@ -115,7 +115,12 @@ def start(old_data, sitelinks_data):
     # ---
     data["old_data"].update(old_to_up)
     # ---
-    to_save = {"file_date": file_date, "all_items": all_items, "items_without_sitelinks": items_without_sitelinks, "sitelinks": new_dump_to_save}
+    to_save = {
+        "file_date": file_date,
+        "all_items": all_items,
+        "items_without_sitelinks": items_without_sitelinks,
+        "sitelinks": new_dump_to_save,
+    }
     # ---
     return data, to_save, bad_codes
 
@@ -172,7 +177,9 @@ def render(old_data, sitelinks_data):
     data, to_save, bad_codes = start(old_data, sitelinks_data)
     # ---
     for code_new, code in bad_codes.items():
-        print(f"* bad codes: \t {{{{int:project-localized-name-{code_new}wiki}}}} \t {{{{int:project-localized-name-{code}wiki}}}}")
+        print(
+            f"* bad codes: \t {{{{int:project-localized-name-{code_new}wiki}}}} \t {{{{int:project-localized-name-{code}wiki}}}}"
+        )
     # ---
     text = make_text(data)
     # ---

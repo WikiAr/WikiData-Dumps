@@ -93,7 +93,13 @@ class ClaimsProcessor:
         print("log_dump done")
 
     def do_line(self, json1):
-        for field in ["All_items", "items_with_0_claims", "items_with_1_claim", "items_missing_P31", "total_claims_count"]:
+        for field in [
+            "All_items",
+            "items_with_0_claims",
+            "items_with_1_claim",
+            "items_missing_P31",
+            "total_claims_count",
+        ]:
             self.tab[field] += json1.get(field, 0)
 
         claims = json1.get("properties") or json1

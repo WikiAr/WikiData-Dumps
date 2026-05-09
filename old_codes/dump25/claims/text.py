@@ -132,7 +132,11 @@ def make_numbers_section(p31_list):
 
 
 def make_text(data):
-    p31_list = [(prop_data["lenth_of_usage"], prop_id) for prop_id, prop_data in data["properties"].items() if prop_data["lenth_of_usage"]]
+    p31_list = [
+        (prop_data["lenth_of_usage"], prop_id)
+        for prop_id, prop_data in data["properties"].items()
+        if prop_data["lenth_of_usage"]
+    ]
     p31_list.sort(reverse=True)
 
     if not data.get("file_date"):
@@ -151,7 +155,11 @@ def make_text(data):
     metadata += f"<!-- bots work done in {delta} secounds --> \n--~~~~\n"
     chart_section = make_numbers_section(p31_list)
 
-    sections = "".join(make_section(prop, data["properties"][prop]) for _, prop in p31_list if sections_done["current"] < sections_done["max"])
+    sections = "".join(
+        make_section(prop, data["properties"][prop])
+        for _, prop in p31_list
+        if sections_done["current"] < sections_done["max"]
+    )
 
     return metadata + chart_section + sections
 

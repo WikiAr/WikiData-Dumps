@@ -203,7 +203,10 @@ def one_prop(prop_main, first_100={}):
     # ---
     data["qids"] = first_100
     # ---
-    print(f"p \t {prop_main} \t claims: {property_claims_count:,} \t others: {data['others']:,}" f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}")
+    print(
+        f"p \t {prop_main} \t claims: {property_claims_count:,} \t others: {data['others']:,}"
+        f"\t unique qids:{data['unique_qids_count']:,} \t items:{data['items_with_property']:,}"
+    )
     # ---
     return data
 

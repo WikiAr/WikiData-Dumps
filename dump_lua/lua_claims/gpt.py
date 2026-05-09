@@ -29,15 +29,25 @@ def main():
     lines.append("|-")
     lines.append(f"| Total items last update || {old_data['all_items']} || -")
     lines.append("|-")
-    lines.append(f"| Total items || {new_data['all_items']} || {format_diff(new_data['all_items'], old_data['all_items'])}")
+    lines.append(
+        f"| Total items || {new_data['all_items']} || {format_diff(new_data['all_items'], old_data['all_items'])}"
+    )
     lines.append("|-")
-    lines.append(f"| Items without P31 || {new_data['items_missing_P31']} || {format_diff(new_data['items_missing_P31'], old_data['items_missing_P31'])}")
+    lines.append(
+        f"| Items without P31 || {new_data['items_missing_P31']} || {format_diff(new_data['items_missing_P31'], old_data['items_missing_P31'])}"
+    )
     lines.append("|-")
-    lines.append(f"| Items without claims || {new_data['items_with_0_claims']} || {format_diff(new_data['items_with_0_claims'], old_data['items_with_0_claims'])}")
+    lines.append(
+        f"| Items without claims || {new_data['items_with_0_claims']} || {format_diff(new_data['items_with_0_claims'], old_data['items_with_0_claims'])}"
+    )
     lines.append("|-")
-    lines.append(f"| Items with 1 claim only || {new_data['items_with_1_claim']} || {format_diff(new_data['items_with_1_claim'], old_data['items_with_1_claim'])}")
+    lines.append(
+        f"| Items with 1 claim only || {new_data['items_with_1_claim']} || {format_diff(new_data['items_with_1_claim'], old_data['items_with_1_claim'])}"
+    )
     lines.append("|-")
-    lines.append(f"| Total number of claims || {new_data['total_claims_count']} || {format_diff(new_data['total_claims_count'], old_data['total_claims_count'])}")
+    lines.append(
+        f"| Total number of claims || {new_data['total_claims_count']} || {format_diff(new_data['total_claims_count'], old_data['total_claims_count'])}"
+    )
     lines.append("|-")
     lines.append(f"| Number of properties in the report || {new_data['total_properties_count']} || -")
     lines.append("|}")
@@ -68,11 +78,17 @@ def main():
         lines.append('{| class="wikitable sortable"')
         lines.append("! Title !! Number !! Diff")
         lines.append("|-")
-        lines.append(f"| Total items using this property || {pdata['items_with_property']} || {format_diff(pdata['items_with_property'], old_pdata['items_with_property'])}")
+        lines.append(
+            f"| Total items using this property || {pdata['items_with_property']} || {format_diff(pdata['items_with_property'], old_pdata['items_with_property'])}"
+        )
         lines.append("|-")
-        lines.append(f"| Total number of claims: || {pdata['property_claims_count']} || {format_diff(pdata['property_claims_count'], old_pdata['property_claims_count'])}")
+        lines.append(
+            f"| Total number of claims: || {pdata['property_claims_count']} || {format_diff(pdata['property_claims_count'], old_pdata['property_claims_count'])}"
+        )
         lines.append("|-")
-        lines.append(f"| Number of unique QIDs || {pdata['unique_qids_count']} || {format_diff(pdata['unique_qids_count'], old_pdata['unique_qids_count'])}")
+        lines.append(
+            f"| Number of unique QIDs || {pdata['unique_qids_count']} || {format_diff(pdata['unique_qids_count'], old_pdata['unique_qids_count'])}"
+        )
         lines.append("|}")
         lines.append("")
         # qids table

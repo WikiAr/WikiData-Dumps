@@ -83,7 +83,18 @@ def get_sitelinks():
 
     data = {}
 
-    others = {"commons": 0, "species": 0, "mediawiki": 0, "wikidata": 0, "meta": 0, "sources": 0, "wikifunctions": 0, "outreach": 0, "wikimania": 0, "foundation": 0}
+    others = {
+        "commons": 0,
+        "species": 0,
+        "mediawiki": 0,
+        "wikidata": 0,
+        "meta": 0,
+        "sources": 0,
+        "wikifunctions": 0,
+        "outreach": 0,
+        "wikimania": 0,
+        "foundation": 0,
+    }
 
     for x in result:
         # ['"120307583"^^<http://www.w3.org/2001/XMLSchema#int>']

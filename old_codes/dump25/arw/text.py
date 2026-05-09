@@ -171,7 +171,9 @@ def mainar():
     final = time.time()
     # ---
     stats_tab["delta"] = int(final - start)
-    text = f"* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n* جميع عناصر ويكي بيانات المفحوصة: {stats_tab['all_items']:,} \n"
+    text = (
+        f"* تقرير تاريخ: latest تاريخ التعديل ~~~~~.\n* جميع عناصر ويكي بيانات المفحوصة: {stats_tab['all_items']:,} \n"
+    )
     text += "* عناصر ويكي بيانات بها وصلة عربية: {all_ar_sitelinks:,} \n"
     text += "* عناصر بدون وصلات لغات: {no_sitelinks:,} \n"
     text += "* عناصر بوصلات لغات بدون وصلة عربية: {sitelinks_no_ar:,} \n"

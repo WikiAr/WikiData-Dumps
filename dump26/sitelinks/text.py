@@ -262,7 +262,9 @@ def make_families_text(du_tab, Old, All_items):
     ]
     # ---
     # sort families_text keys by sort_list or but it in the last
-    families_text = dict(sorted(families_text.items(), key=lambda x: sort_list.index(x[0]) if x[0] in sort_list else len(sort_list) + 1))
+    families_text = dict(
+        sorted(families_text.items(), key=lambda x: sort_list.index(x[0]) if x[0] in sort_list else len(sort_list) + 1)
+    )
     # ---
     others_txt = families_text.get("others", "")
     # ---

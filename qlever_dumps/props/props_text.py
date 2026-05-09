@@ -223,7 +223,9 @@ def make_numbers_section(properties_infos, Old):
 
 def make_text(data, Old):
     # ---
-    properties_infos = dict(sorted(data["properties"].items(), key=lambda x: x[1].get("property_claims_count", 0), reverse=True))
+    properties_infos = dict(
+        sorted(data["properties"].items(), key=lambda x: x[1].get("property_claims_count", 0), reverse=True)
+    )
     # ---
     print(f"{len(properties_infos)=}")
     # ---

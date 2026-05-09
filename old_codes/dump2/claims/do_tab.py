@@ -74,7 +74,27 @@ def do_line(json1):
     elif claims_length == 1:
         tab["items_with_1_claim"] += 1
 
-    _claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+    _claims_example = {
+        "claims": {
+            "P31": [
+                {
+                    "mainsnak": {
+                        "snaktype": "value",
+                        "property": "P31",
+                        "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a",
+                        "datavalue": {
+                            "value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"},
+                            "type": "wikibase-entityid",
+                        },
+                        "datatype": "wikibase-item",
+                    },
+                    "type": "statement",
+                    "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44",
+                    "rank": "normal",
+                }
+            ]
+        }
+    }
 
     if "P31" not in claims:
         tab["items_missing_P31"] += 1
@@ -85,7 +105,10 @@ def do_line(json1):
         "aliases": ["cy", "sk", "mk", "vls"],
         "descriptions": ["cy", "sk", "mk", "vls"],
         "sitelinks": ["itwikivoyage", "zhwikivoyage", "ruwikivoyage", "fawikiquote", "dewikivoyage"],
-        "claims": {"P1344": ["Q1088364"], "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"]},
+        "claims": {
+            "P1344": ["Q1088364"],
+            "P31": ["Q3624078", "Q43702", "Q6256", "Q20181813", "Q185441", "Q1250464", "Q113489728"],
+        },
     }
 
     for p, p_qids in claims.items():

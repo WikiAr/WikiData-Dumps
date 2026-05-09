@@ -254,7 +254,11 @@ def print_memory(i):
 
 
 def fix_property(pv):
-    return [claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id") for claim in pv if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"]
+    return [
+        claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
+        for claim in pv
+        if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"
+    ]
 
 
 def parse_lines(bz2_file):
@@ -279,7 +283,9 @@ def filter_and_process(entity_dict):
         }
         line2 = {
             "qid": entity_dict["title"],
-            "claims": {p: fix_property(pv) for p, pv in claims.items() if ("all_props" in sys.argv)},  # or p in most_props
+            "claims": {
+                p: fix_property(pv) for p, pv in claims.items() if ("all_props" in sys.argv)
+            },  # or p in most_props
         }
         # ---
         if "all_props" not in sys.argv:

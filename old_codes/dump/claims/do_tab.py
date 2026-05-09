@@ -116,7 +116,27 @@ def do_line(entity_dict):
     elif claims_length == 1:
         tab["items_with_1_claim"] += 1
 
-    _claims_example = {"claims": {"P31": [{"mainsnak": {"snaktype": "value", "property": "P31", "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a", "datavalue": {"value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"}, "type": "wikibase-entityid"}, "datatype": "wikibase-item"}, "type": "statement", "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44", "rank": "normal"}]}}
+    _claims_example = {
+        "claims": {
+            "P31": [
+                {
+                    "mainsnak": {
+                        "snaktype": "value",
+                        "property": "P31",
+                        "hash": "b44ad788a05b4c1b2915ce0292541c6bdb27d43a",
+                        "datavalue": {
+                            "value": {"entity-type": "item", "numeric-id": 6256, "id": "Q6256"},
+                            "type": "wikibase-entityid",
+                        },
+                        "datatype": "wikibase-item",
+                    },
+                    "type": "statement",
+                    "id": "Q805$81609644-2962-427A-BE11-08BC47E34C44",
+                    "rank": "normal",
+                }
+            ]
+        }
+    }
 
     if "P31" not in claims:
         tab["items_missing_P31"] += 1
