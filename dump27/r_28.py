@@ -83,7 +83,11 @@ def dump_lines_claims(linesc):
         # ---
         claims = line.get("claims", {})
         # ---
-        _claims = {"P59": ["Q10519"], "P31": ["Q523", "Q67206691"], "P6259": ["Q1264450"]}
+        _claims = {
+            "P59": ["Q10519"],
+            "P31": ["Q523", "Q67206691"],
+            "P6259": ["Q1264450"],
+        }
         # ---
         claims_length = len(claims)
         # ---
@@ -222,7 +226,11 @@ def dump_lines(lines):
                     tab["sitelinks"][code] += 1
                 else:
                     if code not in tab["langs"]:
-                        tab["langs"][code] = {"labels": 0, "descriptions": 0, "aliases": 0}
+                        tab["langs"][code] = {
+                            "labels": 0,
+                            "descriptions": 0,
+                            "aliases": 0,
+                        }
                     tab["langs"][code][x] += 1
     # ---
     file_fixed = dump_parts1_fixed / f"{dump_done[1]}.json"

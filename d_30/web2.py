@@ -70,7 +70,11 @@ class HHH:
 
         for line in linesc:
             claims = line.get("claims", {})
-            _claims = {"P59": ["Q10519"], "P31": ["Q523", "Q67206691"], "P6259": ["Q1264450"]}
+            _claims = {
+                "P59": ["Q10519"],
+                "P31": ["Q523", "Q67206691"],
+                "P6259": ["Q1264450"],
+            }
 
             claims_length = len(claims)
 
@@ -176,7 +180,11 @@ class HHH:
                         tab["sitelinks"][code] += 1
                     else:
                         if code not in tab["langs"]:
-                            tab["langs"][code] = {"labels": 0, "descriptions": 0, "aliases": 0}
+                            tab["langs"][code] = {
+                                "labels": 0,
+                                "descriptions": 0,
+                                "aliases": 0,
+                            }
                         tab["langs"][code][x] += 1
 
         file_fixed = self.dump_parts1_fixed / f"{self.dump_file}.json"
