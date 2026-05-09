@@ -12,9 +12,9 @@ Changes from original r_28.py:
         dump_files/claims_stats.json
 
 Usage:
-    python3 core9/pwb.py dump277/r_28.py               # full run
-    python3 core9/pwb.py dump277/r_28.py test          # stop after 10,000 items
-    python3 core9/pwb.py dump277/r_28.py from_url      # stream from wikimedia URL
+    python3 c9/pwb.py dump277/r_28.py               # full run
+    python3 c9/pwb.py dump277/r_28.py test          # stop after 10,000 items
+    python3 c9/pwb.py dump277/r_28.py from_url      # stream from wikimedia URL
 """
 import os
 import psutil

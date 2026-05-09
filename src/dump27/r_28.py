@@ -330,16 +330,6 @@ def process_data(bz2_file="", url=""):
     mem_nu = 10_000
     dump_numbs = 10_000 if "test" in sys.argv else 100_000
     # ---
-    skip_to = 0
-    # ---
-    if "skip" in sys.argv:
-        js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in dump_parts1_fixed.glob("*.json")]
-        maxfile = max(js_f) if js_f else 0
-        skip_to = maxfile * dump_numbs
-        dump_done[1] = maxfile
-        dump_done["claims"] = maxfile
-        print("skip_to:", skip_to, "max file:", maxfile)
-    # ---
     print_frist = True
     # ---
     lines = []
@@ -365,12 +355,6 @@ def process_data(bz2_file="", url=""):
     # ---
     # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):
     for i, entity_dict in enumerate(data, start=1):
-        if i < skip_to:
-            if i % dump_numbs == 0:
-                print("skip_to:", skip_to, "i:", i)
-                # print_memory(i)
-            continue
-
         if print_frist:
             print_memory(i)
             print_frist = False
