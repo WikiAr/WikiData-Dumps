@@ -197,7 +197,7 @@ def get_all_with(ty):
         "aliases": "skos:altLabel",
     }
     # ---
-    ty = tys.get(ty, "labels")
+    ty = tys.get(ty, "rdfs:label")
     # ---
     sparql = f"""
         PREFIX wikibase: <http://wikiba.se/ontology#>
@@ -238,7 +238,7 @@ def get_most(ty):
         "aliases": "skos:altLabel",
     }
     # ---
-    ty = tys.get(ty, "labels")
+    ty = tys.get(ty, "rdfs:label")
     # ---
     sparql = f"""
         PREFIX wikibase: <http://wikiba.se/ontology#>

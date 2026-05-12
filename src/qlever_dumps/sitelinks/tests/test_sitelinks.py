@@ -1,6 +1,6 @@
 """
 
-python3 core8/pwb.py I:/core/bots/wd_dumps/qlever_dumps/new/sitelinks/tests/test_sitelinks.py
+python3 c9/pwb.py I:/core/bots/wd_dumps/qlever_dumps/new/sitelinks/tests/test_sitelinks.py
 
 """
 

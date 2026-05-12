@@ -1,9 +1,10 @@
 !/bin/bash
 
-# first step
+# Step 1 — fetch top WikibaseItem properties via SPARQL
 python3 dump27/most_props.py
 
-# process the dumps
+# Step 2 — stream-parse the full dump + accumulate all stats in memory
+#           writes labels_new.json, pids_qids/, and claims_stats.json
 python3 dump27/r_28.py
 
 # make report from the dumps:

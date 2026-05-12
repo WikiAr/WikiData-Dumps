@@ -1,0 +1,22 @@
+tools.himo@shell-1778286101:~$ python3 c9/pwb.py dump277/r_28.py test
+PYTHON VERSION: 3114
+File: /mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2
+Size: 94.1 GiB
+Starting inline processing (no batch lists) ...
+count:1  batch:0.1s  total:0s
+Memory: 55.0 MB
+print_frist = False
+count:5,000  batch:45.2s  total:45s
+Memory: 67.0 MB
+count:10,000  batch:35.0s  total:80s
+Memory: 71.0 MB
+count:15,000  batch:27.9s  total:108s
+Memory: 71.0 MB
+count:20,000  batch:32.1s  total:140s
+Memory: 73.0 MB
+[test] stopping at 20,000 raw lines
+
+Stream finished.
+Processing completed.
+
+Done. r_28.py completed in 143 seconds

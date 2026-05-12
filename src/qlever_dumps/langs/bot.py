@@ -1,7 +1,7 @@
 """
 
-python3 core8/pwb.py I:/core/bots/dump_core/src/qlever_dumps/langs/bot.py fromjson
-python3 core8/pwb.py I:/core/bots/dump_core/src/qlever_dumps/langs/bot.py
+python3 c9/pwb.py I:/core/bots/dump_core/src/qlever_dumps/langs/bot.py fromjson
+python3 c9/pwb.py I:/core/bots/dump_core/src/qlever_dumps/langs/bot.py
 
 """
 

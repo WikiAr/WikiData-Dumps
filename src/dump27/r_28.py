@@ -22,13 +22,23 @@ from pathlib import Path
 import psutil
 import requests
 import ujson
-from humanize import naturalsize  # naturalsize(file_size, binary=True)
+from humanize import naturalsize
 
 sys.path.append(str(Path(__file__).parent))
 
-from dir_handler import dump_dir_claims_fixed, dump_files_dir, dump_parts1_fixed, split_by_pid_dir
+from dir_handler import (
+    dump_dir_claims_fixed,
+    dump_files_dir,
+    dump_parts1_fixed,
+    split_by_pid_dir,
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Timers
+# ─────────────────────────────────────────────────────────────────────────────
 
 time_start = time.time()
+_tt = [time.time()]
 
 dump_done = {1: 0, "claims": 0}
 
@@ -37,7 +47,6 @@ done1_lines = dump_files_dir / "done1_lines.txt"
 with open(done1_lines, "w", encoding="utf-8") as f:
     f.write("")
 
-tt = {1: 0}
 
 most_path = dump_files_dir / "most_claims.json"
 
@@ -246,35 +255,28 @@ def dump_lines(lines):
     print(f"dump_lines fixed: {fixed_size}")
 
 
-def print_memory(i):
+def print_memory(i: int):
     now = time.time()
-
-    print(f"current_count:{i:,}", "time:", now - tt[1])
-    tt[1] = now
-    # ---
     green, purple = "\033[92m%s\033[00m", "\033[95m%s\033[00m"
-
-    usage = psutil.Process(os.getpid()).memory_info().rss
-    usage = usage / 1024 // 1024
-
+    usage = psutil.Process(os.getpid()).memory_info().rss / 1024 // 1024
     delta = int(now - time_start)
-    print(green % "Memory usage:", purple % f"{usage} MB", f"time: to now {delta}")
+    print(f"count:{i:,}  batch:{now - _tt[0]:.1f}s  total:{delta}s")
+    print(green % "Memory:", purple % f"{usage} MB")
+    _tt[0] = now
 
 
-def fix_property(pv):
+# ─────────────────────────────────────────────────────────────────────────────
+# Helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def fix_property(pv: list) -> list:
+    """Return list of wikibase-item QID strings from a raw claim statement list."""
     return [
         claim.get("mainsnak", {}).get("datavalue", {}).get("value", {}).get("id")
         for claim in pv
         if claim.get("mainsnak", {}).get("datatype", "") == "wikibase-item"
     ]
-
-
-def parse_lines(bz2_file):
-    with bz2.open(bz2_file, "r") as f:
-        for line in f:
-            line = line.decode("utf-8").strip("\n").strip(",")
-            if line.startswith("{") and line.endswith("}"):
-                yield line
 
 
 def filter_and_process(entity_dict):
@@ -304,11 +306,22 @@ def filter_and_process(entity_dict):
     return None, None
 
 
-def parse_lines_from_url(url):
-    # ---
+# ─────────────────────────────────────────────────────────────────────────────
+# Stream parsers
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def parse_lines(bz2_file: str):
+    with bz2.open(bz2_file, "r") as f:
+        for line in f:
+            line = line.decode("utf-8").strip("\n").strip(",")
+            if line.startswith("{") and line.endswith("}"):
+                yield line
+
+
+def parse_lines_from_url(url: str):
     session = requests.session()
     session.headers.update({"User-Agent": "Himo bot/1.0 (https://himo.toolforge.org/; tools.himo@toolforge.org)"})
-    # ---
     with session.get(url, stream=True) as response:
         response.raise_for_status()
         decompressor = bz2.BZ2Decompressor()
@@ -321,39 +334,30 @@ def parse_lines_from_url(url):
                     line = line.strip().strip(b",")
                     if line.startswith(b"{") and line.endswith(b"}"):
                         yield line.decode("utf-8")
-        if buffer.strip().startswith(b"{") and buffer.strip().endswith(b"}"):
-            yield buffer.decode("utf-8")
+        tail = buffer.strip()
+        if tail.startswith(b"{") and tail.endswith(b"}"):
+            yield tail.decode("utf-8")
 
 
-def process_data(bz2_file="", url=""):
-    tt[1] = time.time()
-    mem_nu = 10_000
+# ─────────────────────────────────────────────────────────────────────────────
+# Main
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def process_data(bz2_file: str = "", url: str = ""):
+    _tt[0] = time.time()
+
+    is_test = "test" in sys.argv
+    from_url = "from_url" in sys.argv
+
+    mem_nu = 5_000 if is_test else 10_000
+    test_limit = 20_000 if is_test else None
     dump_numbs = 10_000 if "test" in sys.argv else 100_000
-    # ---
-    skip_to = 0
-    # ---
-    if "skip" in sys.argv:
-        js_f = [int(x.name.replace(".json", "").replace("items_", "")) for x in dump_parts1_fixed.glob("*.json")]
-        maxfile = max(js_f) if js_f else 0
-        skip_to = maxfile * dump_numbs
-        dump_done[1] = maxfile
-        dump_done["claims"] = maxfile
-        print("skip_to:", skip_to, "max file:", maxfile)
-    # ---
+
     print_frist = True
-    # ---
+
     lines = []
     lines_claims = []
-    # ---
-    if "from_url" in sys.argv:
-        print(f"Starting download and processing... {url}")
-        data = parse_lines_from_url(url)
-    else:
-        file_size = os.path.getsize(bz2_file)
-        print(naturalsize(file_size, binary=True))
-        # ---
-        data = parse_lines(bz2_file)
-    # ---
     claims_stats = {
         "total_properties_count": 0,
         "items_with_0_claims": 0,
@@ -362,21 +366,25 @@ def process_data(bz2_file="", url=""):
         "All_items": 0,
         "total_claims_count": 0,
     }
-    # ---
-    # for i, entity_dict in tqdm.tqdm(enumerate(parse_lines(), start=1)):
-    for i, entity_dict in enumerate(data, start=1):
-        if i < skip_to:
-            if i % dump_numbs == 0:
-                print("skip_to:", skip_to, "i:", i)
-                # print_memory(i)
-            continue
 
+    if from_url:
+        print(f"Streaming from URL: {url}")
+        data = parse_lines_from_url(url)
+    else:
+        file_size = os.path.getsize(bz2_file)
+        print(f"File: {bz2_file}")
+        print(f"Size: {naturalsize(file_size, binary=True)}")
+        data = parse_lines(bz2_file)
+
+    print("Starting inline processing (no batch lists) ...")
+    i = 0
+    for i, raw in enumerate(data, start=1):
         if print_frist:
             print_memory(i)
             print_frist = False
             print("print_frist = False")
 
-        line, line2 = filter_and_process(entity_dict)
+        line, line2 = filter_and_process(raw)
         if line:
             lines.append(line)
             lines_claims.append(line2)
@@ -398,7 +406,7 @@ def process_data(bz2_file="", url=""):
             lines.clear()
             gc.collect()
             # ---
-            ti = time.time() - tt[1]
+            ti = time.time() - _tt[0]
             # ---
             print_memory(i)
             # ---
@@ -410,6 +418,10 @@ def process_data(bz2_file="", url=""):
             # ---
         elif i % mem_nu == 0:
             print_memory(i)
+
+        if test_limit and i >= test_limit:
+            print(f"[test] stopping at {i:,} raw lines")
+            break
 
     # ---
     if lines:
@@ -429,17 +441,14 @@ def process_data(bz2_file="", url=""):
 
 
 def main():
-    time_start2 = time.time()
-    # ---
     bz2_file = "/mnt/nfs/dumps-clouddumps1002.wikimedia.org/other/wikibase/wikidatawiki/latest-all.json.bz2"
-    # ---
     url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2"
-    # ---
+
+    # ── parse the dump ───────────────────────────────────────────────────────
     process_data(bz2_file=bz2_file, url=url)
     # ---
-    delta = int(time.time() - time_start2)
-    # ---
-    print(f"read_file: done in {delta}")
+    delta = int(time.time() - time_start)
+    print(f"\nDone. r_28.py completed in {delta:,} seconds")
 
 
 if __name__ == "__main__":
